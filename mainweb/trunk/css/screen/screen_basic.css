@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * ----------------------------------------------------------------------------------
+ * HA SYSTEMS
+ * http://www.tcivis.com
+ * http://www.hawebs.org
+ * http://www.hawebs.net
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * ----------------------------------------------------------------------------------
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ *
+ * ----------------------------------------------------------------------------------
+ */
+ 
+ /*Purpose: undo some of the default styling of common (X)HTML browsers */
+:link,:visited { text-decoration:none; color: #0aa1dd; }
+a:hover {text-decoration:underline;}
+ul,ol { list-style:none }
+h1,h2,h3,h4,h5,h6,pre,code { font-size:small; }
+ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,fieldset,blockquote,input{ margin:0; padding:0 }
+a img,:link img,:visited img { border:none }
+address { font-style:normal }
+/* more varnish stripping as necessary... */
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+html {
+	margin: 0px;
+	padding: 0px;
+	font-size: 100.01%;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #fff;
+	color: #000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 62.5%;
+}
+
+form {
+	margin: 0px;
+	padding: 0px;
+}
+
+blockquote {
+	margin: 0px;
+	padding: 0 20px 10px 10px;
+}
+
+pre {
+	font-family: Arial, Helvetica, sans-serif;
+	white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+	white-space: pre-wrap;       /* css-3 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}

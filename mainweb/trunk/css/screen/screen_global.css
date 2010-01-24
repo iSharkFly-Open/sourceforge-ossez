@@ -1,0 +1,144 @@
+.rsslink_2 /* The icon on the top of the Blog page */{
+	background:url(/assets/img/global_elements/rss_blue.gif) 25px 11px no-repeat;
+	text-transform: uppercase;
+	font-size: 10px;
+	line-height: 12px;
+}
+
+.rsslink_2 a:link, .rsslink_2 a:visited {
+	color:#0aa1dd;
+	background-color:#fff;
+}
+
+.rsslink_2 a:hover, .rsslink_2 a:visited:hover {
+	color:#333;
+	background-color:#fff;
+}
+
+.rssicon /* Icon for Blue RSS */ {
+	background:url(/assets/img/global_elements/rss_blue.gif) right center no-repeat;
+	padding-right:15px; 
+}
+
+
+.float_left /* Generic class to float */ {
+	float:left !important;
+}
+
+.float_right /* Generic class to float */ {
+	float:right !important;
+}
+
+.clearboth /* Generic class to clear  */ {
+	clear:both;
+}
+
+.clearleft  /* Generic class to clear */ {
+	clear:left;
+}
+
+.clearright  /* Generic class to clear */ {
+	clear:right;
+}
+
+.bottomborder /* Generic class for border on bottom of a element */ {
+	border-bottom:1px solid #ccc;
+}
+
+.topborder /* Generic class for border on top of a element */ {
+	border-top:1px solid #ccc;
+}
+
+.noborders /* Generic class for borders */ {
+	border-style: none !important;
+}
+
+.blog_blue /* Blog icon */ {
+	background:url(/assets/img/global_elements/blog_blue.gif) right center no-repeat;
+	padding-right:15px;
+}
+
+.p_item /* P icon */ {
+	background:url(/assets/img/global_elements/p.gif) left 1px no-repeat;
+	padding-left:20px !important;
+}
+
+.horizontallines /* horizonta line HR image */{
+	background:url(/assets/img/global_elements/horizontallines.gif) left top repeat-x;
+	height:10px;
+	display:block;
+	margin:20px 0px 15px 0px;
+	clear:both;
+}
+
+.horizontallines_basic {
+	background-image:url(/assets/img/global_elements/horizontallines.gif);
+}
+
+.halfhorizontallines /* half height orizontal line HR image */{
+	background:url(/assets/img/global_elements/halfhorizontal.gif) left top repeat-x;
+	height:5px;
+	display:block;
+	margin:0px 0px 15px 0px;
+	clear:both;
+}
+
+.halfhorizontal_basic {
+	background-image:url(/assets/img/global_elements/halfhorizontal.gif);
+}
+
+.divider /* Section divider */{
+	height:10px;
+	display:block;
+	margin:0px 0px 15px 0px;
+	clear:both;
+}
+
+.next_right /* Next page icon */ {
+	background:url(/assets/img/global_elements/arrow_blue.gif) right center no-repeat;
+	padding-right:8px;
+}
+
+.ucase {
+	text-transform:uppercase;
+}
+
+.title_case {
+	text-transform:capitalize
+}
+
+.bold {
+	font-weight:bold
+}
+.nowrap {
+	white-space: nowrap
+}
+
+.faded {
+	color:#ccc
+}
+
+.bluetext {
+	color:#0aa1dd
+}
+
+.notopmargin {
+	margin-top:0 !important
+}
+
+.smallerH1 {
+	font-size:18px !important;
+	height:25px !important
+}
+
+div, h1, h2, h3, p {color:#33302d;}
+
+.liststyle {background:url(/assets/img/global_elements/arrow_grey.gif) no-repeat 0 2px; padding: 0 0 13px 9px; *float:left;_float:left;;font-family:Georgia, "Times New Roman", Times, serif} /* For list display, generally within articles */
+#article ul li {background:url(/assets/img/global_elements/arrow_grey.gif) no-repeat 0 2px; padding: 0 0 13px 9px; *float:left;_float:left;font-family:Georgia, "Times New Roman", Times, serif;}
+
+.liststyle, x:-moz-any-link, x:default {float: left}
+.liststyleFF3_413 {border:none}
+.liststyleFF3_413, x:-moz-any-link, x:default {width: 413px}
+
+OL.orderedlist, #article ol { list-style-type:decimal !important; margin-left: 20px }  /* For ordered lists */
+OL.orderedlist li, #article ol li { margin-bottom: 13px; font-family:Georgia, "Times New Roman", Times, serif } 

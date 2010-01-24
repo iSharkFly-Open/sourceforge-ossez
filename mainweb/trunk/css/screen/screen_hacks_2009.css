@@ -1,0 +1,35 @@
+/*[Begin] clearfix hack for firefox*/
+
+.clearfix:after {
+
+content: "."; 
+
+display: block; 
+
+height: 0; 
+
+clear: both; 
+
+visibility: hidden;
+
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+
+* html .clearfix {height: 1%;}
+
+.clearfix {display: block;}
+
+#sciamtopics_topic ul.ie_margin { *margin-left:13px;_margin-left:5px; }
+
+.fixIEfloats {*position: relative; *display:inline-block; _position: relative; _display:inline-block} /* to prevent cut-off of floated elements in IE, apply to adjacent floated elements */
+
+/* End hide from IE-mac */
+
+/*[End] clearfix hack for firefox*/
+
+/*\*//*/
+#sciamtopics_topic ul.ie_margin {margin-left:5px}
+/* */ 
