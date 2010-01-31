@@ -601,10 +601,10 @@
 	margin-bottom:10px
 }
 .tl {
-	background: url(/assets/img/interface/corner-tl.png) 0 0 no-repeat
+	background: url(../../img/interface/corner-tl.png) 0 0 no-repeat
 }
 .tr {
-	background: url(/assets/img/interface/corner-tr.png) 100% 0 no-repeat;
+	background: url(../../img/interface/corner-tr.png) 100% 0 no-repeat;
 	padding: 10px 10px 6px 10px;
 }
 .rd-corners-div {
@@ -997,7 +997,7 @@
 	color: #e0f648 !important;
 	margin:0 !important;
 	padding:0px 0px 3px 5px !important;
-	background:url(/assets/img/interface/337-hdr.gif) left top no-repeat #e4e0dd;
+	background:url(../../img/interface/337-hdr.gif) left top no-repeat #e4e0dd;
 	font-size:1.05em !important;
 	font-family:Arial, Helvetica, sans-serif;
 	font-weight: 600;
@@ -1221,25 +1221,25 @@
 	display: inline;
 }
 #pop_news UL.tabNavigation LI A {
-	background: url(/assets/img/interface/tabOff.gif) no-repeat;
+	background: url(../../img/interface/tabOff.gif) no-repeat;
 	color: #fff;
 	font-size:1.3em;
 	font-weight: 600;
 	text-decoration: none;
 }
 #pop_news_cat UL.tabNavigation LI A {
-	background: url(/assets/img/category/catTabOff.gif) no-repeat;
+	background: url(../../img/category/catTabOff.gif) no-repeat;
 	color: #6c655f;
 	font-size:1.3em;
 	font-weight: 600;
 	text-decoration: none;
 }
 #pop_news UL.tabNavigation LI A.selected, #pop_news UL.tabNavigation LI A:hover {
-	background: url(/assets/img/interface/tabOn.gif) no-repeat;
+	background: url(../../img/interface/tabOn.gif) no-repeat;
 	color: #e0f648;
 }
 #pop_news_cat UL.tabNavigation LI A.selected, #pop_news_cat UL.tabNavigation LI A:hover {
-	background: url(/assets/img/category/catTabOn.gif) no-repeat;
+	background: url(../../img/category/catTabOn.gif) no-repeat;
 	color: #33302d;
 }
 #pop_news UL.tabNavigation LI A:focus, #pop_news_cat UL.tabNavigation LI A:focus {
