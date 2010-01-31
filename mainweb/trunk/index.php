@@ -49,12 +49,9 @@ require_once 'include/common.php';
 <meta name="author" content="<?php echo MATE_AUTHOR?> />
 <meta name="generator" content="<?php echo MATE_GENERATOR?>" />
 <title><?php echo $sitetitle;?></title>
-<link href="css/public/public.css" rel="stylesheet" type="text/css">
-<link href="css/default.css" rel="stylesheet" type="text/css">
-<link href="assets/css/screen/screen_2010.css" rel="stylesheet" type="text/css">
-<link href="assets/css/pages/pages_2010.css" rel="stylesheet" type="text/css">
-<link href="css/news/news.css" rel="stylesheet" type="text/css" />
-<link href="css/commonuses/ft.css" rel="stylesheet" type="text/css" />
+
+<?php require_once WEB_ROOT.'/include/incs/css.php';?>
+
 </head>
 <!-- Flash START-->
 <script src="scripts/AC_RunActiveContent.js" type="text/javascript"></script>
