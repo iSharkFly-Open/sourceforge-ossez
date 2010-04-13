@@ -93,14 +93,14 @@ Calendar._TT["ABOUT_TIME"] = "\n\n" +
 "- or Shift-click to decrease it\n" +
 "- or click and drag for faster selection.";
 
-Calendar._TT["PREV_YEAR"] = "Prev. year (hold for menu)";
-Calendar._TT["PREV_MONTH"] = "Prev. month (hold for menu)";
-Calendar._TT["GO_TODAY"] = "Go Today";
-Calendar._TT["NEXT_MONTH"] = "Next month (hold for menu)";
-Calendar._TT["NEXT_YEAR"] = "Next year (hold for menu)";
-Calendar._TT["SEL_DATE"] = "Select date";
-Calendar._TT["DRAG_TO_MOVE"] = "Drag to move";
-Calendar._TT["PART_TODAY"] = " (today)";
+Calendar._TT["PREV_YEAR"] = "上一年(hold for menu)";
+Calendar._TT["PREV_MONTH"] = "上一月 (hold for menu)";
+Calendar._TT["GO_TODAY"] = "当天";
+Calendar._TT["NEXT_MONTH"] = "下一月 (hold for menu)";
+Calendar._TT["NEXT_YEAR"] = "下一年 (hold for menu)";
+Calendar._TT["SEL_DATE"] = "选择日期";
+Calendar._TT["DRAG_TO_MOVE"] = "拖动";
+Calendar._TT["PART_TODAY"] = " (今天)";
 
 // the following is to inform that "%s" is to be the first day of week
 // %s will be replaced with the day name.
@@ -112,7 +112,7 @@ Calendar._TT["DAY_FIRST"] = "Display %s first";
 Calendar._TT["WEEKEND"] = "0,6";
 
 Calendar._TT["CLOSE"] = "Close";
-Calendar._TT["TODAY"] = "Today";
+Calendar._TT["TODAY"] = "今天";
 Calendar._TT["TIME_PART"] = "(Shift-)Click or drag to change value";
 
 // date formats
@@ -120,4 +120,4 @@ Calendar._TT["DEF_DATE_FORMAT"] = "%Y-%m-%d";
 Calendar._TT["TT_DATE_FORMAT"] = "%a, %b %e";
 
 Calendar._TT["WK"] = "wk";
-Calendar._TT["TIME"] = "Time:";
+Calendar._TT["TIME"] = "时间:";
