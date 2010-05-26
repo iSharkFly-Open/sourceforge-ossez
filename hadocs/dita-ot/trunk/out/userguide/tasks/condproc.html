@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="条件处理"/>
+<meta name="abstract" content="Conditional processing means filtering or flagging information based on processing-time criteria, such as a target audience, platform, or product."/>
+<meta name="description" content="Conditional processing means filtering or flagging information based on processing-time criteria, such as a target audience, platform, or product."/>
+<meta name="DC.subject" content="metadata attributes, product attribute, platform attribute, audience attribute, rev attribute, otherprops attribute, conditional processing"/>
+<meta name="keywords" content="metadata attributes, product attribute, platform attribute, audience attribute, rev attribute, otherprops attribute, conditional processing"/>
+<meta name="prodname" content="DITA 用户指南"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS DITA OT"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="condproc"/>
+<meta name="DC.Language" content="zh"/>
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+<title>条件处理</title>
+</head>
+<body id="condproc"><a name="condproc"><!-- --></a>
+
+
+    <h1 class="topictitle1">条件处理</h1>
+
+    
+    
+    <div><p>Conditional processing means filtering or flagging information 
+        based on processing-time criteria, such as a target audience, platform, 
+        or product.</p>
+
+        <p> The arbitrary values can accumulate in a document over time and 
+            have meaning only to the original author. However, you can use a 
+            set of standard metadata attributes on content instead of them. 
+            Rather than being suitable for filtering only, you can use the 
+            metadata for filtering, flagging, and future search and retrieval 
+            processes, because it is process-independent and merely provides 
+            information about the content.</p>
+
+        <div class="p">The following attributes are intended for conditional processing, 
+            and are available on most elements:<dl> <dt class="dlterm">product</dt>
+ 
+            <dd>The product that is the subject of the content, or to which the 
+            content applies.</dd>
+  <dt class="dlterm">platform</dt>
+ <dd>The 
+            platform on which the product is deployed.</dd>
+  
+            <dt class="dlterm">audience</dt>
+ <dd>The intended audience for the content.</dd>
+ 
+             <dt class="dlterm">rev</dt>
+ <dd>The revision or draft during 
+            which the content was added or changed. You can only flag 
+            revisions, not exclude them.</dd>
+  
+            <dt class="dlterm">otherprops</dt>
+ <dd>Anything else.</dd>
+ </dl>
+</div>
+
+        <p>Each attribute takes zero or more space-delimited string values. For 
+            example, you can use the product attribute to identify that an 
+            element applies to two particular products.</p>
+
+        <p>Coordinate the values you use with your team, so that all the 
+            information can be consistently processed with the same value 
+            definitions.</p>
+
+        <p>At processing time, specify the values you want to exclude and the 
+            values you want to flag.</p>
+
+        <div class="section"><h2 class="sectiontitle">Setting conditions</h2>
+            
+            <p>You can define what to do with these values in a filtering file. 
+                Open the ditaval file to edit it, and input the actions to take 
+                for the properties and revisions you want to process.</p>
+
+            <p>At processing time, you can specify the filter file by entering 
+                the <samp class="codeph">/filter:{args.input.valfile}</samp> output option 
+                to name the ditaval file that has these entries.</p>
+
+        </div>
+
+        <div class="section"><h2 class="sectiontitle">Excluding information</h2>
+            
+            <p>Specify the attribute and value you want to exclude. For 
+                example, exclude when audience="admin". For an element to be 
+                excluded, all the values in at least one attribute must be set 
+                to exclude. For example, if a paragraph applies to two 
+                audiences (audience="admin programmer") both values must be set 
+                to exclude in the filtering file before the paragraph is 
+                excluded.</p>
+
+            <p>You cannot exclude revisions, only choose whether or not to flag 
+                them.</p>
+
+        </div>
+
+        <div class="section"><h2 class="sectiontitle">Flagging information</h2>
+            
+            <p>Specify the attribute and value you want to flag. On output, the 
+                element will be flagged with the image you specify, or, in the 
+                case of revisions, with the method you specify. For an element 
+                to be flagged, at least one flagged value must be present. For 
+                example, if a paragraph applies to two audiences, either one 
+                set to flag will flag the element.</p>
+
+        </div>
+
+        <div class="example"><h2 class="sectiontitle">Example</h2>
+            
+            <div class="p">Given this source:<pre class="codeblock">&lt;ul&gt;
+  &lt;li audience="admin programmer"&gt;
+    This is important for lots of reasons
+  &lt;/li&gt; 
+  &lt;li audience="programmer"&gt;
+    This is only important to programmers
+  &lt;/li&gt;
+  &lt;li audience="programmer" platform="unix"&gt;
+    This is only important to Unix programmers 
+  &lt;/li&gt;
+  &lt;li platform="unix"&gt;
+    This applies on Unix
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+</div>
+
+            <div class="p">And this filter file:
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"> 
+                <thead align="left"> <tr> <th class="cellrowborder" valign="top" width="25%" id="d20e181">Attribute</th>
+ <th class="cellrowborder" valign="top" width="25%" id="d20e184">Value</th>
+ <th class="cellrowborder" valign="top" width="25%" id="d20e187">Action</th>
+ 
+                <th class="cellrowborder" valign="top" width="25%" id="d20e190">Flag</th>
+ </tr>
+ </thead>
+ <tbody> <tr> 
+                <td class="cellrowborder" valign="top" width="25%" headers="d20e181 ">audience</td>
+ <td class="cellrowborder" valign="top" width="25%" headers="d20e184 ">programmer</td>
+ 
+                <td class="cellrowborder" valign="top" width="25%" headers="d20e187 ">exclude</td>
+ <td class="cellrowborder" valign="top" width="25%" headers="d20e190 ">&#xA0;</td>
+ </tr>
+ <tr> 
+                <td class="cellrowborder" valign="top" width="25%" headers="d20e181 ">platform</td>
+ <td class="cellrowborder" valign="top" width="25%" headers="d20e184 ">unix</td>
+ <td class="cellrowborder" valign="top" width="25%" headers="d20e187 ">flag</td>
+ 
+                <td class="cellrowborder" valign="top" width="25%" headers="d20e190 ">../images/ngunix.gif</td>
+ </tr>
+ </tbody>
+ </table>
+</div>
+</div>
+
+            <div class="p">You should get this output:<div class="figborder"> <ul> <li>This is 
+                important for lots of reasons</li>
+ <li><img src="../images/ngunix.gif"/>This applies on Unix</li>
+ 
+                </ul>
+ </div>
+</div>
+
+            <p>The first list item remains because it applies to admin audience 
+                and programmer audience. The second list item is removed 
+                because it applies to programmers only, and programmer-specific 
+                information has been excluded. The third list item is removed 
+                because it applies to programmers as well: the fact that it 
+                applies to the Unix platform does not save it from exclusion. 
+                The fourth list item is flagged based on its platform 
+                attribute.</p>
+
+        </div>
+
+    </div>
+
+
+</body>
+</html>
