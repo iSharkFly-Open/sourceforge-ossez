@@ -23,9 +23,10 @@
   <!-- dita.dir should point to the toolkit's root directory -->
   
   <property name="book.name" value="userguide"/>
+  <property name="xhtml.path" value="docs"/>
   <property name="dita.input.dir" value=""/>
   
-  <property name="book.output.dir" value="${dita.output.dir}/${book.name}"/>
+  <property name="book.output.dir" value="${dita.output.dir}/${book.name}/${xhtml.path}"/>
   <property name="images.source.dir" value="${basedir}${file.separator}src${file.separator}images"/>
   <property name="css.source.dir" value="${basedir}${file.separator}src${file.separator}css"/>
   
@@ -63,13 +64,16 @@
   	         related resources. The sample CSS above references two JPG files;
   	         copy those files to the output CSS directory (output.dir + csspath). -->
 		<copy todir="${book.output.dir}${file.separator}css">
-  	        <fileset dir="${css.source.dir}"
-  	            includes="*.jpg"/>
+  	        <fileset dir="${css.source.dir}">
+				 <include name="*.jpg"/>
+				 <include name="*.gif"/>
+			</fileset>
   	    </copy>
 		<copy todir="${book.output.dir}${file.separator}images">
   	        <fileset dir="${images.source.dir}" >
   	            <include name="**/*.jpg"/>
   	            <include name="**/*.jpeg"/>
+				<include name="**/*.gif"/>
   	        </fileset>
 
   	    </copy>
