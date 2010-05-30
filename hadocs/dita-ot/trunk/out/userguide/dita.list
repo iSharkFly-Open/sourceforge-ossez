@@ -1,4 +1,4 @@
-#Tue May 25 23:18:32 EDT 2010
+#Sun May 30 16:54:09 EDT 2010
 copytosourcelist=
 hreftargetslist=tasks/info/hacopyright.dita,tasks/condproc.dita,tasks/info/apachelicense.dita,tasks/flagcontent.dita,tasks/proccond.dita,tasks/filtcontent.dita,tasks/showrev.dita
 fullditatopicfile=fullditatopic.list
@@ -37,7 +37,7 @@ codereffile=coderef.list
 keylist=
 codereflist=
 user.input.file.listfile=usr.input.file.list
-user.input.dir=D\:\\workdir\\hawebs\\resources\\hadocs\\projects\\hadocs\\dita-ot\\trunk\\src\\userguide
+user.input.dir=D\:\\workdir\\hawebs\\resources\\hadocs\\projects\\dita-ot\\trunk\\src\\userguide
 uplevels=
 tempdirToinputmapdir.relative.value=
 conrefpushfile=conrefpush.list
