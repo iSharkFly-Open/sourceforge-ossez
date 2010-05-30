@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <!-- 
 **
  * Copyright (C) 2006-2010 YUCHENG HU
@@ -33,118 +33,157 @@
 -->
 
 <concept id="condproc" xml:lang="zh">
-    <title>条件处理</title>
-    <shortdesc>Conditional processing means filtering or flagging information 
-        based on processing-time criteria, such as a target audience, platform, 
-        or product.</shortdesc>
-    <prolog>
-        <metadata>
-            <keywords>
-                <indexterm>metadata attributes</indexterm>
-                <indexterm>product attribute</indexterm>
-                <indexterm>platform attribute</indexterm>
-                <indexterm>audience attribute</indexterm>
-                <indexterm>rev attribute</indexterm>
-                <indexterm>otherprops attribute</indexterm>
-                <indexterm>conditional processing</indexterm>
-            </keywords>
-        </metadata>
-    </prolog>
-    <conbody>
-        <p> The arbitrary values can accumulate in a document over time and 
-            have meaning only to the original author. However, you can use a 
-            set of standard metadata attributes on content instead of them. 
-            Rather than being suitable for filtering only, you can use the 
-            metadata for filtering, flagging, and future search and retrieval 
-            processes, because it is process-independent and merely provides 
-            information about the content.</p>
-        <p>The following attributes are intended for conditional processing, 
-            and are available on most elements:<dl><dlentry> <dt>product</dt> 
-            <dd>The product that is the subject of the content, or to which the 
-            content applies.</dd> </dlentry><dlentry> <dt>platform</dt> <dd>The 
-            platform on which the product is deployed.</dd> </dlentry><dlentry> 
-            <dt>audience</dt> <dd>The intended audience for the content.</dd> 
-            </dlentry><dlentry> <dt>rev</dt> <dd>The revision or draft during 
-            which the content was added or changed. You can only flag 
-            revisions, not exclude them.</dd> </dlentry><dlentry> 
-            <dt>otherprops</dt> <dd>Anything else.</dd> </dlentry></dl></p>
-        <p>Each attribute takes zero or more space-delimited string values. For 
-            example, you can use the product attribute to identify that an 
-            element applies to two particular products.</p>
-        <p>Coordinate the values you use with your team, so that all the 
-            information can be consistently processed with the same value 
-            definitions.</p>
-        <p>At processing time, specify the values you want to exclude and the 
-            values you want to flag.</p>
-        <section>
-            <title>Setting conditions</title>
-            <p>You can define what to do with these values in a filtering file. 
-                Open the ditaval file to edit it, and input the actions to take 
-                for the properties and revisions you want to process.</p>
-            <p>At processing time, you can specify the filter file by entering 
-                the <codeph>/filter:{args.input.valfile}</codeph> output option 
-                to name the ditaval file that has these entries.</p>
-        </section>
-        <section>
-            <title>Excluding information</title>
-            <p>Specify the attribute and value you want to exclude. For 
-                example, exclude when audience="admin". For an element to be 
-                excluded, all the values in at least one attribute must be set 
-                to exclude. For example, if a paragraph applies to two 
-                audiences (audience="admin programmer") both values must be set 
-                to exclude in the filtering file before the paragraph is 
-                excluded.</p>
-            <p>You cannot exclude revisions, only choose whether or not to flag 
-                them.</p>
-        </section>
-        <section>
-            <title>Flagging information</title>
-            <p>Specify the attribute and value you want to flag. On output, the 
-                element will be flagged with the image you specify, or, in the 
-                case of revisions, with the method you specify. For an element 
-                to be flagged, at least one flagged value must be present. For 
-                example, if a paragraph applies to two audiences, either one 
-                set to flag will flag the element.</p>
-        </section>
-        <example>
-            <title>Example</title>
-            <p>Given this source:<codeblock>&lt;ul>
-  &lt;li audience="admin programmer">
+  <title>条件处理</title>
+  <shortdesc>条件处理 (conditional processing) 用于在发现处理时过滤和标记内容，例如目标用户、平台或产品。</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>metadata 特性</indexterm>
+        <indexterm>产品特性</indexterm>
+        <indexterm>平台特性</indexterm>
+        <indexterm>目标用户特性</indexterm>
+        <indexterm>版本特性</indexterm>
+        <indexterm>其他特性</indexterm>
+        <indexterm>条件处理 (conditional processing)</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p> 
+	随着时间和原始作者的意图，可以在文档中积累任何变量特性。
+	但是，你可以使用一些标准的 metadata 特性来替代这些变量特性，而不仅仅局限于过滤，当然你也可以用这些 metadata特性来过滤、查找和恢复处理；因为它们是单独处理的，同时也提供了关于内容的相关信息。
+	</p>
+	<p>
+		下面的一特性被考虑条件处理并适用于几乎所有的元素：
+		<dl>
+			<dlentry>
+				<dt>产品</dt>
+				<dd>是关于内容的主题，或可应用于那些内容。</dd>
+			</dlentry>
+			<dlentry>
+				<dt>平台</dt>
+				<dd>用于说明产品可以部署在那里。</dd>
+			</dlentry>
+			<dlentry>
+				<dt>目标用户</dt>
+				<dd>用于考虑内容对于的目标用户。</dd>
+			</dlentry>
+			<dlentry>
+				<dt>版本</dt>
+				<dd>在内容修改或添加的时形成正式版本或草稿版本。你可以仅标识版本而使用他们。</dd>
+			</dlentry>
+			<dlentry>
+				<dt>其他特性</dt>
+				<dd>任意。</dd>
+			</dlentry>
+		</dl>
+	</p>
+	<p>
+		每一个特性使用空格来分开字符串变量。
+		例如，你可以使用产品特性来识别被用于两个特定产品的同一元素。
+	</p>
+	<p>
+		协调好你项目小组和你使用的变量，那么所有的信息可以被考虑为同一的内容定义来处理。
+	</p>
+	<p>
+		在处理时，可以使用特殊的变量来标记你不希望处理的和你希望特殊表示的。
+	</p>
+	<section>
+		<title>设定条件</title>
+		<p>
+			你可以在一个过滤文件中定义如何处理一些变量。
+			在 ditaval 文件中来编辑和输入到你希望的处理条件中来说明处理内容和版本。
+		</p>
+		<p>
+			在处理时，你可以通过输入<codeph>/filter:{args.input.valfile}</codeph>来指定过滤文件来确定输出选项。
+		</p>
+	</section>
+	<section>
+	<title>忽略信息</title>
+	<p>
+		你希望忽略掉的一些特殊的特性和变量。
+		例如，当 audience=&quot;admin&quot;时忽略掉。
+		当一个元素被忽略掉时候，其中的所有变量中必须是所有特性被设置为忽略。
+		例如，如果有一个段落适用于2个不同的用户 (audience=&quot;admin programmer&quot;) 这2个变量必须在过滤器里面都被设置为忽略后这一个段落才能被忽略不处理。
+	</p>
+	<p>
+		你不可以通过选择而不是标记的方式来忽略版本不处理。
+	</p>
+	</section>
+	<section>
+	<title>标记信息</title>
+	<p>
+		指定你希望标记的特性和变量。
+		在输出候，元素将会使用你指定的图片来标记或使用你指定版本标记。
+		对于一个被标记的元素，至少但却需要一个标记变量。
+		例如，如果一个段落被指定为2个用户，任何一个用户被标记了，那么这个元素也会被标记。
+	</p>
+	</section>
+	<example>
+	<title>示例</title>
+	<p>假定下面的代码：
+	<codeblock>&lt;ul&gt;
+  &lt;li audience=&quot;admin programmer&quot;&gt;
     This is important for lots of reasons
-  &lt;/li> 
-  &lt;li audience="programmer">
+  &lt;/li&gt; 
+  &lt;li audience=&quot;programmer&quot;&gt;
     This is only important to programmers
-  &lt;/li>
-  &lt;li audience="programmer" platform="unix">
+  &lt;/li&gt;
+  &lt;li audience=&quot;programmer&quot; platform=&quot;unix&quot;&gt;
     This is only important to Unix programmers 
-  &lt;/li>
-  &lt;li platform="unix">
+  &lt;/li&gt;
+  &lt;li platform=&quot;unix&quot;&gt;
     This applies on Unix
-  &lt;/li>
-&lt;/ul></codeblock></p>
-            <p>And this filter file:<table> <tgroup cols="4"><colspec 
-                colname="col1"/><colspec colname="col2"/><colspec 
-                colname="col3"/><colspec colname="COLSPEC0" colwidth="1*"/> 
-                <thead> <row> <entry valign="top">Attribute</entry> <entry 
-                valign="top">Value</entry> <entry valign="top">Action</entry> 
-                <entry valign="top">Flag</entry> </row> </thead> <tbody> <row> 
-                <entry>audience</entry> <entry>programmer</entry> 
-                <entry>exclude</entry> <entry></entry> </row> <row> 
-                <entry>platform</entry> <entry>unix</entry> <entry>flag</entry> 
-                <entry>../images/ngunix.gif</entry> </row> </tbody> </tgroup> 
-                </table></p>
-            <p>You should get this output:<fig frame="all"> <ul> <li>This is 
-                important for lots of reasons</li> <li><image 
-                href="..\images\ngunix.gif"></image>This applies on Unix</li> 
-                </ul> </fig></p>
-            <p>The first list item remains because it applies to admin audience 
-                and programmer audience. The second list item is removed 
-                because it applies to programmers only, and programmer-specific 
-                information has been excluded. The third list item is removed 
-                because it applies to programmers as well: the fact that it 
-                applies to the Unix platform does not save it from exclusion. 
-                The fourth list item is flagged based on its platform 
-                attribute.</p>
-        </example>
-    </conbody>
+  &lt;/li&gt;
+&lt;/ul&gt;</codeblock>
+	</p>
+	<p>添加这个过滤文件<table>
+          <tgroup cols="4">
+            <colspec colname="col1"/>
+            <colspec colname="col2"/>
+            <colspec colname="col3"/>
+            <colspec colname="COLSPEC0" colwidth="1*"/>
+            <thead>
+              <row>
+                <entry valign="top">特性</entry>
+                <entry valign="top">变量</entry>
+                <entry valign="top">行为</entry>
+                <entry valign="top">标记</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>audience</entry>
+                <entry>programmer</entry>
+                <entry>exclude</entry>
+                <entry/>
+              </row>
+              <row>
+                <entry>platform</entry>
+                <entry>unix</entry>
+                <entry>flag</entry>
+                <entry>../images/ngunix.gif</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+	</p>
+	<p>
+		你应该会得到下面的输出：
+		<fig frame="all">
+		<ul>
+			<li>这个因为很多原因而很重要</li>
+			<li><image href="../images/ngunix.gif"/>这个使用于Unix</li>
+		</ul>
+		</fig>
+	</p>
+	<p>
+		第一个列出的项目，因为这个使用于 admin 用户和 programmer 用户。
+		第二个列出的项目被删除了，因为仅仅适用于 programmer 用户，因为 programmer 用户特定的的信息被忽略了。
+		第三个列出的项目被删除了，因为这个也仅仅适用于 programmer 用户。
+		事实上，这个适用于Unix平台的忽略条件而没有被忽略。
+		第四个列出的项目被标记了平台特性。
+	</p>
+	</example>
+  </conbody>
 </concept>
