@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="task"/>
+<meta name="DC.Title" content="Generating output using the Java command-line interface"/>
+<meta name="abstract" content="If you are not familiar with Ant, you can use the command line to perform the transformations. The DITA Open Toolkit creates a properties file (property.temp) that contains the information that you provided at the command line and then passes the property file to Ant. The properties file is saved in the args.logdir directory."/>
+<meta name="description" content="If you are not familiar with Ant, you can use the command line to perform the transformations. The DITA Open Toolkit creates a properties file (property.temp) that contains the information that you provided at the command line and then passes the property file to Ant. The properties file is saved in the args.logdir directory."/>
+<meta name="DC.Relation" scheme="URI" content="../tasks/ditaot_t_generating_output.html"/>
+<meta name="DC.Relation" scheme="URI" content="../tasks/ditaot_r_java_command-line_parameters.html"/>
+<meta name="prodname" content="DITA 入门"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS DITA OT"/>
+<meta name="DC.Creator" content="Kristen James Eberlein"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Date.Created" content="9 May 2009"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="ditaot_t_generating_output_java"/>
+<meta name="DC.Language" content="en-us"/>
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+<title>Generating output using the Java command-line interface</title>
+</head>
+<body id="ditaot_t_generating_output_java"><a name="ditaot_t_generating_output_java"><!-- --></a>
+
+
+<h1 class="topictitle1">Generating output using the Java command-line interface</h1>
+
+
+
+<div><p>If you are not familiar with Ant, you can use the command
+line to perform the transformations. The DITA Open Toolkit creates
+a properties file (<span class="filepath">property.temp</span>) that contains
+the information that you provided at the command line and then passes
+the property file to Ant. The properties file is saved in the <var class="varname">args.logdir</var> directory.</p>
+
+<ol><li class="stepexpand"><span>Run either the <span class="filepath">startcmd.bat</span> or <span class="filepath">startcmd.sh</span> file.</span>
+</li>
+<li class="stepexpand"><span>From the command prompt, type the following string and
+press Enter:</span> <pre class="codeblock">java -jar lib/dost.jar /i:<var class="varname">input_file</var> /outdir:<var class="varname">output_directory</var> /transtype:<var class="varname">transformation</var> [options]</pre>
+where<ul>
+<li><var class="varname">input_file</var> is the name of the DITA file or
+DITA map that is the input for the transformation.</li>
+
+<li><var class="varname">output_directory</var> is the directory where the
+DITA Open Toolkit writes the output of the transformation.</li>
+
+<li><var class="varname">transformation</var> is one of the following options:<ul>
+<li>docbook</li>
+
+<li>eclipsecontent</li>
+
+<li>eclipsehelp</li>
+
+<li>htmlhelp</li>
+
+<li>javahelp</li>
+
+<li>pdf </li>
+
+<li>troff</li>
+
+<li>wordrtf</li>
+
+<li>xhtml</li>
+
+</ul>
+</li>
+
+<li>[options] are optional parameters.</li>
+
+</ul>
+</li>
+</ol>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="../tasks/ditaot_t_generating_output.html" title="After you have installed the DITA Open Toolkit and run the samples, you might want to use the Toolkit with your own DITA files. You either can use an Ant file or the Java command-line interface to run the transformations.">Generating output with your DITA files</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br/>
+<div><a href="../tasks/ditaot_r_java_command-line_parameters.html" title="You can use the Java command-line interface to transform DITA to several different output formats">Java command-line parameters</a></div>
+</div>
+</div>
+
+</body>
+</html>
