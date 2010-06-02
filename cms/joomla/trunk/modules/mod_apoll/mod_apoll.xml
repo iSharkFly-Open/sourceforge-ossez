@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/module-install.dtd">
+<install type="module" version="1.5.0">
+	<name>Apoll</name>
+	<author>Hristo Genev</author>
+	<creationDate>October 2009</creationDate>
+	<copyright>Copyright (C) 2009</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>harrygg@gmail.com</authorEmail>
+	<authorUrl>http://www.afactory.org</authorUrl>
+	<version>2.1.005</version>
+	<description>Apoll module for voting</description>
+
+	<files>
+		<filename module="mod_apoll">mod_apoll.php</filename>
+		<filename module="mod_apoll">index.html</filename>
+		<filename module="mod_apoll">helper.php</filename>
+		<folder module="mod_apoll">tmpl</folder>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB.mod_apoll.ini</language>
+	</languages>
+	<params addpath="/administrator/components/com_apoll/elements">
+	<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+	<param type="spacer" />
+			
+	<param name="id" type="apoll" default="" label="SELECT POLL" description="PARAMMODULEPOLL" />
+	
+	<param name="ajax" type="radio" default="1" label="AJAX VOTE" description="AJAX VOTE DESC">
+		  <option value="1">Yes</option>
+		  <option value="0">NO</option>
+	</param>	
+
+	<param name="show_poll_title" type="radio" default="1" label="SHOW POLL TITLE" description="SHOW POLL TITLE DESC">
+		  <option value="1">Yes</option>
+		  <option value="0">NO</option>
+	</param>
+
+<param type="spacer" />
+	
+	<param name="only_one_color" type="radio" default="1" label="ONLY ONE COLOR" description="ONLY ONE COLOR DESC">
+		  <option value="1">Yes</option>
+		  <option value="0">NO</option>
+	</param>
+
+	<param name="apoll_bars_color" type="text" default="cccccc" label="BARS COLOR" description="BARS COLOR DESC"  size="7" />		
+	<param name="apoll_bars_border_color" type="text" default="cccccc" label="BARS BORDER COLOR" description="BARS BORDER COLOR DESC" size="7" />	
+
+<param type="spacer" />
+
+	<param name="show_view_details" type="radio" default="1" label="SHOW VIEW DETAILS" description="SHOW VIEW DETAILS DESC">
+		  <option value="1">Yes</option>
+		  <option value="0">NO</option>
+	</param>
+	<param name="show_rel_article" type="radio" default="1" label="SHOW REL ARTICLE" description="SHOW REL ARTICLE DESC">
+		  <option value="1">Yes</option>
+		  <option value="0">NO</option>
+	</param>
+	<param name="rel_article" type="text" default="http://www.afactory.org" label="RELATED ARTICLE LINK" description="RELATED ARTICLE LINK DESC" size="40" />
+	<param name="rel_article_window" type="radio" default="_self" label="IN NEW WINDOW" description="ONE IN NEW WINDOW DESC">
+		  <option value="_blank">Yes</option>
+		  <option value="_self">NO</option>
+	</param>
+	<param type="spacer" />
+	<param name="show_total" type="radio" default="1" label="SHOW TOTAL" description="SHOW TOTAL DESC">
+		  <option value="1">Yes</option>
+		  <option value="0">NO</option>
+	</param>	
+	<param name="show_msg" type="radio" default="1" label="SHOW MESSAGES" description="SHOW MESSAGES DESC">
+		  <option value="1">Yes</option>
+		  <option value="0">NO</option>
+	</param>	
+	<param name="show_detailed_msg" type="radio" default="1" label="SHOW DETAILED MESSAGES" description="SHOW DETAILED MESSAGES DESC">
+		  <option value="1">Yes</option>
+		  <option value="0">NO</option>
+	</param>	
+	<param name="msg_date_format" type="text" default="%d %b %Y - %H:%M	" label="MSG DATE FORMAT" description="MSG DATE FORMAT DESC" size="25" />
+</params>
+	<params group="advanced">
+		<param name="cache" type="list" default="1" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+	</params>
+</install>
