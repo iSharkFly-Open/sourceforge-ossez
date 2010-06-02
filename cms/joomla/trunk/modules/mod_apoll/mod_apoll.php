@@ -161,7 +161,7 @@ if(($now>$apoll->publish_up) && ($now<$apoll->publish_down)) {
 
 } else {
 	$display_submit = 0;
-	$msg = "The voting for this poll has not started yet."." ";
+	$msg = JText::_("The voting for this poll has not started yet.")." ";
 	$publish_up = JFactory::getDate($apoll->publish_up);
 	$details = JText::_("It will start on:")." ".$publish_up->toFormat($params->get('msg_date_format'));
 }
