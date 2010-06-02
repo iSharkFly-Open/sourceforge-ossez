@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="DITA Open Toolkit, version 1.5 的新特性"/>
+<meta name="abstract" content="新特性，DITA OT"/>
+<meta name="description" content="新特性，DITA OT"/>
+<meta name="prodname" content="DITA 入门"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS DITA OT"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="ditaot_c_whats_new_in_dita_ot_15"/>
+<meta name="DC.Language" content="zh"/>
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+<title>DITA Open Toolkit, version 1.5 的新特性</title>
+</head>
+<body id="ditaot_c_whats_new_in_dita_ot_15"><a name="ditaot_c_whats_new_in_dita_ot_15"><!-- --></a>
+
+
+  <h1 class="topictitle1">DITA Open Toolkit, version 1.5 的新特性</h1>
+
+  
+  <div><p>新特性，DITA OT</p>
+
+    <dl>
+      
+        <dt class="dlterm">新的通用处理参数</dt>
+
+        <dd>DITA OT 1.5 包含有下面新的 ANT 处理参数：<dl>
+            
+<dt class="dlterm"><span class="parmname" id="ditaot_c_whats_new_in_dita_ot_15__d18e287"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e287"><!-- --></a>arg.figurelink.style</span></dt>
+
+<dd>An optional parameter that specifies how cross references to figures
+are rendered. The valid values are figure and title. The default value
+is figure.</dd>
+
+
+            
+<dt class="dlterm"><span class="parmname" id="ditaot_c_whats_new_in_dita_ot_15__d18e503"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e503"><!-- --></a>args.tablelink.style</span></dt>
+
+<dd>An optional parameter that specifies how cross references to tables
+are rendered. The valid values are number and title. The default value
+is number.</dd>
+
+
+          </dl>
+</dd>
+
+      
+      
+        <dt class="dlterm">新的 XHTML 转换参数</dt>
+
+        <dd>DITA OT 1.5 包含有下面新的供 XHTML 转换输出的 ANT 参数：<dl>
+            
+<dt class="dlterm"><span class="parmname" id="ditaot_c_whats_new_in_dita_ot_15__d18e63"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e63"><!-- --></a>args.breadcrumbs</span></dt>
+
+<dd id="ditaot_c_whats_new_in_dita_ot_15__d18e66"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e66"><!-- --></a>An optional parameter that specifies
+whether bread crumb links are generated in the output. <span>The valid values are yes and no. The default value is no.</span></dd>
+
+
+            
+<dt class="dlterm"><span class="parmname" id="ditaot_c_whats_new_in_dita_ot_15__d18e169"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e169"><!-- --></a>args.debug</span></dt>
+
+<dd id="ditaot_c_whats_new_in_dita_ot_15__d18e172"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e172"><!-- --></a>An optional parameter that specifies whether
+the log contains extra debugging information. <span>The valid values are yes and no. The default value is no.</span></dd>
+
+
+            
+<dt class="dlterm"><span class="parmname" id="ditaot_c_whats_new_in_dita_ot_15__d18e336"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e336"><!-- --></a>args.gen.default.meta</span></dt>
+
+<dd id="ditaot_c_whats_new_in_dita_ot_15__d18e339"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e339"><!-- --></a>An optional parameter that specifies
+whether to "generate extra metadata that targets parental control
+scanners (meta elements with name="security" and name="Robots')."</dd>
+
+
+            
+<dt class="dlterm"><span class="parmname" id="ditaot_c_whats_new_in_dita_ot_15__d18e345"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e345"><!-- --></a>args.gen.task.lbl</span></dt>
+
+<dd id="ditaot_c_whats_new_in_dita_ot_15__d18e348"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e348"><!-- --></a>An optional parameter that specifies
+whether to generate locale-based headings for &lt;section&gt; elements
+in task topics. <span>The valid values are yes and no. The default value is no.</span></dd>
+
+
+            
+<dt class="dlterm"><span class="synph"><span class="parmname" id="ditaot_c_whats_new_in_dita_ot_15__d18e375"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e375"><!-- --></a>args.hide.parent.link</span></span></dt>
+
+<dd id="ditaot_c_whats_new_in_dita_ot_15__d18e378"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e378"><!-- --></a>An optional parameter that specifies
+whether to hide the links to parent topics in the rendered XHTML. <span>The valid values are yes and no. The default value is no.</span></dd>
+
+
+            
+<dt class="dlterm"><span class="parmname" id="ditaot_c_whats_new_in_dita_ot_15__d18e512"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e512"><!-- --></a>args.xhtml.classattr</span></dt>
+
+<dd id="ditaot_c_whats_new_in_dita_ot_15__d18e515"><a name="ditaot_c_whats_new_in_dita_ot_15__d18e515"><!-- --></a>An optional parameter that specifies
+whether to include information about DITA class ancestry within the
+generated XHTML elements. <span>The valid values are yes and no. The default value is no.</span></dd>
+
+
+          </dl>
+</dd>
+
+      
+      
+        <dt class="dlterm">新的 PDF 转换参数</dt>
+
+        <dd>DITA OT 1.5 包含有下面新的供 XHTML 转换输出的 PDF 参数：<dl>
+            
+<dt class="dlterm"><span class="parmname">args.bookmark.style</span></dt>
+
+<dd>Description needed</dd>
+
+
+            
+<dt class="dlterm"><span class="parmname">artworkPrefixUrl</span></dt>
+
+<dd>Description needed</dd>
+
+
+            
+<dt class="dlterm"><span class="parmname">customization.dir</span></dt>
+
+<dd>Description needed</dd>
+
+
+            
+<dt class="dlterm"><span class="parmname">disableRelatedLinks</span></dt>
+
+<dd>Description needed</dd>
+
+
+            
+<dt class="dlterm"><span class="parmname">document.locale</span></dt>
+
+<dd>Description needed</dd>
+
+
+            
+<dt class="dlterm"><span class="parmname">file.protocol.prefix</span></dt>
+
+<dd>Description needed</dd>
+
+
+            
+<dt class="dlterm"><span class="parmname">pdf.formatter</span></dt>
+
+<dd>Description needed</dd>
+
+
+          </dl>
+</dd>
+
+      
+    </dl>
+
+  </div>
+
+
+</body>
+</html>
