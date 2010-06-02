@@ -51,8 +51,8 @@
           </parml></dd>
       </dlentry>
       <dlentry>
-        <dt>New parameters for PDF transformations</dt>
-        <dd>DITA OT 1.5 contains the following new parameters for PDF transformations:<parml>
+        <dt>新的 PDF 转换参数</dt>
+        <dd>DITA OT 1.5 包含有下面新的供 XHTML 转换输出的 PDF 参数：<parml>
             <plentry conref="ditaot_ditabase_conref.dita#reference/args.bookmark.style">
               <pt/>
               <pd/>
@@ -70,7 +70,8 @@
               <pd/>
             </plentry>
             <plentry conref="ditaot_ditabase_conref.dita#reference/document.locale">
-              <pt/>
+              <pt/>
+		<pd/>
             </plentry>
             <plentry conref="ditaot_ditabase_conref.dita#reference/file.protocol.prefix">
               <pt/>

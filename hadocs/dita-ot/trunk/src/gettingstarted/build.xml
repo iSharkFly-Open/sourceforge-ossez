@@ -23,9 +23,10 @@
   <!-- dita.dir should point to the toolkit's root directory -->
   
   <property name="book.name" value="gettingstarted"/>
+    <property name="xhtml.path" value="docs"/>
   <property name="dita.input.dir" value=""/>
   
-  <property name="book.output.dir" value="${dita.output.dir}/${book.name}"/>
+  <property name="book.output.dir" value="${dita.output.dir}/${book.name}/${xhtml.path}"/>
   <property name="images.source.dir" value="${basedir}${file.separator}src${file.separator}images"/>
   <property name="css.source.dir" value="${basedir}${file.separator}src${file.separator}css"/>
   

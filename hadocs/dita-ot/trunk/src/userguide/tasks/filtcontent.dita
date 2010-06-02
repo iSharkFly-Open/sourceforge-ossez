@@ -6,9 +6,11 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
 <task id="filtcontent" xml:lang="zh">
     <title>过滤内容</title>
-    <shortdesc>You can set to exclude content based on its metadata. By 
-        default, all content is included.</shortdesc>
-    <prolog>
+	<shortdesc>
+		你可以通过 metadata 中的信息来确定忽略的内容。
+		在默认的情况下，包含所有的内容。
+	</shortdesc>
+	<prolog>
         <metadata>
             <keywords>
                 <indexterm>metadata attributes<indexterm>filtering 
@@ -18,8 +20,9 @@
         </metadata>
     </prolog>
     <taskbody>
-        <context>All the values in at least one attribute must be set to 
-            exclude for an element to be filtered out.</context>
+        <context>
+		在所有的便利里面，必须设定至少一个忽略的参数来将其过滤出来。
+	</context>
         <steps>
             <step>
                 <cmd>Create a DITA filter file in the directory you want to add 

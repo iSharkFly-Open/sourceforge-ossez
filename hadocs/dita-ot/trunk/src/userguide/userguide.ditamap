@@ -57,7 +57,7 @@
       <relcell/>
     </relrow>
   </reltable>
-  <topicref navtitle="版权声明" href="tasks/info/hacopyright.dita"/>
+  <topicref navtitle="" href="tasks/info/hacopyright.dita"/>
   <topicref navtitle="Apache 许可证" href="tasks/info/apachelicense.dita"/>
   <topicref navtitle="条件处理" href="tasks/condproc.dita"/>
   <topicref navtitle="过滤与标记内容" href="tasks/proccond.dita">
