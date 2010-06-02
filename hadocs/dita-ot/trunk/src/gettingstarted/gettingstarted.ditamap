@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. -->
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" []>
+<!--
+  This document was created with Syntext Serna Free. Copyright (C)
+  2006-2010 YUCHENG HU http://www.hawebs.net * http://www.tcivis.com
+  huyuchengus@gmail.com / yuchenghu@hawebs.net
+ -->
+
+
+<map title="DITA Open Toolkit documentation" id="dita-gettingstarted" xml:lang="zh">
+  <topicmeta>
+    <copyright>
+      <copyryear year="2006, 2010"/>
+      <copyrholder>HAWEBS信息技术股份有限公司</copyrholder>
+    </copyright>
+    <prodinfo>
+      <prodname>DITA 入门</prodname>
+      <vrmlist>
+        <vrm version="1.0.0.0"/>
+      </vrmlist>
+      <brand>HAWEBS DITA OT</brand>
+    </prodinfo>
+  </topicmeta>
+  <reltable>
+    <relrow>
+      <relcell/>
+      <relcell/>
+    </relrow>
+    <relrow>
+      <relcell>
+        <topicref navtitle="NULL" href="tasks/info/hacopyright.dita"/>
+      </relcell>
+      <relcell/>
+    </relrow>
+  </reltable>
+  <topicgroup>
+    <topicref navtitle="版权声明" href="tasks/info/hacopyright.dita"/>
+    <topicref navtitle="Apache 许可证" href="tasks/info/apachelicense.dita"/>
+    <topicref navtitle="Reuse topic" href="tasks/ditaot_ditabase_conref.dita" linking="none" toc="no" print="no" search="no"/>
+    <topicref navtitle="Overview of the DITA Open Toolkit" href="tasks/ditaot_c_overview_of_the_dita_open_toolkit.dita" type="concept"/>
+    <topicref navtitle="What's new in the DITA Open Toolkit, version 1.5" href="tasks/ditaot_c_whats_new_in_dita_ot_15.dita"/>
+    <topicref navtitle="Installing" href="tasks/ditaot_t_installing.dita">
+      <topicref navtitle="Prerequisite software" href="tasks/ditaot_c_prerequisite_software.dita"/>
+      <topicref navtitle="Installing the DITA Open Toolkit on Linux" href="tasks/ditaot_t_installing_the_dita_open_toolkit_on_linux.dita">
+        <topicref navtitle="Installing a JDK on Linux" href="tasks/ditaot_t_installing_a_jdk_on_linux.dita"/>
+        <topicref navtitle="Downloading and installing the DITA Open Toolkit on Linux" href="tasks/ditaot_t_downloading_and_installing_the_dita_open_toolkit_on_linux.dita"/>
+        <topicref navtitle="Verifying the installation on Linux" href="tasks/ditaot_t_verifying_the_installation_on_linux.dita"/>
+      </topicref>
+      <topicref navtitle="Installing the DITA Open Toolkit on Mac OS" href="tasks/ditaot_t_installing_the_dita_open_toolkit_on_mac_os.dita">
+        <topicref navtitle="Installing a JDK on Mac OS" href="tasks/ditaot_t_installing_a_jdk_on_mac_os.dita"/>
+        <topicref navtitle="Downloading and installing the DITA Open Toolkit on Mac OS" href="tasks/ditaot_t_downloading_and_installing_the_dita_open_toolkit_on_mac_os.dita"/>
+        <topicref navtitle="Verifying the installation on Mac OS" href="tasks/ditaot_t_verifying_the_installation_on_mac_os.dita"/>
+      </topicref>
+      <topicref navtitle="Installing the DITA Open Toolkit on Windows" href="tasks/ditaot_t_installing_the_dita_open_toolkit_on_windows.dita">
+        <topicref navtitle="Installing a JDK on Windows" href="tasks/ditaot_t_installing_a_jdk_on_windows.dita"/>
+        <topicref navtitle="Downloading and installing the DITA Open Toolkit on Windows" href="tasks/ditaot_t_downloading_and_installing_the_dita_open_toolkit_on_windows.dita"/>
+        <topicref navtitle="Verifying the installation on Windows" href="tasks/ditaot_t_verifying_the_installation_on_windows.dita"/>
+      </topicref>
+      <topicref navtitle="Installing optional applications" href="tasks/ditaot_t_installing_optional_applications.dita">
+        <topicref navtitle="Installing HTML Help Workshop" href="tasks/ditaot_t_installing_html_help_workshop.dita"/>
+        <topicref navtitle="Installing JavaHelp" href="tasks/ditaot_t_installing_javahelp.dita"/>
+      </topicref>
+    </topicref>
+    <topicref navtitle="Running the DITA Open Toolkit samples" href="tasks/ditaot_t_running_the_dita_open_toolkit_samples.dita"/>
+    <topicref navtitle="Generating output" href="tasks/ditaot_t_generating_output.dita">
+      <topicref navtitle="Generating output using Ant" href="tasks/ditaot_t_generating_output_using_ant.dita"/>
+      <topicref navtitle="Generating output using the Java command-line interface" href="tasks/ditaot_t_generating_output_using_the_java_command-line_interface.dita"/>
+    </topicref>
+    <topicref navtitle="Migrating HTML to DITA" href="tasks/ditaot_t_migrating_html_to_dita.dita">
+      <topicref navtitle="Preparing HTML files for migration to DITA" href="tasks/ditaot_t_preparing_html_files_for_migration_to_dita.dita"/>
+      <topicref navtitle="Migrating HTML to DITA using Ant" href="tasks/ditaot_t_migrating_html_to_dita_using_ant.dita"/>
+    </topicref>
+    <topicref navtitle="Reference" href="tasks/ditaot_r_reference.dita">
+      <topicref navtitle="Ant targets" href="tasks/ditaot_r_ant_targets.dita">
+        <topicref navtitle="dita2docbook" href="tasks/ditaot_r_dita2docbook.dita"/>
+        <topicref navtitle="dita2eclipsecontent" href="tasks/ditaot_r_dita2eclipsecontent.dita"/>
+        <topicref navtitle="dita2eclipsehelp" href="tasks/ditaot_r_dita2eclipsehelp.dita"/>
+        <topicref navtitle="dita2htmlhelp" href="tasks/ditaot_r_dita2htmlhelp.dita"/>
+        <topicref navtitle="dita2pdf" href="tasks/ditaot_r_dita2pdf.dita"/>
+        <topicref navtitle="dita2javahelp" href="tasks/ditaot_r_dita2javahelp.dita"/>
+        <topicref navtitle="dita2troff" href="tasks/ditaot_r_dita2troff.dita"/>
+        <topicref navtitle="dita2wordrtf" href="tasks/ditaot_r_dita2wordrtf.dita"/>
+        <topicref navtitle="dita2xhtml" href="tasks/ditaot_r_dita2xhtml.dita"/>
+      </topicref>
+      <topicref navtitle="Java command-line parameters" href="tasks/ditaot_r_java_command-line_parameters.dita">
+        <topicref navtitle="docbook" href="tasks/ditaot_r_docbook.dita"/>
+        <topicref navtitle="eclipsecontent" href="tasks/ditaot_r_eclipsecontent.dita"/>
+        <topicref navtitle="eclipsehelp" href="tasks/ditaot_r_eclipsehelp.dita"/>
+        <topicref navtitle="htmlhelp" href="tasks/ditaot_r_htmlhelp.dita"/>
+        <topicref navtitle="javahelp" href="tasks/ditaot_r_javahelp.dita"/>
+        <topicref navtitle="pdf" href="tasks/ditaot_r_pdf.dita"/>
+        <topicref navtitle="troff" href="tasks/ditaot_r_troff.dita"/>
+        <topicref navtitle="wordrtf" href="tasks/ditaot_r_wordrtf.dita"/>
+        <topicref navtitle="xhtml" href="tasks/ditaot_r_xhtml.dita"/>
+      </topicref>
+      <topicref navtitle="XSLT parameters" href="tasks/ditaot_r_xslt_parameters.dita"/>
+    </topicref>
+  </topicgroup>
+  <reltable title="CTR">
+    <relheader>
+      <relcolspec/>
+      <relcolspec/>
+      <relcolspec/>
+    </relheader>
+    <relrow>
+      <relcell/>
+      <relcell>
+        <topicref navtitle="Generating output using Ant" href="tasks/ditaot_t_generating_output_using_ant.dita"/>
+      </relcell>
+      <relcell>
+        <topicref navtitle="Ant targets" href="tasks/ditaot_r_ant_targets.dita"/>
+      </relcell>
+    </relrow>
+    <relrow>
+      <relcell/>
+      <relcell>
+        <topicref navtitle="Generating output using the Java command-line interface" href="tasks/ditaot_t_generating_output_using_the_java_command-line_interface.dita"/>
+      </relcell>
+      <relcell>
+        <topicref navtitle="Java command-line parameters" href="tasks/ditaot_r_java_command-line_parameters.dita"/>
+      </relcell>
+    </relrow>
+  </reltable>
+</map><?Pub *0000006208?>
