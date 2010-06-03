@@ -38,9 +38,9 @@
     <topicref navtitle="版权声明" href="tasks/info/hacopyright.dita"/>
     <topicref navtitle="Apache 许可证" href="tasks/info/apachelicense.dita"/>
     <topicref navtitle="Reuse topic" href="tasks/ditaot_ditabase_conref.dita" linking="none" toc="no" print="no" search="no"/>
-    <topicref navtitle="Overview of the DITA Open Toolkit" href="tasks/ditaot_c_overview_of_the_dita_open_toolkit.dita" type="concept"/>
+    <topicref navtitle="DITA Open Toolkit 概述" href="tasks/ditaot_c_overview_of_the_dita_open_toolkit.dita" type="concept"/>
     <topicref navtitle="DITA Open Toolkit, version 1.5 的新特性" href="tasks/ditaot_c_whats_new_in_dita_ot_15.dita"/>
-    <topicref navtitle="Installing" href="tasks/ditaot_t_installing.dita">
+    <topicref navtitle="安装" href="tasks/ditaot_t_installing.dita">
       <topicref navtitle="Prerequisite software" href="tasks/ditaot_c_prerequisite_software.dita"/>
       <topicref navtitle="Installing the DITA Open Toolkit on Linux" href="tasks/ditaot_t_installing_the_dita_open_toolkit_on_linux.dita">
         <topicref navtitle="Installing a JDK on Linux" href="tasks/ditaot_t_installing_a_jdk_on_linux.dita"/>
