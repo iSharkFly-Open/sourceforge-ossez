@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="install_on_the_same" xml:lang="zh">
+  <title>Zen Cart 可以在同一主机上安装多次吗</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Zen Cart</indexterm>
+        <indexterm>安装</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>你可以在同一个主机上安装多个 Zen Cart 程序。出于安全考虑，在安装之前请备份已经安装过的程序和数据库。你应该为你新安装的的 Zen Cart 程序设置自己的目录，同时使用干净的数据库进行安装。</p>
+    <note>不要将新安装的 Zen Cart 和已经安装的 Zen Cart 使用相同的数据库。你的数据库表有肯能被重写或者损坏。</note>
+  </conbody>
+</concept>
