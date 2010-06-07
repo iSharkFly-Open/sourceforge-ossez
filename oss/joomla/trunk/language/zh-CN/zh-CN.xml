@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: zh-CN.xml 129 2008-07-08 09:45:23Z protege $ -->
+<metafile version="1.5.7" client="administrator">
+	<name>简体中文</name>
+	<version>1.5.9</version>
+	<creationDate>2009-10-15</creationDate>
+	<author>Joomla 中文计划</author>
+	<authorEmail>huyuchengus@gmail.com yuchenghu@hawebs.net</authorEmail>
+	<authorUrl>www.tcivis.com www.hawebs.net www.hawebs.org</authorUrl>
+	<copyright>HA WEBSYSTEMS (C) 2006-2009 保留所有权益</copyright>
+	<license>http://www.gnu.org/licenses/gpl-3.0-standalone.html</license>
+	<description>Joomla中文计划. 基于1.5.9进行翻译, YUCHENG HU</description>
+	<metadata>
+		<name>Simplified Chinese</name>
+		<tag>zh-CN</tag>
+		<rtl>0</rtl>
+		<locale>zh_CN.utf8, zh, zho, zhi, zh_CN, zho_CN, zhi_CN, simplified_chinese</locale>
+		<winCodePage>cp936</winCodePage>
+		<backwardLang>english</backwardLang>
+	</metadata>
+	<params />
+</metafile>
