@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install method="upgrade" version="1.5" type="plugin" group="xmlrpc">
+	<name>XML-RPC - MovableType API</name>
+	<author>Joomler!.net</author>
+	<creationDate>Sep 2008</creationDate>
+	<copyright>(C) 2009 Joomler!.net</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>joomlers@gmail.com</authorEmail>
+	<authorUrl>www.joomler.net</authorUrl>
+	<version>2.3.3</version>
+	<description>PLGXMLRPC_MT_DESC</description>
+	<files>
+		<filename plugin="movabletype">movabletype.php</filename>
+		<folder>movabletype</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.plg_xmlrpc_movabletype.ini</language>
+		<language tag="ja-JP">ja-JP.plg_xmlrpc_movabletype.ini</language>
+		<language tag="ja-JU">ja-JU.plg_xmlrpc_movabletype.ini</language>
+	</languages>
+	<params addpath="/plugins/xmlrpc/movabletype">
+		<!--<param name="db_enc" type="list" default="UTF-8" label="DB Encode" description="type of Joomla database encoding">
+			<option value="UTF-8">UTF-8 Unicode</option>
+			<option value="EUC-JP">EUC-JP</option>
+			<option value="ISO-8859-1">ISO-8859-1</option>
+			<option value="WINDOWS-1250">Central European WIN-1250</option>
+			<option value="WINDOWS-1251">Cyrillic WIN-1251</option>
+			<option value="WINDOWS-1252">Western WIN-1252</option>
+			<option value="WINDOWS-1257">Baltic WIN-1257</option>
+		</param>-->
+		<param name="@spacer" type="subtitle" label="Category(required)" default=" " />
+		<param name="catid" type="category" default="1"	label="Default Category" description="Default Category(required)" />
+		
+		<param name="@spacer" type="subtitle" label="@spacer" default=" " />
+		<param name="@spacer" type="subtitle" label="Mode" default=" " />
+		<param name="catonly" type="list" default="0" label="Single category mode" description="When Yes is selected, it comes to be able to edit only the article in one category." >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		
+		<param name="@spacer" type="subtitle" label="@spacer" default=" " />
+		<param name="@spacer" type="subtitle" label="Storage" default=" " />
+		<param name="img_storage_path" type="text" default="images/stories/" label="Storage Path" description="Image storage path(e.g: images/stories/ )" />
+		<param name="overwrite" type="list" default="0" label="Overwrite if the same file name" description="Overwrite if the same file name" >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="maxsize" type="text" default="" label="Max Size(byte)" description="Max size of upload file.（byte) if blank or 0, unlimited. default :300000" />
+		<param name="exts" type="text" default="jpg,jpeg,gif,png" label="File Type" description="Please fill it out at a comma end. example:jpg,jpeg,gif,png"/>
+		
+		<param name="@spacer" type="subtitle" label="@spacer" default=" " />
+		<param name="@spacer" type="subtitle" label="Options" default="" description="" />
+		<param name="autodesc" type="list" label="Auto MetaDesc" default="1" description="When you posted it, This is automatic and do generate metadescription?">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="regex" type="text" default="" label="Regex" description="this is only english. Change regex of your language. example:[a-zA-Z]{2,15}|[yourlanga-yourlangz]{2,15}" size="20" />
+		<param name="maxkeylength" type="text" default="30" label="MaxLength(meta description)" description="Max Length of Meta Description" />
+		<param name="autokey" type="list" label="Auto MetaKey" default="1" description="When you posted it, This is automatic and do generate metakey?" >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="maxkeyword" type="text" default="10" label="Word Num(meta key)" description="The number of the keyword" />
+		
+		<param name="@spacer" type="subtitle" label="@spacer" default=" " />
+		<param name="@spacer" type="subtitle" default="" label="For Google Docs" description="" />
+		<param name="readmore" type="list" default="0" label="Google Doc Readmore" description="User the first Horizontal line or the first Page break(printing) as Readmore">
+			<option value="0">Use First Horizontal line</option>
+			<option value="1">Use First Page break</option>
+		</param>
+		<param name="pagebreak" type="list" default="1" label="Google Doc Pagebreak" description="Enable/Disable Google Doc Pagebreak">
+			<option value="0">Disable</option>
+			<option value="1">Enable</option>
+		</param>
+		
+		<param name="@spacer" type="subtitle" label="@spacer" default=" " />
+		<param name="@spacer" type="subtitle" default="" label="Restriction" description="" />
+		<param name="use_iprestrict" type="list" default="0" label="IP Address Restrict" description="IP Address Restriction. (It is only a fixed IP address.)">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="ipaddress" type="text" default="" label="Allow IP" description="Please fill it out in Comma Separated Value. (example:123.123.123.123,234.234.234.234)" />
+		
+		<param name="@spacer" type="subtitle" label="@spacer" default=" " />
+		<param name="@spacer" type="subtitle" default="" label="For Author  or Registered" description="" />
+		<param name="access" type="textarea" rows="10" cols="30" label="Access" description="1line 1user. userid=categories. example:userid=1,2,3. This setting is enabled for only registered or author." />
+		<param name="creatoronly" type="list" default="1" label="Allow own articles only" description="When Yes, Only the article of the creator admits editing. This setting is enabled for only registered or author." >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="publish" type="list" default="0" label="Allow auto publish" description="Allow publish Desc" >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+</install>
