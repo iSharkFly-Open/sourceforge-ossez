@@ -1,8 +1,8 @@
 <?php
 /**
-* @version		$Id: CHANGELOG.php 12584 2009-07-30 17:46:47Z ian $
+* @version		$Id: CHANGELOG.php 17301 2010-05-27 21:08:11Z ian $
 * @package		Joomla
-* @copyright	Copyright (C) 2005 - 2009 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -17,8 +17,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 1. Copyright and disclaimer
 ---------------------------
 This application is opensource software released under the GPL.  Please
-see source code and the LICENSE file
-
+see source code and the LICENSE file.
 
 2. Changelog
 ------------
@@ -36,6 +35,191 @@ $ -> Language fix or change
 ^ -> Change
 - -> Removed
 ! -> Note
+
+-------------------- 1.5.18 Stable Release [27-May-2010] ------------------
+
+25-May-2010 Ian MacLennan
+ # [#20424] Revert issue 19859 (Graceful handling of Apache plugin failures)
+ ! [#19859] Reverted 19859.
+
+-------------------- 1.5.17 Stable Release [27-April-2010] ------------------
+
+26-Apr-2010 Mark Dexter
+ # [#20219] Upgrade to 1.5.16 breaks PHP 4 compatibility
+ # [#20239] Update ru-RU installation language
+ # [#20238] Updating help sites list
+ # [#20220] en-AU installation ini folder
+ + [#20241] Fixed up system tests
+ # [#20242] Language fix for 20219 PHP 4 issue
+
+25-Apr-2010 Ian MacLennan
+ # [#20221] Can't Login When Session Handler is None
+
+24-Apr-2010 Mark Dexter
+ # Reverted [#16506] JFolder::makeSafe removes dot
+
+-------------------- 1.5.16 Stable Release [23-April-2010] ------------------
+
+23-Apr-2010 Ian MacLennan
+ $ [#20195] Language credit update
+ $ [#20055] Language bug in "Menus"
+ # [#20043] JApplication::redirect() using a 301 error code incorrect.
+ # [#20025] Adding Reykjavik in timezone
+ $ [#20024] More updates on installation ini files
+ $ [#19966] New hi-IN installation language
+ $ [#19871] Missing string in a few installation ini files
+ # [#19859] Graceful handling of failing Apache plugins
+ # [#18046] $theURI not correctly set on IIS7 in environment\uri.php
+ # [#20184] Removal of searchwords from SEF urls to ensure cross platform compatibility
+
+07-Mar-2010 Ian MacLennan
+ # [#16930] Reverting patch from #16930 because it breaks the installer
+
+05-Mar-2010 Ian MacLennan
+ $ [#19864] Missing string in is-IS installation ini
+ # [#18648] News Feeds -> Categories can throw a SQL error when it tries to sort by section_name
+ # [#18619] Validation error of mod_search
+ # [#18570] Button select article in back-end ( RTL) ie7 + modal centering
+ # [#18403] Possible typo in mod_latestnews xml
+ # [#17762] Mod_login\helper.php: Trying to get property of non-object
+ # [#17235] SEF URL for contacts gives 404 error
+ # [#17000] Core related items and other modules non-functional with cache module on
+ # [#16974] Checking wrong cache field in com_content _loaddata() function
+ # [#16930] live_site$ in configuration.php ignored by some JS-based functions - breaks joomla 1.5 behind reverse proxy
+ # [#16506] JFolder::makeSafe removes dot
+
+04-Mar-2010 Ian MacLennan
+ $ [#19836] New Arabic Unitag installation language ar_AA
+ # [#19831] Preventing mod_login redirect to display trashed menu items
+ # [#19798] Undefined variable notice when enabling or disabling a user in com_user
+ # [#19680] Media manager folder param incorrectly named
+ # [#19245] Pagination in category blog layout not shown in specific case
+ # [#18848] Last module position in <select> is with space at end
+ # [#18683] The "search result Itemid" fix (15780) doesn't apply to beez
+ # [#18672] Issue with some feeds in release 1.5.15
+
+27-Feb-2010 Ian MacLennan
+ # [#19816] Adding a missing string in many installation ini, added helpfile listing
+ # [#19763] _JEXEC check missing from joomla file
+ # [#19681] Copying menus does not maintain parent child relationship
+ # [#19655] Poll component save task missing successful results message
+ # [#19555] Timezone code setting incorrect for 6:30 (Yagoon) and 11:30 (Norfolk) in Global Configuration
+ # [#19055] Tinymce bug prevents adding the valid id extended element for the anchor tag
+ # [#19009] Author Alias not properly escaped in Article Manager
+ # [#18936] Atom feed image url incorrect
+
+22-Feb-2010 Ian MacLennan
+ # [#17878] Installing modules with upgrade method
+ # [#18614] Incorrect bracketing in templates/system/component.php
+ # [#18617] Disabled components still show in the "menu type" tree of com_menus
+ # [#18612] Pathway error when using php4
+ # [#17986] A bug causes a space to appear after email links
+
+21-Feb-2010 Ian MacLennan
+ $ [#19715] Adding Phnom-Penh to UTC strings
+ $ [#19627] Add sr-YU in installation
+ $ [#19604] Missing ini string in installation
+ # [#19435] New caching of com_contact in 1.5.15 results in "Invalid Token"
+ # [#19405] Improvements to caption
+ # [#18987] Minor bug in module updater code
+
+
+26-Jan-2010 Louis Landry
+ ^ Updated copyright notices for 2010
+ ^ Moved testing infrastructure from the /testing/ folder into the tree.
+
+-------------------- 1.5.15 Stable Release [05-November-2009] ------------------
+
+04-Nov-2009 Ian MacLennan
+ # [#17475] Fixed missing = in patch (parse error)
+
+03-Nov-2009 Ian MacLennan
+ # [#18050] Reverting router change.
+
+29-Oct-2009 Ian MacLennan
+ # [#18537] error.php rtl issue
+
+28-Oct-2009 Ian MacLennan
+ ^ Updated CREDITS.php
+ ^ Updated installation language pack
+ ^ Updated help sites
+ # [#16445] SEF rewrites href urls in editor textarea
+
+27-Oct-2009 Ian MacLennan
+ # [#16914] Default style for admin backend does not specify text color of input fields.
+ # [#16609] templates/system/css/template.css not found when using templates/system/component
+ # [#18493] UTF problems with HTML entities in pathway.
+ # [#18518] Change in mod_search.ini
+ # [#18522] Correct version info site/admin for core languages
+ # [#18481] Emailcloak on image
+ # [#18430] com_content fails to pass an article reference to onAfterDisplayTitle event handler
+ $ Added new installer language packs
+
+26-Oct-2009 Ian MacLennan
+ # [#18245] Implementing templates feature in tinymce
+ # [#15780] Search result list uses always the Itemid of the default Menu-item
+ # [#17110] Section/Category List - Table width issue in IE8
+ # [#17470] Archive filters don't work with cache on + com_content cache optimization
+ # [#17475] Cache unused by core components
+ # [#18050] SEF category links lead to article not found
+ # [#18080] Core - Missing JEXEC Check
+ # [#18142] utf8_accents_to_ascii() does nothing
+
+23-Oct-2009 Ian MacLennan
+ # [#11578] Email cloaking does not work properly with non-ASCII characters
+ # [#16804] Linked image in Beez template jumps in IE8
+ # [#17259] html not allowed in user confirmation message
+ # [#17430] Image Title attribute field has different names
+ # [#17964] Email cloaking. Syntax error in email.php. Patch included.
+ # [#18246] Tinymce sql correction
+ # [#18310] Email cloak breaks emails used in scripts
+ # [#18343] & in page title breaks RSS feed
+ # [#18349] Missing com_media strings
+ # [#18353] Information leak - anybody can see installed extensions versions
+ # Upgrade to Mootool 1.12
+
+
+19-Oct-2009 Ian MacLennan
+ # [#18297] Setting ftp fields to not autocomplete
+ # [#16927] Router fatal error then Itemid is null
+ # [#18240] Menu item is not opened to new window
+ $ [#18124] String for JPagination missing in en-GB.ini
+ # [#18070] Error in Ja_purity and IE8
+ # [#17692] Email Cloaking on an image
+ $ [#17618] Localisation of pagination
+ $ [#17577] Adding Ulaanbaatar in timezones
+ # [#17559] Change to Beez Template to make it more generic
+ # [#17231] mod_newsflash doesn't honour alternative read more text
+ # [#17215] Missing <blockquote> button in TinyMCE 3
+
+25-Sept-2009 Ian MacLennan
+ # [#16484] Password field changed in configuration.php by Administration > Global Configuration
+ # [#16804] Linked image in Beez template jumps in IE8
+
+18-Sept-2009 Ian MacLennan
+ # [#16982] Fixed issue with editor.css files
+
+17-Sept-2009 Ian MacLennan
+ # [#16982] TinyMCE Configuration Error
+ # [#17057] TinyMCE strips some image html
+ # [#17379] Tinymce 3.2.4.1 generates different html breaking caption.js and messing with content filtering
+ # [#17121] TinyMCE Extended Valid Elements dont work anymore
+ # [#17043] Multiply instances of TinyMCE on the page
+ # [#17367] Cannot add or edit content items
+ # [#17356] Firefox inline spell check doesn't work in 1.5.12 / TinyMCE - suggested fix
+ $ [#17332] TinyMCE Language file omission for Toggle Editor button
+ # [#17438] TinyMCE Libary Upgrade - International Users Beware - big changes to language files
+
+16-Sept-2009 Ian MacLennan
+ # [#18010] Captions don't align properly if image alignment is not set.
+ # [#18008] Additional PHP 5.3 Issues
+
+11-Sept-2009 Ian MacLennan
+ # [#17150] Patch to solve PHP 5.3 issues
+ # [#17432] Missing spinner.gif
+ # [#17337] Media manager popup is broken in Windows
+ # [#16919] Results of search - unnecessary quotation marks
+ # [#16086] Unique menu names now disallow underscores
 
 -------------------- 1.5.14 Stable Release [30-July-2009] ------------------
 
@@ -74,7 +258,7 @@ $ -> Language fix or change
  $ [#16950] Lots of missing language strings in TinyMCE v3
  # [#16593] JFile::upload() uses chmod 777 in FTP mode
  # [#15673] Different time create date and start publishing in beez
- # [#16601] Section filter on article manager showing non content sections as well 
+ # [#16601] Section filter on article manager showing non content sections as well
  # [#16607] Mod Newsflash read more link broken with Beez template
  # [#16719] JHTML::tooltip quote problem
  # [#16753] CSS file is not updated when you edit the joomla
