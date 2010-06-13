@@ -17,6 +17,9 @@
  * Description:  Defines the English language pack for the Account module.
  ********************************************************************************/
  
+
+
+
 $mod_strings = Array(
 'LBL_MODULE_NAME'=>'Administration',
 'LBL_MODULE_TITLE'=>'Administration: Home',
