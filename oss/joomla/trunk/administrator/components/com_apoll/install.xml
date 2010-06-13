@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0">
+	<name>Apoll</name>
+	<creationDate>October 2009</creationDate>
+	<author>Hristo Genev</author>
+	<authorEmail>harrygg@gmail.com</authorEmail>
+	<authorUrl>http://www.afactory.org</authorUrl>
+	<copyright>Hristo Genev. All rights reserved.</copyright>
+	<license>GPL/GNU</license>
+	<version>2.0.016</version>
+	<description>Apoll is a component for voting. It shows vote results with a nice pie chart. Basicly it substitutes the original poll component installed in Joomla by default and adds some enhancements to the back and front end.</description>
+	
+	<installfile>install.apoll.php</installfile>
+	<uninstallfile>uninstall.apoll.php</uninstallfile>
+	
+	<files folder="site">
+		<filename>controller.php</filename>
+		<filename>apoll.php</filename>
+		<filename>index.html</filename>
+		<filename>router.php</filename>
+		<folder>models</folder>
+		<folder>views</folder>
+	</files>
+	<languages folder="languages/site">
+		<language tag="en-GB">en-GB.com_apoll.ini</language>
+	</languages>
+
+    <media folder="media" destination="system">
+        <filename>js/jquery.apoll.js</filename>
+        <filename>js/jquery.tablednd.js</filename>
+        <filename>js/jquery.colorpicker.js</filename>
+        <filename>js/jquery.color.js</filename>
+        <filename>js/jquery.js</filename>
+        <filename>js/json.js</filename>
+        <filename>swf/open-flash-chart.swf</filename>
+        <filename>images/apoll-arrow.gif</filename>
+        <filename>images/apoll.png</filename>
+        <filename>images/apoll-add.png</filename>
+        <filename>images/apoll-remove.png</filename>
+        <filename>images/apoll-ended.gif</filename>
+        <filename>images/apoll-active.gif</filename>
+    </media>
+	
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">install.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">uninstall.sql</file>
+		</sql>
+	</uninstall>	
+
+	<administration>
+		<!-- Administration Menu Section -->
+		<menu img="../media/system/images/apoll.png" link="option=com_apoll">Apolls</menu>
+		<submenu>
+			<menu img="" link="option=com_apoll">Polls</menu>
+			<menu img="" link="option=com_apoll&amp;task=view&amp;view=votes">Votes</menu>
+			<menu img="" link="option=com_apoll&amp;task=view&amp;view=config">Configuration</menu>
+		</submenu>	
+		<files folder="administrator">
+			<!-- Site Main File Copy Section -->
+			<filename>apoll.php</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>install.apoll.php</filename>
+			<filename>uninstall.apoll.php</filename>
+			<filename>install.sql</filename>
+			<filename>uninstall.sql</filename>
+			<folder>models</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+			<folder>elements</folder>
+			<!-- Joomfish files added in version 1.2 -->
+			<folder>joomfish</folder>
+
+		</files>
+		<languages folder="languages/admin">
+			<language tag="en-GB">en-GB.com_apoll.ini</language>
+			<language tag="en-GB">en-GB.com_apoll.menu.ini</language>
+		</languages>		
+	</administration>
+</install>

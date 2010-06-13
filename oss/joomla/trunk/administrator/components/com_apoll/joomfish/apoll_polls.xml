@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<joomfish type="contentelement">
+  <name>Apoll - Polls</name>
+  <author>Hristo Genev</author>
+  <version>2.0</version>
+  <description>Definition for the core Apoll component</description>
+  <reference>
+  	<table name="apoll_polls">
+  		<field type="referenceid" name="id" translate="0">ID</field>
+  		<field type="titletext" name="title" translate="1">Title</field>
+  		<field type="text" name="alias" translate="1" posthandler="filterTitle">Alias</field>
+
+  	</table>
+  </reference>
+</joomfish>
