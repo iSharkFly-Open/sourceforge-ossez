@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- (c) Copyright HAWEBS. 2006, 2010 All Rights Reserved. -->
+<!-- 
+  | HA WEBSYSTEMS
+  | http://www.hawebs.net
+  | https://www.hawebs.org/forums/computer/
+  |
+  | Contact
+  | huyuchengus@gmail.com / yuchenghu@hawebs.net
+  | +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  |
+  | [A] GNU GENERAL PUBLIC LICENSE GNU/LGPL
+  | [B] Apache License, Version 2.0
+  |
+  * -->
+
+<project name="Joomla" default="zh_cn.lang" basedir=".">
+	
+	<!-- Settings -->
+	<property name="project.name" value="Joomla"/>
+	<property name="current.rev" value="1.5.14"/>
+
+	<property name="out.dir" value="Releases"/>
+
+	<tstamp prefix="hawebs">
+	        <format property="nightly.build.number" pattern="yyyyMMdd"/>
+	</tstamp>
+	
+	<target name="zh_cn.lang">
+		<zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_zh_cn_${current.rev}_${hawebs.nightly.build.number}.zip" 
+			basedir="${basedir}"
+			includes="**/zh-CN.*.ini,Readme_zh.txt"
+	/>
+	</target>
+
+
+
+</project>
