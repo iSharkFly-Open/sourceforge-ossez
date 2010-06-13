@@ -1,39 +1,60 @@
 <?php
-$mod_strings = array (
-  'LBL_MODULE_NAME' => '拜访',
-  'LBL_MODULE_TITLE' => '拜访：首页',
-  'LBL_SEARCH_FORM_TITLE' => '查找拜访',
-  'LBL_LIST_FORM_TITLE' => '拜访列表',
-  'LBL_NEW_FORM_TITLE' => '新增拜访',
-  'LBL_CONTACT_CASE_TITLE' => '拜访联系人：',
-  'LBL_SUBJECT' => '主题：',
-  'LBL_CASE' => '拜访：',
-  'LBL_CASE_NUMBER' => '拜访编号：',
-  'LBL_NUMBER' => '编号：',
-  'LBL_STATUS' => '状态：',
-  'LBL_ACCOUNT_NAME' => '客户名称：',
-  'LBL_DESCRIPTION' => '描述：',
-  'LBL_CONTACT_NAME' => '联系人姓名：',
-  'LBL_CASE_SUBJECT' => '事件主题：',
-  'LBL_CONTACT_ROLE' => '角色：',
-  'LBL_LIST_NUMBER' => '编号',
-  'LBL_LIST_SUBJECT' => '主题',
-  'LBL_LIST_ACCOUNT_NAME' => '客户名称',
-  'LBL_LIST_STATUS' => '状态',
-  'LBL_LIST_LAST_MODIFIED' => '最新修改',
-  'LBL_INVITEE' => '*受邀者',
-  'LNK_NEW_CONTACT' => '新增联系人',
-  'LNK_NEW_LEAD' => '新增线索',
-  'LNK_NEW_ACCOUNT' => '新增客户',
-  'LNK_NEW_OPPORTUNITY' => '新增商机',
-  'LNK_NEW_CASE' => '新增拜访',
-  'LNK_NEW_NOTE' => '新增备忘录',
-  'LNK_NEW_CALL' => '新增电话',
-  'LNK_NEW_EMAIL' => '新增Email',
-  'LNK_NEW_MEETING' => '新增会议',
-  'LNK_NEW_TASK' => '新增任务',
-  'NTC_REMOVE_INVITEE' => '*您确定要从拜访中移除这个联系人？',
-  'ERR_DELETE_RECORD' => '必须指定记录编号才能删除客户.',
+/**
+*Copyright(C)2006-2010 YUCHENG HU
+*
+*---------------------------------------------
+*HAWEBSYSTEMS
+*http://www.hawebs.net
+*https://www.hawebs.org/forums/computer/
+*
+*CONTACT
+*huyuchengus@gmail.com/yuchenghu@hawebs.net
+*
+*---------------------------------------------
+*[A]GNUGENERALPUBLICLICENSEGNU/LGPL
+*[B]ApacheLicense,Version2.0
+*
+*---------------------------------------------
+*NOTE
+*1.所有的语言配置文件请采用UTF-8编码
+*
+*---------------------------------------------
+*/
+$mod_strings=array(
+'LBL_MODULE_NAME'=>'拜访',
+'LBL_MODULE_TITLE'=>'拜访：首页',
+'LBL_SEARCH_FORM_TITLE'=>'查找拜访',
+'LBL_LIST_FORM_TITLE'=>'拜访列表',
+'LBL_NEW_FORM_TITLE'=>'新增拜访',
+'LBL_CONTACT_CASE_TITLE'=>'拜访联系人：',
+'LBL_SUBJECT'=>'主题：',
+'LBL_CASE'=>'拜访：',
+'LBL_CASE_NUMBER'=>'拜访编号：',
+'LBL_NUMBER'=>'编号：',
+'LBL_STATUS'=>'状态：',
+'LBL_ACCOUNT_NAME'=>'客户名称：',
+'LBL_DESCRIPTION'=>'描述：',
+'LBL_CONTACT_NAME'=>'联系人姓名：',
+'LBL_CASE_SUBJECT'=>'事件主题：',
+'LBL_CONTACT_ROLE'=>'角色：',
+'LBL_LIST_NUMBER'=>'编号',
+'LBL_LIST_SUBJECT'=>'主题',
+'LBL_LIST_ACCOUNT_NAME'=>'客户名称',
+'LBL_LIST_STATUS'=>'状态',
+'LBL_LIST_LAST_MODIFIED'=>'最新修改',
+'LBL_INVITEE'=>'*受邀者',
+'LNK_NEW_CONTACT'=>'新增联系人',
+'LNK_NEW_LEAD'=>'新增线索',
+'LNK_NEW_ACCOUNT'=>'新增客户',
+'LNK_NEW_OPPORTUNITY'=>'新增商机',
+'LNK_NEW_CASE'=>'新增拜访',
+'LNK_NEW_NOTE'=>'新增备忘录',
+'LNK_NEW_CALL'=>'新增电话',
+'LNK_NEW_EMAIL'=>'新增Email',
+'LNK_NEW_MEETING'=>'新增会议',
+'LNK_NEW_TASK'=>'新增任务',
+'NTC_REMOVE_INVITEE'=>'*您确定要从拜访中移除这个联系人？',
+'ERR_DELETE_RECORD'=>'必须指定记录编号才能删除客户.',
 
 );
 ?>

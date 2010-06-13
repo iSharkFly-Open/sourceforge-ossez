@@ -1,4 +1,25 @@
 <?php
+/**
+*Copyright(C)2006-2010 YUCHENG HU
+*
+*---------------------------------------------
+*HAWEBSYSTEMS
+*http://www.hawebs.net
+*https://www.hawebs.org/forums/computer/
+*
+*CONTACT
+*huyuchengus@gmail.com/yuchenghu@hawebs.net
+*
+*---------------------------------------------
+*[A]GNUGENERALPUBLICLICENSEGNU/LGPL
+*[B]ApacheLicense,Version2.0
+*
+*---------------------------------------------
+*NOTE
+*1.所有的语言配置文件请采用UTF-8编码
+*
+*---------------------------------------------
+*/
 $mod_strings = array(
 'VTEmailTask' => '发送邮件',
 'VTEntityMethodTask' => '自定义函数',
@@ -24,9 +45,9 @@ $mod_strings = array(
 'LBL_WORKFLOW_LIST'=>'工作流列表',
 'LBL_AVAILABLE_WORKLIST_LIST'=>'有效的工作流',
 'LBL_LOADING'=>'下载...',
-'LBL_VALIDATION_ERROR'=>'Validation Error',
+'LBL_VALIDATION_ERROR'=>'违例错误',
 'LBL_SELECT_OPTION_DOTDOTDOT'=>'选择项...',
-'LBL_WORKFLOW_NOTE_CRON_CONFIG'=>'NOTE: You should have Workflow cron script configured.',
+'LBL_WORKFLOW_NOTE_CRON_CONFIG'=>'注意：你必须配置工作流的核心脚本。',
 'LBL_NO_TEMPLATES'=>'没有模板',
 );
 

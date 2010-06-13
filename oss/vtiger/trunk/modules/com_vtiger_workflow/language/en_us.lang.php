@@ -1,12 +1,25 @@
 <?php
-/*+**********************************************************************************
- * The contents of this file are subject to the vtiger CRM Public License Version 1.0
- * ("License"); You may not use this file except in compliance with the License
- * The Original Code is:  vtiger CRM Open Source
- * The Initial Developer of the Original Code is vtiger.
- * Portions created by vtiger are Copyright (C) vtiger.
- * All Rights Reserved.
- ************************************************************************************/
+/**
+*Copyright(C)2006-2010 YUCHENG HU
+*
+*---------------------------------------------
+*HAWEBSYSTEMS
+*http://www.hawebs.net
+*https://www.hawebs.org/forums/computer/
+*
+*CONTACT
+*huyuchengus@gmail.com/yuchenghu@hawebs.net
+*
+*---------------------------------------------
+*[A]GNUGENERALPUBLICLICENSEGNU/LGPL
+*[B]ApacheLicense,Version2.0
+*
+*---------------------------------------------
+*NOTE
+*1.所有的语言配置文件请采用UTF-8编码
+*
+*---------------------------------------------
+*/
 $mod_strings = array(
 'VTEmailTask' => 'Send Email',
 'VTEntityMethodTask' => 'Invoke Custom Function',
