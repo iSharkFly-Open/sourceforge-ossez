@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.8.0-dev (info@mypapit.net)" -->
+<rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>HA 资讯 - OSS开放源代码</title>
+        <description><![CDATA[HA WEBSYSTEMS - 提供WEB方式的信息化和技术服务]]></description>
+        <link>http://news.hawebs.net/</link>
+        <lastBuildDate>Sun, 04 Apr 2010 03:52:37 GMT</lastBuildDate>
+        <generator>FeedCreator 1.8.0-dev (info@mypapit.net)</generator>
+		<atom:link href="http://news.hawebs.net/index.php?option=com_ninjarsssyndicator&amp;feed_id=9&amp;format=raw" rel="self" type="application/rss+xml" />        <item>
+            <title>TCIP博览会，OASIS应急标准将显示在警报、警告、资源管理与医院协调的作用 </title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=121:tcipoasis-&amp;catid=46:dita&amp;Itemid=55</link>
+            <description><![CDATA[美国宾夕法尼亚州费城，2010年2月1日消息：公共和私营部门2月4日将在美国费城联合召开一个关键突发事件准备技术（TCIP）互操作标准的展示会议。这次活动将展示OASIS应急数据交换语言（EDXL）系列标准，包括公共安全警示协议（CAP），分配单元（DE）和医院可用性信息交换（HAVE）标准。这次演示将模拟国土安全部（DHS）和国家海洋和大气管理局（NOAA）定义的突发事件，展示当局、响应者、广播公司，以及其他服务提供者如何使用EDXL制定出协调一致的应急响应。<br /><br />紧急模拟将涉及在费城瓦乔维亚频谱制冷系统的氨气泄漏。 OASIS标准将用于通知和协调涉及核生化反应部队，警察，公共工程人员，消防队员，医护人员，和红十字会。龙卷风天气警报将在复杂的居民撤离中加剧紧张状况。 参与演示者包括桌面预警和警报系统公司（WSI），以及国土安全部，国家海洋和大气管理局，美国联邦紧急事务管理局（FEMA），CellCast Technologies（专长是通过移动电话发送政府紧急警报），MyStateUSA（从事基于互联网技术促进政府与各界的信息快速交流业务），安全环境工程，慰问系统，通讯系统等等。<br /><br />此次演示将利用美国国土安全部灾害管理的应急网络开放平台（DM-OPEN），该平台是业务互操作的主干，能够使各种第三方非应用程序，系统，网络和设备，以非专有的、开放格式下共享信息。DM-OPEN设计成为现场公共应急救援者、指挥中心和所有层级响应管理提供实时数据分发和态势感知支持。<br /><br />在地理定位警报系统（GTAS）也将在互操作中发挥关键作用。GTAS是NOAA和FEMA集成公共警报和预警系统（IPAWS）联合开发努力的结果。GTAS允许警报和预警发往目标地理区域。在演示中 CAP?IPAWS 概况消息格式将用于通知紧急警报系统（EAS）。<br /><br />WSI的总裁兼COO，Patrick J. Gannon说：“OASIS互操作标准在TCIP的展示，让人们看到WSI的警报和通知产品在真实应急情况下的表现，对应急管理从业者来说是一个绝好的机会。我们的 AdaptAlert?和OnAlert ?系统将与其他公司产品接口，从化学品泄漏、龙卷风警报，到获得CAP1.2 IPAWS概况消息激活广播公司的EAS设备，以及使用CAP1.1消息激活警笛并发给接受者”。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Mon, 15 Mar 2010 21:44:23 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=121:tcipoasis-&amp;catid=46:dita&amp;Itemid=55</guid>
+        </item>
+        <item>
+            <title>后台树形菜单V1.0模块开发完</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=113:v10&amp;catid=41:joomla&amp;Itemid=55</link>
+            <description><![CDATA[后台树形菜单V1.0主要是改变了后台菜单显示方式，原有的横幅下拉改为树状结构。目前模块已基本完成，包括树状显示和权限的认证。不过目前对模板的自适应还不是很好，在继续改进中。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Fri, 26 Feb 2010 07:26:10 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=113:v10&amp;catid=41:joomla&amp;Itemid=55</guid>
+        </item>
+        <item>
+            <title>什么是主题中的渐进公开</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=92:2010-02-08-22-45-51&amp;catid=46:dita&amp;Itemid=55</link>
+            <description><![CDATA[<p>因为每一主题除了正文以外都有一个标题和简短描述，应用程序可以提供渐进公开。例如，用户可以在链接上看一下它的简短描述然后再决定是否按链接查看完余下的主题。渐进公开也允许有针对性的以不同查看环境浏览主题，无论是全屏幕浏览，还是集成帮助窗格，弹出信息或 PDA 屏幕。应用程序可以尽可能多的公开环境所支持的内容，以便用户决定从哪里和如何发掘更多内容。</p>]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Mon, 08 Feb 2010 22:45:33 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=92:2010-02-08-22-45-51&amp;catid=46:dita&amp;Itemid=55</guid>
+        </item>
+        <item>
+            <title>什么是在体系结构中主题结构</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=91:2010-02-08-22-45-26&amp;catid=46:dita&amp;Itemid=55</link>
+            <description><![CDATA[<p>主题结构是我们为文档体系结构建立的某些条件的结果。<br />&lt;topic&gt; 是单一非嵌套主体和任何数量的嵌套主题的容器。<br />&lt;title&gt; 提供自我描述，与创作指南一致。<br />&lt;body&gt; 是段落级内容和任何数量的非嵌套部分的容器。<br />主题可以增加一个前言，其中包括简短描述和其他可选的元数据。<br />这些条件可导致下列结构：<br />&lt;!ELEMENT topic (title,prolog?,body,%info-types,*&gt;</p>]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Mon, 08 Feb 2010 22:44:59 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=91:2010-02-08-22-45-26&amp;catid=46:dita&amp;Itemid=55</guid>
+        </item>
+        <item>
+            <title>为什么使用主题</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=90:2010-02-08-22-44-53&amp;catid=46:dita&amp;Itemid=55</link>
+            <description><![CDATA[<p>DITA 是基于主题的，因为主题是允许以不同交付上下文重用而不影响作者效率的最理想尺寸。如果我们选择小一些的单元，作者需要核对所有上下文的单元，以确保信息流正确。如果我们选择大一些的单元，信息不容易重新合并到不同交付上下文所需的结构。从作者的观点来说，一个主题要大到能自我容纳，但要小到特殊上下文需要的以任何高级结构的有效重用。</p>]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Mon, 08 Feb 2010 22:44:30 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=90:2010-02-08-22-44-53&amp;catid=46:dita&amp;Itemid=55</guid>
+        </item>
+        <item>
+            <title>什么是主题</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=89:2010-02-08-22-44-28&amp;catid=46:dita&amp;Itemid=55</link>
+            <description><![CDATA[<p>主题是按单一题目范围组织的一段信息。从结构上看，它是一个后面跟随着文本和图象的主题，可选地按节组织成。主题有许多不同类型，最通用的是概念、任务和引用。</p>]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Mon, 08 Feb 2010 22:44:02 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=89:2010-02-08-22-44-28&amp;catid=46:dita&amp;Itemid=55</guid>
+        </item>
+        <item>
+            <title>有 DITA DTD 的 XML 模式吗</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=88:-dita-dtd--xml-&amp;catid=46:dita&amp;Itemid=55</link>
+            <description><![CDATA[<p>还没有。文档若要跨系统使用以及有很长生命周期，就应该用已有的最标准格式定义，现在仍然是 DTD。<br />尽管 XML 模式可以提供 DTD 所不能提供的内容规则 ，但许多文档创作工具和生产工具仍然依赖于 DTD。如果您整个进程所有的工具都支持模式，对文档使用 XML 模式就有意义。如果您开发和生产文档的过程既可以使用支持 DTD 又可使用支持模式工具，那么目前最好依靠 DTD。除非您创建一个模式可以仅仅允许 DTD 所允许的，您就不能在模式和 DTD 驱动的创作系统中之间切换了。实际上，如果我们所依靠的工具在可以忽略 DTD 时，使用模式只有很少实际优势。<br />XML 模式的优点之一是它可以作为信息模型式的正式规范语言来使用。而现在，我们将继续使用 DTD 格式作为我们模型的记录定义，我们 将依赖于今后的工具来将 DTD 转换成即将出现的 W3C XML 模式标准。<br />我们设计 DITA 时，在预料到模式语言后的专门化原理，并且我们计划转到模式表示法上。</p>]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Mon, 08 Feb 2010 22:39:01 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=88:-dita-dtd--xml-&amp;catid=46:dita&amp;Itemid=55</guid>
+        </item>
+        <item>
+            <title>如何进行和控制对 DTD 的修改</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=87:-dtd-&amp;catid=46:dita&amp;Itemid=55</link>
+            <description><![CDATA[<p>DITA 设计是一个原型；该设计 — 包括 DTD 和样式表 — 将通过感兴趣的用户社区 — 您的反馈来不断地发展。<br />使用 DITA 论坛来讨论 DITA DTD 和样式表的使用。在 read-me 文档列出了几个已知的局限性，但当您在使用 DTD 时，无疑其他人也在期待的发现。通过 DITA 论坛中的讨论，我们将一些重要的想法应用至后续的刷新软件包。DITA 项目的体系结构设计师 Don Day 和 Michael Priestley 以及其他人将积极监控论坛。<br />在我们知道将更改或应该考虑的事项有是：<br />XLink 库的使用<br />新的专门化<br />改进的内容模型定义<br />新的语义标记</p>]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Mon, 08 Feb 2010 22:34:51 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=87:-dtd-&amp;catid=46:dita&amp;Itemid=55</guid>
+        </item>
+        <item>
+            <title>为什么不使用 DocBook</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=86:-docbook&amp;catid=46:dita&amp;Itemid=55</link>
+            <description><![CDATA[<p>尽管 DocBook 和 DITA 都着重于交付技术信息，但 DocBook 的解决方案主要侧重于交付书籍，而 DITA 则着重于交付主题，它可以组装到书中，也可以一起链接至帮助集或网站。DITA 的主要延展机制 -- 专门化 -- 是基于主题级的信息分类，而不是文档分类。专门化允许作者描述特定信息域而不影响常规过程或增加核心 DTD 复杂性。主题类型、主题内容和基于主题的转换都设计成通过引用来重用。因此，重用的控制移到重用者而不影响访问公共过程或工具，也不需要损害信息的可移植性、使用期限或一致性。</p>]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Mon, 08 Feb 2010 22:33:03 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=86:-docbook&amp;catid=46:dita&amp;Itemid=55</guid>
+        </item>
+        <item>
+            <title>通过发布新版本ARBORTEXT® 5.3，PTC将业务扩展到DITA领域</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=84:arbortextr-53ptcdita&amp;catid=46:dita&amp;Itemid=55</link>
+            <description><![CDATA[<p>PTC 公司今天发布了他们的动态出版软件的最新版本Arbortext 5.3。这个版本使PTC的业务扩展到Darwin信息类型化体系结构(DITA)。DITA，是一个由OASIS发起的计划，为编辑、制作和发表技术信息提供了一个基于XML的体系结构。OASIS (结构信息标准化促进组织)是一个国际性的非赢利联盟，主要从事于促进电子商务标准的发展、融合与运用。IBM于2004年3月将DITA 赠予 OASIS，现在受OASIS DITA技术委员会的管理。</p>
+<p>PTC预期，截止到2008年底，基于DITA的新XML出版装置将会高达80%。由于结合了许多XML出版发行方面的最佳实践，DITA成为XML领域最重要的革新之一。首先，DITA需要使用一种模块化的方法来创建出版物，这点对于有效地重复使用信息和为多元读者的不同需求提供信息配置来说是非常重要的。其次，DITA允许不同的组织根据他们的具体需求来订制他们自己的应用，并同时维持了与所有其他使用DITA的组织轻松共享信息的能力。第三，DITA通过允许对XML应用的改写而增加了组织回复新需求的灵活性，同时保持与所有现存的下游应用程序的兼容性。为实行DITA计划而使用 Arbortext 5.3 的公司将能够大幅度降低与建立XML出版发行系统相关联的成本。</p>
+<p>OASIS DITA 技术委员会主席Don Day指出，“尽管DITA的主题与映射在概念上非常简单，但对于一些作者来说应付体系结构本身的众多特性一直是一件极富挑战的事情。我们很高兴地看到 PTC正在不断改进他们的Arbortext 5.3 产品以帮助作者更好的使用DITA的各种特性。”</p>
+<p>Arbortext从2004年就开始支持DITA，在用户接口、样式表和文档类型定义(DTD)方面对标准DITA信息类型（任务、概念和引用) 提供支持，并且支持DITA的“特殊化”性能，“内容引用”包含机制和客户表模型。此次推出的Arbortext 的最新版本包括下述方面的增强，可以支持：</p>
+<p>编辑</p>
+<p>为创建主题和“映射”提供简化的用户界面，能够列出将被汇编到最终的出版物中的所有主题。</p>
+<p>针对完整的出版物中的所有文件的拼写检查和搜索／替换功能。</p>
+<p>“配置”功能提供了一个简单的用户界面，帮助作者轻松地创建适应于不同读者需求的出版物。</p>
+<p>出版发行</p>
+<p>支持DITA映射，控制最终文档的汇编和出版</p>
+<p>为打印版本和电子输出版本提供简化的样式表开发过程</p>
+<p>“对于通过这种最新版本的Arbortext 5.3动态发布软件来扩展我们对DITA的支持，我们感到由衷的兴奋，”PTC公司Arbortext产品管理副总裁PG Bartlett说， “作为唯一能够为企业级需求提供带有DITA支持的完整动态发行解决方案的供应商，我们一直致力于帮助企业缩减开发、维护和出版技术出版物的成本”。</p>
+<p>Arbortext 5.3 发售日期</p>
+<p>Arbortext 5.3计划的发售日期是2006年12月。如需关于Arbortext 5.3的更多信息，请访问www.ptc.com上Arbortext 产品页。<br />关于PTC的动态出版解决方案</p>
+<p>PTC的动态出版解决方案能够帮助公司自动汇编和出版多种语言和格式的产品或服务信息。这些解决方案由Arbortext产品家族构成，应用于30%的制造、生命科学、发行、政府、保险和金融服务行业的财富500强公司。</p>
+<p>关于PTC<br />PTC为全球40,000多家企业提供领先的产品生命周期管理（PLM）、内容管理和动态发行解决方案。PTC客户包括制造、发行、服务、政府以及生命科学等行业中全球最具创新的企业。PTC已被列入标准普尔500（S&amp;P 500）和罗素2000（Russell 2000）指数。有关PTC的详细信息，可以通过www.ptc.com或联系PTC当地办事处获得。</p>]]></description>
+            <author> service@hawebs.net (Administrator)</author>
+            <pubDate>Mon, 08 Feb 2010 02:41:07 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=84:arbortextr-53ptcdita&amp;catid=46:dita&amp;Itemid=55</guid>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.8.0-dev (info@mypapit.net)" -->
+<rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>HA 资讯 - Derby</title>
+        <description><![CDATA[HA WEBSYSTEMS - 提供WEB方式的信息化和技术服务]]></description>
+        <link>http://news.hawebs.net/zh/</link>
+        <lastBuildDate>Thu, 01 Apr 2010 02:10:41 GMT</lastBuildDate>
+        <generator>FeedCreator 1.8.0-dev (info@mypapit.net)</generator>
+		<atom:link href="http://news.hawebs.net/zh/index.php?option=com_ninjarsssyndicator&amp;feed_id=3&amp;format=raw" rel="self" type="application/rss+xml" />        <item>
+            <title>Derby 系统要求</title>
+            <link>http://news.hawebs.net/zh/index.php?option=com_content&amp;view=article&amp;id=119:derby-&amp;catid=42:derby&amp;Itemid=57</link>
+            <description><![CDATA[Derby是使用纯Java实现的数据库引擎。 Derby能运行在任何被认证的Java虚拟机（JVM）上。<br /><br />你计算机安装的JAVA版本必须高于1.4。 Java开发工具包（JDK）在对新Derby用户的自学习教程被要求执行。<br /><br />使用java -version命令，来检查Java虚拟机安装的正确版本。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Thu, 11 Mar 2010 04:29:32 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/zh/index.php?option=com_content&amp;view=article&amp;id=119:derby-&amp;catid=42:derby&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>Derby 产品文档</title>
+            <link>http://news.hawebs.net/zh/index.php?option=com_content&amp;view=article&amp;id=118:derby-&amp;catid=42:derby&amp;Itemid=57</link>
+            <description><![CDATA[Derby产品文档包括手册和API参考。<br /><br />Derby入门指南<br /> 描述如何安装和配置Derby。 包括针对新用户的自学教程和针对有JDBC经验用户的快速指南。 本指南同时也介绍了 dblook， ij，和sysinfo工具和Derby包含和使用的库和脚本。<br /><br />Derby开发者指南<br /> 描述Derby所有的通用部署功能和特性，比如Derby的JDBC和SQL特性，部署Derby应用，使用属性文件、安全和其他高级特性。<br /><br />Derby参考手册<br /> 文档描述了SQL语言在Derby中的实现。 手册提供了Derby的JDBC和JTA实现、关键字、系统表、属性和SQL异常（SQLExceptions）的相关参考信息。<br /><br />Derby调优<br /> 文档提供了提高性能小技巧、更深层次的性能讨论和Derby的优化信息。<br /><br />Derby工具包指南<br /> 描述如何使用Derby的工具包，比如dblook、ij和sysinfo，和如何使用系统过程导入导出数据，以及如何在数据库中使用Java代码。<br /><br />Derby服务器和管理指南<br /> 第一部分讨论了服务器配置的，以及如何进行客户端编程和数据库管理。 一些系统可能需要管理进程，比如备份数据库。 这些进程独立于任何服务器框架，但是是多用户或大小系统的独特特性。<br /> 第二部分讨论了管理问题，比如备份和死锁调试。<br /><br />Derby API参考<br /> API参考是由Derby公共类自动生成而来。 不提供JDBC的API，因为这是Java 2 标准版平台的一部分。 更多API类的信息，请参考Derby参考手册。<br /> 你可以从下Apache的官方地址中访问10.5版手册和API参考<br /><br />产品文档随Derby同时安装。 手册被安装在docs子目录中。 API参考安装在javadoc子目录中。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Thu, 11 Mar 2010 04:27:47 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/zh/index.php?option=com_content&amp;view=article&amp;id=118:derby-&amp;catid=42:derby&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>Derby 10.5.3.0 于2009年8月发布</title>
+            <link>http://news.hawebs.net/zh/index.php?option=com_content&amp;view=article&amp;id=98:derby-10530-20098&amp;catid=42:derby&amp;Itemid=57</link>
+            <description><![CDATA[<p>Derby的最新版 10.5.3.0于2009年8月26日发布。<br /><br />Apache Derby是Apache数据库项目的一个子项目。<br /><br />Derby是支持ISO/ANSI SQL和JDBC标准的纯Java关系数据库引擎。<br /><br />Derby 10.5.3.0的下载链接为：<br /><br /><a href="http://db.apache.org/derby/derby_downloads.html">http://db.apache.org/derby/derby_downloads.html</a></p>]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Sun, 21 Feb 2010 06:35:36 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/zh/index.php?option=com_content&amp;view=article&amp;id=98:derby-10530-20098&amp;catid=42:derby&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>Apache Derby 数据库项目</title>
+            <link>http://news.hawebs.net/zh/index.php?option=com_content&amp;view=article&amp;id=74:apache-derby-&amp;catid=42:derby&amp;Itemid=57</link>
+            <description><![CDATA[<p>Apache Derby是Apache DB的子项目，是一个使用Java编写的开源关系型数据库。关键特点包括：</p>
+<p>1. 程序小巧，基础引擎和内嵌的JDBC驱动总共大约2MB。</p>
+<p>2. 基于Java、JDBC和SQL标准。</p>
+<p>3. 提供内嵌的JDBC驱动，你可把Derby潜入到基于Java的应用程序中。</p>
+<p>4. 支持客户端／服务器模式。</p>
+<p>5. 安装、布置和使用简单。</p>
+<p>对于如何入门Derby,请参阅IBM 用 Apache Derby 进行开发的相关技术文章。</p>]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Wed, 06 Jan 2010 05:39:04 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/zh/index.php?option=com_content&amp;view=article&amp;id=74:apache-derby-&amp;catid=42:derby&amp;Itemid=57</guid>
+        </item>
+    </channel>
+</rss>

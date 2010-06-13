@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.8.0-dev (info@mypapit.net)" -->
+<rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>HA 资讯 - 资源下载</title>
+        <description><![CDATA[HA WEBSYSTEMS - 提供WEB方式的信息化和技术服务]]></description>
+        <link>http://news.hawebs.net/zh/</link>
+        <lastBuildDate>Tue, 30 Mar 2010 16:01:27 GMT</lastBuildDate>
+        <generator>FeedCreator 1.8.0-dev (info@mypapit.net)</generator>
+		<atom:link href="http://news.hawebs.net/zh/index.php?option=com_ninjarsssyndicator&amp;feed_id=11&amp;format=raw" rel="self" type="application/rss+xml" />        <item>
+            <title>Manning - AJAX In Action</title>
+            <link>http://news.hawebs.net/zh/index.php?option=com_content&amp;view=article&amp;id=122:manning-ajax-in-action&amp;catid=49:2010-03-29-21-36-44&amp;Itemid=59</link>
+            <description><![CDATA[Manning - AJAX In Action]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Mon, 29 Mar 2010 21:43:44 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/zh/index.php?option=com_content&amp;view=article&amp;id=122:manning-ajax-in-action&amp;catid=49:2010-03-29-21-36-44&amp;Itemid=59</guid>
+        </item>
+    </channel>
+</rss>
