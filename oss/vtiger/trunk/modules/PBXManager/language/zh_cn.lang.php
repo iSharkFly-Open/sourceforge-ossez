@@ -11,8 +11,8 @@
  * huyuchengus@gmail.com / yuchenghu@hawebs.net
  * 
  * ---------------------------------------------
- * GNU GENERAL PUBLIC LICENSE GNU/LGPL
- * http://www.gnu.org/licenses/lgpl.html
+ * [A] GNU GENERAL PUBLIC LICENSE GNU/LGPL
+ * [B] Apache License, Version 2.0
  *
  * ---------------------------------------------
  * NOTE
