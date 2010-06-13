@@ -16,7 +16,8 @@
 		<rtl>0</rtl>
 		<locale>zh_CN.utf8, zh, zho, zhi, zh_CN, zho_CN, zhi_CN, simplified_chinese</locale>
 		<winCodePage>cp936</winCodePage>
-		<backwardLang>english</backwardLang>
+		<backwardLang>Simplified Chinese</backwardLang>
+		<pdfFontName>droidsansfallback</pdfFontName>
 	</metadata>
 	<params />
 </metafile>
