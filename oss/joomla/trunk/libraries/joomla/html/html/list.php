@@ -1,9 +1,9 @@
 <?php
 /**
-* @version		$Id: list.php 12348 2009-06-24 13:34:12Z ian $
+* @version		$Id: list.php 14401 2010-01-26 14:10:00Z louis $
 * @package		Joomla.Framework
 * @subpackage		HTML
-* @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
 * Joomla! is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -60,7 +60,7 @@ class JHTMLList
 		$imageFiles = JFolder::files( JPATH_SITE.DS.$directory );
 		$images 	= array(  JHTML::_('select.option',  '', '- '. JText::_( 'Select Image' ) .' -' ) );
 		foreach ( $imageFiles as $file ) {
-		   if ( eregi( $extensions, $file ) ) {
+		   if ( preg_match( "#$extensions#i", $file ) ) {
 				$images[] = JHTML::_('select.option',  $file );
 			}
 		}

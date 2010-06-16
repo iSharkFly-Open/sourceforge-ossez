@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: banner.php 11655 2009-03-08 20:04:17Z willebil $
+ * @version		$Id: banner.php 17299 2010-05-27 16:06:54Z ian $
  * @package		Joomla
  * @subpackage	Banners
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -46,7 +46,7 @@ class BannersViewBanner
 		<tr>
 			<td align="left" width="100%">
 				<?php echo JText::_( 'Filter' ); ?>:
-				<input type="text" name="search" id="search" value="<?php echo $lists['search'];?>" class="text_area" onchange="document.adminForm.submit();" />
+				<input type="text" name="search" id="search" value="<?php echo htmlspecialchars($lists['search']);?>" class="text_area" onchange="document.adminForm.submit();" />
 				<button onclick="this.form.submit();"><?php echo JText::_( 'Go' ); ?></button>
 				<button onclick="document.getElementById('search').value='';this.form.getElementById('filter_catid').value='0';this.form.getElementById('filter_state').value='';this.form.submit();"><?php echo JText::_( 'Filter Reset' ); ?></button>
 			</td>
@@ -432,7 +432,7 @@ class BannersViewBanner
 									<param name="movie" value="../images/banners/<?php echo $row->imageurl; ?>"><embed src="../images/banners/<?php echo $row->imageurl; ?>" loop="false" pluginspage="http://www.macromedia.com/go/get/flashplayer" type="application/x-shockwave-flash"  width="<?php echo $lists['width'];?>" height="<?php echo $lists['height'];?>"></embed>
 								</object>
 								<?php
-							} elseif (eregi("gif|jpg|png", $row->imageurl)) {
+							} elseif (preg_match("#gif|jpg|png#i", $row->imageurl)) {
 								?>
 								<img src="../images/banners/<?php echo $row->imageurl; ?>" name="imagelib" />
 								<?php

@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: editor.php 12075 2009-06-14 18:32:10Z ian $
+ * @version		$Id: editor.php 14401 2010-01-26 14:10:00Z louis $
  * @package		Joomla.Framework
  * @subpackage	HTML
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -39,6 +39,13 @@ class JEditor extends JObservable
 	 * @var string
 	 */
 	var $_name = null;
+	
+	/**
+	 * Editor start and end tag
+	 * Used to tell SEF plugin not to process editor contents
+	 * @var array
+	 */
+	var $_tagForSEF = array('start' => '<!-- Start Editor -->', 'end' => '<!-- End Editor -->'); 
 
 	/**
 	 * constructor
@@ -150,7 +157,7 @@ class JEditor extends JObservable
 				$return .= $result;
 			}
 		}
-		return $return;
+		return $this->_tagForSEF['start'] . $return . $this->_tagForSEF['end'];
 	}
 
 	/**

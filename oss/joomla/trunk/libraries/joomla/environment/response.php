@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		$Id: response.php 10707 2008-08-21 09:52:47Z eddieajau $
+ * @version		$Id: response.php 14401 2010-01-26 14:10:00Z louis $
  * @package		Joomla.Framework
  * @subpackage	Environment
- * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
  * Joomla! is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -15,6 +15,7 @@
 /**
  * Create the response global object
  */
+defined('JPATH_BASE') or die();
 $GLOBALS['_JRESPONSE'] = new stdClass();
 $GLOBALS['_JRESPONSE']->cachable = false;
 $GLOBALS['_JRESPONSE']->headers  = array();
