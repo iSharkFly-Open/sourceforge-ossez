@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+          <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss" xmlns:atom="http://www.w3.org/2005/Atom">
+          <channel>
+          <atom:icon>http://news.hawebs.net/plugins/content/BonckoLen/boncko.jpg</atom:icon>
+          
+            <item><title>06  </title>
+              <guid>11727a2534f314677e40e1a9401eee79</guid>
+            <media:thumbnail url="http://news.hawebs.net/images/stories/hawebs/mygallery/99/06.jpg"/>
+            <media:content url="http://news.hawebs.net/images/stories/hawebs/mygallery/99/06.jpg"/> 
+            </item>
+            <item><title>03  </title>
+              <guid>72e999f7e25d7dd222c8a5ae7a587125</guid>
+            <media:thumbnail url="http://news.hawebs.net/images/stories/hawebs/mygallery/99/03.jpg"/>
+            <media:content url="http://news.hawebs.net/images/stories/hawebs/mygallery/99/03.jpg"/> 
+            </item>
+            <item><title>02  </title>
+              <guid>990f48a41097770c9b5d727930632f78</guid>
+            <media:thumbnail url="http://news.hawebs.net/images/stories/hawebs/mygallery/99/02.jpg"/>
+            <media:content url="http://news.hawebs.net/images/stories/hawebs/mygallery/99/02.jpg"/> 
+            </item>
+            <item><title>01  </title>
+              <guid>5b95b19ba6dc296b39cfeec16aa5e6cd</guid>
+            <media:thumbnail url="http://news.hawebs.net/images/stories/hawebs/mygallery/99/01.jpg"/>
+            <media:content url="http://news.hawebs.net/images/stories/hawebs/mygallery/99/01.jpg"/> 
+            </item>
+            <item><title>05  </title>
+              <guid>5ea8bc25a75bc1b7b7dc3b77a5d1f593</guid>
+            <media:thumbnail url="http://news.hawebs.net/images/stories/hawebs/mygallery/99/05.jpg"/>
+            <media:content url="http://news.hawebs.net/images/stories/hawebs/mygallery/99/05.jpg"/> 
+            </item>
+            <item><title>04  </title>
+              <guid>76ed1e4962471cda5c4320045da0d81d</guid>
+            <media:thumbnail url="http://news.hawebs.net/images/stories/hawebs/mygallery/99/04.jpg"/>
+            <media:content url="http://news.hawebs.net/images/stories/hawebs/mygallery/99/04.jpg"/> 
+            </item>
+            </channel>
+          </rss>
