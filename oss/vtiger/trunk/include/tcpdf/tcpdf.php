@@ -3195,7 +3195,7 @@ if (!class_exists('TCPDF', false)) {
 			}
 			$family = strtolower($family);
 			if ((!$this->isunicode) AND ($family == 'Arial')) {
-				$family = 'helvetica';
+				$family = 'Droidsansfallback';
 			}
 			if (($family == 'symbol') OR ($family == 'zapfdingbats')) {
 				$style = '';
