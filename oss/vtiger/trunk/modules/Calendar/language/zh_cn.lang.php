@@ -304,7 +304,7 @@ $mod_strings=Array(
 'ERR_DELETE_RECORD'=>"一个记录编号必须被指定删除vtiger_account.",
 'NTC_NONE_SCHEDULED'=>'没有安排.',
 
-/ Added vtiger_fields for Attachments in Activities/SubPanelView.php
+// Added vtiger_fields for Attachments in Activities/SubPanelView.php
 'LBL_ATTACHMENTS'=>'附加档案',
 'LBL_NEW_ATTACHMENT'=>'新增附加档案',
 
@@ -342,7 +342,7 @@ $mod_strings=Array(
 'LBL_MINUTES'=>'分',
 'LBL_HOURS'=>'时',
 'LBL_BEFORE_EVENT'=>'时间前',
-/Added for CustomView 4.2 Release
+//Added for CustomView 4.2 Release
 'Close'=>'关闭',
 'StartDate'=>'开始日期',
 'Type'=>'类型',
