@@ -1,30 +1,30 @@
 <?php
 /**
-*Copyright(C)2006-2010YUCHENGHU
-*
-*---------------------------------------------
-*HAWEBSYSTEMS
-*http://www.hawebs.net
-*https://www.hawebs.org/forums/computer/
-*
-*CONTACT
-*huyuchengus@gmail.com/yuchenghu@hawebs.net
-*
-*---------------------------------------------
-*[A]GNUGENERALPUBLICLICENSEGNU/LGPL
-*[B]ApacheLicense,Version2.0
-*
-*---------------------------------------------
-*NOTE
-*1.所有的语言配置文件请采用UTF-8编码
-*
-*---------------------------------------------
-*/
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * ---------------------------------------------
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * https://www.hawebs.org/forums/computer/
+ *
+ * CONTACT
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * ---------------------------------------------
+ * [A] GNU GENERAL PUBLIC LICENSE GNU/LGPL
+ * [B] Apache License, Version 2.0
+ *
+ * ---------------------------------------------
+ * NOTE
+ * 1. 所有的语言配置文件请采用 UTF-8 编码 
+ *
+ * ---------------------------------------------
+ */
 $mod_strings=Array(
 'LBL_MODULE_NAME'=>'计划任务',
 'LBL_MODULE_TITLE'=>'计划任务：首页',
-'LBL_MODULE_APPOINTMENT'=>'计划任务：行程',
-'LBL_MODULE_APPOINTMENT_DETAIL'=>'计划任务：计划细节',
+'LBL_MODULE_APPOINTMENT'=>'计划任务：预约',
+'LBL_MODULE_APPOINTMENT_DETAIL'=>'计划任务：预约明细',
 'LBL_SAVE'=>'保存',
 'LBL_RESET'=>'取消',
 'LBL_LIST_USER_NAME'=>'账号',
@@ -38,7 +38,7 @@ $mod_strings=Array(
 'LBL_USE24'=>'使用24小时制',
 'LBL_CALSTART'=>'计划任务开始时间',
 'LBL_TIMESETTINGS'=>'时间设定',
-'LBL_OPENCAL'=>'开放计划任务',
+'LBL_HOLDFOLLOWUP'=>'稍后处理',
 'LBL_CALL'=>'电话记录',
 'LBL_MEET'=>'会议',
 'LBL_APPNT'=>'行程',
@@ -50,13 +50,13 @@ $mod_strings=Array(
 'LBL_DAY'=>'日',
 'LBL_DAY_BUTTON_KEY'=>'D',
 'LBL_DAY_BUTTON_TITLE'=>'日[Alt+D]',
-'LBL_DAY1'=>'周一',
-'LBL_DAY2'=>'周二',
-'LBL_DAY3'=>'周三',
-'LBL_DAY4'=>'周四',
-'LBL_DAY5'=>'周五',
-'LBL_DAY6'=>'周六',
-'LBL_DAY0'=>'周日',
+'LBL_DAY1'=>'星期一',
+'LBL_DAY2'=>'星期二',
+'LBL_DAY3'=>'星期三',
+'LBL_DAY4'=>'星期四',
+'LBL_DAY5'=>'星期五',
+'LBL_DAY6'=>'星期六',
+'LBL_DAY0'=>'星期日',
 
 'LBL_SM_MON'=>'一',
 'LBL_SM_TUE'=>'二',
@@ -76,10 +76,10 @@ $mod_strings=Array(
 'LBL_LAST_WEEK'=>'上周',
 'LBL_4WEEKS_BACK'=>'四周前',
 'LBL_4WEEKS_PLUS'=>'四周后',
-'LBL_RELOAD'=>'重新加载',
+'LBL_RELOAD'=>'重新载入',
 
 
-'LBL_APPCREATED_BY'=>'建立者：',
+'LBL_APPCREATED_BY'=>'创建人：',
 'LBL_AT_DATE_TIME'=>'在',
 
 'LBL_MON'=>'月',
@@ -101,10 +101,10 @@ $mod_strings=Array(
 
 'LBL_APP_IGNORE_TIME2'=>'(注：这个行程在该期间没有特定的时间)',
 
-'LBL_APP_ERR001'=>'字段%s产生错误!',
+'LBL_APP_ERR001'=>'字段 %s 数据类型错误！',
 'LBL_APP_ERR002'=>'开始日期在结束日期之后!',
-'LBL_APP_ERR003'=>'漏填联系人!',
-'LBL_APP_ERR004'=>'漏填标题!',
+'LBL_APP_ERR003'=>'联系人为空!',
+'LBL_APP_ERR004'=>'标题为空!',
 'ERR_DELETE_RECORD'=>'在删除行程前必须输入正确的记录编号.',
 'DELETE_CONFIRMATION'=>'您确定要删除这次的行程?',
 
@@ -113,7 +113,7 @@ $mod_strings=Array(
 '2'=>'休假',
 '3'=>'病假',
 '4'=>'延期',
-'5'=>'随意',
+'5'=>'任意',
 '6'=>'私人',),
 
 'cal_month_long'=>array(
@@ -180,8 +180,8 @@ $mod_strings=Array(
 'LBL_TOTALEVENTS'=>'我的全部事件:',
 'LBL_TOTALTODOS'=>'我的待办事项:',
 'LBL_VIEW'=>'查看',
-'LBL_LISTVIEW'=>'查看列表',
-'LBL_HRVIEW'=>'产看时间',
+'LBL_LISTVIEW'=>'列表查看',
+'LBL_HRVIEW'=>'查看时间',
 'LBL_WEEKVIEW'=>'查看周历',
 'LBL_MONTHVIEW'=>'查看月历',
 'LBL_YEARVIEW'=>'查看年历',
@@ -202,7 +202,7 @@ $mod_strings=Array(
 'LBL_ASSINGEDTO'=>'分配给',
 'LBL_RELATEDTO'=>'关联于',
 'LBL_PENDING'=>'即将发生',
-'LBL_PUBLIC'=>'标记公共',
+'LBL_PUBLIC'=>'标记为公共',
 'LBL_MORE'=>'更多',
 'LBL_EDIT'=>'编辑',
 'LBL_EVERYDAY'=>'每天',
@@ -211,19 +211,19 @@ $mod_strings=Array(
 'LBL_WEEKS'=>'周',
 'LBL_MONTHS'=>'月',
 'LBL_YEAR'=>'年',
-'LBL_NONE_SCHEDULED'=>'没有行程',
+'LBL_NONE_SCHEDULED'=>'没有任何行程',
 
 'LBL_INVITE_INST1'=>'邀请的方式可以从目前使用者列表选择并且点选新增按钮',
 'LBL_INVITE_SHARE'=>'分享的方式可以从目前使用者列表选择并且点选新增按钮.',
 'LBL_INVITE_INST2'=>'移除邀请的人可以从选择的使用者列表选择并且点选移除按钮',
 'LBL_SELUSR_INFO'=>'选择的使用者会收到一封事件的通知。',
 'LBL_CALSHAREMESSAGE'=>'开放我的行事历给下面选择的使用者',
-'LBL_CALSHARE'=>'开放行事历',
-'LBL_SEL_USERS'=>'选择的使用者',
-'LBL_AVL_USERS'=>'目前使用者',
+'LBL_CALSHARE'=>'共享行事历',
+'LBL_SEL_USERS'=>'已选择用户',
+'LBL_AVL_USERS'=>'可选择用户',
 'LBL_ADD_BUTTON'=>'新增',
-'LBL_USERS'=>'使用者',
-'LBL_RMV_BUTTON'=>'移除',
+'LBL_USERS'=>'用户',
+'LBL_RMV_BUTTON'=>'删除',
 'LBL_SDRMD'=>'发送提醒讯息',
 'LBL_ENABLE_REPEAT'=>'启用循环',
 'LBL_REPEAT_ONCE'=>'循环频率',
@@ -235,13 +235,13 @@ $mod_strings=Array(
 
 
 
-//DON'TCONVERTTHESETHEYAREMAPPINGS-STARTS
+//DON'T CONVERT THESE THEY ARE MAPPINGS - STARTS
 'db_last_name'=>'LBL_LIST_LAST_NAME',
 'db_first_name'=>'LBL_LIST_FIRST_NAME',
 'db_title'=>'LBL_LIST_TITLE',
 'db_email1'=>'LBL_LIST_EMAIL_ADDRESS',
 'db_email2'=>'LBL_LIST_EMAIL_ADDRESS',
-//DON'TCONVERTTHESETHEYAREMAPPINGS-ENDS
+//DON'T CONVERT THESE THEY ARE MAPPINGS -ENDS
 'LBL_COMPLETED'=>'标示为完成',
 'LBL_DEFERRED'=>'标示为延缓',
 'LBL_HELD'=>'标示为执行',
@@ -250,7 +250,7 @@ $mod_strings=Array(
 'LBL_CHANGEOWNER'=>'修改负责人',
 'LBL_DEL'=>'删除',
 
-//Addedforactvitymergewithcalendar
+//Added for actvity merge with calendar
 'LBL_SEARCH_FORM_TITLE'=>'搜索待办事项',
 'LBL_LIST_FORM_TITLE'=>'待办事项列表',
 'LBL_NEW_FORM_TITLE'=>'新增待办事项',
@@ -292,7 +292,7 @@ $mod_strings=Array(
 'LBL_LIST_CLOSE'=>'关闭',
 'LBL_LIST_STATUS'=>'状态',
 'LBL_LIST_CONTACT'=>'联系人',
-//Addedfor4.2releaseforAccountcolumnsupportasshownbyFredy
+//Added for 4.2 release for Account column support as shown by Fredy
 'LBL_LIST_ACCOUNT'=>'客户',
 'LBL_LIST_RELATED_TO'=>'相关于',
 'LBL_LIST_DUE_DATE'=>'结束日期',
@@ -304,19 +304,19 @@ $mod_strings=Array(
 'ERR_DELETE_RECORD'=>"一个记录编号必须被指定删除vtiger_account.",
 'NTC_NONE_SCHEDULED'=>'没有安排.',
 
-//Addedvtiger_fieldsforAttachmentsinActivities/SubPanelView.php
+/ Added vtiger_fields for Attachments in Activities/SubPanelView.php
 'LBL_ATTACHMENTS'=>'附加档案',
 'LBL_NEW_ATTACHMENT'=>'新增附加档案',
 
-//Addedvtiger_fieldsafterRC1-Release
+//Added vtiger_fields after RC1 - Release
 'LBL_ALL'=>'全部',
 'LBL_CALL'=>'呼叫',
 'LBL_MEETING'=>'会议',
 'LBL_TASK'=>'任务',
 
-//Addedfor4GARelease
-'Subject'=>'主旨2',
-'AssignedTo'=>'负责人',
+//Added for 4GA Release
+'Subject'=>'主题',
+'AssignedTo'=>'指定给',
 'StartDate&Time'=>'开始日期与时间',
 'TimeStart'=>'开始时间',
 'DueDate'=>'到期日',
@@ -334,7 +334,7 @@ $mod_strings=Array(
 'DurationMinutes'=>'期间分钟',
 'Location'=>'位置',
 'NoTime'=>'没有时间',
-//AddedforSendReminder4.2release
+//Added for Send Reminder 4.2 release
 'SendReminder'=>'提醒通知',
 'LBL_YES'=>'是',
 'LBL_NO'=>'否',
@@ -342,16 +342,16 @@ $mod_strings=Array(
 'LBL_MINUTES'=>'分',
 'LBL_HOURS'=>'时',
 'LBL_BEFORE_EVENT'=>'时间前',
-//AddedforCustomView4.2Release
+/Added for CustomView 4.2 Release
 'Close'=>'关闭',
 'StartDate'=>'开始日期',
 'Type'=>'类型',
 'EndDate'=>'结束日期',
 'Recurrence'=>'循环事件',
 'RecurringType'=>'循环类型',
-//Activities-NotificationError
-'LBL_NOTIFICATION_ERROR'=>'邮件错误：请检查您的外寄邮件服务器设定，在设定->外寄邮件服务器设定或是目前使用者的邮件没有设定好',
-//MikeCroweMod--------------------------------------------------------addedforgenericsearch
+//Activities - Notification Error
+'LBL_NOTIFICATION_ERROR'=>'邮件错误：请检查您的发送邮件服务器设置，在设定 > 发送邮件服务器设置或是目前使用者的邮件设置',
+// Mike Crowe Mod --------------------------------------------------------added for generic search
 'LBL_GENERAL_INFORMATION'=>'一般信息',
 
 'LBL_EVENTTYPE'=>'事件类型',
@@ -390,7 +390,7 @@ $mod_strings=Array(
 'Private'=>'私有',
 'Public'=>'公共',
 
-//AddedforexistingPicklistentries
+//Added for existing Picklist entries
 
 'Planned'=>'已规划',
 'Held'=>'保留',
@@ -405,7 +405,7 @@ $mod_strings=Array(
 'Call'=>'电话',
 'Meeting'=>'会议',
 
-//addedtosenddatesandtimeincalendarnotification/invitationmail.
+//added to send dates and time in calendar notification/invitation mail.
 
 'Startdateandtime'=>'开始日期和时间',
 'Enddateandtime'=>'结束日期和时间',
@@ -421,16 +421,17 @@ $mod_strings=Array(
 'LBL_YEAR_BUTTON_TITLE'=>'Year[Alt+Y]',
 'LBL_SELECT_CONTACT'=>'选择联系人',
 'SHARED_EVENT_DEL_MSG'=>'用户没有允许删除这个纪录.',
-//addedtofixticket#4525
-'LBL_CREATED'=>'created',
-'LBL_UPDATED'=>'updated',
-//Addedafter5.0.4GA
+//added to fix ticket#4525
+'LBL_CREATED'=>'新建',
+'LBL_UPDATED'=>'更新',
+
+//Added after 5.0.4 GA
 'LBL_BUSY'=>'忙碌',
 
-//CustomFieldssupportforCalendar
+//Custom Fields support for Calendar
 'LBL_CUSTOM_INFORMATION'=>'自定义信息',
 
-//RepeatEventsupportforCalendar
+// Repeat Event support for Calendar
 'LBL_UNTIL'=>'至',
 'LBL_SET_DATE'=>'设置日期',
 

@@ -1,25 +1,25 @@
 <?php
 /**
-*Copyright(C)2006-2010YUCHENGHU
-*
-*---------------------------------------------
-*HAWEBSYSTEMS
-*http://www.hawebs.net
-*https://www.hawebs.org/forums/computer/
-*
-*CONTACT
-*huyuchengus@gmail.com/yuchenghu@hawebs.net
-*
-*---------------------------------------------
-*[A]GNUGENERALPUBLICLICENSEGNU/LGPL
-*[B]ApacheLicense,Version2.0
-*
-*---------------------------------------------
-*NOTE
-*1.所有的语言配置文件请采用UTF-8编码
-*
-*---------------------------------------------
-*/
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * ---------------------------------------------
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * https://www.hawebs.org/forums/computer/
+ *
+ * CONTACT
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * ---------------------------------------------
+ * [A] GNU GENERAL PUBLIC LICENSE GNU/LGPL
+ * [B] Apache License, Version 2.0
+ *
+ * ---------------------------------------------
+ * NOTE
+ * 1. 所有的语言配置文件请采用 UTF-8 编码 
+ *
+ * ---------------------------------------------
+ */
 $mod_strings=array(
 'LBL_MODULE_NAME'=>'活动',
 'LBL_MODULE_TITLE'=>'活动：首页',
