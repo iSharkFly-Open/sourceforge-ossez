@@ -45,8 +45,10 @@
 $mod_strings = Array(
 
 'LBL_MODULE_NAME' => '设定',
-  'LBL_MODULE_TITLE' => '设定： 首页',
-  'LBL_LIST_CONTACT_ROLE' => '职位',
+
+'LBL_MODULE_TITLE' => '设定： 首页',
+
+'LBL_LIST_CONTACT_ROLE' => '职位',
 
 
 

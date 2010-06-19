@@ -1112,6 +1112,7 @@ $app_strings = array (
 'Qty'=>'数量',
 'Price'=>'单价',
 'Discount'=>'折扣',
+'LBL_ADD_BUTTON'=>'新建',
 // Added after 5.0.4 GA
 
 //Added to Fix i18N issue in Email Template
