@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="what_hudson" xml:lang="zh">
+  <title>什么是 Hudson</title>
+  <shortdesc>Hudson 的简要介绍</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Hudson</indexterm>
+        <indexterm>介绍</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>Hudson 用来监视可重复执行的工作。例如，用来构建一个软工程或者后台守护进程自动执行任务。Hudson 可以完成很多工作，Hudson 当前主要集中在下面两个功能中：</p>
+    <ol>
+      <li>程序的构建和测试软件项目，就好象导航控制和损毁控制。简单来说，Hudson 为项目提供了一个易用的持续集成（CI）的方法，并能够让用户更加容易的获得最新构建产品。同时能够持续和以增量的方式来构建软件产品。</li>
+      <li>监控一些定期执行的任务。比如，后台守护进程，工作进程邮件，甚至在这些工作运行在远程服务器的时候也能完成这些监控。例如，通过守护进程，你可以收取到一些常规邮件，在进行编译和处理的时候，在出现故障的时候，你也会收到一些这样的邮件。Hudson 保留了所有这样输出，同时能够使你更加容易的获得各种异常或故障信息。 </li>
+    </ol>
+  </conbody>
+</concept>

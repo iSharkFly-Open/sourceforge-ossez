@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="task"/>
+<meta name="DC.Title" content="标记内容"/>
+<meta name="abstract" content="You can set to flag content based on metadata. By default, no content is flagged."/>
+<meta name="description" content="You can set to flag content based on metadata. By default, no content is flagged."/>
+<meta name="DC.subject" content="metadata attributes, flagging on, flagging content"/>
+<meta name="keywords" content="metadata attributes, flagging on, flagging content"/>
+<meta name="DC.Relation" scheme="URI" content="../tasks/proccond.html"/>
+<meta name="prodname" content="Hudson 入门"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS Hudson"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="flagcontent"/>
+<meta name="DC.Language" content="en-us"/>
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+<title>标记内容</title>
+</head>
+<body id="flagcontent"><a name="flagcontent"><!-- --></a>
+
+
+    <h1 class="topictitle1">标记内容</h1>
+
+    
+    
+    <div><p>You can set to flag content based on metadata. By default, no 
+        content is flagged.</p>
+
+        <div class="p">Define a common set of images, and common alternative text for 
+            them, so that you can flag consistent content across your 
+            information set. Generally flagging is supported for block-level 
+            elements such as paragraphs, but not for phrase-level elements 
+            within a paragraph. This ensures that the images flagging the 
+            content are easily scanned by the reader, instead of being buried 
+            in text.</div>
+
+        <div class="section">
+            <p>At least one value in at least one attribute must be set to flag 
+                for the element to be flagged.</p>
+
+        </div>
+
+        <ol><li class="stepexpand">
+                <span>Create a DITA filter file in the directory you want to add 
+                    the file to. Give the file a descriptive name, such as 
+                    "audience-flag-build.ditaval".</span>
+            </li>
+<li class="stepexpand">
+                <span> Open the file, and type below content into it:</span>
+                 
+                    <pre class="codeblock">&lt;?xml version="1.0" encoding="UTF-8"?&gt; 
+&lt;val&gt; &lt;/val&gt;</pre>
+
+                
+            </li>
+<li class="stepexpand">
+                <span>Define the property you want to flag:</span>
+                <ol type="a">
+                    <li class="substepexpand">
+                        <span>Type a new property for flag by adding a new line 
+                            <kbd class="userinput">&lt;prop att="" val="" action="flag" img="" alt=""/&gt;</kbd>.</span>
+                    </li>
+
+                    <li class="substepexpand">
+                        <span>Select the attribute ("audience", "platform", 
+                            "product", "otherprops") you want to flag based on. 
+                            </span>
+                         For example, "audience".
+                    </li>
+
+                    <li class="substepexpand">
+                        <span>Type the value you want to flag. </span>
+                         For example, "programmer".
+                    </li>
+
+                    <li class="substepexpand">
+                        <span>Enter the image you want to use to flag the 
+                            content. Local absolute paths, or relative
+                            paths from the filter file both are supported. </span>
+                         For example, "D:\resource\delta.gif".
+                    </li>
+
+                    <li class="substepexpand">
+                        <span>Type the alternate text for the image that will be 
+                            used by screen readers. </span>
+                         For example, "sample alt text".
+                    </li>
+
+                </ol>
+
+                 You can define more properties by following the steps 
+                    above. The final ditaval file with the example values should be like 
+                    this:<pre class="codeblock">&lt;?xml version="1.0" encoding="UTF-8"?&gt; 
+&lt;val&gt;
+  &lt;prop att="audience" val="programmer" action="flag" img="D:\resource\delta.gif" alt="sample alt text"/&gt;
+&lt;/val&gt;</pre>
+
+            </li>
+<li class="stepexpand">
+                <span>When you publish output from the topic or map, specify the 
+                    filter file you want by using the parameter 
+                    <samp class="codeph">/filter:{args.input.valfile}</samp> for the output options.</span>
+            </li>
+</ol>
+
+        <div class="section">Content is flagged when any of the flagged values appears in 
+            any of the attributes. When flagged values are found in a map, 
+            links that are generated from affected topicrefs will be flagged on 
+            output.</div>
+
+        <div class="example"><h2 class="sectiontitle">Examples</h2>
+            
+            <dl>
+                
+                    <dt class="dlterm">&lt;p audience="admin programmer"&gt;</dt>
+
+                    <dd>
+                        <p>When admin is set to flag, the paragraph will be 
+                            preceded by the image you specified for admin.</p>
+
+                        <p>When both values are set to flag, both images will 
+                            appear before the paragraph.</p>
+
+                    </dd>
+
+                
+                
+                    <dt class="dlterm">&lt;topicref platform="linux" href="abc.dita"&gt;</dt>
+
+                    <dd>When linux is set to flag, any links to abc.dita 
+                        derived from this topic reference will be flagged with 
+                        the image you specified. In addition, any links derived 
+                        from child topicrefs will also be flagged: metadata 
+                        attributes are inherited.</dd>
+
+                
+            </dl>
+
+        </div>
+
+    </div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="../tasks/proccond.html" title="You can use metadata on elements to filter or flag content, and to show revised content.">过滤与标记内容</a></div>
+</div>
+</div>
+
+</body>
+</html>
