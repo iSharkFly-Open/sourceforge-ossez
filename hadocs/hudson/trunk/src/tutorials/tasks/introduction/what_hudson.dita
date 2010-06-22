@@ -34,7 +34,7 @@
 
 <concept id="what_hudson" xml:lang="zh">
   <title>什么是 Hudson</title>
-  <shortdesc>Hudson 的简要介绍</shortdesc>
+  <shortdesc/>
   <prolog>
     <metadata>
       <keywords>

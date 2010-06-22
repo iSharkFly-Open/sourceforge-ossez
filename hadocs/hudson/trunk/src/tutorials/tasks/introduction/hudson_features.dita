@@ -34,7 +34,7 @@
 
 <concept id="hudson_features" xml:lang="zh">
   <title>Hudson 的特性</title>
-  <shortdesc>Hudson 的简要介绍</shortdesc>
+  <shortdesc/>
   <prolog>
     <metadata>
       <keywords>
@@ -54,7 +54,7 @@
       <li>事后标注<p>构建可以在构建完成后进行标注</p></li>
       <li>JUnit/TestNG 测试报告<p>JUnit 的测试报告可以用报表，概要，历史信息的方式进行报告，例如，当进入测试断点。也可以将历史趋势用图图表进行表示。</p></li>
       <li>分布式构建<p>Hudson 可以在多台计算机上进行分布式 构建/测试。这样可以让你获更多供发人员使用的，但是空闲的工作站。</p></li>
-      <li>文件指纹<p>Hudson 可以持续跟踪创建的 Jar 文件，同时跟踪使用 Jar 文件的版本。这样甚至能够让你跟踪在 Hudson 之外的 Jar 文件。同时，能为不同的项目独立的跟踪 Jar 文件。</p>指纹</li>
+      <li>文件指纹<p>Hudson 可以持续跟踪创建的 Jar 文件，同时跟踪使用 Jar 文件的版本。这样甚至能够让你跟踪在 Hudson 之外的 Jar 文件。同时，能为不同的项目独立的跟踪 Jar 文件。</p></li>
       <li>插件支持<p>Hudson 可以通过第三方插件支持扩展。你甚至可以为你的项目小组单独为 Hudson 扩展工具或过程。</p></li>
     </ol>
   </conbody>

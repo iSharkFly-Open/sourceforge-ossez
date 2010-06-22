@@ -58,8 +58,10 @@
     </relrow>
   </reltable>
   <topicref navtitle="" href="tasks/info/hacopyright.dita"/>
-  <topicref navtitle="Apache 许可证" href="tasks/info/apachelicense.dita"/>
-  <topicref href="tasks/introduction/what_hudson.dita"/>
-  <topicref href="tasks/introduction/hudson_features.dita"/>
-  <topicref href="tasks/introduction/hudson_best_practices.dita"/>
+  <topicref href="tasks/info/apachelicense.dita"/>
+  <topicref href="tasks/introduction/introduction.dita">
+    <topicref href="tasks/introduction/what_hudson.dita"/>
+    <topicref href="tasks/introduction/hudson_features.dita"/>
+    <topicref href="tasks/introduction/hudson_best_practices.dita"/>
+  </topicref>
 </map>

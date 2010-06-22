@@ -32,9 +32,9 @@
  * +++++++++++++++++++++++++++++++++++++++++++++++++
 -->
 
-<concept id="hudson_best_practices" xml:lang="zh">
-  <title>Hudson 最佳实践</title>
-  <shortdesc/>
+<concept id="introduction" xml:lang="zh">
+  <title>Hudson 概要</title>
+  <shortdesc>主要对 Hudson 的基本功能和特性进行了简要的说明。</shortdesc>
   <prolog>
     <metadata>
       <keywords>
@@ -44,7 +44,8 @@
     </metadata>
   </prolog>
   <conbody>
-    <p>持续集成并整合自动测试，在近几年已经得到了广泛的使用。在持续集成的背后隐藏着软件公司对构建管理、发行管理、自动部署和测试流程方式的转变。</p>
-    <p>这部分提供了针对 Hudson 的一系列最佳实践。Hudson 作为一套持续集成的解决方案，能够为公司管理者、商业运行管理者、软件开发人员、架构师在软件开发过程中，提供最为有效管理。同时，也能为软件开发的生命周期中提供从开发进程到代码质量管理的有效控制。</p>
+    <image href="../../images/introduction_hudson_01.png">
+      <alt>Hudson 启动运行界面</alt>
+    </image>
   </conbody>
 </concept>
