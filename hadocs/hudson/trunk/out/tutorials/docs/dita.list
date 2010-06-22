@@ -1,12 +1,12 @@
-#Tue Jun 22 13:47:54 EDT 2010
+#Tue Jun 22 14:36:09 EDT 2010
 copytosourcelist=
-hreftargetslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita
+hreftargetslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita
 fullditatopicfile=fullditatopic.list
 fullditamapandtopicfile=fullditamapandtopic.list
-fullditatopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita
-fullditamapandtopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tutorials.ditamap
+fullditatopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita
+fullditamapandtopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita,tutorials.ditamap
 hrefditatopicfile=hrefditatopic.list
-hrefditatopiclist=tasks/info/hacopyright.dita,tasks/introduction/introduction.dita
+hrefditatopiclist=tasks/info/hacopyright.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita
 user.input.file=tutorials.ditamap
 subtargetsfile=subtargets.list
 fullditamapfile=fullditamap.list
@@ -23,11 +23,11 @@ conreflist=
 resourceonlyfile=resourceonly.list
 imagefile=image.list
 resourceonlylist=
-imagelist=images/introduction_hudson_01.png,images/halogo.jpg
+imagelist=images/introduction_webstart.gif,images/introduction_hudson_01.png,images/halogo.jpg
 htmlfile=html.list
 htmllist=
 canditopicsfile=canditopics.list
-canditopicslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita
+canditopicslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita
 keyreffile=keyref.list
 subjectschemefile=subjectscheme.list
 keyreflist=

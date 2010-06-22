@@ -1,18 +1,23 @@
-/*
-     This file is part of the DITA Open Toolkit project hosted on 
-     Sourceforge.net. See the accompanying license.txt file for 
-     applicable licenses.
-     (c) Copyright IBM Corp. 2004, 2009 All Rights Reserved.
-
-     This file uses a few simple settings to create a new look and
-     feel for the generated XHTML output. Note that most elements
-     are still styled based on the toolkit's default CSS file, while
-     this CSS file only provides a few overrides to that core style.
-
-     For a sample build that uses this CSS file, see the following Ant
-     build file within your toolkit install directory:
-     samples/ant_sample/sample_xhtml_plus_css.xml
-*/
+/**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * ---------------------------------------------
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * https://www.hawebs.org/forums/computer/
+ *
+ * CONTACT
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * ---------------------------------------------
+ * [A] GNU GENERAL PUBLIC LICENSE GNU/LGPL
+ * [B] Apache License, Version 2.0
+ *
+ * ---------------------------------------------
+ * NOTE
+ *
+ * ---------------------------------------------
+ */
 
 * {
 	padding-top: 0px;
@@ -24,6 +29,7 @@
 	margin-bottom: 0px;
 	margin-left: 0px;
 	top: auto;
+	border: none;
 }
 .topictitle1 {
 	font-size: 2.5em;

@@ -63,5 +63,6 @@
     <topicref href="tasks/introduction/what_hudson.dita"/>
     <topicref href="tasks/introduction/hudson_features.dita"/>
     <topicref href="tasks/introduction/hudson_best_practices.dita"/>
+    <topicref href="tasks/introduction/test_drive.dita"/>
   </topicref>
 </map>
