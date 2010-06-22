@@ -60,7 +60,7 @@
   <topicref navtitle="" href="tasks/info/hacopyright.dita"/>
   <topicref navtitle="Apache 许可证" href="tasks/info/apachelicense.dita"/>
   <topicref href="tasks/introduction/what_hudson.dita"/>
-  <topicref navtitle="过滤与标记内容" href="tasks/proccond.dita">
+  <topicref href="tasks/introduction/hudson_features.dita">
     <topicref navtitle="过滤内容" href="tasks/filtcontent.dita"/>
     <topicref navtitle="标记内容" href="tasks/flagcontent.dita"/>
     <topicref navtitle="显示版本" href="tasks/showrev.dita"/>
