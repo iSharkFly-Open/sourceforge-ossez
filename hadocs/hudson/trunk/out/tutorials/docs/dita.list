@@ -1,10 +1,10 @@
-#Mon Jun 21 23:38:09 EDT 2010
+#Tue Jun 22 13:08:45 EDT 2010
 copytosourcelist=
-hreftargetslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/flagcontent.dita,tasks/filtcontent.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/showrev.dita
+hreftargetslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/hudson_best_practices.dita
 fullditatopicfile=fullditatopic.list
 fullditamapandtopicfile=fullditamapandtopic.list
-fullditatopiclist=tasks/info/hacopyright.dita,tasks/flagcontent.dita,tasks/info/apachelicense.dita,tasks/filtcontent.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/showrev.dita
-fullditamapandtopiclist=tasks/info/hacopyright.dita,tasks/flagcontent.dita,tasks/info/apachelicense.dita,tasks/filtcontent.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/showrev.dita,tutorials.ditamap
+fullditatopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/hudson_best_practices.dita
+fullditamapandtopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/hudson_best_practices.dita,tutorials.ditamap
 hrefditatopicfile=hrefditatopic.list
 hrefditatopiclist=tasks/info/hacopyright.dita
 user.input.file=tutorials.ditamap
@@ -27,7 +27,7 @@ imagelist=images/halogo.jpg
 htmlfile=html.list
 htmllist=
 canditopicsfile=canditopics.list
-canditopicslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/flagcontent.dita,tasks/filtcontent.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/showrev.dita
+canditopicslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/hudson_best_practices.dita
 keyreffile=keyref.list
 subjectschemefile=subjectscheme.list
 keyreflist=
