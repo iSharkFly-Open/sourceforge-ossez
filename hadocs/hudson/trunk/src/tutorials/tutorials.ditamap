@@ -61,6 +61,7 @@
   <topicref href="tasks/info/apachelicense.dita"/>
   <topicref href="tasks/introduction/introduction.dita">
     <topicref href="tasks/introduction/what_hudson.dita"/>
+    <topicref href="tasks/introduction/hudson_origin.dita"/>
     <topicref href="tasks/introduction/hudson_features.dita"/>
     <topicref href="tasks/introduction/hudson_best_practices.dita"/>
     <topicref href="tasks/introduction/test_drive.dita"/>

@@ -1,12 +1,12 @@
-#Tue Jun 22 15:29:34 EDT 2010
+#Wed Jun 23 01:08:48 EDT 2010
 copytosourcelist=
-hreftargetslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/installation.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita
+hreftargetslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/hudson_origin.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/installation.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita
 fullditatopicfile=fullditatopic.list
 fullditamapandtopicfile=fullditamapandtopic.list
-fullditatopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/installation.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita
-fullditamapandtopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/installation.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita,tutorials.ditamap
+fullditatopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/hudson_origin.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/installation.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita
+fullditamapandtopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/hudson_origin.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/installation.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita,tutorials.ditamap
 hrefditatopicfile=hrefditatopic.list
-hrefditatopiclist=tasks/info/hacopyright.dita,tasks/introduction/installation.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita
+hrefditatopiclist=tasks/info/hacopyright.dita,tasks/introduction/hudson_origin.dita,tasks/introduction/installation.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita
 user.input.file=tutorials.ditamap
 subtargetsfile=subtargets.list
 fullditamapfile=fullditamap.list
@@ -23,11 +23,11 @@ conreflist=
 resourceonlyfile=resourceonly.list
 imagefile=image.list
 resourceonlylist=
-imagelist=images/introduction_webstart.gif,images/introduction_hudson_01.png,images/halogo.jpg
+imagelist=images/introduction_webstart.gif,images/introduction_hudson_01.png,images/halogo.jpg,images/introduction_ci.jpg
 htmlfile=html.list
 htmllist=
 canditopicsfile=canditopics.list
-canditopicslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/installation.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita
+canditopicslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/introduction/hudson_origin.dita,tasks/introduction/what_hudson.dita,tasks/introduction/hudson_features.dita,tasks/introduction/installation.dita,tasks/introduction/hudson_best_practices.dita,tasks/introduction/introduction.dita,tasks/introduction/test_drive.dita
 keyreffile=keyref.list
 subjectschemefile=subjectscheme.list
 keyreflist=
