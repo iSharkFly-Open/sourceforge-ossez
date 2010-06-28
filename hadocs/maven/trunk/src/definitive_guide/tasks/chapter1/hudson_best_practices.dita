@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="hudson_best_practices" xml:lang="zh">
+  <title>Hudson 最佳实践</title>
+  <shortdesc/>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Hudson</indexterm>
+        <indexterm>介绍</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>持续集成并整合自动测试，在近几年已经得到了广泛的使用。在持续集成的背后隐藏着软件公司对构建管理、发行管理、自动部署和测试流程方式的转变。</p>
+    <p>这部分提供了针对 Hudson 的一系列最佳实践。Hudson 作为一套持续集成的解决方案，能够为公司管理者、商业运行管理者、软件开发人员、架构师在软件开发过程中，提供最为有效管理。同时，也能为软件开发的生命周期中提供从开发进程到代码质量管理的有效控制。</p>
+  </conbody>
+</concept>
