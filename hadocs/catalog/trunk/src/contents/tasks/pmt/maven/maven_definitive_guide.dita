@@ -47,6 +47,6 @@
   <conbody>
     <p/>
     <p>参考手册的电子书请单击下面 连接。<note>单击链接将会弹出新窗口。</note></p>
-    <p><xref href="http://docs.hawebs.net/xhtml/hudson/tutorials/mainp.html" format="html" scope="external">Maven 权威指南</xref></p>
+    <p><xref href="http://docs.hawebs.net/xhtml/maven/definitive_guide/mainp.html" format="html" scope="external">Maven 权威指南</xref></p>
   </conbody>
 </concept>

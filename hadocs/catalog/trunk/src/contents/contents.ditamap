@@ -65,6 +65,8 @@
     </topicref>
   </topicref>
   <topicref href="tasks/pmt/pmt.dita">
-    <topicref href="tasks/pmt/maven/maven.dita"/>
+    <topicref href="tasks/pmt/maven/maven.dita">
+      <topicref href="tasks/pmt/maven/maven_definitive_guide.dita"/>
+    </topicref>
   </topicref>
 </map>

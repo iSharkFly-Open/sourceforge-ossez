@@ -1,12 +1,12 @@
-#Wed Jun 23 13:43:24 EDT 2010
+#Mon Jun 28 02:24:55 EDT 2010
 copytosourcelist=
-hreftargetslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/oss/oss.dita,tasks/oss/hudson/hudson.dita,tasks/oss/hudson/hudson_tutorials.dita
+hreftargetslist=tasks/info/apachelicense.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/oss/oss.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/oss/hudson/hudson.dita,tasks/pmt/pmt.dita,tasks/info/hacopyright.dita,tasks/pmt/maven/maven.dita
 fullditatopicfile=fullditatopic.list
 fullditamapandtopicfile=fullditamapandtopic.list
-fullditatopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/oss/oss.dita,tasks/oss/hudson/hudson.dita,tasks/oss/hudson/hudson_tutorials.dita
-fullditamapandtopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/oss/oss.dita,contents.ditamap,tasks/oss/hudson/hudson.dita,tasks/oss/hudson/hudson_tutorials.dita
+fullditatopiclist=tasks/info/apachelicense.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/oss/oss.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/oss/hudson/hudson.dita,tasks/pmt/pmt.dita,tasks/info/hacopyright.dita,tasks/pmt/maven/maven.dita
+fullditamapandtopiclist=tasks/info/apachelicense.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/oss/oss.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/oss/hudson/hudson.dita,tasks/pmt/pmt.dita,contents.ditamap,tasks/info/hacopyright.dita,tasks/pmt/maven/maven.dita
 hrefditatopicfile=hrefditatopic.list
-hrefditatopiclist=tasks/info/hacopyright.dita,tasks/oss/hudson/hudson_tutorials.dita
+hrefditatopiclist=tasks/oss/hudson/hudson_tutorials.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/info/hacopyright.dita
 user.input.file=contents.ditamap
 subtargetsfile=subtargets.list
 fullditamapfile=fullditamap.list
@@ -27,7 +27,7 @@ imagelist=images/halogo.jpg
 htmlfile=html.list
 htmllist=
 canditopicsfile=canditopics.list
-canditopicslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/oss/oss.dita,tasks/oss/hudson/hudson.dita,tasks/oss/hudson/hudson_tutorials.dita
+canditopicslist=tasks/info/apachelicense.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/oss/oss.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/oss/hudson/hudson.dita,tasks/pmt/pmt.dita,tasks/info/hacopyright.dita,tasks/pmt/maven/maven.dita
 keyreffile=keyref.list
 subjectschemefile=subjectscheme.list
 keyreflist=
