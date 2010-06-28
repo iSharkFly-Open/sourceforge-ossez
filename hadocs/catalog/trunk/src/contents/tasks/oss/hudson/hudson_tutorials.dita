@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="hudson_tutorials" xml:lang="zh">
+  <title>Hudson 快速入门</title>
+  <shortdesc>Hudson 快速入门参考手册</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>OSS</indexterm>
+        <indexterm>开放源代码</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>Hudson 用来监视可重复执行的工作。例如，用来构建一个软工程或者后台守护进程自动执行任务。Hudson 可以完成很多工作。</p>
+    <p>参考手册的电子书请单击下面 连接。<note>单击链接将会弹出新窗口。</note></p>
+    <p><xref format="html" scope="external" href="http://docs.hawebs.net/xhtml/hudson/tutorials/mainp.html">Hudson 快速入门</xref></p>
+  </conbody>
+</concept>
