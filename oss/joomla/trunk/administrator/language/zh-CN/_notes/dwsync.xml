@@ -7,7 +7,7 @@
 <file name="zh-CN.com_attachments.menu.ini" server="hawebs.net//www/hawebs.net/news/" local="129211082238437500" remote="129220045800000000" />
 <file name="zh-CN.com_cache.ini" server="hawebs.net//www/hawebs.net/news/" local="129211203049218750" remote="129220045800000000" />
 <file name="zh-CN.com_newsfeeds.ini" server="hawebs.net//www/hawebs.net/news/" local="129220079527656250" remote="129220045800000000" />
-<file name="zh-CN.com_newsfeeds.menu.ini" server="hawebs.net//www/hawebs.net/news/" local="129220079605781250" remote="129220045800000000" />
+<file name="zh-CN.com_newsfeeds.menu.ini" server="hawebs.net//www/hawebs.net/news/" local="129220083716406250" remote="129222201000000000" />
 <file name="zh-CN.ini" server="hawebs.net//www/hawebs.net/news/" local="129220026303906250" remote="129220045800000000" />
 <file name="zh-CN.mod_menu.ini" server="hawebs.net//www/hawebs.net/news/" local="129211202126093750" remote="129220045800000000" />
 <file name="zh-CN.mod_quickicon.ini" server="hawebs.net//www/hawebs.net/news/" local="129211914990625000" remote="129220045800000000" />
@@ -50,5 +50,5 @@
 <file name="zh-CN.plg_user_joomla.ini" server="hawebs.net//www/hawebs.net/news/" local="129211793524062500" remote="129220045800000000" />
 <file name="zh-CN.plg_xmlrpc_blogger.ini" server="hawebs.net//www/hawebs.net/news/" local="129211792516406250" remote="129220045800000000" />
 <file name="zh-CN.plg_xmlrpc_joomla.ini" server="hawebs.net//www/hawebs.net/news/" local="129211792923125000" remote="129220045800000000" />
-<file name="zh-CN.xml" server="hawebs.net//www/hawebs.net/news/" local="129217135427500000" remote="129220045800000000" />
+<file name="zh-CN.xml" server="hawebs.net//www/hawebs.net/news/" local="129222236927187500" remote="129222201000000000" />
 </dwsync>

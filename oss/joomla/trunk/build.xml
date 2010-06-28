@@ -32,7 +32,7 @@
 	<target name="zh_cn.lang">
 		<zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_zh_cn_${current.rev}_${hawebs.nightly.build.number}.zip" 
 			basedir="${basedir}"
-			includes="**/zh-CN.*.ini,Readme_zh.txt"
+			includes="**/zh-CN.*,Readme_zh.txt"
 		/>
 	</target>
 	
