@@ -60,6 +60,7 @@ h1, h2, h3 {
 p, ul, ol, dl {
 	margin-top: 0.2em;
 	margin-bottom: 0.8em;
+	line-height: 1.6em;
 }
 ul, ol, dl {
 	margin-left: 1.2em;
@@ -75,23 +76,17 @@ blockquote {
 	margin-right: 3em;
 	font-style: italic;
 }
-
-
 a {
 	border: none;
 	text-decoration: underline;
 	color: #004080;
-
 	line-height: 1.4em;
 }
-
 a:hover {
 	border: none;
 	color: #FF3333;
 	text-decoration:none;
 }
-
-
 /* Header */
 
 #header {
@@ -100,11 +95,13 @@ a:hover {
 	margin: 20;
 	float: left;
 }
-
-pre {
+.pre {
 	font-family: "Courier New", Courier, monospace;
 }
-
-.codeph{
+.codeph {
 	font-family: "Courier New", Courier, monospace;
-}	
+}
+.cmdname {
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight: bolder;
+}
