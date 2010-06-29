@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="一个一般的接口"/>
+<meta name="DC.subject" content="Apache, Maven, 介绍"/>
+<meta name="keywords" content="Apache, Maven, 介绍"/>
+<meta name="DC.Relation" scheme="URI" content="../../tasks/chapter1/chapter1.html"/>
+<meta name="prodname" content="Maven权威指南"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS Maven"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="chapter1_3"/>
+<meta name="DC.Language" content="zh"/>
+<link rel="stylesheet" type="text/css" href="../../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+<title>一个一般的接口</title>
+</head>
+<body id="chapter1_3"><a name="chapter1_3"><!-- --></a>
+
+
+  <h1 class="topictitle1">一个一般的接口 </h1>
+
+  
+  <div>
+    <p>在 Maven 为构建软件提供一个一般的接口之前，每个单独的项目都专门有人来管理一个完全自定义的构建系统。开发人员必须在开发软件之外去学习每个他们要参与的新项目的构建系统的特点。 在2001年，构建一个项目如 <a href="http://turbine.apache.org/" target="_blank">Turbine</a>  和构建另外一个项目如 <a href="http://tomcat.apache.org/" target="_blank">Tomcat</a>  ，两者方法是完全不同的。如果一个新的进行静态源码分析的源码分析工具面世了，或者如果有人开发了一个新的单元测试框架，每个人都必须放下手头的工作去想办法使这个新东西适应每个项目的自定义构建环境。 如何运行单元测试？世界上有一千种不同的答案。构建环境由无数无休止的关于工具和构建程序的争论所描述刻画。Maven 之前的时代是低效率的时代，是“构建工程师”的时代。  </p>
+
+    <p>现在，大部分开源开发者已经或者正在使用 Maven 来管理他们新的软件项目。这种转变不仅仅是开发人员从一种构建工具转移到另外一种构建工具，更是开发人员开始为他们的项目采用一种一般的接口。随着软件系统变得越来越模块化，构建系统变得更复杂，而项目的数量更是如火箭般飞速上升。在 Maven 之前，当你想要从 Subversion 签出一个项目如 <a href="http://activemq.apache.org/" target="_blank">Apache ActiveMQ</a> 或 <a href="http://servicemix.apache.org/home.html" target="_blank">Apache ServiceMix</a>  ，然后从源码进行构建，你需要为每个项目留出一个小时来理解给它的构建系统。这个项目需要构建什么？需要现在什么类库？把类库放哪里？构建中我该运行什么目标？最好的情况下，理解一个新项目的构建需要几分钟，最坏的情况下（例如 Jakarta 项目的旧的 Servlet API 实现），一个项目的构建特别的困难，以至于花了几个小时以后，新的贡献者也只能编辑源码和编译项目。现在，你只要签出源码，然后运行：<span class="cmdname">mvn install</span>。虽然 Maven 有很多优点，包括依赖管理和通过插件重用一般的构建逻辑，但它成功的最核心原因是它定义了构建软件的一般的接口。每当你看到一个使用 Maven 的项目如 <a href="http://wicket.apache.org/" target="_blank">Apache Wicket</a>  ，你就可以假设你能签出它的源码然后使用 <span class="cmdname">mvn install</span>  构建它，没什么好争论的。你知道点火开关在哪里，你知道油门在右边，刹车在左边。 </p>
+
+  </div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../../tasks/chapter1/chapter1.html" title="主要对 Apache Maven 进行了简要的描述。">介绍 Apache Maven</a></div>
+</div>
+</div>
+
+</body>
+</html>

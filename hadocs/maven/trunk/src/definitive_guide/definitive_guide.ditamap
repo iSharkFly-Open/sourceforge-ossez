@@ -60,7 +60,8 @@
   <topicref navtitle="" href="tasks/info/hacopyright.dita"/>
   <topicref href="tasks/info/apachelicense.dita"/>
   <topicref href="tasks/chapter1/chapter1.dita">
-    <topicref href="tasks/chapter1/chapter1_1.dita"/>
+    <topicref href="tasks/chapter1/chapter1_1.dita"/>
     <topicref href="tasks/chapter1/chapter1_2.dita"/>
+    <topicref href="tasks/chapter1/chapter1_3.dita"/>
   </topicref>
 </map>
