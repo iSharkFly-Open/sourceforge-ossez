@@ -1,10 +1,10 @@
-#Mon Jun 28 22:39:06 EDT 2010
+#Tue Jun 29 00:35:05 EDT 2010
 copytosourcelist=
-hreftargetslist=tasks/info/apachelicense.dita,tasks/chapter1/chapter1_1.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_2.dita,tasks/info/hacopyright.dita
+hreftargetslist=tasks/info/apachelicense.dita,tasks/chapter1/chapter1_1.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_2.dita,tasks/info/hacopyright.dita,tasks/chapter1/chapter1_4.dita
 fullditatopicfile=fullditatopic.list
 fullditamapandtopicfile=fullditamapandtopic.list
-fullditatopiclist=tasks/info/apachelicense.dita,tasks/chapter1/chapter1_1.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_2.dita,tasks/info/hacopyright.dita
-fullditamapandtopiclist=tasks/info/apachelicense.dita,tasks/chapter1/chapter1_1.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_2.dita,definitive_guide.ditamap,tasks/info/hacopyright.dita
+fullditatopiclist=tasks/info/apachelicense.dita,tasks/chapter1/chapter1_1.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_2.dita,tasks/info/hacopyright.dita,tasks/chapter1/chapter1_4.dita
+fullditamapandtopiclist=tasks/info/apachelicense.dita,tasks/chapter1/chapter1_1.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_2.dita,definitive_guide.ditamap,tasks/info/hacopyright.dita,tasks/chapter1/chapter1_4.dita
 hrefditatopicfile=hrefditatopic.list
 hrefditatopiclist=tasks/chapter1/chapter1_1.dita,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_2.dita,tasks/info/hacopyright.dita
 user.input.file=definitive_guide.ditamap
@@ -27,7 +27,7 @@ imagelist=images/halogo.jpg
 htmlfile=html.list
 htmllist=
 canditopicsfile=canditopics.list
-canditopicslist=tasks/info/apachelicense.dita,tasks/chapter1/chapter1_1.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_2.dita,tasks/info/hacopyright.dita
+canditopicslist=tasks/info/apachelicense.dita,tasks/chapter1/chapter1_1.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_2.dita,tasks/info/hacopyright.dita,tasks/chapter1/chapter1_4.dita
 keyreffile=keyref.list
 subjectschemefile=subjectscheme.list
 keyreflist=

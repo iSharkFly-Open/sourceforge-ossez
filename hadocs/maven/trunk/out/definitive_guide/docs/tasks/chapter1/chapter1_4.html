@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="基于Maven插件的全局性重用"/>
+<meta name="DC.subject" content="Apache, Maven, 介绍"/>
+<meta name="keywords" content="Apache, Maven, 介绍"/>
+<meta name="DC.Relation" scheme="URI" content="../../tasks/chapter1/chapter1.html"/>
+<meta name="prodname" content="Maven权威指南"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS Maven"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="chapter1_4"/>
+<meta name="DC.Language" content="zh"/>
+<link rel="stylesheet" type="text/css" href="../../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+<title>基于Maven插件的全局性重用</title>
+</head>
+<body id="chapter1_4"><a name="chapter1_4"><!-- --></a>
+
+
+  <h1 class="topictitle1">基于Maven插件的全局性重用 </h1>
+
+  
+  <div>
+    <p>Maven 的核心其实不做什么实际的事情，除了解析一些 XML 文档，管理生命周期与插件之外，它什么也不懂。Maven 被设计成将主要的职责委派给一组 Maven 插件，这些插件可以影响 Maven 生命周期，提供对目标的访问。绝大多数 Maven 的动作发生于 Maven 插件的目标，如编译源码，打包二进制代码，发布站点和其它构建任务。你从 Apache 下载的 Maven 不知道如何打包 WAR 文件，也不知道如何运行单元测试，Maven 大部分的智能是由插件实现的，而插件从 Maven 仓库获得。事实上，第一次你用全新的 Maven 安装运行诸如 <span class="cmdname">mvn install</span> 命令的时候，它会从中央 Maven 仓库下载大部分核心 Maven 插件。这不仅仅是一个最小化 Maven 分发包大小的技巧，这种方式更能让你升级插件以给你项目的构建提高能力。Maven 从远程仓库获取依赖和插件的这一事实允许了构建逻辑的全局性重用。 </p>
+
+    <p>Maven Surefire 插件是负责运行单元测试的插件。从版本 1.0 发展到目前广泛使用的在 JUnit 基础上增加了 TestNG 测试框架支持的版本。这种发展并没有破坏向后兼容性，如果你使用之前 Surefire 插件编译运行你的 JUnit 3 单元测试，然后你升级到了最新版本的 Surefire 插件，你的测试仍然能成功运行。但是，我们又获得了新的功能，如果你想使用 TestNG 运行单元测试，那么感谢 Surefire 插件的维护者，你已经可以使用 TestNG 了。你也能运行支持注解的 JUnit 4 单元测试。不用升级 Maven 安装或者新装任何软件，你就能获得这些功能。更重要的是，除了 POM  中一个插件的版本号，你不需要更改你项目的任何东西。 </p>
+
+    <p>这种机制不仅仅适用于 Surefire 插件，项目使用 Compiler 插件进行编译，通过 Jar 插件变成 JAR 文件，还有一些插件生成报告，运行 JRuby 和 Groovy 的代码，以及一些用来向远程服务器发布站点的插件。Maven 将一般的构建任务抽象成插件，同时这些插件得到了很好的维护以及全局的共享，你不需要从头开始自定义你项目的构建系统然后提供支持。你完全可以从 Maven 插件获益，这些插件有人维护，可以从远程仓库下载到。这就是基于 Maven 插件的全局性重用。 </p>
+
+  </div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../../tasks/chapter1/chapter1.html" title="主要对 Apache Maven 进行了简要的描述。">介绍 Apache Maven</a></div>
+</div>
+</div>
+
+</body>
+</html>
