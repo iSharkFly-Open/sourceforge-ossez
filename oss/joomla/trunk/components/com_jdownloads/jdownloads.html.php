@@ -2,7 +2,7 @@
 /**
 * @version 1.5
 * @package JDownloads
-* @copyright (C) 2009 www.jdownloads.com
+* @copyright (C) 2009 Arno Betz - www.jdownloads.com
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
 *
 * 
@@ -44,12 +44,18 @@ function treeSelectList( &$src_list, $src_id, $tgt_list, $tag_name, $tag_attribs
       }
 
 defined( '_JEXEC' ) or die( 'Restricted access-html' );
+$jlistConfig = buildjlistConfig();
 ?>
     <script src="<?php echo JURI::base();?>components/com_jdownloads/jdownloads.js" type="text/javascript"></script>
-    <script src="<?php echo JURI::base();?>components/com_jdownloads/lightbox/lightbox.js" type="text/javascript"></script>
     <script src="<?php echo JURI::base();?>components/com_jdownloads/rating/js/ajaxvote.js" type="text/javascript"></script>
 <?php
 
+if ($jlistConfig['use.lightbox.function']){
+    ?>
+    <script src="<?php echo JURI::base();?>components/com_jdownloads/lightbox/lightbox.js" type="text/javascript"></script>
+    <?php
+}    
+$mainframe->addCustomHeadTag('<script type="text/javascript">var live_site = "'.JURI::base().'";</script>');
 $mainframe->addCustomHeadTag( "<link href=\"".JURI::base()."components/com_jdownloads/jdownloads_fe.css\" rel=\"stylesheet\" type=\"text/css\"/>" );
 $mainframe->addCustomHeadTag( "<link href=\"".JURI::base()."components/com_jdownloads/lightbox/lightbox.css\" rel=\"stylesheet\" type=\"text/css\"/>" );
 $mainframe->addCustomHeadTag( "<link href=\"".JURI::base()."components/com_jdownloads/rating/css/ajaxvote.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\"/>" ); 
@@ -63,11 +69,11 @@ class jlist_HTML{
 /  Nur Kategorien-Übersicht anzeigen
 ############################################################## */
 	function showCats($option, $cats, $total, $sum_pages, $limit, $limitstart, $site_aktuell, $sub_cats, $sub_files, $sum_all_cats, $totalfiles, $no_cats){
-		global $jlistConfig, $jlistTemplates, $Itemid, $mainframe;
+		global $jlistConfig, $jlistTemplates, $Itemid, $mainframe, $page_title;
 		$user = &JFactory::getUser();
 		$database = &JFactory::getDBO();
 	     
-    $mainframe->setPageTitle( $jlistConfig['jd.header.title']);
+    $mainframe->setPageTitle($page_title);
     
     $html_cat = makeHeader($html_cat, true, true, false, 0, false, false, false, false, false, $sum_pages, $limit, $total, $limitstart, $site_aktuell);
     echo $html_cat;
@@ -96,7 +102,7 @@ class jlist_HTML{
                    // symbol anzeigen - auch als url
                    if ($cats[$i]->cat_pic != '' ) {
                        $size = $jlistConfig['cat.pic.size'];
-                       $catpic = $catlink.'<img src="images/jdownloads/catimages/'.$cats[$i]->cat_pic.'" align="top" width="'.$size.'" height="'.$size.'" border="0" alt="" /> </a>';
+                       $catpic = $catlink.'<img src="'.JURI::base().'images/jdownloads/catimages/'.$cats[$i]->cat_pic.'" align="top" width="'.$size.'" height="'.$size.'" border="0" alt="" /> </a>';
                    } else {
                        $catpic = '';
                    }                   
@@ -121,7 +127,7 @@ class jlist_HTML{
                    $html_cat = str_replace('{cat_info_begin}', "", $html_cat);
                    // google adsense
                    if ($jlistConfig['google.adsense.active']){
-                      $html_cat = str_replace('{google_adsense}', $jlistConfig['google.adsense.code'], $html_cat);
+                      $html_cat = str_replace('{google_adsense}', stripslashes($jlistConfig['google.adsense.code']), $html_cat);
                    } else {
                       $html_cat = str_replace('{google_adsense}', '', $html_cat);
                    } 
@@ -152,7 +158,7 @@ class jlist_HTML{
                 echo JText::_('JLIST_BACKEND_OFFLINE_ADMIN_MESSAGE_TEXT');
                 echo $html_cat;
             } else {
-                $html_off = '<br /><br />'.$jlistConfig['offline.text'].'<br /><br />';
+                $html_off = '<br /><br />'.stripslashes($jlistConfig['offline.text']).'<br /><br />';
                 $html_off .= $footer;
                 echo $html_off;
             }
@@ -164,11 +170,11 @@ class jlist_HTML{
 /  Nur Kategorien-Übersicht anzeigen
 ############################################################## */
     function showCatswithColumns($option, $cats, $total, $sum_pages, $limit, $limitstart, $site_aktuell, $sub_cats, $sub_files, $sum_all_cats, $totalfiles, $columns, $no_cats){
-        global $jlistConfig, $jlistTemplates, $Itemid, $mainframe;
+        global $jlistConfig, $jlistTemplates, $Itemid, $mainframe, $page_title;
         $user = &JFactory::getUser();
         $database = &JFactory::getDBO();
          
-    $mainframe->setPageTitle( $jlistConfig['jd.header.title']);
+    $mainframe->setPageTitle($page_title);
     
     $html_cat = makeHeader($html_cat, true, true, false, 0, false, false, false, false, false, $sum_pages, $limit, $total, $limitstart, $site_aktuell);
     echo $html_cat;
@@ -206,7 +212,7 @@ class jlist_HTML{
                    // symbol anzeigen - auch als url
                    if ($cats[$i]->cat_pic != '' ) {
                        $size = $jlistConfig['cat.pic.size'];
-                       $catpic = $catlink.'<img src="images/jdownloads/catimages/'.$cats[$i]->cat_pic.'" align="top" width="'.$size.'" height="'.$size.'" border="0" alt="" /> </a>';
+                       $catpic = $catlink.'<img src="'.JURI::base().'images/jdownloads/catimages/'.$cats[$i]->cat_pic.'" align="top" width="'.$size.'" height="'.$size.'" border="0" alt="" /> </a>';
                    } else {
                        $catpic = '';
                    }                   
@@ -252,7 +258,7 @@ class jlist_HTML{
                    $html_cat = str_replace('{cat_info_begin}', "", $html_cat);
                    // google adsense
                    if ($jlistConfig['google.adsense.active']){
-                      $html_cat = str_replace('{google_adsense}', $jlistConfig['google.adsense.code'], $html_cat);
+                      $html_cat = str_replace('{google_adsense}', stripslashes($jlistConfig['google.adsense.code']), $html_cat);
                    } else {
                       $html_cat = str_replace('{google_adsense}', '', $html_cat);
                    }                    
@@ -295,7 +301,7 @@ class jlist_HTML{
                 echo JText::_('JLIST_BACKEND_OFFLINE_ADMIN_MESSAGE_TEXT');
                 echo $html_cat;
             } else {
-                $html_off = '<br /><br />'.$jlistConfig['offline.text'].'<br /><br />';
+                $html_off = '<br /><br />'.stripslashes($jlistConfig['offline.text']).'<br /><br />';
                 $html_off .= $footer;
                 echo $html_off;
             }
@@ -312,7 +318,7 @@ class jlist_HTML{
 		$database = &JFactory::getDBO();
         $app = &JFactory::getApplication();
     
-    $mainframe->setPageTitle( $jlistConfig['jd.header.title'].' - '.$cat[0]->cat_title ); 
+    $mainframe->setPageTitle($page_title.' - '.$cat[0]->cat_title ); 
     $mainframe->appendMetaTag( 'keywords' , strip_tags($cat[0]->metakey ));  
     $mainframe->appendMetaTag( 'description' , strip_tags($cat[0]->metadesc)); 
     $sum_subs = count($subcats);
@@ -325,7 +331,7 @@ class jlist_HTML{
         // get pic
         if ($cat[0]->cat_pic != '' ) {
             $size = $jlistConfig['cat.pic.size'];
-            $catpic = '<img src="images/jdownloads/catimages/'.$cat[0]->cat_pic.'" align="top" width="'.$size.'" height="'.$size.'" border="0" alt="" /> ';
+            $catpic = '<img src="'.JURI::base().'images/jdownloads/catimages/'.$cat[0]->cat_pic.'" align="top" width="'.$size.'" height="'.$size.'" border="0" alt="" /> ';
         } else {
             $catpic = '';
         }
@@ -382,7 +388,7 @@ class jlist_HTML{
         }
         // google adsense
         if ($jlistConfig['google.adsense.active']){
-            $html_cat = str_replace('{google_adsense}', $jlistConfig['google.adsense.code'], $html_cat);
+            $html_cat = str_replace('{google_adsense}', stripslashes($jlistConfig['google.adsense.code']), $html_cat);
         } else {
             $html_cat = str_replace('{google_adsense}', '', $html_cat);
         }         
@@ -403,7 +409,7 @@ class jlist_HTML{
                  // Symbol anzeigen - auch als url
                  if ($subcats[$i]->cat_pic != '' ) {
                      $size = $jlistConfig['cat.pic.size'];
-                     $catpic = $catlink.'<img src="images/jdownloads/catimages/'.$subcats[$i]->cat_pic.'" align="top" width="'.$size.'" height="'.$size.'" border="0" alt="" /> </a>';
+                     $catpic = $catlink.'<img src="'.JURI::base().'images/jdownloads/catimages/'.$subcats[$i]->cat_pic.'" align="top" width="'.$size.'" height="'.$size.'" border="0" alt="" /> </a>';
                  } else {
                      $catpic = '';
                  }                         
@@ -439,7 +445,7 @@ class jlist_HTML{
                             // Symbol anzeigen - auch als url
                             if ($subcats[$i]->cat_pic != '' ) {
                                 $size = $jlistConfig['cat.pic.size'];
-                                $catpic = $catlink.'<img src="images/jdownloads/catimages/'.$subcats[$i]->cat_pic.'" align="top" width="'.$size.'" height="'.$size.'" border="0" alt="" /> </a>';
+                                $catpic = $catlink.'<img src="'.JURI::base().'images/jdownloads/catimages/'.$subcats[$i]->cat_pic.'" align="top" width="'.$size.'" height="'.$size.'" border="0" alt="" /> </a>';
                             } else {
                                 $catpic = '';
                             }
@@ -461,6 +467,7 @@ class jlist_HTML{
                      }
                      $html_cat = str_replace('{sum_files_cat}', JText::_('JLIST_FRONTEND_COUNT_FILES').' '.$sum_subfiles[$i], $html_cat);
                  }
+                   
                     $html_cat = str_replace('{cat_description}', $subcats[$i]->cat_description, $html_cat);
                     $html_cat = str_replace('{cat_pic}', $catpic, $html_cat);
                     $html_cat = str_replace('{cat_info_begin}', '', $html_cat); 
@@ -486,7 +493,7 @@ class jlist_HTML{
            }
             // google adsense
             if ($jlistConfig['google.adsense.active']){
-                $html_cat = str_replace('{google_adsense}', $jlistConfig['google.adsense.code'], $html_cat);
+                $html_cat = str_replace('{google_adsense}', stripslashes($jlistConfig['google.adsense.code']), $html_cat);
             } else {
                 $html_cat = str_replace('{google_adsense}', '', $html_cat);
             }
@@ -504,19 +511,19 @@ class jlist_HTML{
         // anzeigen wenn im Layout aktiviert (0 = aktiv !!)
         if ($jlistTemplates[2][0]->symbol_off == 0 ) {
             $msize =  $jlistConfig['info.icons.size'];
-            $pic_date = '<img src="images/jdownloads/miniimages/date.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DATE').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DATE').'" />&nbsp;';
-            $pic_license = '<img src="images/jdownloads/miniimages/license.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_LICENCE').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_LICENCE').'" />&nbsp;';
-            $pic_author = '<img src="images/jdownloads/miniimages/contact.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_AUTHOR').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_AUTHOR').'" />&nbsp;';
-            $pic_website = '<img src="images/jdownloads/miniimages/weblink.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_WEBSITE').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_WEBSITE').'" />&nbsp;';
-            $pic_system = '<img src="images/jdownloads/miniimages/system.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_SYSTEM').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_SYSTEM').'" />&nbsp;';
-            $pic_language = '<img src="images/jdownloads/miniimages/language.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_LANGUAGE').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_LANGUAGE').'" />&nbsp;';
-            $pic_downloads = '<img src="images/jdownloads/miniimages/download.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DOWNLOAD').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DOWNLOAD_HITS').'" />&nbsp;';
-            $pic_download = '<img src="images/jdownloads/miniimages/download.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DOWNLOAD').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DOWNLOAD').'" />&nbsp;';
-            $pic_price = '<img src="images/jdownloads/miniimages/currency.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_PRICE').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_PRICE').'" />&nbsp;';
-            $pic_size = '<img src="images/jdownloads/miniimages/stuff.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_FILESIZE').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_FILESIZE').'" />&nbsp;';
+            $pic_date = '<img src="'.JURI::base().'images/jdownloads/miniimages/date.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DATE').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DATE').'" />&nbsp;';
+            $pic_license = '<img src="'.JURI::base().'images/jdownloads/miniimages/license.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_LICENCE').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_LICENCE').'" />&nbsp;';
+            $pic_author = '<img src="'.JURI::base().'images/jdownloads/miniimages/contact.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_AUTHOR').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_AUTHOR').'" />&nbsp;';
+            $pic_website = '<img src="'.JURI::base().'images/jdownloads/miniimages/weblink.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_WEBSITE').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_WEBSITE').'" />&nbsp;';
+            $pic_system = '<img src="'.JURI::base().'images/jdownloads/miniimages/system.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_SYSTEM').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_SYSTEM').'" />&nbsp;';
+            $pic_language = '<img src="'.JURI::base().'images/jdownloads/miniimages/language.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_LANGUAGE').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_LANGUAGE').'" />&nbsp;';
+            $pic_downloads = '<img src="'.JURI::base().'images/jdownloads/miniimages/download.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DOWNLOAD').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DOWNLOAD_HITS').'" />&nbsp;';
+            $pic_download = '<img src="'.JURI::base().'images/jdownloads/miniimages/download.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DOWNLOAD').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DOWNLOAD').'" />&nbsp;';
+            $pic_price = '<img src="'.JURI::base().'images/jdownloads/miniimages/currency.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_PRICE').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_PRICE').'" />&nbsp;';
+            $pic_size = '<img src="'.JURI::base().'images/jdownloads/miniimages/stuff.png" align="middle" width="'.$msize.'" height="'.$msize.'" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_FILESIZE').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_FILESIZE').'" />&nbsp;';
         }
         // a little pic for extern links
-        $extern_url_pic = '<img src="'.JURI::base().'components/com_jdownloads/images/link_extern.gif" />';
+        $extern_url_pic = '<img src="'.JURI::base().'components/com_jdownloads/images/link_extern.gif" alt="" />';
 
         // files der cat anzeigen
         for ($i=0; $i<count($files); $i++) {
@@ -556,10 +563,12 @@ class jlist_HTML{
              $html_file = str_replace('{created_by_title}', JText::_('JLIST_FE_FILELIST_CREATED_BY_TITLE'), $html_file);
              $html_file = str_replace('{modified_by_title}', JText::_('JLIST_FE_FILELIST_MODIFIED_BY_TITLE'), $html_file);
              $html_file = str_replace('{modified_date_title}', JText::_('JLIST_FE_FILELIST_MODIFIED_DATE_TITLE'), $html_file);
+             $html_file = str_replace('{file_date_title}', JText::_('JLIST_FE_FILELIST_FILE_DATE_TITLE'), $html_file);
              $html_file = str_replace('{file_name}', $files[$i]->url_download, $html_file);
+             
              // google adsense
              if ($jlistConfig['google.adsense.active']){
-                 $html_file = str_replace('{google_adsense}', $jlistConfig['google.adsense.code'], $html_file);
+                 $html_file = str_replace('{google_adsense}', stripslashes($jlistConfig['google.adsense.code']), $html_file);
              } else {
                  $html_file = str_replace('{google_adsense}', '', $html_file);
              } 
@@ -597,19 +606,19 @@ class jlist_HTML{
                 // Symbol anzeigen - auch als url
                 if ($files[$i]->file_pic != '' ) {
                     $fpicsize = $jlistConfig['file.pic.size'];
-                    $filepic = '<a href="'.$titel_link.'">'.'<img src="images/jdownloads/fileimages/'.$files[$i]->file_pic.'" align="top" width="'.$fpicsize.'" height="'.$fpicsize.'" border="0" alt="" /> </a>';
+                    $filepic = '<a href="'.$titel_link.'">'.'<img src="'.JURI::base().'images/jdownloads/fileimages/'.$files[$i]->file_pic.'" align="top" width="'.$fpicsize.'" height="'.$fpicsize.'" border="0" alt="" /> </a>';
                 } else {
                     $filepic = '';
                 }
                 $html_file = str_replace('{file_pic}',$filepic, $html_file);
                 // link zu details am ende
-                $html_file = str_replace('{link_to_details}',$detail_link_text, $html_file);
+                $html_file = str_replace('{link_to_details}','<br />'.$detail_link_text, $html_file);
                 $html_file = str_replace('{file_title}', $titel_link_text, $html_file);
             } else {
                 // no links
                 if ($files[$i]->file_pic != '' ) {
                     $fpicsize = $jlistConfig['file.pic.size'];
-                    $filepic = '<img src="images/jdownloads/fileimages/'.$files[$i]->file_pic.'" align="top" width="'.$fpicsize.'" height="'.$fpicsize.'" border="0" alt="" />';
+                    $filepic = '<img src="'.JURI::base().'images/jdownloads/fileimages/'.$files[$i]->file_pic.'" align="top" width="'.$fpicsize.'" height="'.$fpicsize.'" border="0" alt="" />';
                 } else {
                     $filepic = '';
                 }
@@ -649,12 +658,21 @@ class jlist_HTML{
                }    
             }  
                 
-            $html_file = str_replace('{description}', $files[$i]->description, $html_file);
+             if ($jlistConfig['auto.file.short.description'] && $jlistConfig['auto.file.short.description.value'] > 0){
+                 if (strlen($files[$i]->description) > $jlistConfig['auto.file.short.description.value']){ 
+                     $shorted_text=preg_replace("/[^ ]*$/", '..', substr($files[$i]->description, 0, $jlistConfig['auto.file.short.description.value']));
+                     $html_file = str_replace('{description}', $shorted_text, $html_file);
+                 } else {
+                     $html_file = str_replace('{description}', $files[$i]->description, $html_file);
+                 }    
+             } else {
+                 $html_file = str_replace('{description}', $files[$i]->description, $html_file);
+             }   
 
             // pics for: new file / hot file / updated
-            $hotpic = '<img src="'.JURI::base().'images/jdownloads/hotimages/'.$jlistConfig['picname.is.file.hot'].'"/>';
-            $newpic = '<img src="'.JURI::base().'images/jdownloads/newimages/'.$jlistConfig['picname.is.file.new'].'"/>';
-            $updatepic = '<img src="'.JURI::base().'images/jdownloads/updimages/'.$jlistConfig['picname.is.file.updated'].'"/>';
+            $hotpic = '<img src="'.JURI::base().'images/jdownloads/hotimages/'.$jlistConfig['picname.is.file.hot'].'" alt="" />';
+            $newpic = '<img src="'.JURI::base().'images/jdownloads/newimages/'.$jlistConfig['picname.is.file.new'].'" alt="" />';
+            $updatepic = '<img src="'.JURI::base().'images/jdownloads/updimages/'.$jlistConfig['picname.is.file.updated'].'" alt="" />';
 
             if ($jlistConfig['loads.is.file.hot'] > 0 && $files[$i]->downloads >= $jlistConfig['loads.is.file.hot'] ){
                 $html_file = str_replace('{pic_is_hot}', $hotpic, $html_file);
@@ -702,7 +720,7 @@ class jlist_HTML{
                     $info = getID3v2Tags($mp3_path_abs);
                     if ($info){
                         // add it
-                        $mp3_info = $jlistConfig['mp3.info.layout'];
+                        $mp3_info = stripslashes($jlistConfig['mp3.info.layout']);
                         $mp3_info = str_replace('{name_title}', JText::_('JLIST_FE_VIEW_ID3_TITLE'), $mp3_info);
                         $mp3_info = str_replace('{name}', $files[$i]->url_download, $mp3_info);
                         $mp3_info = str_replace('{album_title}', JText::_('JLIST_FE_VIEW_ID3_ALBUM'), $mp3_info);
@@ -731,7 +749,7 @@ class jlist_HTML{
             $lic = array();
             if ($files[$i]->license == '') $files[$i]->license = 0;
             $database->setQuery('SELECT * from #__jdownloads_license WHERE id = '.$files[$i]->license);
-            $database->loadObject( $lic );
+            $lic = $database->loadObject();
             $lic_data = '';
             if (!$lic->license_url == '') {
                 $lic_data = $pic_license.'<a href="'.$lic->license_url.'" target="_blank" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_LICENCE').'">'.$lic->license_title.'</a> '.$extern_url_pic;
@@ -759,6 +777,7 @@ class jlist_HTML{
 
 			$html_file = str_replace('{cat_id}', $files[$i]->cat_id, $html_file);
 			
+            // file size
             if (!$files[$i]->size == '') {
                 $html_file = str_replace('{size}', $pic_size.$files[$i]->size, $html_file);
                 $html_file = str_replace('{filesize_value}', $pic_size.$files[$i]->size, $html_file);
@@ -767,13 +786,23 @@ class jlist_HTML{
                 $html_file = str_replace('{filesize_value}', '', $html_file);
             }
             
+            // price
             if (!$files[$i]->price == '') {
                 $html_file = str_replace('{price_value}', $pic_price.$files[$i]->price, $html_file);
             } else {
                 $html_file = str_replace('{price_value}', '', $html_file);
             }
 
-            if (!$files[$i]->date_added == '') {
+            // file_date
+            if ($files[$i]->file_date != '0000-00-00 00:00:00') {
+                 $filedate_data = $pic_date.substr(JHTML::_('date',$files[$i]->file_date, $jlistConfig['global.datetime'], $offset = NULL),0,10);
+            } else {
+                 $filedate_data = '';
+            }
+            $html_file = str_replace('{file_date}',$filedate_data, $html_file);
+            
+            // date_added
+            if ($files[$i]->date_added != '0000-00-00 00:00:00') {
                  $date_data = $pic_date.substr(JHTML::_('date',$files[$i]->date_added, $jlistConfig['global.datetime'], $offset = NULL),0,10);
             } else {
                  $date_data = '';
@@ -783,6 +812,8 @@ class jlist_HTML{
             
             $html_file = str_replace('{created_by_value}',$files[$i]->created_by, $html_file);
             $html_file = str_replace('{modified_by_value}',$files[$i]->modified_by, $html_file);
+            
+            // modified_date
             if ($files[$i]->modified_date != '0000-00-00 00:00:00') {
                 $modified_data = $pic_date.substr(JHTML::_('date',$files[$i]->modified_date, $jlistConfig['global.datetime'], $offset = NULL),0,10);
             } else {
@@ -792,7 +823,22 @@ class jlist_HTML{
 
             // only view download-url when user has corect access level
             if ($user->get('aid') >= $access[1]) {
-                
+                $blank_window = '';
+                $blank_window1 = '';
+                $blank_window2 = '';
+                // get file extension
+                $view_types = array();
+                $view_types = explode(',', $jlistConfig['file.types.view']);
+                $only_file_name = basename($files[$i]->url_download);
+                $fileextension = strtolower(substr(strrchr($only_file_name,"."),1));
+                if (in_array($fileextension, $view_types)){
+                    $blank_window = 'target="_blank"';
+                }    
+                // check is set link to a new window?
+                if ($files[$i]->extern_file && $files[$i]->extern_site   ){
+                    $blank_window = 'target="_blank"';
+                }
+
                  // direct download ohne zusammenfassung?
                  if ($jlistConfig['direct.download'] == '0'){
                      $url_task = 'summary';
@@ -800,25 +846,38 @@ class jlist_HTML{
                      $url_task = 'finish';
                  }                    
                  $download_link = JRoute::_('index.php?option='.$option.'&amp;Itemid='.$Itemid.'&amp;task='.$url_task.'&cid='.$files[$i]->file_id.'&catid='.$files[$i]->cat_id); 
-                 $download_link_text = '<a href="'.$download_link.'" title="'.JText::_('JLIST_LINKTEXT_DOWNLOAD_URL').'">';
+                  if ($url_task == 'finish'){ 
+                      $download_link_text = '<a '.$blank_window.' href="'.$download_link.'" title="'.JText::_('JLIST_LINKTEXT_DOWNLOAD_URL').'" class="jd_download_url">';
+                  } else {
+                      $download_link_text = '<a href="'.$download_link.'" title="'.JText::_('JLIST_LINKTEXT_DOWNLOAD_URL').'">';                  
+                  }    
 				 if (!$pic_download){
-                     $pic_download = '<img src="images/jdownloads/downloadimages/'.$jlistConfig['download.pic.files'].'" align="middle" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DOWNLOAD').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DOWNLOAD').'" />';
+                     $pic_download = '<img src="'.JURI::base().'images/jdownloads/downloadimages/'.$jlistConfig['download.pic.files'].'" align="middle" border="0" alt="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DOWNLOAD').'" title="'.JText::_('JLIST_FRONTEND_MINI_ICON_ALT_DOWNLOAD').'" />';
                  }    
-                 $html_file = str_replace('{url_download}',$download_link_text.$pic_download.'<br />'.JText::_('JLIST_LINKTEXT_DOWNLOAD_URL').'</a>', $html_file);
-			
+                 if ($jlistConfig['view.also.download.link.text']){
+                    $html_file = str_replace('{url_download}',$download_link_text.$pic_download.'<br />'.JText::_('JLIST_LINKTEXT_DOWNLOAD_URL').'</a>', $html_file);
+			     } else {
+                    $html_file = str_replace('{url_download}',$download_link_text.$pic_download.'</a>', $html_file);  
+                 }    
                 // mirrors
                 if ($files[$i]->mirror_1) {
+                    if ($files[$i]->extern_site_mirror_1 && $url_task == 'finish'){
+                        $blank_window1 = 'target="_blank"';
+                    }
                     $mirror1_link_dum = JRoute::_('index.php?option='.$option.'&amp;Itemid='.$Itemid.'&amp;task='.$url_task.'&cid='.$files[$i]->file_id.'&catid='.$files[$i]->cat_id.'&m=1');
-                    $mirror1_link = JRoute::_('<a href="'.$mirror1_link_dum.'" title="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_1').'">');
-                    $mir1_down_pic = '<img src="images/jdownloads/downloadimages/'.$jlistConfig['download.pic.mirror_1'].'" align="middle" border="0" alt="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_1').'" title="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_1').'" />';
+                    $mirror1_link = JRoute::_('<a '.$blank_window1.' href="'.$mirror1_link_dum.'" class="jd_download_url" title="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_1').'">');
+                    $mir1_down_pic = '<img src="'.JURI::base().'images/jdownloads/downloadimages/'.$jlistConfig['download.pic.mirror_1'].'" align="middle" border="0" alt="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_1').'" title="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_1').'" />';
                     $html_file = str_replace('{mirror_1}', $mirror1_link.$mir1_down_pic.'</a>', $html_file);
                 } else {
                     $html_file = str_replace('{mirror_1}', '', $html_file);
                 }
                 if ($files[$i]->mirror_2) {
+                    if ($files[$i]->extern_site_mirror_2 && $url_task == 'finish'){
+                        $blank_window2 = 'target="_blank"';
+                    }
                     $mirror2_link_dum = JRoute::_('index.php?option='.$option.'&amp;Itemid='.$Itemid.'&amp;task='.$url_task.'&cid='.$files[$i]->file_id.'&catid='.$files[$i]->cat_id.'&m=2');
-                    $mirror2_link = '<a href="'.$mirror2_link_dum.'" title="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_2').'">';
-                    $mir2_down_pic = '<img src="images/jdownloads/downloadimages/'.$jlistConfig['download.pic.mirror_2'].'" align="middle" border="0" alt="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_2').'" title="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_2').'" />';                
+                    $mirror2_link = '<a '.$blank_window2.' href="'.$mirror2_link_dum.'" class="jd_download_url" title="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_2').'">';
+                    $mir2_down_pic = '<img src="'.JURI::base().'images/jdownloads/downloadimages/'.$jlistConfig['download.pic.mirror_2'].'" align="middle" border="0" alt="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_2').'" title="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_2').'" />';                
                     $html_file = str_replace('{mirror_2}', $mirror2_link.$mir2_down_pic.'</a>', $html_file);
                 } else {
                     $html_file = str_replace('{mirror_2}', '', $html_file);
@@ -911,7 +970,7 @@ class jlist_HTML{
             $html_file = str_replace('{hits_value}',$pic_downloads.$files[$i]->downloads, $html_file);
 			$html_file = str_replace('{ordering}',$files[$i]->ordering, $html_file);
 			$html_file = str_replace('{published}',$files[$i]->published, $html_file);
-
+            
 			$html_files .= $html_file;
     	}
 
@@ -971,7 +1030,7 @@ class jlist_HTML{
                 echo JText::_('JLIST_BACKEND_OFFLINE_ADMIN_MESSAGE_TEXT');
                 echo $html_cat;
             } else {
-                $html_off = '<br /><br />'.$jlistConfig['offline.text'].'<br /><br />';
+                $html_off = '<br /><br />'.stripslashes($jlistConfig['offline.text']).'<br /><br />';
                 $html_off .= $footer;
                 echo $html_off;
             }
@@ -983,13 +1042,13 @@ class jlist_HTML{
 /  Einzelnen Download anzeigen mit Detail Infos
 /  ################################################################################# */
 function showDownload($option, $file, $cat, $access){
-    global $jlistConfig, $jlistTemplates, $Itemid, $mainframe, $addScriptJWAjaxVote;
+    global $jlistConfig, $jlistTemplates, $Itemid, $mainframe, $addScriptJWAjaxVote, $page_title;
     $user = &JFactory::getUser();
     $database = &JFactory::getDBO();
     $mainframe = JFactory::getApplication();
     $app = JFactory::getApplication();
 
-    $mainframe->setPageTitle( $jlistConfig['jd.header.title'].' - '.$cat->cat_title.' - '.$file->file_title );
+    $mainframe->setPageTitle($page_title.' - '.$cat->cat_title.' - '.$file->file_title );
     $mainframe->appendMetaTag( 'keywords' , strip_tags($file->metakey ));  
     $mainframe->appendMetaTag( 'description' , strip_tags($file->metadesc)); 
 
@@ -1012,11 +1071,12 @@ function showDownload($option, $file, $cat, $access){
     $html_file = str_replace('{created_by_title}', JText::_('JLIST_FE_DETAILS_CREATED_BY_TITLE'), $html_file);
     $html_file = str_replace('{modified_by_title}', JText::_('JLIST_FE_DETAILS_MODIFIED_BY_TITLE'), $html_file);
     $html_file = str_replace('{modified_date_title}', JText::_('JLIST_FE_DETAILS_MODIFIED_DATE_TITLE'), $html_file);
+    $html_file = str_replace('{file_date_title}', JText::_('JLIST_FE_DETAILS_FILE_DATE_TITLE'), $html_file);
     $html_file = str_replace('{file_name}', $file->url_download, $html_file);
     
     // google adsense
     if ($jlistConfig['google.adsense.active']){
-       $html_file = str_replace('{google_adsense}', $jlistConfig['google.adsense.code'], $html_file);
+       $html_file = str_replace('{google_adsense}', stripslashes($jlistConfig['google.adsense.code']), $html_file);
     } else {
        $html_file = str_replace('{google_adsense}', '', $html_file);
     }
@@ -1037,7 +1097,7 @@ function showDownload($option, $file, $cat, $access){
     $html_file = str_replace('{cat_title}', $cattitle, $html_file);      
     
     // a little pic for extern links
-    $extern_url_pic = '<img src="'.JURI::base().'components/com_jdownloads/images/link_extern.gif" />';
+    $extern_url_pic = '<img src="'.JURI::base().'components/com_jdownloads/images/link_extern.gif" alt="" />';
      
     // für JHMTL Tooltip
     JHTML::_('behavior.tooltip');
@@ -1045,7 +1105,7 @@ function showDownload($option, $file, $cat, $access){
     // get pic
     if ($file->file_pic != '' ) {
         $fpicsize = $jlistConfig['file.pic.size'];
-        $filepic = '<img src="images/jdownloads/fileimages/'.$file->file_pic.'" align="top" width="'.$fpicsize.'" height="'.$fpicsize.'" border="0" alt="" /> ';
+        $filepic = '<img src="'.JURI::base().'images/jdownloads/fileimages/'.$file->file_pic.'" align="top" width="'.$fpicsize.'" height="'.$fpicsize.'" border="0" alt="" /> ';
     } else {
         $filepic = '';
     }
@@ -1087,11 +1147,10 @@ function showDownload($option, $file, $cat, $access){
     } else {
         $html_file = str_replace('{description_long}',$file->description_long, $html_file);
     }    
-
     // pics for: new file / hot file /updated
-    $hotpic = '<img src="'.JURI::base().'images/jdownloads/hotimages/'.$jlistConfig['picname.is.file.hot'].'" />';
-    $newpic = '<img src="'.JURI::base().'images/jdownloads/newimages/'.$jlistConfig['picname.is.file.new'].'" />';
-    $updatepic = '<img src="'.JURI::base().'images/jdownloads/updimages/'.$jlistConfig['picname.is.file.updated'].'"/>';
+    $hotpic = '<img src="'.JURI::base().'images/jdownloads/hotimages/'.$jlistConfig['picname.is.file.hot'].'" alt="" />';
+    $newpic = '<img src="'.JURI::base().'images/jdownloads/newimages/'.$jlistConfig['picname.is.file.new'].'" alt="" />';
+    $updatepic = '<img src="'.JURI::base().'images/jdownloads/updimages/'.$jlistConfig['picname.is.file.updated'].'" alt="" />';
 
     // berechnung für HOT
     if ($jlistConfig['loads.is.file.hot'] > 0 && $file->downloads >= $jlistConfig['loads.is.file.hot'] ){
@@ -1150,7 +1209,7 @@ function showDownload($option, $file, $cat, $access){
                 $info = getID3v2Tags($mp3_path_abs);
                 if ($info){
                         // add it
-                        $mp3_info = $jlistConfig['mp3.info.layout'];
+                        $mp3_info = stripslashes($jlistConfig['mp3.info.layout']);
                         $mp3_info = str_replace('{name_title}', JText::_('JLIST_FE_VIEW_ID3_TITLE'), $mp3_info);
                         $mp3_info = str_replace('{name}', $file->url_download, $mp3_info);
                         $mp3_info = str_replace('{album_title}', JText::_('JLIST_FE_VIEW_ID3_ALBUM'), $mp3_info);
@@ -1209,8 +1268,17 @@ function showDownload($option, $file, $cat, $access){
     
     // funktion zur berechnung entfernt - hier nur falls vorhanden platzhalter entfernen
     $html_file = str_replace('{download_time}','', $html_file);    
-        
-    if (!$file->date_added != '0000-00-00 00:00:00') {
+
+    // file_date
+    if ($file->file_date != '0000-00-00 00:00:00') {
+         $filedate_data = $pic_date.substr(JHTML::_('date',$file->file_date, $jlistConfig['global.datetime'], $offset = NULL),0,10);
+    } else {
+         $filedate_data = '';
+    }
+    $html_file = str_replace('{file_date}',$filedate_data, $html_file);
+
+    // date_added    
+    if ($file->date_added != '0000-00-00 00:00:00') {
         $date_data = $pic_date.substr(JHTML::_('date',$file->date_added, $jlistConfig['global.datetime'], $offset = NULL),0,10);
     } else {
         $date_data = '';
@@ -1219,6 +1287,21 @@ function showDownload($option, $file, $cat, $access){
 
     // only view download link when user has corect access level
     if ($user->get('aid') >= $access[1]) {
+        $blank_window = '';
+        $blank_window1 = '';
+        $blank_window2 = '';
+        // get file extension
+        $view_types = array();
+        $view_types = explode(',', $jlistConfig['file.types.view']);
+        $only_file_name = basename($file->url_download);
+        $fileextension = strtolower(substr(strrchr($only_file_name,"."),1));
+        if (in_array($fileextension, $view_types)){
+            $blank_window = 'target="_blank"';
+        }    
+        // check is set link to a new window?
+        if ($file->extern_file && $file->extern_site   ){
+            $blank_window = 'target="_blank"';
+        }
         // direct download ohne zusammenfassung?
         if ($jlistConfig['direct.download'] == '0'){ 
             $url_task = 'summary';
@@ -1226,20 +1309,30 @@ function showDownload($option, $file, $cat, $access){
             $url_task = 'finish';
         }
         $download_link = JRoute::_('index.php?option='.$option.'&amp;Itemid='.$Itemid.'&amp;task='.$url_task.'&cid='.$file->file_id.'&catid='.$file->cat_id);
-        $download_link_text = '<a href="'.$download_link.'"><img src="images/jdownloads/downloadimages/'.$jlistConfig['download.pic.details'].'" border="0" alt="'.JText::_('JLIST_LINKTEXT_DOWNLOAD_URL').'"/></a>';
+        if ($url_task == 'finish'){
+            $download_link_text = '<a '.$blank_window.' href="'.$download_link.'" class="jd_download_url"><img src="'.JURI::base().'images/jdownloads/downloadimages/'.$jlistConfig['download.pic.details'].'" border="0" alt="'.JText::_('JLIST_LINKTEXT_DOWNLOAD_URL').'" /></a>';
+        } else {
+            $download_link_text = '<a href="'.$download_link.'" class="jd_download_url"><img src="'.JURI::base().'images/jdownloads/downloadimages/'.$jlistConfig['download.pic.details'].'" border="0" alt="'.JText::_('JLIST_LINKTEXT_DOWNLOAD_URL').'" /></a>';
+        }
         $html_file = str_replace('{url_download}',$pic_download.$download_link_text, $html_file);
         
         // mirrors
         if ($file->mirror_1) {
+            if ($file->extern_site_mirror_1 && $url_task == 'finish'){
+                $blank_window1 = 'target="_blank"';
+            }
             $mirror1_link_dum = JRoute::_('index.php?option='.$option.'&amp;Itemid='.$Itemid.'&amp;task='.$url_task.'&cid='.$file->file_id.'&catid='.$file->cat_id.'&m=1');
-            $mirror1_link = '<a href="'.$mirror1_link_dum.'"><img src="images/jdownloads/downloadimages/'.$jlistConfig['download.pic.mirror_1'].'" border="0" alt="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_1').'"/></a>';
+            $mirror1_link = '<a '.$blank_window1.' href="'.$mirror1_link_dum.'" class="jd_download_url"><img src="'.JURI::base().'images/jdownloads/downloadimages/'.$jlistConfig['download.pic.mirror_1'].'" border="0" alt="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_1').'" /></a>';
             $html_file = str_replace('{mirror_1}', $mirror1_link, $html_file);
         } else {
             $html_file = str_replace('{mirror_1}', '', $html_file);
         }
         if ($file->mirror_2) {
+            if ($file->extern_site_mirror_2 && $url_task == 'finish'){
+                $blank_window2 = 'target="_blank"';
+            }            
             $mirror2_link_dum = JRoute::_('index.php?option='.$option.'&amp;Itemid='.$Itemid.'&amp;task='.$url_task.'&cid='.$file->file_id.'&catid='.$file->cat_id.'&m=2');
-            $mirror2_link = '<a href="'.$mirror2_link_dum.'"><img src="images/jdownloads/downloadimages/'.$jlistConfig['download.pic.mirror_2'].'" border="0" alt="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_2').'"/></a>';
+            $mirror2_link = '<a '.$blank_window2.' href="'.$mirror2_link_dum.'" class="jd_download_url"><img src="'.JURI::base().'images/jdownloads/downloadimages/'.$jlistConfig['download.pic.mirror_2'].'" border="0" alt="'.JText::_('JLIST_FRONTEND_MIRROR_URL_TITLE_2').'" /></a>';
             $html_file = str_replace('{mirror_2}', $mirror2_link, $html_file);
         } else {
             $html_file = str_replace('{mirror_2}', '', $html_file);
@@ -1324,7 +1417,15 @@ function showDownload($option, $file, $cat, $access){
             $obj_title = $file->file_title;
             $html_file .= JComments::showComments($obj_id, 'com_jdownloads', $obj_title);
         }    
-    } 
+    }
+    
+    // Option for JomComment integration
+    if ($jlistConfig['view.jom.comment']){
+       if (file_exists(JPATH_PLUGINS . DS . 'content' . DS . 'jom_comment_bot.php')){
+           include_once( JPATH_PLUGINS . DS . 'content' . DS . 'jom_comment_bot.php' );
+           $html_file .= jomcomment($file->file_id, "com_jdownloads");
+       }    
+    }    
     
     // insert rating system
     if ($jlistConfig['view.ratings']){
@@ -1336,7 +1437,8 @@ function showDownload($option, $file, $cat, $access){
     
     $footer = makeFooter(true, false, false, $sum_pages, $limit, $limitstart, $site_aktuell);  
     $html_file .= $footer;
-    
+    // support for content plugins
+    $html_file = JHTML::_('content.prepare', $html_file);
     if ( !$jlistConfig['offline'] ) {
             echo $html_file;
         } else {
@@ -1344,7 +1446,7 @@ function showDownload($option, $file, $cat, $access){
                 echo JText::_('JLIST_BACKEND_OFFLINE_ADMIN_MESSAGE_TEXT');
                 echo $html_file;
             } else {
-                $html_off = '<br /><br />'.$jlistConfig['offline.text'].'<br /><br />';
+                $html_off = '<br /><br />'.stripslashes($jlistConfig['offline.text']).'<br /><br />';
                 $html_off .= $footer;
                 echo $html_off;
             }
@@ -1352,30 +1454,34 @@ function showDownload($option, $file, $cat, $access){
 }    
 
 /* #################################################################################
-/  Zusammenfassung anzeigen mit link zur Downloadseite
+/  View Summary page with link to Download
 /  ################################################################################# */
-function Summary($option, $marked_files_id, $mail_files, $filename, $download_link, $del_ok, $extern_site){
-    global $jlistConfig, $jlistTemplates, $Itemid, $mainframe;
+function Summary($option, $marked_files_id, $mail_files, $filename, $download_link, $del_ok, $extern_site, $sum_aup_points, $has_licenses){
+    global $jlistConfig, $jlistTemplates, $Itemid, $mainframe, $page_title;
     $user = &JFactory::getUser();
     $database = &JFactory::getDBO();
     
-    $mainframe->setPageTitle( $jlistConfig['jd.header.title'].' - '.JText::_('JLIST_BACKEND_TEMP_TYP3') ); 
+    $mainframe->setPageTitle($page_title.' - '.JText::_('JLIST_BACKEND_TEMP_TYP3') ); 
     $html_sum = makeHeader($html_sum, true, false, false, 0, false, false, false, true, false, 0, $sum_pages, $list_per_page, $total, $list_start);
     echo $html_sum;
         // build output from template
         $html_sum = $jlistTemplates[3][0]->template_text;
         $html_sum = str_replace('{download_liste}', $mail_files, $html_sum);
         $html_sum = str_replace('{title_text}', JText::_('JLIST_FE_SUMMARY_PAGE_TITLE_TEXT'), $html_sum);
-        $html_sum = str_replace('{license_note}', JText::_('JLIST_FE_SUMMARY_PAGE_LICENSE_NOTE'), $html_sum);
+        if ($has_licenses){
+            $html_sum = str_replace('{license_note}', JText::_('JLIST_FE_SUMMARY_PAGE_LICENSE_NOTE'), $html_sum);
+        } else {
+            $html_sum = str_replace('{license_note}', '', $html_sum);
+        }    
         
         // summary pic
         $sum_size = $jlistConfig['cat.pic.size'];
-        $sumpic = '<img src="components/com_jdownloads/images/summary.png" width="'.$sum_size.'" height="'.$sum_size.'" border="0" alt="" /> ';
+        $sumpic = '<img src="'.JURI::base().'components/com_jdownloads/images/summary.png" width="'.$sum_size.'" height="'.$sum_size.'" border="0" alt="" /> ';
         $html_sum = str_replace('{summary_pic}', $sumpic, $html_sum);
         
         // google adsense
         if ($jlistConfig['google.adsense.active']){
-            $html_sum = str_replace('{google_adsense}', $jlistConfig['google.adsense.code'], $html_sum);
+            $html_sum = str_replace('{google_adsense}', stripslashes($jlistConfig['google.adsense.code']), $html_sum);
         } else {
             $html_sum = str_replace('{google_adsense}', '', $html_sum);
         }    
@@ -1384,16 +1490,34 @@ function Summary($option, $marked_files_id, $mail_files, $filename, $download_li
                            function countdown2(){
                               if (counter >0){
                                   counter-=1;
-                                  document.getElementById("countdown").innerHTML=sprintf(\''.$jlistConfig['countdown.text'].'\',counter);
+                                  document.getElementById("countdown").innerHTML=sprintf("'.stripslashes($jlistConfig['countdown.text']).'",counter);
                               } else {
                                   document.getElementById("countdown").innerHTML=\''.'{link}'.'\'
                                   window.clearInterval(active);
                               }    
                            }
                            </script>';
+        }
+        // support for AUP
+        if ($jlistConfig['use.alphauserpoints']){
+            $api_AUP = JPATH_SITE.DS.'components'.DS.'com_alphauserpoints'.DS.'helper.php';
+            if (file_exists($api_AUP)){
+                require_once ($api_AUP);
+                $profil = AlphaUserPointsHelper:: getUserInfo('', $user->id);
+            }
+            if ($profil){
+                $points_info = sprintf( JText::_('JLIST_FE_VIEW_AUP_SUM_POINTS'), $sum_aup_points, $profil->points);
+                $html_sum = str_replace('{aup_points_info}', $points_info, $html_sum); 
+            } else {
+                $points_info = sprintf( JText::_('JLIST_FE_VIEW_AUP_SUM_POINTS'), $sum_aup_points, 0);
+                $html_sum = str_replace('{aup_points_info}', $points_info, $html_sum); 
+            }    
+        } else {
+            $html_sum = str_replace('{aup_points_info}', '', $html_sum); 
         }    
+            
         if (count($marked_files_id) > 1) {
-            $link = '<div id="countdown" style="text-align:center"><a href="'.$download_link.'" target="_self"  title="'.JText::_('JLIST_LINKTEXT_ZIP').'"><img src="images/jdownloads/downloadimages/'.$jlistConfig['download.pic.details'].'" border="0" alt="'.JText::_('JLIST_LINKTEXT_ZIP').'" /></a></div>';
+            $link = '<div id="countdown" style="text-align:center"><a href="'.$download_link.'" target="_self"  title="'.JText::_('JLIST_LINKTEXT_ZIP').'"><img src="'.JURI::base().'images/jdownloads/downloadimages/'.$jlistConfig['download.pic.details'].'" border="0" alt="'.JText::_('JLIST_LINKTEXT_ZIP').'" /></a></div>';
             if ($countdown){
                $countdown = str_replace('{link}', $link, $countdown);
                $html_sum = str_replace('{download_link}', '<div id="countdown">'.$countdown.'</div>', $html_sum);
@@ -1410,7 +1534,7 @@ function Summary($option, $marked_files_id, $mail_files, $filename, $download_li
                 $html_sum = str_replace('{external_download_info}', '', $html_sum);
             }                    
                 
-            $link = '<div id="countdown" style="text-align:center"><a href="'.$download_link.'" target="'.$targed.'" title="'.JText::_('JLIST_LINKTEXT_ZIP').'" ><img src="images/jdownloads/downloadimages/'.$jlistConfig['download.pic.details'].'" border="0" alt="'.JText::_('JLIST_LINKTEXT_ZIP').'" /></a></div>'; 
+            $link = '<div id="countdown" style="text-align:center"><a href="'.$download_link.'" target="'.$targed.'" title="'.JText::_('JLIST_LINKTEXT_ZIP').'" ><img src="'.JURI::base().'images/jdownloads/downloadimages/'.$jlistConfig['download.pic.details'].'" border="0" alt="'.JText::_('JLIST_LINKTEXT_ZIP').'" /></a></div>'; 
             if ($countdown){
                 $countdown = str_replace('{link}', $link, $countdown);
                 $html_sum = str_replace('{download_link}', '<div id="countdown">'.$countdown.'</div>', $html_sum);
@@ -1426,7 +1550,7 @@ function Summary($option, $marked_files_id, $mail_files, $filename, $download_li
 
 // view frontend upload form
 function viewUpload($option, $task ){
-	global $jlistConfig, $Itemid, $mainframe;
+	global $jlistConfig, $Itemid, $mainframe, $page_title;
 	$user = &JFactory::getUser();
 	$database = &JFactory::getDBO();                        
     
@@ -1438,12 +1562,12 @@ function viewUpload($option, $task ){
                  'clear_entities'=>'0'
                  );
     
-    $mainframe->setPageTitle( $jlistConfig['jd.header.title'].' - '.JText::_('JLIST_FRONTEND_UPLOAD_PAGE_TITLE') );   
+    $mainframe->setPageTitle($page_title.' - '.JText::_('JLIST_FRONTEND_UPLOAD_PAGE_TITLE') );   
     // variablen vorbelegen
-	$image1 = '<img src="components/com_jdownloads/images/';
+	$image1 = '<img src="'.JURI::base().'components/com_jdownloads/images/';
 	$image2 = '" width="18" height="18" border="0" alt="" align="top" />';
-	$upload_stop_pic = '<img src="components/com_jdownloads/images/upload_stop.png" width="24" height="24" border="0" alt="" />';
-	$upload_ok_pic = '<img src="components/com_jdownloads/images/upload_ok.png" width="24" height="24" border="0" alt="" />';	
+	$upload_stop_pic = '<img src="'.JURI::base().'components/com_jdownloads/images/upload_stop.png" width="24" height="24" border="0" alt="" />';
+	$upload_ok_pic = '<img src="'.JURI::base().'components/com_jdownloads/images/upload_ok.png" width="24" height="24" border="0" alt="" />';	
 	
 	$max_file_size = $jlistConfig['allowed.upload.file.size'] * 1024 ;
 	$name_pic 		 =	'form_no_value.png';
@@ -1476,12 +1600,13 @@ function viewUpload($option, $task ){
     } else {
 		$access= true;  
 		// nur einfügen wenn access = true
-		$html_form .= '<div class="jd_div_content"><br />'.$jlistConfig['upload.form.text'].'<br /></div>';
+		$html_form .= '<div class="jd_div_content"><br />'.stripslashes($jlistConfig['upload.form.text']).'<br /></div>';
 	}
 		// Inhalte holen, falls vorhanden	
 	if ($user->get('id') > 0) {
        $name = $user->get('username');
 	   $mail = $user->get('email');
+       $submitted_by = $user->id;
 	   $disabled = 'disabled="disabled"';
 	   $name_pic =	'';
 	   $mail_pic =	'';
@@ -1577,6 +1702,14 @@ function viewUpload($option, $task ){
 			$mark_catdir = $database->loadResult();
 			$description = trim($description);
             $description_long = trim($description_long);
+            
+            // build file alias
+            $file_alias = $filetitle;
+            $file_alias = JFilterOutput::stringURLSafe($file_alias);
+            if (trim(str_replace('-','',$file_alias)) == '') {
+               $datenow =& JFactory::getDate();
+               $file_alias = $datenow->toFormat("%Y-%m-%d-%H-%M-%S");
+            }
     		
 			// check file extensions
 	       if ($file_upload['tmp_name'] != '') { 
@@ -1658,11 +1791,15 @@ function viewUpload($option, $task ){
                		// get filedate
             		$date_added = JHTML::_('date', 'now', '%Y-%m-%d %H:%M:%S' );
 					$url_download = basename($target_path);
+                    $url_download = utf8_encode($url_download);
 					
 					// auto publish ?
                     if ($jlistConfig['upload.auto.publish']){
                         $publish = 1;
+                        setAUPPointsUploads($submitted_by, $filetitle);
+                        $set_aup_points = 0;
                     } else {
+                        $set_aup_points = 1;
                         $publish = 0;
                     }
                     
@@ -1673,8 +1810,11 @@ function viewUpload($option, $task ){
                     } else {
                     $filepic       = $jlistConfig['file.pic.default.filename'];
                     }                    
+                    
+
                         
-                    $database->setQuery("INSERT INTO #__jdownloads_files (`file_id`, `file_title`, `description`, `description_long`, `file_pic`, `thumbnail`, `price`, `release`, `language`, `system`, `license`, `url_license`, `size`, `date_added`, `url_download`, `url_home`, `author`, `url_author`, `created_by`, `created_mail`, `modified_by`, `modified_date`, `downloads`, `cat_id`, `ordering`, `published`, `checked_out`, `checked_out_time`) VALUES (NULL, '$filetitle', '$description', '$description_long', '$filepic', '$thumbnail', '$price', '$version', '$language_sel', '$system_sel', '$license_sel', '', '$size', '$date_added', '$url_download', '$author_url', '$author', '', '$name', '$mail', '', '0000-00-00 00:00:00', '0', '$catlist_sel', '0', '$publish', '0', '0000-00-00 00:00:00')");
+                    $database->setQuery("INSERT INTO #__jdownloads_files (`file_id`, `file_title`, `file_alias`,`description`, `description_long`, `file_pic`, `thumbnail`, `price`, `release`, `language`, `system`, `license`, `url_license`, `size`, `date_added`, `file_date`, `url_download`, `url_home`, `author`, `url_author`, `created_by`, `created_mail`, `modified_by`, `modified_date`, `submitted_by`, `set_aup_points`, `downloads`, `cat_id`, `ordering`, `published`, `checked_out`, `checked_out_time`)
+                                                                     VALUES (NULL, '$filetitle', '$file_alias', '$description', '$description_long', '$filepic', '$thumbnail', '$price', '$version', '$language_sel', '$system_sel', '$license_sel', '', '$size', '$date_added', '', '$url_download', '$author_url', '$author', '', '$name', '$mail', '', '0000-00-00 00:00:00', '$submitted_by', '$set_aup_points', '0', '$catlist_sel', '0', '$publish', '0', '0000-00-00 00:00:00')");
 		   	   		if (!$database->query()) {
 						// fehler beim erstellen in DB	
 						echo $database->stderr();
@@ -1737,14 +1877,13 @@ function viewUpload($option, $task ){
                 // auto publish ?
                 if ($jlistConfig['upload.auto.publish']){
                     $publish = 1;
+                    setAUPPointsUploads($submitted_by, $filetitle);
                 } else {
                     $publish = 0;
                 }
-                    
-                                    
                         
-                $database->setQuery("INSERT INTO #__jdownloads_files (`file_id`, `file_title`, `description`, `description_long`, `file_pic`, `thumbnail`, `price`, `release`, `language`, `system`, `license`, `url_license`, `size`, `date_added`, `url_download`, `extern_file`, `extern_site`, `url_home`, `author`, `url_author`, `created_by`, `created_mail`, `modified_by`, `modified_date`, `downloads`, `cat_id`, `ordering`, `published`, `checked_out`, `checked_out_time`) VALUES 
-                                                                      (NULL, '$filetitle', '$description', '$description_long', '$filepic', '$thumbnail', '$price', '$version', '$language_sel', '$system_sel', '$license_sel', '', '$size', '$date_added', '', '$extern_file', '$linked_to_extern_site', '$author_url', '$author', '', '$name', '$mail', '', '0000-00-00 00:00:00', '0', '$catlist_sel', '0', '$publish', '0', '0000-00-00 00:00:00')");
+                $database->setQuery("INSERT INTO #__jdownloads_files (`file_id`, `file_title`, `file_alias`, `description`, `description_long`, `file_pic`, `thumbnail`, `price`, `release`, `language`, `system`, `license`, `url_license`, `size`, `date_added`, `file_date`, `url_download`, `extern_file`, `extern_site`, `url_home`, `author`, `url_author`, `created_by`, `created_mail`, `modified_by`, `modified_date`, `submitted_by`, `downloads`, `cat_id`, `ordering`, `published`, `checked_out`, `checked_out_time`) VALUES 
+                                                                      (NULL, '$filetitle', '$file_alias', '$description', '$description_long', '$filepic', '$thumbnail', '$price', '$version', '$language_sel', '$system_sel', '$license_sel', '', '$size', '$date_added', '', '', '$extern_file', '$linked_to_extern_site', '$author_url', '$author', '', '$name', '$mail', '', '0000-00-00 00:00:00', '$submitted_by', '0', '$catlist_sel', '0', '$publish', '0', '0000-00-00 00:00:00')");
                 if (!$database->query()) {
                     echo $database->stderr();
                     exit;
@@ -1775,7 +1914,7 @@ function viewUpload($option, $task ){
 	if ($access) {
         
 	// form anzeigen 
-    $form = '<form name="uploadForm" id="uploadForm" action="'.$_SERVER["PHP_SELF"].'" method="post" enctype="multipart/form-data">
+    $form = '<form name="uploadForm" id="uploadForm" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post" enctype="multipart/form-data">
 	<table class="jd_upload_form" border="0" cellpadding="0" cellspacing="5" width="99%">
         <tr>
             <td width="140" valign="middle">'.JText::_('JLIST_FRONTEND_UPLOAD_TITEL_NAME').'
@@ -1942,7 +2081,7 @@ function viewUpload($option, $task ){
             <td width="140" valign="top">'.JText::_('JLIST_FRONTEND_UPLOAD_EXTERN_FILE_TITEL').'
             </td><td width="20" valign="top">'.$image1.$extern_file_pic.$image2.'</td>
             <td width="200">
-                <input type="text" name="extern_file" id="extern_file" maxlength="120" size="60" onchange="'.$checkUpload2.'" value="'.$extern_file.'"><br />'.JText::_('JLIST_FRONTEND_UPLOAD_ALLOWED_FILETYPE').': <b>'.$jlistConfig['allowed.upload.file.types'].'</b>
+                <input type="text" name="extern_file" id="extern_file" maxlength="255" size="60" onchange="'.$checkUpload2.'" value="'.$extern_file.'"><br />'.JText::_('JLIST_FRONTEND_UPLOAD_ALLOWED_FILETYPE').': <b>'.$jlistConfig['allowed.upload.file.types'].'</b>
             </td>
             </tr>';
         }
@@ -1979,7 +2118,7 @@ function viewUpload($option, $task ){
             <td width="140" valign="middle">&nbsp;
             </td><td width="20" valign="top">&nbsp;</td>
             <td width="267">
-                <input type="submit" name="senden" value="'.JText::_('JLIST_FRONTEND_UPLOAD_FILENAME_BUTTON_TEXT_SEND').'"> <input type="reset" name="cancel" 
+                <input class="button" type="submit" name="senden" value="'.JText::_('JLIST_FRONTEND_UPLOAD_FILENAME_BUTTON_TEXT_SEND').'"> <input class="button" type="reset" name="cancel" 
                        value="'.JText::_('JLIST_FRONTEND_UPLOAD_FILENAME_BUTTON_TEXT_CLEAR').'">
             </td>
             </tr>
@@ -1998,8 +2137,7 @@ function viewUpload($option, $task ){
 	if (isset($msg)) {
 		$html_form = str_replace('{msg}', $msg, $html_form);	
 	}
-	
-	echo $html_form;
+	echo $html_form; 
 	echo $footer; 
 	
 	// Focus auf erstes feld setzen
@@ -2008,17 +2146,17 @@ function viewUpload($option, $task ){
 		if ($user->get('id') > 0) {  
 	?>
     <script type="text/Javascript" language="JavaScript">
-    <!--
-        document.getElementById("author").focus();
-    -->
+        if(document.uploadForm.author) {
+           document.getElementById("author").focus();
+        }
     </script>
 	<?php
 		} else {
 	?>
     <script type="text/Javascript" language="JavaScript">
-    <!--
-        document.getElementById("name").focus();
-    -->
+        if(document.uploadForm.name) {
+           document.getElementById("name").focus();
+        }
     </script>
 	<?php
 		} 
@@ -2026,10 +2164,10 @@ function viewUpload($option, $task ){
 }
 
 function showSearchForm($option){
-     global $Itemid, $jlistConfig, $mainframe;
+     global $Itemid, $jlistConfig, $mainframe, $page_title;
      $user = &JFactory::getUser();
      
-    $mainframe->setPageTitle( $jlistConfig['jd.header.title'].' - '.JText::_('JLIST_FRONTEND_SEARCH_LINKTEXT') );   
+    $mainframe->setPageTitle( $page_title.' - '.JText::_('JLIST_FRONTEND_SEARCH_LINKTEXT') );   
     $html_form = makeHeader($html_form, true, false, false, 0, false, true, false, false, false, 0, 0, 0, 0, 0);
     echo $html_form;
     $html_form = '';
@@ -2038,10 +2176,14 @@ function showSearchForm($option){
     $html_form .= '<table class="jd_div_content" border="0" cellpadding="0" cellspacing="5" width="99%">
         <tr><td><br /></td></tr>
         <tr>
+            <td colspan="2" width="100" valign="middle">'.JText::_('JLIST_FRONTEND_SEARCH_DESCRIPTION').'
+            </td>
+        </tr>
+        <tr>
             <td width="100" valign="middle">'.JText::_('JLIST_FRONTEND_SEARCH_TEXT_TITLE').'
             </td>
             <td width="200" valign="middle">
-                <input class="jd_inputbox" type="text" name="jdsearchtext" id="jdsearchtext" maxlength="80" size="30"  value=""> <input type="submit" name="searchsubmit" value="'.JText::_('JLIST_FRONTEND_SEARCH_BUTTON_TEXT').'"/> 
+                <input class="jd_inputbox" type="text" name="jdsearchtext" id="jdsearchtext" maxlength="80" size="30"  value=""> <input class="button" type="submit" name="searchsubmit" value="'.JText::_('JLIST_FRONTEND_SEARCH_BUTTON_TEXT').'"/> 
             </td>
         </tr>
         <tr>
@@ -2078,7 +2220,7 @@ function showSearchForm($option){
                 echo JText::_('JLIST_BACKEND_OFFLINE_ADMIN_MESSAGE_TEXT');
                 echo $html_cat;
             } else {
-                $html_off = '<br /><br />'.$jlistConfig['offline.text'].'<br /><br />';
+                $html_off = '<br /><br />'.stripslashes($jlistConfig['offline.text']).'<br /><br />';
                 echo $html_off;
             }
     }
@@ -2094,10 +2236,10 @@ function showSearchForm($option){
 }    
 
 function showSearchResult($option){
-    global $Itemid, $jlistConfig, $mainframe;
+    global $Itemid, $jlistConfig, $mainframe, $page_title;
     $database = &JFactory::getDBO();
     
-    $mainframe->setPageTitle( $jlistConfig['jd.header.title'].' - '.JText::_('JLIST_FRONTEND_SEARCH_RESULT_TITLE') );   
+    $mainframe->setPageTitle($page_title.' - '.JText::_('JLIST_FRONTEND_SEARCH_RESULT_TITLE') );   
     $html_form = makeHeader($html_form, true, false, false, 0, false, true, false, false, false, 0, 0, 0, 0, 0);
 
     $searchtext =    $database->getEscaped(JArrayHelper::getValue($_POST, 'jdsearchtext', ''));
@@ -2112,24 +2254,40 @@ function showSearchResult($option){
     if (!$searchintitle && !$searchintext){
         echo "<script> alert('".JText::_('JLIST_FRONTEND_SEARCH_RESULT_NO_OPTION')."'); window.history.go(-1); </script>\n";    
     }
+
+    $search_array = explode(' ', $searchtext);
+    $files2 = array();
     
-    if ($searchintitle && $searchintext){
-        $database->setQuery("SELECT * FROM #__jdownloads_files WHERE file_title LIKE '%$searchtext%' OR description LIKE '%$searchtext%' OR description_long LIKE '%$searchtext%' AND published = 1 ORDER BY date_added LIMIT $searchnumber");
+    foreach ($search_array as $word) {
+        if ($searchintitle && $searchintext){
+            $database->setQuery("SELECT * FROM #__jdownloads_files WHERE file_title LIKE '%$word%' OR description LIKE '%$word%' OR description_long LIKE '%$word%' AND published = 1 ORDER BY date_added LIMIT $searchnumber");
+        }
+        if ($searchintitle && !$searchintext){
+            $database->setQuery("SELECT * FROM #__jdownloads_files WHERE file_title LIKE '%$word%' AND published = 1 ORDER BY date_added LIMIT $searchnumber");
+        }
+        if (!$searchintitle && $searchintext){
+            $database->setQuery("SELECT * FROM #__jdownloads_files WHERE description LIKE '%$word%' OR description_long LIKE '%$word%' AND published = 1 ORDER BY date_added LIMIT $searchnumber");
+        }
+        $files = $database->loadObjectList();
+
+        foreach ($files as $file) {
+            if (!array_key_exists($file->file_id, $files2)) {
+                $files2[$file->file_id] = array('file'=>$file, 'ctr'=> 0);
+            }
+            $files2[$file->file_id]['ctr']++;
+        }
+
     }
-    if ($searchintitle && !$searchintext){
-        $database->setQuery("SELECT * FROM #__jdownloads_files WHERE file_title LIKE '%$searchtext%' AND published = 1 ORDER BY date_added LIMIT $searchnumber");
-    }
-    if (!$searchintitle && $searchintext){
-        $database->setQuery("SELECT * FROM #__jdownloads_files WHERE description LIKE '%$searchtext%' OR description_long LIKE '%$searchtext%' AND published = 1 ORDER BY date_added LIMIT $searchnumber");
-    }    
-    $files = $database->loadObjectList();
     
-    if ($files) {
+    usort($files2, '_ctrSort');
+
+    if ($files2) {
         // files gefunden   
         // cat der files holen und auf access beschränken
         $access = checkAccess_JD();        
         $output = array();
-        foreach($files as $file) {
+        foreach($files2 as $file2) {
+            $file = $file2['file'];
           if ($file->published) {  
             $database->setQuery("SELECT * FROM #__jdownloads_cats WHERE cat_id = '$file->cat_id'");
             $cat = $database->loadObjectList();
@@ -2151,17 +2309,20 @@ function showSearchResult($option){
                   </tr>';
                             
             foreach ($output as $out){
-                $regexp = "/($searchtext)(?![^<]+>)/i";
+                
                 // suchtext farblich hervorheben
-                if ($searchintitle && $searchintext){
-                    $out->description = preg_replace($regexp, '<font color="#CC3300">'.$searchtext.'</font>', $out->description);
-                    $out->file_title = preg_replace($regexp, '<font color="#CC3300">'.$searchtext.'</font>', $out->file_title);
-                }
-                if ($searchintitle && !$searchintext){
-                    $out->file_title = preg_replace($regexp, '<font color="#CC3300">'.$searchtext.'</font>', $out->file_title);
-                }
-                if (!$searchintitle && $searchintext){
-                    $out->description = preg_replace($regexp, '<font color="#CC3300">'.$searchtext.'</font>', $out->description);
+                foreach ($search_array as $word) {
+                    $regexp = "/($word)(?![^<]+>)/i";
+                    if ($searchintitle && $searchintext){
+                        $out->description = preg_replace($regexp, '<font color="#CC3300">'.$word.'</font>', $out->description);
+                        $out->file_title = preg_replace($regexp, '<font color="#CC3300">'.$word.'</font>', $out->file_title);
+                    }
+                    if ($searchintitle && !$searchintext){
+                        $out->file_title = preg_replace($regexp, '<font color="#CC3300">'.$word.'</font>', $out->file_title);
+                    }
+                    if (!$searchintitle && $searchintext){
+                        $out->description = preg_replace($regexp, '<font color="#CC3300">'.$word.'</font>', $out->description);
+                    }
                 }
                 $titel_link = JRoute::_('index.php?option='.$option.'&amp;Itemid='.$Itemid.'&amp;task=view.download&catid='.$out->cat_id.'&cid='.$out->file_id);
                 $titel_link_text = '<a href="'.$titel_link.'">'.$out->file_title.'</a>';

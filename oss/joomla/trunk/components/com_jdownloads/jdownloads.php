@@ -15,12 +15,17 @@ Error_Reporting(E_ERROR);
 clearstatcache();
 session_start();
 
+jimport( 'joomla.application.component.view');
 $database = &JFactory::getDBO();
 $jconfig = new JConfig();
-
-	global $Itemid, $mainframe;   
-    global $id, $limit, $limitstart, $site_aktuell, $catid, $cid, $task, $pop, $jlistConfig, $jlistTemplates;  
+   
     
+	global $Itemid, $mainframe;   
+    global $id, $limit, $limitstart, $site_aktuell, $catid, $cid, $task, $pop, $jlistConfig, $jlistTemplates, $page_title;  
+    
+    $document =& JFactory::getDocument();
+    $params    = &$mainframe->getParams();
+
 	define( 'ELPATH', dirname(__FILE__) );
     
 	$GLOBALS['_VERSION']	= new JVersion();
@@ -38,12 +43,36 @@ $jconfig = new JConfig();
 	if (!is_array( $id)) {
          $id = array(0);
     }
-
+    
     $GLOBALS['jlistConfig'] = buildjlistConfig();
     $GLOBALS['jlistTemplates'] = getTemplates();
 
+    // Page Title
+    $menus    = &JSite::getMenu();
+    $menu    = $menus->getActive();
+
+    // because the application sets a default page title, we need to get it
+    // right from the menu item itself
+    if (is_object( $menu )) {
+        $menu_params = new JParameter( $menu->params );
+        $x = $menu_params->get( 'page_title');
+        if (!$menu_params->get( 'page_title')) {
+            $params->set('page_title', $jlistConfig['jd.header.title']);
+        }
+    } else {
+        $params->set('page_title', $jlistConfig['jd.header.title']);
+    }
+    if ($params->get('page_title')){
+        $document->setTitle( $params->get( 'page_title' ) );
+    } else {
+        $document->setTitle( $menu_params->get( 'page_title'));
+    }    
+    $page_title =  $document->getTitle( 'title');
+    
+
     $pop 			= intval( JArrayHelper::getValue( $_REQUEST, 'pop', 0 ) );
 	$task 			= JArrayHelper::getValue( $_REQUEST, 'task' );
+    $view             = JArrayHelper::getValue( $_REQUEST, 'view' );
 	$cid 			= (int)JArrayHelper::getValue($_REQUEST, 'cid', array());
     $catid          = (int)JArrayHelper::getValue($_REQUEST, 'catid', 0);
     
@@ -51,6 +80,19 @@ $jconfig = new JConfig();
 	$limitstart   = intval( JArrayHelper::getValue( $_REQUEST, 'start', 0 ) );
     $site_aktuell = intval( JArrayHelper::getValue( $_REQUEST, 'site', 1 ) );
     
+    $menus    = &JSite::getMenu();
+    $menu    = $menus->getActive();
+    
+    // AUP integration
+    if ($jlistConfig['use.alphauserpoints']){
+        $api_AUP = JPATH_SITE.DS.'components'.DS.'com_alphauserpoints'.DS.'helper.php';
+        if (file_exists($api_AUP)){
+            require_once ($api_AUP);
+        }
+    }            
+    
+    if ($view && !$task) $task = $view;
+        
 switch ($task) {
 
 	   case 'upload':
@@ -87,7 +129,11 @@ switch ($task) {
             
        case 'report':
             reportDownload($option,$cid);
-            break;                 
+            break;
+            
+       case 'viewcategories':
+            showCats($option,$cid);
+            break;                             
            
 	   default: showCats($option,$cid);
             break;
@@ -100,9 +146,11 @@ function Summary($option){
     $app = &JFactory::getApplication();
     $user = &JFactory::getUser();
     $database = &JFactory::getDBO();
-
+    // AUP support
+    $sum_aup_points = 0;
     $extern_site = false;
     $marked_files_id = array();
+    $has_licenses = false;
     // file-id der ausgewählten dateien holen - falls verwendet
     $marked_files_id = JArrayHelper::getValue( $_POST, 'cb_arr', array(0));
     for($i=0,$n=count($marked_files_id);$i<$n;$i++){
@@ -131,12 +179,13 @@ function Summary($option){
         $breadcrumbs->addItem($cat_title, JRoute::_('index.php?option='.$option.'&amp;Itemid='.$Itemid.'&amp;task=viewcategory&amp;catid='.$catid));     
     }
     if ($fileid){
-        $database->setQuery('SELECT file_title FROM #__jdownloads_files WHERE published = 1 AND file_id = '.$fileid);
-        if (!$file_title = $database->loadResult()){
+        $database->setQuery('SELECT * FROM #__jdownloads_files WHERE published = 1 AND file_id = '.$fileid);
+        if (!$file = $database->loadObject()){
            // jump to the mainsite
            $app->redirect(JURI::base(true));
         }    
-        $breadcrumbs->addItem($file_title, JRoute::_('index.php?option='.$option.'&amp;Itemid='.$Itemid.'&amp;task=view.download&amp;catid='.$catid.'&amp;cid='.$fileid));     
+        $breadcrumbs->addItem($file->file_title, JRoute::_('index.php?option='.$option.'&amp;Itemid='.$Itemid.'&amp;task=view.download&amp;catid='.$catid.'&amp;cid='.$fileid));
+        
     }
     $breadcrumbs->addItem(JText::_('JLIST_FRONTEND_HEADER_SUMMARY_TITLE'), '');    
     
@@ -173,9 +222,25 @@ function Summary($option){
     $database->setQuery("SELECT * FROM #__jdownloads_license");
     $lic_arr = $database->loadObjectList();
     
+    // get standard points value from AUP
+    $database->setQuery("SELECT points FROM #__alpha_userpoints_rules WHERE published = 1 AND plugin_function = 'plgaup_jdownloads_user_download'");
+    $aup_default_points = (int)$database->loadResult(); 
+     
     for ($i=0; $i<count($mail_files_arr); $i++) {
-       if ($mail_files_arr[$i]->license -1 > 0){  
-            $mail_files .= "<div><li><b>".$mail_files_arr[$i]->file_title.' '.$mail_files_arr[$i]->release.'&nbsp;&nbsp;&nbsp;</b>'.JText::_('JLIST_FE_DETAILS_LICENSE_TITLE').': <b>'.$lic_arr[$mail_files_arr[$i]->license-1]->license_title.'&nbsp;&nbsp;&nbsp;</b>'.JText::_('JLIST_FE_DETAILS_FILESIZE_TITLE').': <b>'.$mail_files_arr[$i]->size.'</b></li></div>';
+
+       // build sum of aup points
+       if ($jlistConfig['use.alphauserpoints']){
+          if ($jlistConfig['use.alphauserpoints.with.price.field']){
+              $sum_aup_points = $sum_aup_points + (int)$mail_files_arr[$i]->price;
+          } else {
+              $sum_aup_points += $aup_default_points;
+          }    
+       }
+
+       // get license name
+       if ($mail_files_arr[$i]->license > 0){  
+           $has_licenses = true; 
+           $mail_files .= "<div><li><b>".$mail_files_arr[$i]->file_title.' '.$mail_files_arr[$i]->release.'&nbsp;&nbsp;&nbsp;</b>'.JText::_('JLIST_FE_DETAILS_LICENSE_TITLE').': <b>'.$lic_arr[$mail_files_arr[$i]->license-1]->license_title.'&nbsp;&nbsp;&nbsp;</b>'.JText::_('JLIST_FE_DETAILS_FILESIZE_TITLE').': <b>'.$mail_files_arr[$i]->size.'</b></li></div>';
        } else {
             $mail_files .= "<div><li><b>".$mail_files_arr[$i]->file_title.' '.$mail_files_arr[$i]->release.'&nbsp;&nbsp;&nbsp;</b>'.JText::_('JLIST_FE_DETAILS_FILESIZE_TITLE').': <b>'.$mail_files_arr[$i]->size.'</b></li></div>';
        }     
@@ -191,7 +256,16 @@ function Summary($option){
     }
     if ($is_mirror == 2 && $i == 1 && $mail_files_arr[0]->extern_site_mirror_2){
         $extern_site = true;    
-    } 
+    }
+    // get file extension  when only one file selected - set flag when link must opened in a new browser window 
+    if (count($marked_files_id) == 1 && $mail_files_arr[0]->url_download) {
+        $view_types = array();
+        $view_types = explode(',', $jlistConfig['file.types.view']);
+        $fileextension = strtolower(substr(strrchr($mail_files_arr[0]->url_download,"."),1));
+        if (in_array($fileextension, $view_types)){
+            $extern_site = true;
+        }
+    }
         
     // wenn kein direktlink - checkox variante   
     if (!$direktlink){ 
@@ -207,7 +281,7 @@ function Summary($option){
             for ($i=0; $i<count($marked_files_id); $i++) {
                 // fileurl holen
                 $database->setQuery("SELECT url_download FROM #__jdownloads_files WHERE file_id = '".(int)$marked_files_id[$i]."'");
-                $filename = $database->loadResult();
+                $filename = utf8_decode($database->loadResult());
                 $database->setQuery("SELECT cat_id FROM #__jdownloads_files WHERE file_id = '".(int)$marked_files_id[$i]."'");
                 $cat_id = $database->loadResult();
                 $database->setQuery("SELECT cat_dir FROM #__jdownloads_cats WHERE cat_id = '$cat_id'");
@@ -232,8 +306,8 @@ function Summary($option){
             $download_link = $filename;
         }
     }
-                
-    jlist_HTML::Summary($option, $marked_files_id, $mail_files, $filename, $download_link, $del_ok, $extern_site);
+    $sum_aup_points = ABS($sum_aup_points);            
+    jlist_HTML::Summary($option, $marked_files_id, $mail_files, $filename, $download_link, $del_ok, $extern_site, $sum_aup_points, $has_licenses);
 }
 
 // finish and start the download
@@ -245,6 +319,8 @@ function finish($option){
    $database = &JFactory::getDBO();
    $extern = false;
    $extern_site = false;
+   $can_download = false;
+   $price = '';
    
    // anti lecching
    $url = JURI::base( false );
@@ -303,8 +379,21 @@ function finish($option){
        // jump to the mainsite
         $app->redirect(JURI::base(true));     
     }
+    
+    // get AUP user points
+    $api_AUP = JPATH_SITE.DS.'components'.DS.'com_alphauserpoints'.DS.'helper.php';
+    if (file_exists($api_AUP)){
+        require_once ($api_AUP);
+        $profil = AlphaUserPointsHelper:: getUserInfo('', $user->id);
+    }
+    // get standard points value from AUP
+    $database->setQuery("SELECT points FROM #__alpha_userpoints_rules WHERE published = 1 AND plugin_function = 'plgaup_jdownloads_user_download'");
+    $aup_fix_points = (int)$database->loadResult();
+    $aup_fix_points = abs($aup_fix_points);
+    
     // files liste holen wenn mhr als ein download markiert
     $files = $database->getEscaped (JArrayHelper::getValue( $_REQUEST, 'list', '' ));
+    $files_arr = explode(',', $files);
     if ($files){
         // sammeldownload
         $user_random_id = intval(JArrayHelper::getValue( $_REQUEST, 'user', 0 ));
@@ -312,8 +401,8 @@ function finish($option){
         $filename = $download_verz.'tempzipfiles/'.$jlistConfig['zipfile.prefix'].$user_random_id.'.zip'; 
         $filename_direct = JURI::base().$jlistConfig['files.uploaddir'].'/tempzipfiles/'.$jlistConfig['zipfile.prefix'].$user_random_id.'.zip';
         // check whether direct access
-        $database->setQuery('SELECT file_title FROM #__jdownloads_files WHERE published = 1 AND file_id IN ('.$files.')');
-        if (!$ok = $database->loadObjectList()){
+        $database->setQuery('SELECT file_id, file_title FROM #__jdownloads_files WHERE published = 1 AND file_id IN ('.$files.')');
+        if (!$rows = $database->loadObjectList()){
            $app->redirect(JURI::base(true)); 
         }    
         // Zähler versorgen
@@ -323,6 +412,57 @@ function finish($option){
         if ($jlistConfig['send.mailto.option'] == '1') {
             sendMail($files);  
         }
+        // add AUP points
+        if ($jlistConfig['use.alphauserpoints']){
+            if ($jlistConfig['use.alphauserpoints.with.price.field']){
+                $database->setQuery("SELECT SUM(price) FROM #__jdownloads_files WHERE file_id IN ($files)");
+                $sum_points = (int)$database->loadResult();
+                if ($profil->points >= $sum_points){
+                    foreach($rows as $aup_data){
+                        $database->setQuery("SELECT price FROM #__jdownloads_files WHERE file_id = '$aup_data->file_id'");
+                        if ($price = (int)$database->loadResult()){
+                            $can_download = setAUPPointsDownloads($user->id, $aup_data->file_title, $price);
+                        }
+                    }
+                }
+            
+            } else {
+                // use fix points
+                $sum_points = $aup_fix_points * count($files_arr);
+                if ($profil->points >= $sum_points){
+                    foreach($rows as $aup_data){
+                        $can_download = setAUPPointsDownloads($user->id, $aup_data->file_title, 0);
+                    }
+                } else {
+                    $can_download = false;
+                }    
+            }
+       
+        } else {
+            // no AUP active
+            $can_download = true;
+        }
+        if ($jlistConfig['user.can.download.file.when.zero.points'] && $user->id){
+            $can_download = true;
+        }    
+        if (!$can_download){
+            $aup_no_points = '<div style="text-align:center" class="jd_div_aup_message">'.stripslashes($jlistConfig['user.message.when.zero.points']).'</div>'. 
+            '<div style="text-align:center" class="jd_div_aup_message">'.JText::_('JLIST_BACKEND_SET_AUP_FE_MESSAGE_NO_DOWNLOAD_POINTS').' '.(int)$profil->points.'<br />'.JText::_('JLIST_BACKEND_SET_AUP_FE_MESSAGE_NO_DOWNLOAD_NEEDED').' '.JText::_($sum_points).'</div>'.
+            '<div style="text-align:left" class="back_button"><a href="javascript:history.go(-1)">'.JText::_('JLIST_FRONTEND_BACK_BUTTON').'</a></div>';
+            echo $aup_no_points;
+        }
+        // download limits
+        // check the log - can user download the file?
+        $may_download = false;
+        $may_download = checkLog($fileid, $user);
+        if (!$may_download){
+            // download not possible
+            $datenow =& JFactory::getDate(); 
+            $date = $datenow->toFormat("%Y-%m-%d %H:%m");
+            $back .= '<div style="text-align:left" class="back_button"><a href="javascript:history.go(-1)">'.JText::_('JLIST_FRONTEND_BACK_BUTTON').'</a></div>'; 
+            echo '<div style="text-align:center" class="jd_limit_reached_message">'.stripslashes($jlistConfig['limited.download.reached.message']).' '.$date.'</div>'.$back;         
+        }
+        
     } else {
         // einzelner download
         // check whether direct access
@@ -330,56 +470,92 @@ function finish($option){
         if (!$ok = $database->loadResult()){
            $app->redirect(JURI::base(true)); 
         }    
-        // hits um 1 erhöhen
-        $database->setQuery("UPDATE #__jdownloads_files SET downloads=downloads+1 WHERE file_id = '".(int)$fileid."'");
-        $database->query();
-
-        // get filename and build path
-        if (!$is_mirror){
-            $database->setQuery("SELECT url_download FROM #__jdownloads_files WHERE file_id = '".(int)$fileid."'");
-            $file_url = $database->loadResult();
-            if ($file_url){
-                $database->setQuery("SELECT cat_dir FROM #__jdownloads_cats WHERE cat_id = '".(int)$catid."'");
-                $cat_dir = $database->loadResult();
-                $filename = JPATH_SITE.'/'.$jlistConfig['files.uploaddir'].'/'.$cat_dir.'/'.$file_url;
-                $filename_direct = JURI::base().$jlistConfig['files.uploaddir'].'/'.$cat_dir.'/'.$file_url;        
-            } else {
-                $database->setQuery("SELECT * FROM #__jdownloads_files WHERE file_id = '".(int)$fileid."'");
-                $result = $database->loadObjectlist();
-                $filename = $result[0]->extern_file; 
-                if ($result[0]->extern_site){
-                    $extern_site = true;
-                }
-                $extern = true;
-            }
-        } else {
-            // is mirror 
-            $database->setQuery("SELECT * FROM #__jdownloads_files WHERE file_id = '".(int)$fileid."'");
-            $result = $database->loadObjectlist();
-            if ($is_mirror == 1){
-                $filename = $result[0]->mirror_1; 
-                if ($result[0]->extern_site_mirror_1){
-                    $extern_site = true;
-                }
-            } else {
-                $filename = $result[0]->mirror_2; 
-                if ($result[0]->extern_site_mirror_2){
-                    $extern_site = true;
-                }
-            }
-            $extern = true;    
-        }      
         
-        // send mail
-        if ($jlistConfig['send.mailto.option'] == '1') {
-            sendMail($fileid);  
-        }
+        // download limits
+        // check the log - can user download the file?
+        $may_download = false;
+        $may_download = checkLog($fileid, $user);
+        if (!$may_download){
+            // download not possible
+            $datenow =& JFactory::getDate(); 
+            $date = $datenow->toFormat("%Y-%m-%d %H:%m");
+            $back .= '<div style="text-align:left" class="back_button"><a href="javascript:history.go(-1)">'.JText::_('JLIST_FRONTEND_BACK_BUTTON').'</a></div>'; 
+            echo '<div style="text-align:center" class="jd_limit_reached_message">'.stripslashes($jlistConfig['limited.download.reached.message']).' '.$date.'</div>'.$back;         
+        } else {        
+           // hits um 1 erhöhen
+           $database->setQuery("UPDATE #__jdownloads_files SET downloads=downloads+1 WHERE file_id = '".(int)$fileid."'");
+           $database->query();
+
+           // get filename and build path
+           if (!$is_mirror){
+               $database->setQuery("SELECT url_download FROM #__jdownloads_files WHERE file_id = '".(int)$fileid."'");
+               $file_url = utf8_decode($database->loadResult());
+               if ($file_url){
+                   $database->setQuery("SELECT cat_dir FROM #__jdownloads_cats WHERE cat_id = '".(int)$catid."'");
+                   $cat_dir = $database->loadResult();
+                   $filename = JPATH_SITE.'/'.$jlistConfig['files.uploaddir'].'/'.$cat_dir.'/'.$file_url;
+                   $filename_direct = JURI::base().$jlistConfig['files.uploaddir'].'/'.$cat_dir.'/'.$file_url;        
+               } else {
+                   $database->setQuery("SELECT * FROM #__jdownloads_files WHERE file_id = '".(int)$fileid."'");
+                   $result = $database->loadObjectlist();
+                   $filename = $result[0]->extern_file; 
+                   if ($result[0]->extern_site){
+                       $extern_site = true;
+                   }
+                   $extern = true;
+               }
+           } else {
+             // is mirror 
+             $database->setQuery("SELECT * FROM #__jdownloads_files WHERE file_id = '".(int)$fileid."'");
+             $result = $database->loadObjectlist();
+             if ($is_mirror == 1){
+                 $filename = $result[0]->mirror_1; 
+                 if ($result[0]->extern_site_mirror_1){
+                     $extern_site = true;
+                 }
+             } else {
+                 $filename = $result[0]->mirror_2; 
+                 if ($result[0]->extern_site_mirror_2){
+                     $extern_site = true;
+                 }
+             }
+             $extern = true;    
+           }      
+        
+           // send mail
+           if ($jlistConfig['send.mailto.option'] == '1') {
+               sendMail($fileid);  
+           }
+           // AUP integration
+           if ($jlistConfig['use.alphauserpoints.with.price.field'] && $jlistConfig['use.alphauserpoints']){
+               $database->setQuery("SELECT price FROM #__jdownloads_files WHERE file_id = '".(int)$fileid."'");
+               $price = (int)$database->loadResult();
+           } else {
+               if ($jlistConfig['use.alphauserpoints']){
+                   $price = $aup_fix_points;
+               }        
+           }    
+            
+           $can_download = setAUPPointsDownload($user->id, $ok, $price);
+           if ($jlistConfig['user.can.download.file.when.zero.points'] && $user->id){
+               $can_download = true;
+           }    
+           if (!$can_download){
+               // get AUP user data
+               $profil = AlphaUserPointsHelper:: getUserInfo ( '', $user->id );
+               $aup_no_points = '<div style="text-align:center" class="jd_div_aup_message">'.stripslashes($jlistConfig['user.message.when.zero.points']).'</div>'.
+               '<div style="text-align:center" class="jd_div_aup_message">'.JText::_('JLIST_BACKEND_SET_AUP_FE_MESSAGE_NO_DOWNLOAD_POINTS').' '.(int)$profil->points.'<br />'.JText::_('JLIST_BACKEND_SET_AUP_FE_MESSAGE_NO_DOWNLOAD_NEEDED').' '.JText::_($price).'</div>'. 
+               '<div style="text-align:left" class="back_button"><a href="javascript:history.go(-1)">'.JText::_('JLIST_FRONTEND_BACK_BUTTON').'</a></div>';
+               echo $aup_no_points;
+           } 
+        }   
     }    
     // run download
-	$x = download($filename, $filename_direct, $extern, $extern_site);
-    
+    if ($can_download && $may_download){
+	    $x = download($filename, $filename_direct, $extern, $extern_site);
+    }    
     if ($x == 2) {
-        // datei nicht vorhanden
+        // files not exists
         echo '<div align ="center"><br /><b><font color="#990000">'.JText::_('JLIST_FRONTEND_FILE_NOT_FOUND_MESSAGE').'</font></b><br /><br /></div>';         
     }
   }    
@@ -405,7 +581,7 @@ function download($file, $filename_direct, $extern, $extern_site){
     
     // if url go to other website - open it in a new browser window
     if ($extern_site){
-        echo "<script>document.location.href='$file';</script>\n";
+        echo "<script>document.location.href='$file';</script>\n";  
         exit;   
     }    
     
@@ -418,6 +594,11 @@ function download($file, $filename_direct, $extern, $extern_site){
         $file_extension = strtolower(substr(strrchr($filename,"."),1));
         $ctype = datei_mime($file_extension);
         ob_end_clean();
+        // needed for MS IE - otherwise content disposition is not used?
+        if (ini_get('zlib.output_compression')){
+            ini_set('zlib.output_compression', 'Off');
+        }
+        
         header("Cache-Control: public, must-revalidate");
         header('Cache-Control: pre-check=0, post-check=0, max-age=0');
         // header("Pragma: no-cache");  // Problems with MS IE
@@ -433,6 +614,10 @@ function download($file, $filename_direct, $extern, $extern_site){
           header('Content-Disposition: inline; filename="'.$filename.'"');
         }   
         header("Content-Transfer-Encoding: binary\n");
+        // set_time_limit doesn't work in safe mode
+        if (!ini_get('safe_mode')){ 
+            @set_time_limit(0);
+        }
         @readfile($file);
     }
     exit;
@@ -870,7 +1055,7 @@ function sendMail($files){
     $html_format = true;
 
     $text = "";
-    $text = $jlistConfig['send.mailto.template.download'];
+    $text = stripslashes($jlistConfig['send.mailto.template.download']);
     $text = str_replace('{file_list}', $mail_files, $text);
     $text = str_replace('{ip_address}', $ip, $text);
     $text = str_replace('{user_name}', $user_name, $text);
@@ -900,7 +1085,7 @@ function sendMailUploads($name, $mail, $url_download, $filetitle, $description){
     $html_format = true;
 
     $text = "";
-    $text = $jlistConfig['send.mailto.template.upload'];
+    $text = stripslashes($jlistConfig['send.mailto.template.upload']);
     $text = str_replace('{name}', $name, $text);
     $text = str_replace('{ip}', $ip, $text);
     $text = str_replace('{mail}', $mail, $text);
@@ -1036,11 +1221,14 @@ function fsize($file) {
 
 // build comp header
 function makeHeader($header, $compo_text, $is_showcats, $is_one_cat, $sum_subs, $is_detail, $is_search, $is_upload, $is_summary,  $is_finish, $sum_pages, $limit, $total, $limitstart, $site_aktuell) {
-	global $jlistConfig, $Itemid;
+	global $jlistConfig, $Itemid, $page_title;
     
 	$user = &JFactory::getUser(); 
 	$database = &JFactory::getDBO();
 	
+    $database->setQuery("SELECT id from #__menu WHERE link = 'index.php?option=com_jdownloads&view=viewcategories' and published = 1");
+    $Itemid = $database->loadResult();
+    
     // Anzeige 1 von 0 verhindern
     if ($sum_pages == 0){
         $sum_pages = 1;
@@ -1048,13 +1236,13 @@ function makeHeader($header, $compo_text, $is_showcats, $is_one_cat, $sum_subs, 
     
 	// compo header
     $header = '';
-    $header = '<div class="componentheading">'.$jlistConfig['jd.header.title'].'</div>';
+    $header = '<div class="componentheading">'.$page_title.'</div>';
     
 	// components description
 	if ($compo_text && $jlistConfig['downloads.titletext'] != '') {
-        $header_text = $jlistConfig['downloads.titletext'];
+        $header_text = stripslashes($jlistConfig['downloads.titletext']);
 		if ($jlistConfig['google.adsense.active'] && $jlistConfig['google.adsense.code'] != ''){
-            $header_text = str_replace( '{google_adsense}', $jlistConfig['google.adsense.code'], $header_text);
+            $header_text = str_replace( '{google_adsense}', stripslashes($jlistConfig['google.adsense.code']), $header_text);
         } else {
             $header_text = str_replace( '{google_adsense}', '', $header_text);
         }   
@@ -1062,14 +1250,14 @@ function makeHeader($header, $compo_text, $is_showcats, $is_one_cat, $sum_subs, 
 	}	
 
     // home link
-    $header .= '<table class="jd_top_navi"><tr><td align="center"><a href="'.JRoute::_('index.php?option=com_jdownloads&amp;Itemid='.$Itemid).'">'.'<img src="components/com_jdownloads/images/home_fe.png" width="32" height="32" border="0" alt="" /></a> <a href="'.JRoute::_('index.php?option=com_jdownloads&amp;Itemid='.$Itemid).'">'.JText::_('JLIST_FRONTEND_HOME_LINKTEXT').'</a></td>';
+    $header .= '<table class="jd_top_navi"><tr><td align="center"><a href="'.JRoute::_('index.php?option=com_jdownloads&amp;Itemid='.$Itemid).'">'.'<img src="'.JURI::base().'components/com_jdownloads/images/home_fe.png" width="32" height="32" border="0" alt="" /></a> <a href="'.JRoute::_('index.php?option=com_jdownloads&amp;Itemid='.$Itemid).'">'.JText::_('JLIST_FRONTEND_HOME_LINKTEXT').'</a></td>';
 
     // insert search link
-    $header .= '<td align="center"><a href="'.JRoute::_('index.php?option=com_jdownloads&amp;Itemid='.$Itemid.'&amp;task=search').'">'.'<img src="components/com_jdownloads/images/search.png" width="32" height="32" border="0" alt="" /></a> <a href="'.JRoute::_('index.php?option=com_jdownloads&amp;Itemid='.$Itemid.'&amp;task=search').'">'.JText::_('JLIST_FRONTEND_SEARCH_LINKTEXT').'</a></td>';
+    $header .= '<td align="center"><a href="'.JRoute::_('index.php?option=com_jdownloads&amp;Itemid='.$Itemid.'&amp;task=search').'">'.'<img src="'.JURI::base().'components/com_jdownloads/images/search.png" width="32" height="32" border="0" alt="" /></a> <a href="'.JRoute::_('index.php?option=com_jdownloads&amp;Itemid='.$Itemid.'&amp;task=search').'">'.JText::_('JLIST_FRONTEND_SEARCH_LINKTEXT').'</a></td>';
 
     // insert frontend upload link if active
     if ($jlistConfig['frontend.upload.active']) {
-        $header .= '<td align="center"><a href="'.JRoute::_('index.php?option=com_jdownloads&amp;Itemid='.$Itemid.'&amp;task=upload').'">'.'<img src="components/com_jdownloads/images/upload.png" width="32" height="32" border="0" alt="" /></a> <a href="'.JRoute::_('index.php?option=com_jdownloads&amp;Itemid='.$Itemid.'&amp;task=upload').'">'.JText::_('JLIST_FRONTEND_UPLOAD_LINKTEXT').'</a></td>';
+        $header .= '<td align="center"><a href="'.JRoute::_('index.php?option=com_jdownloads&amp;Itemid='.$Itemid.'&amp;task=upload').'">'.'<img src="'.JURI::base().'components/com_jdownloads/images/upload.png" width="32" height="32" border="0" alt="" /></a> <a href="'.JRoute::_('index.php?option=com_jdownloads&amp;Itemid='.$Itemid.'&amp;task=upload').'">'.JText::_('JLIST_FRONTEND_UPLOAD_LINKTEXT').'</a></td>';
     }
     
     // listbox aller cats erzeugen wenn aktiviert in config
@@ -1102,8 +1290,11 @@ function makeHeader($header, $compo_text, $is_showcats, $is_one_cat, $sum_subs, 
                  'class="inputbox" size="1" onchange="gocat(cat_list,'.$Itemid.')"', 'value', 'text', $selected );
 		
 		$header .= '<td valign="bottom"><form name="go_cat" id="go_cat" action="" method="post">'.$cat_listbox.'</form></td></tr></table>';         
+    } else {
+         $header .='</tr></table>';
     }
 		
+    
     // Subheader !!
         
     // hide subheader
@@ -1143,12 +1334,14 @@ function makeHeader($header, $compo_text, $is_showcats, $is_one_cat, $sum_subs, 
                         <tr><td width="70%" valign="top"><b>'.JText::_('JLIST_FRONTEND_SUBTITLE_OVER_CATLIST').'</b></td>
                         <td width="30%" valign="top" colspan="2"><div style="text-align:right">'.$nav1.' '.JText::_('JLIST_FRONTEND_HEADER_PAGENAVI_PAGE_TEXT').' '.$site_aktuell.' '.JText::_('JLIST_FRONTEND_HEADER_PAGENAVI_TO_TEXT').' '.$sum_pages.' '.$nav2.'</div></td></tr>
                         <tr><td width="70%" valign="top" align="left">'.JText::_('JLIST_FRONTEND_SUBHEADER_NUMBER_OF_CATS_TITLE').': '.$total.'</td>';
+                $header .= '</tr></table>';
            } else {
                 $header .= '<table class="jd_cat_subheader" width="100%">
                         <tr><td colspan="3"></td></tr>
                         <tr><td width="70%" valign="top"><b>'.JText::_('JLIST_FRONTEND_SUBTITLE_OVER_CATLIST').'</b></td>
                         <td width="30%" valign="top" colspan="2"><div style="text-align:right"> </div></td></tr>
                         <tr><td width="70%" valign="top" align="left">'.JText::_('JLIST_FRONTEND_SUBHEADER_NUMBER_OF_CATS_TITLE').': '.$total.'</td>';
+                $header .= '</tr></table>';        
            }              
         }
         
@@ -1197,11 +1390,13 @@ function makeHeader($header, $compo_text, $is_showcats, $is_one_cat, $sum_subs, 
                      <tr><td width="70%" valign="top"><b>'.JText::_('JLIST_FRONTEND_SUBTITLE_OVER_ONE_CAT').': '.$title.'</b></td>
                      <td width="30%" valign="top" colspan="2"><div style="text-align:right">'.$nav1.' '.JText::_('JLIST_FRONTEND_HEADER_PAGENAVI_PAGE_TEXT').' '.$site_aktuell.' '.JText::_('JLIST_FRONTEND_HEADER_PAGENAVI_TO_TEXT').' '.$sum_pages.' '.$nav2.'</div></td></tr>
                      <tr><td width="70%" valign="top" align="left">'.$einf.'</td>';
+                $header .= '</tr></table>';     
            } else {
                 $header .= '<table class="jd_cat_subheader" width="100%"><tr><td colspan="3"></td></tr>
                      <tr><td width="70%" valign="top"><b>'.JText::_('JLIST_FRONTEND_SUBTITLE_OVER_ONE_CAT').': '.$title.'</b></td>
                      <td width="30%" valign="top" colspan="2"><div style="text-align:right"> </div></td></tr>
                      <tr><td width="70%" valign="top" align="left">'.$einf.'</td>';
+                $header .= '</tr></table>';     
            }          
         }    
     }    
@@ -1302,9 +1497,9 @@ function makeFooter($make_back_button, $is_showcats, $is_one_cat, $sum_pages, $l
     }  
     // footer text
     if ($jlistConfig['downloads.footer.text'] != '') {
-        $footer_text = $jlistConfig['downloads.footer.text'];
+        $footer_text = stripslashes($jlistConfig['downloads.footer.text']);
         if ($jlistConfig['google.adsense.active'] && $jlistConfig['google.adsense.code'] != ''){
-            $footer_text = str_replace( '{google_adsense}', $jlistConfig['google.adsense.code'], $footer_text);
+            $footer_text = str_replace( '{google_adsense}', stripslashes($jlistConfig['google.adsense.code']), $footer_text);
         } else {    
             $footer_text = str_replace( '{google_adsense}', '', $footer_text);
         }    
@@ -1337,12 +1532,12 @@ function reportDownload($option,$cid){
         $first_adress = array_shift($empfaenger);
         $success = JUtility::sendMail('jDownloads', 'jDownloads', $first_adress, $betreff, $text, $html_format, '',$empfaenger);
         if ($success){
-            $message = '<div style="text-align:center" class="jd_cat_title"><br /><img src="components/com_jdownloads/images/summary.png" width="48" height="48" border="0" alt="" />'.JText::_('JLIST_REPORT_FILE_MESSAGE_OK').'<br /><br /></div>';
+            $message = '<div style="text-align:center" class="jd_cat_title"><br /><img src="'.JURI::base().'components/com_jdownloads/images/summary.png" width="48" height="48" border="0" alt="" />'.JText::_('JLIST_REPORT_FILE_MESSAGE_OK').'<br /><br /></div>';
         } else {
-            $message = '<div style="text-align:center" class="jd_cat_title"><br /><img src="components/com_jdownloads/images/warning.png" width="48" height="48" border="0" alt="" />'.JText::_('JLIST_REPORT_FILE_MESSAGE_ERROR').'<br /><br /></div>';
+            $message = '<div style="text-align:center" class="jd_cat_title"><br /><img src="'.JURI::base().'components/com_jdownloads/images/warning.png" width="48" height="48" border="0" alt="" />'.JText::_('JLIST_REPORT_FILE_MESSAGE_ERROR').'<br /><br /></div>';
         }    
     } else {
-            $message = '<div style="text-align:center" class="jd_cat_title"><br /><img src="components/com_jdownloads/images/warning.png" width="48" height="48" border="0" alt="" />'.JText::_('JLIST_REPORT_FILE_MESSAGE_ERROR').'<br /><br /></div>';
+            $message = '<div style="text-align:center" class="jd_cat_title"><br /><img src="'.JURI::base().'components/com_jdownloads/images/warning.png" width="48" height="48" border="0" alt="" />'.JText::_('JLIST_REPORT_FILE_MESSAGE_ERROR').'<br /><br /></div>';
     }    
     $message .= '<div style="text-align:left" class="back_button"><a href="javascript:history.go(-1)">'.JText::_('JLIST_FRONTEND_BACK_BUTTON').'</a></div>'; 
     echo $message;
@@ -1503,8 +1698,9 @@ function create_new_thumb($picturepath) {
 }
 
 function checkFileName($name){
+    global $jlistConfig;
     if ($name) {
-        $name = utf8_decode($name);
+        $name = utf8_decode($name);   
         // change to uppercase
         if ($jlistConfig['fix.upload.filename.uppercase']){
             $name = strtolower($name); 
@@ -1517,13 +1713,13 @@ function checkFileName($name){
             // change special chars
             $name = strtr($name, array( "'" => "", 'ä' => 'ae', 'ü' => 'ue', 'ö' => 'oe', 'Ä' => 'ae', 'Ü' => 'ue', 'Ö' => 'oe', 'ß' => 'ss', 'Þ' => 'TH', 'þ' => 'th', 'Ð' => 'DH', 'ð' => 'dh', 'ß' => 'ss', 'Œ' => 'OE', 'œ' => 'oe', 'Æ' => 'AE', 'æ' => 'ae', 'µ' => 'u'));
             // remove invalid chars
-            $name = preg_replace('#[^a-z0-9_.-]#', '', $name);
+            $name = preg_replace('#[^A-Za-z0-9 _.-]#', '', $name);
         }
         // anti hack .php.rar
-        $name = str_ireplace('.php.', '.', $name);
-        $name = str_ireplace('.php4.', '.', $name); 
-        $name = str_ireplace('.php5.', '.', $name); 
-        $name = utf8_encode($name);       
+        $name = JString::str_ireplace('.php.', '.', $name);
+        $name = JString::str_ireplace('.php4.', '.', $name); 
+        $name = JString::str_ireplace('.php5.', '.', $name);
+        //$name = utf8_encode($name);       
     }               
     return $name;    
 }
@@ -1598,7 +1794,7 @@ function getID3v2Tags($file,$blnAllFrames=0){
                     }
                     $frameContent=fread($fp,$frameSize);
                     if(!$arrTag[$frameName]){
-                        $arrTag[$frameName]=trim($frameContent);// the frame content (always?) starts with 0, so it's better to remove it
+                        $arrTag[$frameName]=trim(utf8_encode($frameContent));// the frame content (always?) starts with 0, so it's better to remove it
                     }
                     else{// if there is more than one frame with the same name
                         $arrTag[$frameName]=$arrTag[$frameName]."~".trim($frameContent);
@@ -1669,11 +1865,11 @@ function getRatings($id){
         <div class="jwajaxvote-inline-rating">
         <ul class="jwajaxvote-star-rating">
         <li id="rating'.$id.'" class="current-rating" style="width:'.$result.'%;"></li>
-        <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote('.$id.',1,'.$rating_sum.','.$rating_count.');" title="1 '.JText::_('JDVOTE_STAR').' 5" class="one-star">1</a></li>
-        <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote('.$id.',2,'.$rating_sum.','.$rating_count.');" title="2 '.JText::_('JDVOTE_STARS').' 5" class="two-stars">2</a></li>
-        <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote('.$id.',3,'.$rating_sum.','.$rating_count.');" title="3 '.JText::_('JDVOTE_STARS').' 5" class="three-stars">3</a></li>
-        <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote('.$id.',4,'.$rating_sum.','.$rating_count.');" title="4 '.JText::_('JDVOTE_STARS').' 5" class="four-stars">4</a></li>
-        <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote('.$id.',5,'.$rating_sum.','.$rating_count.');" title="5 '.JText::_('JDVOTE_STARS').' 5" class="five-stars">5</a></li>
+        <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote('.$id.',1,'.$rating_sum.','.$rating_count.');" title="1 '.JText::_('JDVOTE_STAR').' 5" class="one-star"></a></li>
+        <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote('.$id.',2,'.$rating_sum.','.$rating_count.');" title="2 '.JText::_('JDVOTE_STARS').' 5" class="two-stars"></a></li>
+        <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote('.$id.',3,'.$rating_sum.','.$rating_count.');" title="3 '.JText::_('JDVOTE_STARS').' 5" class="three-stars"></a></li>
+        <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote('.$id.',4,'.$rating_sum.','.$rating_count.');" title="4 '.JText::_('JDVOTE_STARS').' 5" class="four-stars"></a></li>
+        <li><a href="javascript:void(null)" onclick="javascript:jwAjaxVote('.$id.',5,'.$rating_sum.','.$rating_count.');" title="5 '.JText::_('JDVOTE_STARS').' 5" class="five-stars"></a></li>
         </ul>
         <div id="jwajaxvote'.$id.'" class="jwajaxvote-box">
         ';
@@ -1684,11 +1880,11 @@ function getRatings($id){
         <div class="jwajaxvote-inline-rating">
         <ul class="jwajaxvote-star-rating">
         <li id="rating'.$id.'" class="current-rating" style="width:'.$result.'%;"></li>
-        <li><a href="javascript:void(null)" onclick="" title="1 '.JText::_('JDVOTE_STAR').' 5" class="one-star">1</a></li>
-        <li><a href="javascript:void(null)" onclick="" title="2 '.JText::_('JDVOTE_STARS').' 5" class="two-stars">2</a></li>
-        <li><a href="javascript:void(null)" onclick="" title="3 '.JText::_('JDVOTE_STARS').' 5" class="three-stars">3</a></li>
-        <li><a href="javascript:void(null)" onclick="" title="4 '.JText::_('JDVOTE_STARS').' 5" class="four-stars">4</a></li>
-        <li><a href="javascript:void(null)" onclick="" title="5 '.JText::_('JDVOTE_STARS').' 5" class="five-stars">5</a></li>
+        <li><a href="javascript:void(null)" onclick="" title="1 '.JText::_('JDVOTE_STAR').' 5" class="one-star"></a></li>
+        <li><a href="javascript:void(null)" onclick="" title="2 '.JText::_('JDVOTE_STARS').' 5" class="two-stars"></a></li>
+        <li><a href="javascript:void(null)" onclick="" title="3 '.JText::_('JDVOTE_STARS').' 5" class="three-stars"></a></li>
+        <li><a href="javascript:void(null)" onclick="" title="4 '.JText::_('JDVOTE_STARS').' 5" class="four-stars"></a></li>
+        <li><a href="javascript:void(null)" onclick="" title="5 '.JText::_('JDVOTE_STARS').' 5" class="five-stars"></a></li>
         </ul>
         <div id="jwajaxvote'.$id.'" class="jwajaxvote-box">
         ';
@@ -1707,4 +1903,150 @@ function getRatings($id){
     return $html;       
 }
 
+function setAUPPointsUploads($submitted_by, $file_title){
+    // added (or reduce) points to the alphauserpoints when is activated in the jD config
+    // $submitted_by = user ID after upload a file
+    global $jlistConfig;
+    if ($jlistConfig['use.alphauserpoints'] && $submitted_by){
+        $api_AUP = JPATH_SITE.DS.'components'.DS.'com_alphauserpoints'.DS.'helper.php';
+        if (file_exists($api_AUP)){
+            require_once ($api_AUP);
+            $aupid = AlphaUserPointsHelper::getAnyUserReferreID( $submitted_by );
+            if ($aupid){
+                $text = JText::_('JLIST_BACKEND_SET_AUP_UPLOAD_TEXT');
+                $text = sprintf($text, $file_title);
+                AlphaUserPointsHelper::newpoints( 'plgaup_jdownloads_user_upload_published', $aupid, $file_title, $text);
+            }     
+        }    
+    }
+}    
+
+function setAUPPointsDownload($user_id, $file_title, $price){
+    // added (or reduce) points to the alphauserpoints when is activated in the jD config
+    // $user_id = user ID from the file download
+    global $jlistConfig;
+    if ($jlistConfig['use.alphauserpoints'] && $user_id){
+        $api_AUP = JPATH_SITE.DS.'components'.DS.'com_alphauserpoints'.DS.'helper.php';
+        if (file_exists($api_AUP)){
+            require_once ($api_AUP);
+            $aupid = AlphaUserPointsHelper::getAnyUserReferreID( $user_id );
+            if ($aupid){
+                $text = JText::_('JLIST_BACKEND_SET_AUP_DOWNLOAD_TEXT');
+                $text = sprintf($text, $file_title);
+                // get AUP user data
+                $profil = AlphaUserPointsHelper:: getUserInfo ( '', $user_id );
+                if ($jlistConfig['user.can.download.file.when.zero.points'] || $profil->points > 0 || $price == 0){
+                    if ($price){
+                        // price as points activated
+                        if ($profil->points >= $price){
+                            if ($jlistConfig['use.alphauserpoints.with.price.field']){
+                            AlphaUserPointsHelper::newpoints( 'plgaup_jdownloads_user_download_use_price', $aupid, '', $text, '-'.$price, $text);
+                            return true;
+                            } else {
+                                AlphaUserPointsHelper::newpoints( 'plgaup_jdownloads_user_download', $aupid, '', $text);
+                                return true;
+                            }    
+                        } else {
+                            // not enough points . no download
+                            return false;
+                        }    
+                    } else {
+                        // use points set in AUP plugin
+                        //AlphaUserPointsHelper::newpoints( 'plgaup_jdownloads_user_download', $aupid, '', $text);
+                        return true;
+                    }    
+                } else {
+                    // not enough points . no download
+                    return false;
+                }   
+            }     
+        } else {
+           return true;
+        }    
+    } else {
+      if ($price){
+          // not registered user
+          return false;
+      } else {     
+          // guest but no price
+          return true;  
+      }    
+    } 
+}
+
+function setAUPPointsDownloads($user_id, $file_title, $price){
+    // added (or reduce) points to the alphauserpoints when is activated in the jD config
+    // $user_id = user ID from the file download
+    global $jlistConfig;
+    if ($jlistConfig['use.alphauserpoints'] && $user_id){
+        $api_AUP = JPATH_SITE.DS.'components'.DS.'com_alphauserpoints'.DS.'helper.php';
+        if (file_exists($api_AUP)){
+            require_once ($api_AUP);
+            $aupid = AlphaUserPointsHelper::getAnyUserReferreID( $user_id );
+            if ($aupid){
+                $text = JText::_('JLIST_BACKEND_SET_AUP_DOWNLOAD_TEXT');
+                $text = sprintf($text, $file_title);
+                // get AUP user data
+                $profil = AlphaUserPointsHelper:: getUserInfo ( '', $user_id );
+                if ($jlistConfig['user.can.download.file.when.zero.points'] || $profil->points > 0 || $price == 0){
+                    if ($price){
+                        // price as points activated
+                            AlphaUserPointsHelper::newpoints( 'plgaup_jdownloads_user_download_use_price', $aupid, '', $text, '-'.$price, $text);
+                            return true;
+                    } else {
+                        AlphaUserPointsHelper::newpoints( 'plgaup_jdownloads_user_download', $aupid, '', $text);
+                        return true;
+                    }    
+                } else {
+                    return false;
+                }   
+            }     
+        } else {
+           return true;
+        }   
+    } else {
+      return true;
+    }
+}
+
+function checkLog($fileid, $user){
+    global $jlistConfig;
+    $database = &JFactory::getDBO();
+    $app = JFactory::getApplication();
+    $offset = $app->getCfg('offset');
+    $datenow =& JFactory::getDate(); 
+    $datenow->setOffset($offset);
+    
+    $date = $datenow->toFormat("%Y-%m-%d");
+    $max_files_day = $jlistConfig['limited.download.number.per.day'];
+    if ($max_files_day == 0 || $user->get('aid') == 0 || $user->get('aid') == 2){ 
+        // not limited or guest or special user group
+        return true;
+    } else {
+        // delete first old data sets
+        $database->setQuery("DELETE FROM #__jdownloads_log WHERE log_datetime != '$date'");
+        $database->Query();                 
+        // check limit
+        $logged_user_files = array();
+        $database->setQuery("SELECT * FROM #__jdownloads_log WHERE log_datetime = '$date' AND log_user = '". (int) $user->get('id')."'");
+        $logged_user_files = $database->loadObjectList();
+        if (!$logged_user_files || count($logged_user_files) < $max_files_day){
+            // add file in log 
+            $database->setQuery("INSERT INTO #__jdownloads_log (log_file_id, log_ip, log_datetime, log_user, log_browser) VALUES ('".$fileid."', '".$_SERVER['REMOTE_ADDR']."', '".$date."', '".$user->get('id')."', '')");
+            $database->query();
+            return true;
+        } else {
+            // download not allowed
+            return false;
+        }   
+    }        
+} 
+
+// added for search function
+function _ctrSort($a, $b) {
+     if (!is_array($a) || !is_array($b) || !array_key_exists("ctr", $a) || !array_key_exists("ctr", $b) || $a['ctr'] == $b['ctr'])
+         return 0;
+    return ($a['ctr'] < $b['ctr']) ? 1 : -1;
+
+}       
 ?>

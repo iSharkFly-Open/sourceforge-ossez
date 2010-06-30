@@ -64,6 +64,10 @@ class jlist_files extends JTable{
     var $metadesc = null;
 	var $size = null;
 	var $date_added = null;
+    var $file_date = null;
+    var $publish_from = null;
+    var $publish_to = null;
+    var $use_timeframe = null;
 	var $url_download = null;
     var $extern_file = null;
     var $extern_site = null;
@@ -77,7 +81,9 @@ class jlist_files extends JTable{
 	var $created_by = null;
 	var $created_mail = null;
 	var $modified_by = null;
-  	var $modified_date = null;		
+  	var $modified_date = null;
+    var $submitted_by = null;
+    var $set_aup_points = null;    		
 	var $downloads = null;
 	var $ordering = null;
 	var $published = null;

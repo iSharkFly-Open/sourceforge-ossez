@@ -38,8 +38,8 @@
 //
 
 // If you would like to use a custom loading image or close button reference them in the next two lines.
-var loadingImage = 'components/com_jdownloads/lightbox/loading.gif';		
-var closeButton = 'components/com_jdownloads/lightbox/close.gif';		
+var loadingImage = live_site+'components/com_jdownloads/lightbox/loading.gif'; 		
+var closeButton = live_site+'components/com_jdownloads/lightbox/close.gif'; 
 
 
 
