@@ -21,6 +21,16 @@ require_once( $mainframe->getPath( 'admin_html' ) );
 require_once( $mainframe->getPath( 'class' ) );
 require_once(EL_ADMIN_PATH.'/../../includes/pageNavigation.php');
 
+?>
+<script type="text/javascript">
+    function openWindow (url) {
+        fenster = window.open(url, "_blank", "width=500, height=420, STATUS=YES, DIRECTORIES=NO, MENUBAR=NO, SCROLLBARS=YES, RESIZABLE=NO");
+        fenster.focus();
+    }
+</script>
+ 
+<?php
+
 // added backend css
 $document =& JFactory::getDocument();
 $css = JURI::base(true).'/components/com_jdownloads/style.css';
@@ -127,6 +137,14 @@ switch($task){
     filesCopySave($option, $cat_id);
     break;
 
+    case 'files.move':
+    filesMove($option, $cid, $cat_id);
+    break;
+    
+    case 'files.move.save':
+    filesMoveSave($option, $cat_id);
+    break;    
+    
 	case 'files.apply':
 	filesSave($option, $cat_id, 1);
 	break;
@@ -444,7 +462,7 @@ function checkFiles($task) {
                       $no_writable++;
                   }
                   $dirlist[$i] = str_replace($searchdir, '', $dirlist[$i]);
-                  // am ende / löschen
+                  // am ende / loeschen
                   if ($pos = strrpos($dirlist[$i], '/')){
                     $searchdirs[] = substr($dirlist[$i], 0, $pos);
                   }
@@ -452,15 +470,15 @@ function checkFiles($task) {
                   // $searchdirs[] = $dirlist[$i];
               }
           }  
-          for ($i=1; $i < count($searchdirs); $i++) {
+          for ($i=0; $i < count($searchdirs); $i++) {
              $dirs = explode('/', $searchdirs[$i]);
              $sum = count($dirs);
              // this characters are not allowed in foldernames
              if (!eregi("[?!:;\*@#%~=\+\$\^'\"\(\)\<\>]", $searchdirs[$i])) {              
-               // prüfen ob dir als cat vorhanden
+               // pruefen ob dir als cat vorhanden
                $database->setQuery("SELECT COUNT(*) FROM #__jdownloads_cats WHERE cat_dir = '$searchdirs[$i]'");
                $cat_da = $database->loadResult(); 
-               // wenn nicht - hinzufügen
+               // wenn nicht - hinzufuegen
                if (!$cat_da) {
                    $new_dirs_found++;
                    // neue cat anlegen
@@ -474,7 +492,7 @@ function checkFiles($task) {
                    $row->cat_title = $dirs[$sum - 1];
                    $row->cat_pic = $jlistConfig['cat.pic.default.filename'];                                 
                    if ($sum > 1) {
-                       // cat_id für parent_id holen
+                       // cat_id fuer parent_id holen
                        $parent = substr($searchdirs[$i], 0, strrpos($searchdirs[$i] , '/') );
                        $database->setQuery("SELECT cat_id FROM #__jdownloads_cats WHERE cat_dir = '$parent'");
                        $row->parent_id = $database->loadResult();                        
@@ -485,6 +503,13 @@ function checkFiles($task) {
                         $datenow =& JFactory::getDate();
                         $row->cat_alias = $datenow->toFormat("%Y-%m-%d-%H-%M-%S");
                    }
+                   // when file autopublish is set on - also categories autopublished
+                   if ($jlistConfig['autopublish.founded.files']){
+                       $row->published = 1;
+                   } else {
+                       $row->published = 0;
+                   }
+                       
                    $row->cat_dir = $searchdirs[$i];
                    // get a correct ordering value
                    if (!$row->ordering) {
@@ -505,7 +530,7 @@ function checkFiles($task) {
              }    
           }
           
-          // Prüfen ob alle publishte cat-dirs existieren
+          // Pruefen ob alle publishte cat-dirs existieren
           $mis_cats = 0;
           $database->setQuery("SELECT * FROM #__jdownloads_cats WHERE published=1");
           $cats = $database->loadObjectList();
@@ -540,7 +565,7 @@ function checkFiles($task) {
                          $only_dirs = substr($restpath, 0, strlen($restpath) - 1);
                          // existiert filename in files?
                          $exist_file = false;
-                         $database->setQuery("SELECT * FROM #__jdownloads_files WHERE url_download = '$filename'");
+                         $database->setQuery("SELECT * FROM #__jdownloads_files WHERE url_download = '".utf8_encode($filename)."'");
                          $row_file_exists = $database->loadObjectList();
                          // wenn da - in cats suchen
                          if ($row_file_exists) {
@@ -565,12 +590,16 @@ function checkFiles($task) {
                            if ($task != 'restore.run'){  
                               $filename_new = checkFileName($filename);
                               if ($filename_new != $filename) {
-                                  $success = @rename($startdir.$only_dirs.'/'.$filename, $startdir.$only_dirs.'/'.$filename_new); 
-                                  if ($success) {
-                                      $filename = $filename_new; 
-                                  } else {
-                                      // could not rename filename
-                                  }    
+                                if (utf8_decode($filename_new) != $filename){
+                                    $success = @rename($startdir.$only_dirs.'/'.$filename, $startdir.$only_dirs.'/'.$filename_new); 
+                                    if ($success) {
+                                        $filename = $filename_new; 
+                                    } else {
+                                       // could not rename filename
+                                    }
+                                } else {
+                                  $filename = $filename_new;
+                                }     
                               }    
                            }      
                             $database->setQuery("SELECT cat_id FROM #__jdownloads_cats WHERE cat_dir = '$only_dirs'");
@@ -579,6 +608,8 @@ function checkFiles($task) {
                                 $file_extension = strtolower(substr(strrchr($filename,"."),1)); 
                                 $file_obj = new jlist_files($database);
                                 $file_obj->url_download   = $filename;
+                                $test = utf8_decode($filename);
+                                $str = mb_convert_encoding($filename, "ISO-8859-1");
                                 $file_obj->file_title     = str_replace('.'.$file_extension, '', $filename); 
                                 $file_obj->size           = $files[$key3]['size'];
                                 $file_obj->description    = '';                                                                                       
@@ -610,13 +641,24 @@ function checkFiles($task) {
                                     $file_obj->ordering = $file_obj->getNextOrder();  
                                     $reorder = false; 
                                 }
+                                
                                 $file_obj->store();
                                 
                                 if ($reorder){
                                     $res = $file_obj->reorder('');
                                 }
+
+/*                                $database->setQuery("INSERT INTO #__jdownloads_files (`file_id`, `file_title`, `file_alias`, `description`, `description_long`, `file_pic`, `thumbnail`, `price`, `release`, `language`, `system`, `license`, `url_license`, `update_active`, `cat_id`, `metakey`, `metadesc`, `size`, `date_added`, `file_date`, `publish_from`, `publish_to`, `url_download`, `extern_file`, `url_home`, `author`, `url_author`, `created_by`, `created_mail`, `modified_by`, `modified_date`, `submitted_by`, `downloads`, `ordering`, `published`, `checked_out`, `checked_out_time`)
+                                VALUES ('', ' $file_obj->file_title', '$file_obj->file_alias', '', '', '$file_obj->file_pic', '', '', '', '', '', '', '', '', '$file_obj->cat_id', '', '', '$file_obj->size ', '$file_obj->date_added', '', '', '', '$file_obj->url_download', '', '', '', '', '$file_obj->created_by', '', '', '', '', '', '$file_obj->ordering', '$file_obj->published', '0', '0000-00-00 00:00:00')");
+                                if (!$database->query()) {
+                                    echo $database->stderr();
+                                    exit;
+                                }
+  */
+
+
                                 $new_files++;
-                                $log_array[] = strftime($jlistConfig['global.datetime']).' - '.JText::_('JLIST_AUTO_FILE_CHECK_ADDED').' <b>'.$only_dirs.'/'.$filename.'</b><br />';
+                                $log_array[] = strftime($jlistConfig['global.datetime']).' - '.JText::_('JLIST_AUTO_FILE_CHECK_ADDED').' <b>'.$only_dirs.'/'.utf8_decode($filename).'</b><br />';
                             } else {
                                 // cat dir not exist or invalid name
                                 
@@ -627,7 +669,7 @@ function checkFiles($task) {
               }  
           }					
 	  
-          //prüfen ob download dateien alle physisch vorhanden - sonst unpublishen
+          //pruefen ob download dateien alle physisch vorhanden - sonst unpublishen
           $mis_files = 0;
 	      $database->setQuery("SELECT * FROM #__jdownloads_files WHERE published=1");
           $files = $database->loadObjectList();
@@ -636,13 +678,13 @@ function checkFiles($task) {
               if ($file->url_download <> ''){   
                 $database->setQuery("SELECT cat_dir FROM #__jdownloads_cats WHERE cat_id = '$file->cat_id'");
                 $cat_dir = $database->loadResult();  
-                $cat_dir_long = $startdir.$cat_dir.'/'.$file->url_download;
+                $cat_dir_long = $startdir.$cat_dir.'/'.utf8_decode($file->url_download);
                 // wenn nicht da - unpublishen
                 if(!is_file($cat_dir_long)){
                     $database->setQuery("UPDATE #__jdownloads_files SET published = 0 WHERE file_id = '$file->file_id'");
                     $database->query();
                     $mis_files++;
-                    $log_array[] = strftime($jlistConfig['global.datetime']).' - '.JText::_('JLIST_AUTO_FILE_CHECK_DISABLED').' <b>'.$cat_dir.'/'.$file->url_download.'</b><br />';
+                    $log_array[] = strftime($jlistConfig['global.datetime']).' - '.JText::_('JLIST_AUTO_FILE_CHECK_DISABLED').' <b>'.$cat_dir.'/'.utf8_decode($file->url_download).'</b><br />';
                }  
              }
           }
@@ -664,30 +706,30 @@ function checkFiles($task) {
        } 
               
         if ($task == '' or $task == 'scan.files') {
-            echo '<table width="100%" bgcolor="#FFFFCC" cellpadding="10px" cellspacing="5px"><tr><td align="center"><big>'.JText::_('JLIST_BACKEND_AUTOCHECK_TITLE').'</big><p/>';
+            echo '<table width="100%" bgcolor="#FFFFCC" cellpadding="10px" cellspacing="5px"><tr><td align="center">'.JText::_('JLIST_BACKEND_AUTOCHECK_TITLE').'<br />';
             if ($new_cats_create > 0){
-                echo '<font color="#FF6600"><big>'.$new_cats_create.' '.JText::_('JLIST_BACKEND_AUTOCHECK_NEW_CATS').'</big></font><br />';
+                echo '<font color="#FF6600"><b>'.$new_cats_create.' '.JText::_('JLIST_BACKEND_AUTOCHECK_NEW_CATS').'</b></font><br />';
             } else {
-                echo '<font color="green"><big>'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_NEW_CATS').'</big></font><br />';
+                echo '<font color="green"><b>'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_NEW_CATS').'</b></font><br />';
             }
             
             if ($new_files > 0){
                 echo '<font color="#FF6600"><b>'.$new_files.' '.JText::_('JLIST_BACKEND_AUTOCHECK_NEW_FILES').'</b></font><br />';
             } else {
-                echo '<font color="green"><big>'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_NEW_FILES').'</big></font><br />';
+                echo '<font color="green"><b>'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_NEW_FILES').'</b></font><br />';
             }            
             
             if ($mis_cats > 0){
-                echo '<font color="##990000"><big>'.$mis_cats.' '.JText::_('JLIST_BACKEND_AUTOCHECK_MISSING_CATS').'</big></font><br />';
+                echo '<font color="##990000"><b>'.$mis_cats.' '.JText::_('JLIST_BACKEND_AUTOCHECK_MISSING_CATS').'</b></font><br />';
             } else {
-                echo '<font color="green"><big>'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_MISSING_CATS').'</big></font><br />';
+                echo '<font color="green"><b>'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_MISSING_CATS').'</b></font><br />';
             }    
                 
             
             if ($mis_files > 0){
-                echo '<font color="#990000"><big>'.$mis_files.' '.JText::_('JLIST_BACKEND_AUTOCHECK_MISSING_FILES').'</big><br /></td></tr></table>';
+                echo '<font color="#990000"><b>'.$mis_files.' '.JText::_('JLIST_BACKEND_AUTOCHECK_MISSING_FILES').'</b><br /></td></tr></table>';
             } else {
-                echo '<font color="green"><big>'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_MISSING_FILES').'</big><br /></td></tr></table>';
+                echo '<font color="green"><b>'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_MISSING_FILES').'</b><br /></td></tr></table>';
             }
         
             if ($log_message)  echo '<table width="100%" bgcolor="#FFFFCC" cellpadding="10px" cellspacing="0px"><tr><td align="center">'.JText::_('JLIST_BACKEND_AUTOCHECK_LOG_TITLE').'<br />'.$log_message.'</td></tr></table>';
@@ -697,14 +739,14 @@ function checkFiles($task) {
             if ($task == 'files.list') {
             echo '<table width="100%" bgcolor="#FFFFCC" cellpadding="10px" cellspacing="0px"><tr><td>'.JText::_('JLIST_BACKEND_AUTOCHECK_TITLE').'</td>';
             if ($new_files > 0){
-                echo '<td><font color="#FF6600">'.$new_files.' '.JText::_('JLIST_BACKEND_AUTOCHECK_NEW_FILES').'<br />'.JText::_('JLIST_BACKEND_AUTOCHECK_REFRESH_MESSAGE').'</b></font></td>';
+                echo '<td><font color="#FF6600"><b>'.$new_files.' '.JText::_('JLIST_BACKEND_AUTOCHECK_NEW_FILES').'<br />'.JText::_('JLIST_BACKEND_AUTOCHECK_REFRESH_MESSAGE').'</b></font></td>';
             } else {
-                echo '<td><font color="green">'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_NEW_FILES').'</b></font></td>';
+                echo '<td><font color="green"><b>'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_NEW_FILES').'</b></font></td>';
             }
             if ($mis_files > 0){
-                echo '<td><font color="#990000">'.$mis_files.' '.JText::_('JLIST_BACKEND_AUTOCHECK_MISSING_FILES').'<br />'.JText::_('JLIST_BACKEND_AUTOCHECK_REFRESH_MESSAGE').'</b></td></tr></table>';
+                echo '<td><font color="#990000"><b>'.$mis_files.' '.JText::_('JLIST_BACKEND_AUTOCHECK_MISSING_FILES').'<br />'.JText::_('JLIST_BACKEND_AUTOCHECK_REFRESH_MESSAGE').'</b></td></tr></table>';
             } else {
-                echo '<td><font color="green">'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_MISSING_FILES').'</b></td></tr></table>';
+                echo '<td><font color="green"><b>'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_MISSING_FILES').'</b></td></tr></table>';
             }
             
             if ($log_message)  echo '<table width="100%" bgcolor="#FFFFCC" cellpadding="10px" cellspacing="0px"><tr><td align="center">'.JText::_('JLIST_BACKEND_AUTOCHECK_LOG_TITLE').'<br />'.$log_message.'</td></tr></table>';
@@ -713,14 +755,14 @@ function checkFiles($task) {
             if ($task == 'categories.list') {
             echo '<table width="100%" bgcolor="#FFFFCC" cellpadding="10px" cellspacing="0px"><tr><td>'.JText::_('JLIST_BACKEND_AUTOCHECK_TITLE').'</td>';
             if ($new_cats_create > 0){
-                echo '<td><font color="#FF6600">'.$new_cats_create.' '.JText::_('JLIST_BACKEND_AUTOCHECK_NEW_CATS').'<br />'.JText::_('JLIST_BACKEND_AUTOCHECK_REFRESH_MESSAGE').'</b></font></td>';
+                echo '<td><font color="#FF6600"><b>'.$new_cats_create.' '.JText::_('JLIST_BACKEND_AUTOCHECK_NEW_CATS').'<br />'.JText::_('JLIST_BACKEND_AUTOCHECK_REFRESH_MESSAGE').'</b></font></td>';
             } else {
-                echo '<td><font color="green">'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_NEW_CATS').'</b></font></td>';
+                echo '<td><font color="green"><b>'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_NEW_CATS').'</b></font></td>';
             }
             if ($mis_cats > 0){
-                echo '<td><font color="#990000">'.$mis_cats.' '.JText::_('JLIST_BACKEND_AUTOCHECK_MISSING_CATS').'<br />'.JText::_('JLIST_BACKEND_AUTOCHECK_REFRESH_MESSAGE').'</b></td></tr></table>';
+                echo '<td><font color="#990000"><b>'.$mis_cats.' '.JText::_('JLIST_BACKEND_AUTOCHECK_MISSING_CATS').'<br />'.JText::_('JLIST_BACKEND_AUTOCHECK_REFRESH_MESSAGE').'</b></td></tr></table>';
             } else {
-                echo '<td><font color="green">'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_MISSING_CATS').'</b></td></tr></table>';
+                echo '<td><font color="green"><b>'.JText::_('JLIST_BACKEND_AUTOCHECK_NO_MISSING_CATS').'</b></td></tr></table>';
             }
             
             if ($log_message)  echo '<table width="100%" bgcolor="#FFFFCC" cellpadding="10px" cellspacing="0px"><tr><td align="center">'.JText::_('JLIST_BACKEND_AUTOCHECK_LOG_TITLE').'<br />'.$log_message.'</td></tr></table>';
@@ -731,7 +773,7 @@ function checkFiles($task) {
         
 		} else {
 			// error upload dir not exists
-            echo '<font color="red">'.JText::_('JLIST_AUTOCHECK_DIR_NOT_EXIST').'<br /><br />'.JText::_('JLIST_AUTOCHECK_DIR_NOT_EXIST_2').'</b></font>';
+            echo '<font color="red"><b>'.JText::_('JLIST_AUTOCHECK_DIR_NOT_EXIST').'<br /><br />'.JText::_('JLIST_AUTOCHECK_DIR_NOT_EXIST_2').'</b></font>';
 			
 		}
     }            
@@ -739,15 +781,15 @@ function checkFiles($task) {
 
 
 /**
- * Füllt das Array mit den Dateiinformationen
- * (Pfad, Verzeichnisname, Dateiname, Dateigröße, letzte Aktualisierung
+ * Fuellt das Array mit den Dateiinformationen
+ * (Pfad, Verzeichnisname, Dateiname, Dateigroesse, letzte Aktualisierung
  *
  * @param		string	$dir 			Pfad zum Verzeichnis
- * @param		string	$file			enthält den Dateinamen
- * @param		string	$onlyDir		Enthält nur den Verzeichnisnamen
+ * @param		string	$file			enthaelt den Dateinamen
+ * @param		string	$onlyDir		Enthaelt nur den Verzeichnisnamen
  * @param		array		$type		Suchmuster dateitypen
- * @param		bool		$allFiles	Listet alle Dateien in den Verzeichnissen auf ohne Rücksicht auf $type
- * @param		array		$files		Enthält den Inhalt der Verzeichnisstruktur
+ * @param		bool		$allFiles	Listet alle Dateien in den Verzeichnissen auf ohne Ruecksicht auf $type
+ * @param		array		$files		Enthaelt den Inhalt der Verzeichnisstruktur
  * @return	array						Das Array mit allen Dateinamen
  */
 function buildArray($dir,$file,$onlyDir,$type,$allFiles,$files) {
@@ -772,14 +814,14 @@ function buildArray($dir,$file,$onlyDir,$type,$allFiles,$files) {
 }
 
 /**
- * Durchläuft rekursiv das zu durchsuchende Verzeichnis
+ * Durchlaeuft rekursiv das zu durchsuchende Verzeichnis
  *
  * @param		string	    $dir 			Pfad zum Verzeichnis
  * @param		array		$type			aufzulistende Dateitypen
- * @param		bool		$allFiles		Listet alle Dateien in den Verzeichnissen auf ohne Rücksicht auf $type
- * @param		bool		$recursive	    Durchläuft rekursiv alle Verzeichnisse und Unterverzeichnisse
- * @param		string	    $onlyDir		Enthält nur den Verzeichnisnamen
- * @param		array		$files		    Enthält als Verweis(Referenz) den Inhalt der Verzeichnisstruktur
+ * @param		bool		$allFiles		Listet alle Dateien in den Verzeichnissen auf ohne Ruecksicht auf $type
+ * @param		bool		$recursive	    Durchlaeuft rekursiv alle Verzeichnisse und Unterverzeichnisse
+ * @param		string	    $onlyDir		Enthaelt nur den Verzeichnisnamen
+ * @param		array		$files		    Enthaelt als Verweis(Referenz) den Inhalt der Verzeichnisstruktur
  * @return	    mixed						false im Fehlerfall, ansonsten ein Array mit allen Dateinamen
  */
 
@@ -929,7 +971,7 @@ function categoriesPublish( $cid=null, $publishform=1,  $option ) {
 	$mainframe->redirect( 'index2.php?option='.$option.'&task=categories.list', $msg );
 }
 
-// Reihenfolge ändern über orderup/orderdown
+// Reihenfolge aendern ueber orderup/orderdown
 function categoriesOrder( $uid, $inc, $option ) {
 	global $mainframe;
   $database = &JFactory::getDBO();
@@ -939,7 +981,7 @@ function categoriesOrder( $uid, $inc, $option ) {
 	$mainframe->redirect( "index2.php?option=com_jdownloads&task=categories.list" );
 }
 
-// Reihenfolge ändern über saverorder symbol
+// Reihenfolge aendern ueber saverorder symbol
 function categoriesSaveOrder( &$cid ) {
   global $mainframe;
 	$database = &JFactory::getDBO();
@@ -993,13 +1035,13 @@ function categoriesDelete($option, $cid){
 	$del_error = false;
 	$delerror = '';
 	
-	// testen ob subcats existieren - dann nicht löschen
+	// testen ob subcats existieren - dann nicht loeschen
     $database->setQuery("SELECT count(*) FROM #__jdownloads_cats WHERE parent_id IN ($cats)");
     if ($subcats_exist = $database->loadResult()){
 		$msg = JText::_('JLIST_BE_NO_DEL_SUBCATS_EXISTS');			
 	}
     	
-	// testen ob files hierzu existieren - dann nicht löschen
+	// testen ob files hierzu existieren - dann nicht loeschen
     $database->setQuery("SELECT count(*) FROM #__jdownloads_files WHERE cat_id IN ($cats)");
     if ($files_exist = $database->loadResult()){
 		$msg =JText::_('JLIST_BE_NO_DEL_FILES_EXISTS');
@@ -1151,7 +1193,7 @@ function categoriesSave($option,$apply=0){
            		$move_to_root_cat = true;
 		   		$row->parent_id = 0;
             } else {
-               // ändern als subcat bzw. zu anderer subcat verschieben
+               // aendern als subcat bzw. zu anderer subcat verschieben
 			   // get dir from parent cat 
                 $move_to_sub_cat = true;
 				
@@ -1370,7 +1412,7 @@ function categoriesEdit($option, $cid){
 	if ($cid) {
 		$row->checkout( $user->get('id') );
 
-        // alle cats sperren für edit - falls dateioperationen laufen sollen
+        // alle cats sperren fuer edit - falls dateioperationen laufen sollen
         // all cats checked out !!!
         $database->SetQuery("SELECT cat_id FROM #__jdownloads_cats WHERE cat_id != $cid");
         $lock_cat = $database->loadResultArray();
@@ -1382,14 +1424,14 @@ function categoriesEdit($option, $cid){
 		$row->published	 = 1;
 	}
 
-    // auswahlliste für zugriffskontrolle
+    // auswahlliste fuer zugriffskontrolle
     $access_list[] = JHTML::_('select.option', '00', JText::_('JLIST_BACKEND_CATSEDIT_CAT_ACCESS_LEVEL_1'));
     $access_list[] = JHTML::_('select.option', '01', JText::_('JLIST_BACKEND_CATSEDIT_CAT_ACCESS_LEVEL_2'));
     $access_list[] = JHTML::_('select.option', '11', JText::_('JLIST_BACKEND_CATSEDIT_CAT_ACCESS_LEVEL_3'));
     $access_list[] = JHTML::_('select.option', '22', JText::_('JLIST_BACKEND_CATSEDIT_CAT_ACCESS_LEVEL_4'));
     $access_box = JHTML::_('select.genericlist', $access_list, 'cat_access', 'class="inputbox" size="4" ', 'value', 'text', $row->cat_access );
     
-    // auswahlliste für catsymbol
+    // auswahlliste fuer catsymbol
     $cat_pic_dir = '/images/jdownloads/catimages/';
     $pic_files = JFolder::files( JPATH_SITE.$cat_pic_dir );
     $cat_pic_list[] = JHTML::_('select.option', '', JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_PIC_TEXT'));
@@ -1415,7 +1457,7 @@ function categoriesEdit($option, $cid){
         $path_dir_entry = substr($row->cat_dir, 0, $path_pos + 1);
     }    
 
-    // standard pic wenn als option ausgewählt
+    // standard pic wenn als option ausgewaehlt
     if ($jlistConfig['cat.pic.default.filename'] && !$row->cat_pic) {
         $row->cat_pic = $jlistConfig['cat.pic.default.filename'];
     }    
@@ -1545,6 +1587,14 @@ function filesPublish( $cid=null, $publishform=1,  $option, $cat_id ) {
                     $msg = $total .JText::_('JLIST_BACKEND_FILESEDIT_SUC_PUBL').' - '.$nofiles_sum.' '.JText::_('JLIST_BACKEND_EDIT_FILES_CAN_NOT_PUBLISH_INFO').' ';
                 } else {
                     $msg = $total .JText::_('JLIST_BACKEND_FILESEDIT_SUC_PUBL')." ";
+                }
+                // add alphauserpoints when published user upload files
+                $database->setQuery("SELECT * FROM #__jdownloads_files WHERE file_id IN ( $cids ) AND set_aup_points = '1'");
+                $add_points = $database->loadObjectList();
+                foreach ($add_points as $add_point){
+                    addAUPPoints($add_point->submitted_by, $add_point->file_title);
+                    $database->setQuery("UPDATE #__jdownloads_files SET set_aup_points = 0 WHERE file_id = '$add_point->file_id'");
+                    $database->query(); 
                 }    
 			break;                                             
 			case 0:              
@@ -1687,6 +1737,10 @@ function filesSave($option, $cat_id, $apply=0){
     // pic auswahl vom server
     $pic_server = JArrayHelper::getValue($_POST,'file_thumb', '');
     $row->published = intval(JArrayHelper::getValue($_POST, 'publish', 0));
+    if ($row->published && $row->set_aup_points){
+        addAUPPoints($row->submitted_by, $row->file_title);
+        $row->set_aup_points = 0;
+    }    
     $row->update_active = intval(JArrayHelper::getValue($_POST, 'update', 0)); 
     
 	if (empty($marked_cat_id)) {
@@ -1984,8 +2038,8 @@ function filesCopySave($option, $cat_id_act){
     
     $database->SetQuery("SELECT * FROM #__jdownloads_files WHERE file_id IN ($files_id)");
     $files = $database->loadObjectList(); 
-    $cid = explode(',', $file_id);
-    $sum = count(cid);
+    $cid = explode(',', $files_id);
+    $sum = count($cid);
 
     $cat_id = intval(JArrayHelper::getValue($_REQUEST, 'cat_id2', array())); 
     if ($cat_id){
@@ -2024,6 +2078,60 @@ function filesCopySave($option, $cat_id_act){
     $mainframe->redirect("index2.php?option=".$option."&task=files.list&cat_id=".$cat_id_act, $sum.' '.JText::_('JLIST_BACKEND_FILES_COPY_SAVED')." ");
 }  
   
+// move files to other category
+function filesMove($option, $cid, $cat_id){
+    $database = &JFactory::getDBO();
+    if (!is_array( $cid ) || count( $cid ) < 1) {
+        //$action = $publishcat ? 'publish' : 'unpublish';
+        echo "<script> alert('".JText::_('JLIST_BACKEND_NO_SELECT_ACTION')."'); window.history.go(-1);</script>\n";
+        exit;
+    }
+    $files_id = implode(',', $cid);
+    $database->SetQuery("SELECT * FROM #__jdownloads_files WHERE file_id IN ($files_id)");
+    $files = $database->loadObjectList(); 
+    jlist_HTML::filesMove($option, $files_id, $files, $cat_id);   
+} 
+
+function filesMoveSave($option, $cat_id_act){
+    global $mainframe, $jlistConfig;
+    $database = &JFactory::getDBO();
+    
+    //$cid = array();
+    $files_id = JArrayHelper::getValue($_REQUEST, 'cid2', 0);
+    
+    $database->SetQuery("SELECT * FROM #__jdownloads_files WHERE file_id IN ($files_id)");
+    $files = $database->loadObjectList(); 
+    //$cid = explode(',', $files_id);
+    $sum = 0;
+
+    $cat_id = intval(JArrayHelper::getValue($_REQUEST, 'cat_id2', array())); 
+    if ($cat_id){
+        $database->SetQuery("SELECT cat_dir FROM #__jdownloads_cats WHERE cat_id = $cat_id");
+        $cat_dir_new = $database->loadResult();
+        foreach($files as $file){
+            if ($cat_id != $file->cat_id){
+                // move only when other cat is given
+                $database->SetQuery("SELECT cat_dir FROM #__jdownloads_cats WHERE cat_id = $file->cat_id");
+                $cat_dir = $database->loadResult();
+                $old_dir = JPATH_SITE.'/'.$jlistConfig['files.uploaddir'].'/'.$cat_dir.'/'.utf8_decode($file->url_download);
+                $new_dir = JPATH_SITE.'/'.$jlistConfig['files.uploaddir'].'/'.$cat_dir_new.'/'.utf8_decode($file->url_download);
+                if ( is_file ( $old_dir ) ){
+                     @copy($old_dir, $new_dir);
+                     @unlink($old_dir); 
+                } 
+                $database->setQuery("UPDATE #__jdownloads_files SET cat_id = '$cat_id' WHERE file_id = '$file->file_id'");
+                if (!$database->query()) {
+                    // fehler beim erstellen in DB    
+                    echo $database->stderr();
+                    exit;
+                }
+                $sum++;
+            }   
+            
+        }    
+    }    
+    $mainframe->redirect("index2.php?option=".$option."&task=files.list&cat_id=".$cat_id_act, $sum.' '.JText::_('JLIST_BACKEND_FILES_MOVE_SAVED')." ");
+}  
 
 // files edit
 function filesEdit($option, $cid, $cat_id){
@@ -2059,7 +2167,7 @@ function filesEdit($option, $cid, $cat_id){
 		$row->date_added = JHTML::_('date', 'now','%Y.%m.%d %H:%M:%S');
 	}
 
-    // standard pic wenn als option ausgewählt
+    // standard pic wenn als option ausgewaehlt
     if ($jlistConfig['file.pic.default.filename'] && !$row->file_pic) {
         $row->file_pic = $jlistConfig['file.pic.default.filename'];
     } 
@@ -3237,7 +3345,26 @@ function saveConfig($option){
     $jlistConfig['download.pic.mirror_2'] = JArrayHelper::getValue($_POST,'mirror_2_pic', 'mirror_blue2.png');
     $jlistConfig['pad.folder'] = JArrayHelper::getValue($_POST,'pad.folder', 'padfiles'); 
     $reset_couter = $jlistConfig['reset.counters'];
-     $jlistConfig['reset.counters'] = 0;
+    $jlistConfig['reset.counters'] = 0;
+    
+    $jlistConfig['offline.text'] = stripslashes($jlistConfig['offline.text']);
+    $jlistConfig['google.adsense.code'] = stripslashes($jlistConfig['google.adsense.code']); 
+    $jlistConfig['downloads.titletext'] = stripslashes($jlistConfig['downloads.titletext']);
+    $jlistConfig['downloads.footer.text'] = stripslashes($jlistConfig['downloads.footer.text']);
+    $jlistConfig['mp3.info.layout'] = stripslashes($jlistConfig['mp3.info.layout']);
+    $jlistConfig['upload.form.text'] = stripslashes($jlistConfig['upload.form.text']);   
+    $jlistConfig['send.mailto.template.download'] = stripslashes($jlistConfig['send.mailto.template.download']);   
+    $jlistConfig['send.mailto.template.upload'] = stripslashes($jlistConfig['send.mailto.template.upload']);
+    $jlistConfig['fileplugin.offline_title'] = stripslashes($jlistConfig['fileplugin.offline_title']);
+    $jlistConfig['user.message.when.zero.points'] = stripslashes($jlistConfig['user.message.when.zero.points']);
+    $jlistConfig['countdown.text'] = stripslashes($jlistConfig['countdown.text']);   
+    $jlistConfig['limited.download.reached.message'] = stripslashes($jlistConfig['limited.download.reached.message']);                                                                          
+     
+     // make sure that all AUP options are set back to default, when the main option is set off.
+     if (!$jlistConfig['use.alphauserpoints']){
+         $jlistConfig['use.alphauserpoints.with.price.field'] = '0';
+         $jlistConfig['user.can.download.file.when.zero.points'] = '1';
+     }    
     
     // remove spaces from lists 
     $jlistConfig['file.types.view'] = str_replace(' ', '', $jlistConfig['file.types.view']);
@@ -3274,6 +3401,12 @@ function saveConfig($option){
          $jlistConfig['fe.upload.view.select.file'] = '1';
     }
     
+    // make sure, that only one from the comments addons are activated
+    if ($jlistConfig['view.jom.comment'] && $jlistConfig['jcomments.active']){
+         $jlistConfig['view.jom.comment'] = '0';
+         $jlistConfig['jcomments.active'] = '0';
+    }
+   
 	// anti-leech option
     // if activated - copy and rename the htaccess
     $source = JPATH_SITE.'/administrator/components/com_jdownloads/htaccess.txt'; 
@@ -3299,7 +3432,7 @@ function saveConfig($option){
     }   
      
 	foreach($jlistConfig as $setting_name=>$setting_value){
-        $database->setQuery("UPDATE #__jdownloads_config SET setting_value = '$setting_value' WHERE setting_name = '$setting_name'");
+        $database->setQuery("UPDATE #__jdownloads_config SET setting_value = '".$database->getEscaped($setting_value)."' WHERE setting_name = '$setting_name'");
 		$database->query();
 	}
     
@@ -3347,7 +3480,7 @@ function runBackup($option){
 	$database = &JFactory::getDBO();
 		$prefix = $database->_table_prefix;
         
-        $tabellen = array($prefix.'jdownloads_config', $prefix.'jdownloads_cats', $prefix.'jdownloads_files', $prefix.'jdownloads_license', $prefix.'jdownloads_templates');
+        $tabellen = array($prefix.'jdownloads_config', $prefix.'jdownloads_cats', $prefix.'jdownloads_files', $prefix.'jdownloads_license', $prefix.'jdownloads_templates', $prefix.'jdownloads_groups', $prefix.'jdownloads_log', $prefix.'jdownloads_rating');
 		$ausgabe = '<?php'."\r\n";
 		for ($i=0; $i < count($tabellen); $i++) {
             $ausgabe .= '$database->setQuery("TRUNCATE TABLE `'.$tabellen[$i].'`") ;$database->query();'."\r\n";
@@ -3362,6 +3495,9 @@ function runBackup($option){
 				case $prefix.'jdownloads_files':
         			 $id_name = 'file_id';
 				break;
+                case $prefix.'jdownloads_rating':
+                     $id_name = 'file_id';
+                break;
                 default:
         			 $id_name = 'id';
 				break;
@@ -3386,6 +3522,15 @@ function runBackup($option){
 					case $prefix.'jdownloads_templates':
 						$object = new jlist_templates($database);
 					break;
+                    case $prefix.'jdownloads_groups':
+                        $object = new jlist_groups($database);
+                    break;
+                    case $prefix.'jdownloads_log':
+                        $object = new jlist_log($database);
+                    break;
+                    case $prefix.'jdownloads_rating':
+                        $object = new jlist_rating($database);
+                    break;
 				}
     			switch($id_name){
 	       			case 'cat_id':
@@ -3441,7 +3586,7 @@ function runRestore($option, $task){
 	$file = JArrayHelper::getValue($_FILES,'restore_file',array('tmp_name'=>''));
 	if($file['tmp_name']!= ''){
 		$i = 0;
-		// auf korrekte version (>= 1.4) prüfen - 
+		// auf korrekte version (>= 1.4) pruefen - 
         @$datei = fopen($file['tmp_name'],"r") or die ("Can not open File!");
         $muster = "/\bjd.version\b/i";
         $muster2 = "/\bcat_top_id\b/i";
@@ -3449,7 +3594,7 @@ function runRestore($option, $task){
             $zeile = fgets($datei, 4096);
              if (preg_match($muster, $zeile)) {
                 if ($pos = strpos($zeile, "jd.version'", 100)){
-                    if ($vers = floatval(substr($zeile, 123, 3)) < 1.4){
+                    if ($vers = floatval(substr($zeile, 123, 3)) < 1.7){
                         fclose($datei);   
                         echo "<script> alert('".JText::_('JLIST_RESTORE_OLD_FILE')."'); window.history.go(-1); </script>\n";
                         exit();
@@ -3478,7 +3623,7 @@ function runRestore($option, $task){
             $database->query();
         }    
         
-        // auto überwachung deaktivieren
+        // auto ueberwachung deaktivieren
         if ($jlistConfig['files.autodetect'] == 1 ){
             $monitoring = true;
             $database->setQuery("UPDATE #__jdownloads_config SET setting_value = '0' WHERE setting_name = 'files.autodetect'");
@@ -3486,11 +3631,11 @@ function runRestore($option, $task){
             $jlistConfig['files.autodetect'] = 0;
         }    
         
-        // falls backup von alter version - prüfen
+        // falls backup von alter version - pruefen
         require_once(EL_ADMIN_PATH.'/check.restore.jdownloads.php');
         $output = checkAfterRestore();
         $log_messages = checkFiles($task);
-        $sum = '<font color="green">'.sprintf(JText::_('JLIST_BACKEND_RESTORE_MSG'),(int)$i).'</font>';
+        $sum = '<font color="green"><b>'.sprintf(JText::_('JLIST_BACKEND_RESTORE_MSG'),(int)$i).'</b></font>';
         
         if ($log_messages){
             $output = addslashes($sum.'<br />'.$output.'<br />'.JText::_('JLIST_AFTER_RESTORE_TITLE_3').'<br />'.$log_messages.'<br />'.JText::_('JLIST_CHECK_FINISH').'');
@@ -3501,7 +3646,7 @@ function runRestore($option, $task){
         $database->query();
         $jlistConfig['last.restore.log'] = stripslashes($output);
     }
-        // auto überwachung aktivieren
+        // auto ueberwachung aktivieren
         if ($monitoring){
             $database->setQuery("UPDATE #__jdownloads_config SET setting_value = '1' WHERE setting_name = 'files.autodetect'");
             $database->query();
@@ -3664,7 +3809,7 @@ function getFiles() {
 }
 
 // Kopiert alle dirs inkl. subdirs und files nach $dest
-// und löscht abscchliessend das $source dir
+// und loescht abscchliessend das $source dir
 function moveDirs($source, $dest, $recursive = true, $message) {
 
     $error = false;
@@ -3700,7 +3845,7 @@ function moveDirs($source, $dest, $recursive = true, $message) {
     }
     @closedir($handle);
     
-    // $source löschen wenn KEIN error
+    // $source loeschen wenn KEIN error
     if (!$error) {
 		$res = delete_dir_and_allfiles ($source);	
         if ($res) {
@@ -3738,7 +3883,7 @@ function checkTemplatesStatus($total,$cid) {
     return $error_msg;
 }
 
-// delete_dir_and_allfiles - rekursiv löschen
+// delete_dir_and_allfiles - rekursiv loeschen
 // Rueckgabewerte:
 //    0 - ok
 //   -1 - kein Verzeichnis
@@ -3805,7 +3950,7 @@ function sampleInstall($option){
                 if (is_writable(JPATH_SITE.'/'.$root_dir)) {      
                     if (!is_dir(JPATH_SITE.'/'.$root_dir.'/'.JText::_('JLIST_SAMPLE_DATA_CAT_FOLDER_ROOT'))){
                         // daten speichern
-                        // dirs für cats
+                        // dirs fuer cats
                         $makdir = @mkdir(JPATH_SITE.'/'.$root_dir.'/'.JText::_('JLIST_SAMPLE_DATA_CAT_FOLDER_ROOT'), 0777);
                         $makdir = @mkdir(JPATH_SITE.'/'.$root_dir.'/'.JText::_('JLIST_SAMPLE_DATA_CAT_FOLDER_ROOT').'/'.JText::_('JLIST_SAMPLE_DATA_CAT_FOLDER_SUB'), 0777);
                         // cat erstellen in db
@@ -3847,7 +3992,7 @@ function sampleInstall($option){
                 echo '<br /><br /><a href="index2.php?option=com_jdownloads&task=" title="'.JText::_('JLIST_SAMPLE_DATA_BACK_TO_PANEL').'">'.JText::_('JLIST_SAMPLE_DATA_BACK_TO_PANEL').'</a><br />';
 }
 
-// Dateigröße einer externen Datei ermitteln
+// Dateigroesse einer externen Datei ermitteln
 function urlfilesize($url) {
     if (substr($url,0,4)=='http' || substr($url,0,3)=='ftp') {
         // for php 4 users
@@ -3916,7 +4061,7 @@ function create_new_thumb($picturepath) {
        return true;
     }   
     
-    /* Prüfen ob Datei existiert */
+    /* Pruefen ob Datei existiert */
     if(!file_exists($picturepath)) {
         return false;
     }
@@ -3936,10 +4081,10 @@ function create_new_thumb($picturepath) {
         default:
         return false;
     }
-    /* Alte Maße auslesen */
+    /* Alte Groesse auslesen */
     $width = $size[0];
     $height = $size[1]; 
-    /* Neue Maße errechnen */
+    /* Neue Groesse errechnen */
     if($width>=$height) {
         $newwidth = $newsize;
         $newheight = $newsize*$height/$width;
@@ -3947,7 +4092,7 @@ function create_new_thumb($picturepath) {
         $newheight = $newsize;
         $newwidth = $newsize*$width/$height;
     }    
-    /* Neues Bild erstellen mit den neuen Maßen */
+    /* Neues Bild erstellen mit den neuen Groesse */
     // png fix
     $img = imagecreatefrompng($picturepath);
     imagesavealpha($img,true);
@@ -3956,7 +4101,7 @@ function create_new_thumb($picturepath) {
     imagesavealpha($newpic,true);
     
     /* Jetzt wird das Bild nur noch verkleinert */
-    imagecopyresized($newpic,$oldpic,0,0,0,0,$newwidth,$newheight,$width,$height); 
+    imagecopyresampled($newpic,$oldpic,0,0,0,0,$newwidth,$newheight,$width,$height); 
     // Bild speichern
     switch($size[2]) {
         case "1":    return imagegif($newpic, $thumbfilename);
@@ -3976,7 +4121,7 @@ function set_rights_to_tree($p_catid, $p_right, $p_right_from, &$p_changed){
 // Funktion welche die Rechte eines Kategoriebaum setzt. Achtung REKURSIV !!!
 // $p_catid      = ID der Kategorie deren Rechte gesetzt werden soll.
 // $p_right      = Die Rechte welche gesetzt werden.
-// $p_right_from = Die ursprünglichen Rechte
+// $p_right_from = Die urspruenglichen Rechte
 // $p_changed    = Anzahl der Korrekturen   
 // echo $p_catid.' p_right_from:'.$p_right_from.' p_right:'.$p_right.'<br />';
     $database = &JFactory::getDBO();
@@ -3987,10 +4132,10 @@ function set_rights_to_tree($p_catid, $p_right, $p_right_from, &$p_changed){
 
     // Hier werden die eigentlichen Rechte der aktuellen Kategorie gesetzt.
     //  Falls die Rechte der aktuellen Kategorie KLEINER sind als die zu setzenden Rechte.
-    //  Damit wird verhindert, dass Unterkategorien welche schon höhere Rechte haben nicht überschrieben werden.
+    //  Damit wird verhindert, dass Unterkategorien welche schon hoehere Rechte haben nicht ueberschrieben werden.
     // Oder
-    //  Falls die Rechte der aktuellen Kategorie kleiner oder gleich sind als die ursprünglichen Rechte.
-    //  Sonst können kleinere Werte (=höhere Rechte) nicht gesetzt werden.
+    //  Falls die Rechte der aktuellen Kategorie kleiner oder gleich sind als die urspruenglichen Rechte.
+    //  Sonst koennen kleinere Werte (=hoehere Rechte) nicht gesetzt werden.
     if (($r_catrow[0]->cat_access < $p_right) || ($r_catrow[0]->cat_access <= $p_right_from)){
       $l_sql = "UPDATE #__jdownloads_cats SET cat_access = '".$p_right."' WHERE cat_id = ".$p_catid;
       $database->setQuery($l_sql);
@@ -4007,15 +4152,15 @@ function set_rights_to_tree($p_catid, $p_right, $p_right_from, &$p_changed){
     $l_childrows = $database->loadObjectList();
     if (!isset($l_childrows[0])){
       // Keine Unterkategorien gefunden, d.h. das Ende des aktuellen Kategorienbaumes ist erreicht. Die Funktion verlassen.
-      // Falls die Funktion in der Rekursivität ist, wird in der unteren foreach-Schleife die nächste Unterkategorie aufgerufen.
+      // Falls die Funktion in der Rekursivitaet ist, wird in der unteren foreach-Schleife die naechste Unterkategorie aufgerufen.
        return;
     }
     // Alle Unterkategorien abfahren.
     foreach ($l_childrows as $l_childrow){
       // Zuerst: Automatische Korrektur von Fehlern.
-      // D.h. Eine Unterkategorie welche schon niedrigere Rechte hat (=höheren Wert in cat_access) müsste eigentlich nicht abgefahren werden.
-      // Es könnte aber sein, dass diese Fehlern aufweist (z.B. bei einem Update von 1.3 nach 1.4).
-      // Fehler heisst in diesem Fall, dass eine Unter-Unter-Kategorie grössere Rechte hat (=niedriger Wert in cat_access).
+      // D.h. Eine Unterkategorie welche schon niedrigere Rechte hat (=hoeheren Wert in cat_access) muesste eigentlich nicht abgefahren werden.
+      // Es koennte aber sein, dass diese Fehlern aufweist (z.B. bei einem Update von 1.3 nach 1.4).
+      // Fehler heisst in diesem Fall, dass eine Unter-Unter-Kategorie groessere Rechte hat (=niedriger Wert in cat_access).
       // Dies ist ja verboten und muss korrigiert werden.
       // Dazu:
       // Die aktuelle Unterkategorie aus der Datenbank lesen
@@ -4026,48 +4171,48 @@ function set_rights_to_tree($p_catid, $p_right, $p_right_from, &$p_changed){
       $l_right = $p_right;
       $l_right_from = $p_right_from;
 
-      // Falls die Rechte der abzufahrenden Unterkategorie kleiner sind (cat_access grösser) als die ursprünglichen Rechte
-      // Und: die Rechte der abzufahrenden Unterkategorie kleiner sind (cat_access grösser) als die zu setzenden Rechte
-      // Dann: die eigenen Rechte der Unterkategorie ihr selbst als neu zu setzende Rechte übergeben.
+      // Falls die Rechte der abzufahrenden Unterkategorie kleiner sind (cat_access groesser) als die urspruenglichen Rechte
+      // Und: die Rechte der abzufahrenden Unterkategorie kleiner sind (cat_access groesser) als die zu setzenden Rechte
+      // Dann: die eigenen Rechte der Unterkategorie ihr selbst als neu zu setzende Rechte uebergeben.
       if (($l_child[0]->cat_access > $p_right_from) && ($l_child[0]->cat_access > $p_right)){
         $l_right = $l_child[0]->cat_access;
         $l_right_from = $l_child[0]->cat_access;
       }
-      // Für alle Unterkategorien die Funktion nochmals aufrufen.
+      // Fuer alle Unterkategorien die Funktion nochmals aufrufen.
       set_rights_to_tree($l_childrow->cat_id, $l_right, $l_right_from, $p_changed);
     }
 }
 
 function get_lowest_rights($p_catid, $p_suggest_right){
 // function coded by pelma  
-// Funktion welche alle darüberliegenden Kategorien nach niedrigeren Rechten (=höhere Werte) durchsucht,
-// und den höchsten Wert zurückgibt. Diese Funktion ist nicht rekursiv.
+// Funktion welche alle darueberliegenden Kategorien nach niedrigeren Rechten (=hoehere Werte) durchsucht,
+// und den hoechsten Wert zurueckgibt. Diese Funktion ist nicht rekursiv.
 // $p_catid =           KategorienID, von welcher aus nach oben durchsucht wird.
-// $p_suggested_right = Die rechte welche gesetzt werden sollen, und hier überprüft werden.
+// $p_suggested_right = Die rechte welche gesetzt werden sollen, und hier ueberprueft werden.
     $database = &JFactory::getDBO();
     // Kategorie laden aus Datenbank
     $l_sql = "SELECT cat_id, parent_id, cat_access FROM #__jdownloads_cats WHERE cat_id = ".$p_catid;
     $database->setQuery($l_sql);
     $l_catrow = $database->loadObjectList();
     if (!isset($l_catrow[0])){
-      // Die Kategorie existiert nicht. Nicht weiterfahren, aber die vorgeschlagenen Rechte zurückgeben.
+      // Die Kategorie existiert nicht. Nicht weiterfahren, aber die vorgeschlagenen Rechte zurueckgeben.
       // (Dies sollte eigentlich nie vorkommen)
      return $p_suggest_right;
     }
-    // Initialiseren der Rechte welche von der Funktion zurückgegeben werden.
+    // Initialiseren der Rechte welche von der Funktion zurueckgegeben werden.
     $l_therights = $p_suggest_right;
-    // Den Kategorien-Baum solange hochfahren bis keine höhere Kategorie mehr existiert. (d.h. bis die Hauptkategorie erreicht ist)
+    // Den Kategorien-Baum solange hochfahren bis keine hoehere Kategorie mehr existiert. (d.h. bis die Hauptkategorie erreicht ist)
     while ($l_catrow[0]->parent_id > 0 ){
-      // Nächsthöhere Parent-Kategorie aus Datenbank lesen.
+      // Naechst hoehere Parent-Kategorie aus Datenbank lesen.
       $l_sql = "SELECT parent_id, cat_access FROM #__jdownloads_cats WHERE cat_id = ".$l_catrow[0]->parent_id;
       $database->setQuery($l_sql);
       $l_catrow = $database->loadObjectList();
-      // Wenn die geladene Parent-Kategorie einen höheren Wert hat, diesen übernehmen.
+      // Wenn die geladene Parent-Kategorie einen hoeheren Wert hat, diesen uebernehmen.
       if ($l_catrow[0]->cat_access > $l_therights){
           $l_therights = $l_catrow[0]->cat_access;
       }
     }
-    // Zurück mit höchstem gefundenem Wert (=niedrigstes Recht)
+    // Zurueck mit hoechstem gefundenem Wert (=niedrigstes Recht)
     return $l_therights;
 }
 
@@ -4076,7 +4221,7 @@ function set_rights_of_cat($p_catid, $p_suggest_right, &$p_changed){
 // Hauptprozedur. Diese wird aufgerufen um die Rechte einer Kategorie zu setzen, inklusive deren Unterkategorien.
 // $p_catid =           KategorienID, welche gesetzt werden soll.
 // $p_suggested_right = Die rechte welche gesetzt werden sollen.
-// $p_changed         = Anzahl der Korrekturen oder (-1): Gewünschte Änderung war nicht zulässig!  
+// $p_changed         = Anzahl der Korrekturen oder (-1): Gewuenschte aenderung war nicht zulaessig!  
     $database = &JFactory::getDBO();
     // Kategorie laden aus Datenbank.
     $l_sql = "SELECT parent_id, cat_access FROM #__jdownloads_cats WHERE cat_id = ".$p_catid;
@@ -4086,14 +4231,14 @@ function set_rights_of_cat($p_catid, $p_suggest_right, &$p_changed){
       // Die Kategorie existiert nicht. Nicht weiterfahren.
       return '';
     }
-    // Ursprüngliche Rechte der Kategorie lesen.
+    // Urspruengliche Rechte der Kategorie lesen.
     $l_rights_from = $l_catrow[0]->cat_access;
     if ($l_catrow[0]->parent_id == 0){
-      // Es ist eine Hauptkategorie. Darüberliegende Kategorien müssen nicht nach niedrigen Rechten durchsucht werden.
+      // Es ist eine Hauptkategorie. Darueberliegende Kategorien muessen nicht nach niedrigen Rechten durchsucht werden.
       $l_rights_to_set = $p_suggest_right;
     } else {
-      // Es ist eine Unterkategorie. Darüberliegenden Kategoriebaum nach niedrigen Rechten (=höherer Wert) durchsuchen.
-      // Damit wird gewährleitet, dass eine Unterkategorie keine höheren Rechte erhalten kann.
+      // Es ist eine Unterkategorie. Darueberliegenden Kategoriebaum nach niedrigen Rechten (=hoeherer Wert) durchsuchen.
+      // Damit wird gewaehrleitet, dass eine Unterkategorie keine hoeheren Rechte erhalten kann.
       $l_rights_to_set = get_lowest_rights($p_catid, $p_suggest_right);
       if ($l_rights_to_set > $p_suggest_right) $p_changed = -1;
     }
@@ -4104,7 +4249,7 @@ function set_rights_of_cat($p_catid, $p_suggest_right, &$p_changed){
 function checkFileName($name){
     global $jlistConfig;
     if ($name) {
-        $name = utf8_decode($name);
+        $name = utf8_encode($name);
         // change to uppercase
         if ($jlistConfig['fix.upload.filename.uppercase']){
             $name = strtolower($name); 
@@ -4115,11 +4260,11 @@ function checkFileName($name){
         }
         if ($jlistConfig['fix.upload.filename.specials']){
             // change special chars
-            $name = strtr($name, array( "'" => "", 'ä' => 'ae', 'ü' => 'ue', 'ö' => 'oe', 'Ä' => 'ae', 'Ü' => 'ue', 'Ö' => 'oe', 'ß' => 'ss', 'Þ' => 'TH', 'þ' => 'th', 'Ð' => 'DH', 'ð' => 'dh', 'ß' => 'ss', 'Œ' => 'OE', 'œ' => 'oe', 'Æ' => 'AE', 'æ' => 'ae', 'µ' => 'u'));
+            $name = strtr($name, array( "'" => "", 'ä' => 'ae', 'ü' => 'ue', 'ö' => 'oe', 'Ä' => 'ae', 'Ü' => 'ue', 'Ö' => 'oe', 'Þ' => 'TH', 'þ' => 'th', 'Ð' => 'DH', 'ð' => 'dh', 'ß' => 'ss', 'Œ' => 'OE', 'œ' => 'oe', 'Æ' => 'AE', 'æ' => 'ae', 'µ' => 'u'));
             // remove invalid chars
-            $name = preg_replace('#[^a-z0-9_.-]#', '', $name);
+            $name = preg_replace('#[^A-Za-z0-9 _.-]#', '', $name);
         }
-        $name = utf8_encode($name); 
+        //$name = utf8_decode($name); 
     }               
     return $name;    
 }
@@ -4173,5 +4318,24 @@ function deleteRestoreLog($option){
     $database->query();
     $jlistConfig['last.restore.log'] = '';
     $mainframe->redirect("index2.php?option=com_jdownloads");
-}          
+} 
+
+function addAUPPoints($submitted_by, $file_title){
+    // added new points to the alphauserpoints when is activated in the jD config
+    // $submitted_by = user ID after upload a file
+    global $jlistConfig;
+    if ($jlistConfig['use.alphauserpoints'] && $submitted_by){
+        $api_AUP = JPATH_SITE.DS.'components'.DS.'com_alphauserpoints'.DS.'helper.php';
+        if (file_exists($api_AUP)){
+            require_once ($api_AUP);
+            $aupid = AlphaUserPointsHelper::getAnyUserReferreID( $submitted_by );
+            if ($aupid){
+                $text = JText::_('JLIST_BACKEND_SET_AUP_UPLOAD_TEXT');
+                $text = sprintf($text,$file_title);
+                 AlphaUserPointsHelper::newpoints('plgaup_jdownloads_user_upload_published', $aupid, $file_title, $text);
+            }                                     
+        }    
+    }
+}
+
 ?>

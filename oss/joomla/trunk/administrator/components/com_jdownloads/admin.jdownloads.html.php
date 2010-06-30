@@ -315,7 +315,8 @@ function categoriesEdit($option, $row, $inputbox_pic, $access_box, $last_dir_ent
         <input type="hidden" name="cat_title_org" value="<?php echo $row->cat_title; ?>" />
         <input type="hidden" name="parent_id" value="<?php echo $row->parent_id; ?>" />
         <input type="hidden" name="old_access" value="<?php echo $row->cat_access; ?>" /> 
-		<input type="hidden" name="create_auto_cat_dir" value="<?php echo $jlistConfig['create.auto.cat.dir']; ?>" /> 
+		<input type="hidden" name="limit" value="<?php echo $limit; ?>" />
+        <input type="hidden" name="create_auto_cat_dir" value="<?php echo $jlistConfig['create.auto.cat.dir']; ?>" /> 
         <input type="hidden" name="task" value="" />
 	</form>
 
@@ -730,6 +731,39 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_FILESEDIT_TABTITLE_2'),'daten2');
                                 <td><?php echo " ".JText::_('JLIST_BACKEND_FILESEDIT_DADDED_DESC'); ?>
 		    					</td>
 		  					</tr>
+                            <tr>
+                                <td><strong><?php echo JText::_('JLIST_EDIT_FILE_FILE_DATE_TITLE')." "; ?></strong><br />
+                                    <input name="file_date" id="file_date" value="<?php echo $row->file_date; ?>" size="25"/>
+                                    <input name="reset" type="reset" class="button" onclick="return showCalendar('file_date', '%Y-%m-%d')" value="..." />
+                                </td> 
+                                <td><?php echo " ".JText::_('JLIST_EDIT_FILE_FILE_DATE_DESC'); ?>
+                                </td>
+                              </tr>
+                            <tr><td colspan="3"><hr></td></tr> 
+                           <tr>
+                                <td><strong><?php echo JText::_('JLIST_EDIT_FILE_START_END_DATE_ACTIVATE_TITLE')." "; ?></strong><br />
+                                    <?php echo JHTML::_('select.booleanlist',"use_timeframe",'',($row->use_timeframe) ? 1:0);?> 
+                                 </td>
+                                <td valign ="top"><?php echo JText::_('JLIST_EDIT_FILE_START_END_DATE_ACTIVATE_DESC'); ?>
+                                  </td>
+                           </tr> 
+                           <tr>
+                                <td><strong><?php echo JText::_('JLIST_EDIT_FILE_START_DATE_TITLE')." "; ?></strong><br />
+                                    <input name="publish_from" id="publish_from" value="<?php echo $row->publish_from; ?>" size="25"/>
+                                    <input name="reset" type="reset" class="button" onclick="return showCalendar('publish_from', '%Y-%m-%d')" value="..." />
+                                </td> 
+                                <td>
+                                </td>
+                           </tr>
+                           <tr>
+                                <td><strong><?php echo JText::_('JLIST_EDIT_FILE_END_DATE_TITLE')." "; ?></strong><br />
+                                    <input name="publish_to" id="publish_to" value="<?php echo $row->publish_to; ?>" size="25"/>
+                                    <input name="reset" type="reset" class="button" onclick="return showCalendar('publish_to', '%Y-%m-%d')" value="..." />
+                                </td> 
+                                <td>
+                                </td>
+                            </tr>                                                       
+                             
                             <?php if ($row->file_id) { ?>
                             <tr><td colspan="3"><hr></td></tr>   
                             <tr>
@@ -1056,11 +1090,11 @@ function filesList($rows, $option, $pageNav, $search, $filter, $task, $limitstar
 		<tr>
             <td colspan="7" align="left">
 				<?php
-				        // 1.5 Native to-do
+				 // 1.5 Native to-do
                 $del_files_option = yesnoSelectList( 'delete_files', 'class="inputbox"', '1', JText::_('JLIST_FE_YES'), JText::_('JLIST_FE_NO') );
                 echo ' '.JText::_('JLIST_BACKEND_FILESLIST_DEL_FILES_OPTION')." ".$del_files_option.' '.JHTML::_('tooltip',JText::_('JLIST_BACKEND_FILESLIST_DEL_FILES_OPTION_TOOLTIP')); ?>
             </td>
-        	<td colspan="7" align="right">
+        	<td colspan="8" align="right">
 				<?php echo JText::_('JLIST_BACKEND_FILESLIST_SEARCH')." ";?>
 				<input type="text" name="search" value="<?php echo $search;?>" class="text_area" onChange="document.adminForm.submit();" />
 				<?php
@@ -1084,7 +1118,7 @@ function filesList($rows, $option, $pageNav, $search, $filter, $task, $limitstar
 			</td>
 	  </tr>
 	  <tr>
-		  <td colspan="14">
+		  <td colspan="15">
               <?php
                if($jlistConfig['files.autodetect']){
                   checkFiles($task);
@@ -1104,7 +1138,8 @@ function filesList($rows, $option, $pageNav, $search, $filter, $task, $limitstar
             <th class="title"><?php echo JText::_('JLIST_BACKEND_FILESLIST_CAT')." "; ?></th>
 			<th class="title" style="text-align: center"><?php echo JText::_('JLIST_BACKEND_FILESLIST_DESCRIPTION')." "; ?></th>
             <th class="title" style="text-align: center"><?php echo JText::_('JLIST_BACKEND_FILESLIST_FILENAME')." "; ?></th>
-			<th class="title" style="text-align: center"><?php echo JText::_('JLIST_BACKEND_FILESLIST_DADDED')." "; ?></th>
+			<th class="title" style="text-align: center"><?php echo JText::_('JLIST_BACKEND_FILESEDIT_PRICE')." "; ?></th>
+            <th class="title" style="text-align: center"><?php echo JText::_('JLIST_BACKEND_FILESLIST_DADDED')." "; ?></th>
 			<th class="title" style="text-align: center"><?php echo JText::_('JLIST_BACKEND_FILESLIST_HITS')." "; ?></th>
 			<th class="title" style="text-align: center"><?php echo JText::_('JLIST_BACKEND_FILESLIST_PUBLISHED')." "; ?></th>
 			<th class="title" colspan="2" width="60" style="text-align: center">
@@ -1132,11 +1167,14 @@ function filesList($rows, $option, $pageNav, $search, $filter, $task, $limitstar
 			
 			<td align="center">
                 <?php if($row->file_pic){ ?>
-                    <img src="<?php echo $mainframe->getSiteURL().'images/jdownloads/fileimages/'.$row->file_pic; ?>" width="24px" height="24px" align="middle" border="0"/>
+                    <img src="<?php echo $mainframe->getSiteURL().'images/jdownloads/fileimages/'.$row->file_pic; ?>" width="24px" height="24px" align="middle" border="0"/> 
                 <?php } ?>
             </td>
 
-			<td><?php echo $row->cat_title;?></td>
+			<td><?php
+               $cat_link = 'index2.php?option=com_jdownloads&amp;task=categories.edit&hidemainmenu=1&cid='.$row->cat_id; ?>
+               <a href="<?php echo $cat_link; ?>"  title="<?php echo JText::_('JLIST_BACKEND_CATSEDIT_TITLE'); ?>"><?php echo $row->cat_title; ?></a>
+             </td>
 
 			<td align="center">
             <?php
@@ -1161,6 +1199,7 @@ function filesList($rows, $option, $pageNav, $search, $filter, $task, $limitstar
             }        
             ?></td>
 
+            <td align="center"><?php echo $row->price;?></td> 
 			<td align="center"><?php echo substr(JHTML::_('date',$row->date_added, $jlistConfig['global.datetime'] ,$offset = NULL),0,10); ?></td>
 			<td align="center"><?php echo $row->downloads;?></td>
 
@@ -1189,10 +1228,10 @@ function filesList($rows, $option, $pageNav, $search, $filter, $task, $limitstar
 				<?php $k = 1 - $k;  } ?>
 		</tr>
 		<tr>
-		  <td align="center" colspan="14"><?php echo $pageNav->getPagesLinks(); ?></td>
+		  <td align="center" colspan="15"><?php echo $pageNav->getPagesLinks(); ?></td>
 	  	</tr>
 		<tr>
-		  <td align="center" colspan="14"><?php echo $pageNav->getPagesCounter(); ?></td>
+		  <td align="center" colspan="15"><?php echo $pageNav->getPagesCounter(); ?></td>
 	  	</tr>
 	</table>
 	<input type="hidden" name="boxchecked" value="0" />
@@ -1277,6 +1316,75 @@ function filesCopy($option, $files_id, $files, $cat_id){
     
 }    
 
+// Dateien kopieren (ohne dateizuordnung)
+function filesMove($option, $files_id, $files, $cat_id){
+    $database = &JFactory::getDBO();
+    
+    ?>
+    <script language="javascript" type="text/javascript">
+    function submitbutton(pressbutton) {
+        var form = document.adminForm;
+        
+        if (pressbutton == 'files.list') {
+            submitform( pressbutton );
+            return;
+        }
+        
+        // do field validation
+        if (form.cat_id2.value == 0){
+            alert( "<?php echo JText::_('JLIST_BACKEND_FILESEDIT_CATLIST_ERROR');?>" );
+        } else {
+            submitform( pressbutton );
+        }
+    }
+    </script>
+   
+
+    <form action="index2.php" method="post" name="adminForm">
+    <table cellpadding="4" cellspacing="0" border="0" width="100%" class="adminlist">
+        
+        <tr>
+            <th  colspan="3" class="title"><?php echo JText::_('JLIST_BACKEND_FILES_MOVE_TITLE').' '; ?></th>
+        </tr>
+        <tr>
+           <td width="30%" valign="top"><b><?php echo JText::_('JLIST_BACKEND_FILES_MOVE_DESC'); ?></b><br /><br />
+       <?php 
+           // build cat tree listbox
+           $src_list = array();
+           $query = "SELECT cat_id AS id, parent_id AS parent, cat_title AS name FROM #__jdownloads_cats ORDER BY ordering";
+           $database->setQuery( $query );
+           $cats2 = $database->loadObjectList();
+           $preload = array();
+           $catlist= treeSelectList( $cats2, 0, $preload, 'cat_id2', 'class="inputbox" size="10"', 'value', 'text', $row->cat_id);
+           echo $catlist;
+           
+      ?> 
+       </td>
+       <td width="30%" valign="top">
+       <b><?php echo JText::_('JLIST_BACKEND_FILES_MOVE_TEXT_1'); ?></b><br />
+       <ul>
+       <?php foreach ($files as $file){
+                echo '<li>'.$file->file_title.'</li>';
+       } 
+       ?></ul>
+       </td>
+       <td width="30%" valign="top"> 
+         <b><?php echo JText::_('JLIST_BACKEND_FILES_MOVE_TEXT_2'); ?></b>  
+        </tr>
+        
+        
+    <input type="hidden" name="boxchecked" value="0" />
+    <input type="hidden" name="option" value="<?php echo $option; ?>" />
+    <input type="hidden" name="task" value="files.move.save" /> 
+    <input type="hidden" name="cid2" value="<?php echo $files_id; ?>" />
+    <input type="hidden" name="cat_id" value="<?php echo $cat_id; ?>" /> 
+    <input type="hidden" name="hidemainmenu" value="0" />
+   </table>
+   </form>
+  <?php 
+    
+}   
+
 /*
 /  Display the main component control panel
 */
@@ -1285,8 +1393,27 @@ function controlPanel($option, $task) {
     global $mainframe, $jlistConfig;
     jimport( 'joomla.html.pane');
     $database = &JFactory::getDBO();
-?>
     
+    // get stats data
+    $database->setQuery('SELECT COUNT(*) FROM #__jdownloads_cats');
+    $sum_cats = intval($database->loadResult());
+    $database->setQuery("SELECT COUNT(*) FROM #__jdownloads_files");
+    $sum_files = intval($database->loadResult());
+    $database->setQuery("SELECT SUM(downloads) FROM #__jdownloads_files");
+    $sum_downloads = intval($database->loadResult());
+    $database->setQuery("SELECT COUNT(*) FROM #__jdownloads_files WHERE published = 0");
+    $sum_files_unpublished = intval($database->loadResult());
+    $database->setQuery("SELECT COUNT(*) FROM #__jdownloads_cats WHERE published = 0");
+    $sum_cats_unpublished = intval($database->loadResult());        
+    $color = '#990000';
+    $stats = str_replace('#1', '<font color="'.$color.'"><b>'.$sum_files.'</b></font>', JText::_('JLIST_BACKEND_CP_STATS_TEXT'));
+    $stats = str_replace('#2', '<font color="'.$color.'"><b>'.$sum_cats.'</b></font>', $stats);
+    $stats = str_replace('#3', '<font color="'.$color.'"><b>'.$sum_downloads.'</b></font>', $stats);
+    $stats = str_replace('#4', '<font color="'.$color.'"><b>'.$sum_cats_unpublished.'</b></font>', $stats);
+    $stats = str_replace('#5', '<font color="'.$color.'"><b>'.$sum_files_unpublished.'</b></font>', $stats);
+    
+?>
+        
 <!-- ICON begin -->
 
     <table class="adminform">
@@ -1422,10 +1549,12 @@ function controlPanel($option, $task) {
                             echo JText::_('JLIST_BACKEND_PANEL_STATUS_ONLINE'); ?><br /><br />
                             <?php echo JText::_('JLIST_BACKEND_PANEL_STATUS_DESC_ONLINE'); ?><br /><br />
                             <?php
-                        } ?>
+                        }
+                        echo $stats; ?>
+                        
                   </td>
                </tr>
-
+               
                <tr>
                     <th class="adminheading"><?php echo JText::_('JLIST_BACKEND_PANEL_STATUS_DOWNLOADS_HEADER')." "; ?></th>
                 </tr>
@@ -1439,7 +1568,9 @@ function controlPanel($option, $task) {
                      }
                     ?>
                     <br />
-                    <div><a href="index2.php?option=com_jdownloads&task=scan.files" title="<?php echo JText::_('JLIST_RUN_MONITORING_BUTTON_TEXT');?>"><?php echo JText::_('JLIST_RUN_MONITORING_BUTTON_TEXT');?></a></div>
+                    <div><a href="<?php echo JURI::base();?>components/com_jdownloads/scan.php"  target="_blank" onclick="openWindow(this.href); return false" title="<?php echo JText::_('JLIST_RUN_MONITORING_BUTTON_TEXT');?>"><?php echo JText::_('JLIST_RUN_MONITORING_BUTTON_TEXT');?></a></div> 
+                   <!--  <div><a href="<?php echo JURI::base();?>components/com_jdownloads/scan.php"  target="_blank"  title="<?php echo JText::_('JLIST_RUN_MONITORING_BUTTON_TEXT');?>"><?php echo JText::_('JLIST_RUN_MONITORING_BUTTON_TEXT');?></a></div>  -->
+                    
                     <?php echo JText::_('JLIST_RUN_MONITORING_INFO'); ?><br />
                 </td>
                </tr>
@@ -2768,9 +2899,26 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_DOWNLOADS'),'dow
                         <br />
                                <?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_VIEW_FILE_TYPES_DESC');?>
                         </td>                
-                        </tr> 
+                        </tr>
+                         <tr><td colspan="2"><hr></td></tr> 
                         <tr>
-                              <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_RESET_COUNTER_TITEL')." "; ?></strong><br />
+                        <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SET_AMOUNTS_FILE_LIMIT_TITLE')." "; ?></strong><br />
+                                <input name="jlistConfig[limited.download.number.per.day]" value="<?php echo $jlistConfig['limited.download.number.per.day']; ?>" size="10" maxlength="4"/></td>
+                        <td>
+                            <br />
+                            <?php echo JText::_('JLIST_BACKEND_SET_AMOUNTS_FILE_LIMIT_DESC');?>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SET_AUP_FE_MESSAGE_NO_DOWNLOAD_EDIT')." "; ?></strong><br />
+                                <textarea name="jlistConfig[limited.download.reached.message]" rows="3" cols="40"><?php echo stripslashes($jlistConfig['limited.download.reached.message']); ?></textarea>
+                                </td>
+                                <td valign="top"><br />
+                                </td>
+                        </tr>                        
+                          <tr><td colspan="2"><hr></td></tr> 
+                        <tr>
+                              <td width="330"><strong><font color="#990000"><?php echo JText::_('JLIST_BACKEND_SETTINGS_RESET_COUNTER_TITEL')." "; ?></font></strong><br />
                                <?php echo JHTML::_('select.booleanlist',"jlistConfig[reset.counters]","",($jlistConfig['reset.counters']) ? 1:0);?> 
                         </td>
                         <td>
@@ -2876,7 +3024,7 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_FRONTEND'),'fron
                         </td>
     					<td>
     					<br />
-    					       <?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_HEADER_DESC');?>
+    					       <?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_HEADER_DESC').'<br />'.JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_HEADER_DESC2');?>
     					</td>
 	  					</tr>                        
 						
@@ -2892,16 +3040,16 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_FRONTEND'),'fron
 
                         <tr>
 		    			<td width="330"><strong><?php echo JText::_('JLIST_BACKEND_OFFLINE_MESSAGE_TITLE')." "; ?></strong><br />
-                                <textarea name="jlistConfig[offline.text]" rows="10" cols="40"><?php echo $jlistConfig['offline.text']; ?></textarea>
+                                <textarea name="jlistConfig[offline.text]" rows="10" cols="40"><?php echo stripslashes($jlistConfig['offline.text']); ?></textarea>
                                 </td>
 		    					<td valign="top"><br />
 		    					<?php echo JText::_('JLIST_BACKEND_OFFLINE_MESSAGE_DESC');?>
 		    					</td>
     					</tr>
-
+                        <tr><td colspan="2"><hr></td></tr>
                         <tr>
                         <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_COMPO_TEXT')." "; ?></strong><br />
-                                <textarea name="jlistConfig[downloads.titletext]" rows="4" cols="40"><?php echo $jlistConfig['downloads.titletext']; ?></textarea>
+                                <textarea name="jlistConfig[downloads.titletext]" rows="4" cols="40"><?php echo stripslashes($jlistConfig['downloads.titletext']); ?></textarea>
                                 </td>
                                 <td valign="top"><br />
                                 <?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_COMPO_TEXT_DESC');?>
@@ -2910,13 +3058,13 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_FRONTEND'),'fron
 
                         <tr>
 		    			<td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_FOOTER_TEXT_TITLE')." "; ?></strong><br />
-                                <textarea name="jlistConfig[downloads.footer.text]" rows="4" cols="40"><?php echo $jlistConfig['downloads.footer.text']; ?></textarea>
+                                <textarea name="jlistConfig[downloads.footer.text]" rows="4" cols="40"><?php echo stripslashes($jlistConfig['downloads.footer.text']); ?></textarea>
                                 </td>
 		    					<td valign="top"><br />
 		    					<?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_FOOTER_TEXT_DESC');?>
 		    					</td>
     					</tr>
-                        
+                        <tr><td colspan="2"><hr></td></tr>
                         <tr>
                         <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_CATLISTBOX_ACTIVE')." "; ?></strong><br />
                                <?php echo JHTML::_('select.booleanlist',"jlistConfig[show.header.catlist]","",($jlistConfig['show.header.catlist']) ? 1:0);?>
@@ -2976,7 +3124,42 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_FRONTEND'),'fron
                                <?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_BACK_BUTTON_DESC');?>
                         </td>                
                         </tr>
-                        
+                        <tr>
+                        <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_USE_PIC_AND_TEXT_FOR_DOWNLOAD_TITLE')." "; ?></strong><br />
+                               <?php echo JHTML::_('select.booleanlist',"jlistConfig[view.also.download.link.text]","",($jlistConfig['view.also.download.link.text']) ? 1:0);?>
+                        </td>
+                        <td>
+                        <br />
+                               <?php echo JText::_('JLIST_BACKEND_USE_PIC_AND_TEXT_FOR_DOWNLOAD_TITLE_DESC');?>
+                        </td>                
+                        </tr>
+                        <tr>
+                        <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_USE_LIGHTBOX_TITLE')." "; ?></strong><br />
+                               <?php echo JHTML::_('select.booleanlist',"jlistConfig[use.lightbox.function]","",($jlistConfig['use.lightbox.function']) ? 1:0);?>
+                        </td>
+                        <td>
+                        <br />
+                               <?php echo JText::_('JLIST_BACKEND_SETTINGS_USE_LIGHTBOX_DESC');?>
+                        </td>                
+                        </tr>                        
+                        <tr><td colspan="2"><hr></td></tr>
+                        <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_USE_CUT_DESCRIPTION_TITLE')." "; ?></strong><br />
+                            <?php echo JHTML::_('select.booleanlist',"jlistConfig[auto.file.short.description]","",($jlistConfig['auto.file.short.description']) ? 1:0);?>
+                        </td>
+                        <td>
+                            <br />
+                            <?php echo JText::_('JLIST_BACKEND_USE_CUT_DESCRIPTION_TITLE_DESC');?>
+                        </td>
+                        </tr>                        
+                        <tr>
+                        <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_USE_CUT_DESCRIPTION_LENGTH_TITLE')." "; ?></strong><br />
+                                <input name="jlistConfig[auto.file.short.description.value]" value="<?php echo $jlistConfig['auto.file.short.description.value']; ?>" size="10" maxlength="10"/></td>
+                        <td>
+                        <br />
+                        <?php echo JText::_('JLIST_BACKEND_USE_CUT_DESCRIPTION_LENGTH_TITLE_DESC');?>
+                        </td>
+                        </tr>                        
+                        <tr><td colspan="2"><hr></td></tr>
                         <tr>
                         <td width="330"><strong><?php echo JText::_('JLIST_CONFIG_REPORT_FILE_TITLE')." "; ?></strong><br />
                             <?php echo JHTML::_('select.booleanlist',"jlistConfig[use.report.download.link]","",($jlistConfig['use.report.download.link']) ? 1:0);?>
@@ -3003,7 +3186,7 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_FRONTEND'),'fron
                             <?php echo JText::_('JLIST_CONFIG_REPORT_FILE_MAIL_DESC');?>
                         </td>
                         </tr>                                                
-
+                        <tr><td colspan="2"><hr></td></tr>
                         <tr>
                         <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_RATING_ON_TITLE')." "; ?></strong><br />
                             <?php echo JHTML::_('select.booleanlist',"jlistConfig[view.ratings]","",($jlistConfig['view.ratings']) ? 1:0);?>
@@ -3021,7 +3204,8 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_FRONTEND'),'fron
                             <br />
                             <?php echo JText::_('JLIST_BACKEND_SETTINGS_RATING_ONLY_REGGED_DESC');?>
                         </td>
-                        </tr>                                                
+                        </tr>
+                        <tr><td colspan="2"><hr></td></tr>                                                
                         <tr>
                         <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_CHECKBOX_TEXT')." "; ?></strong><br />
 		    					<input name="jlistConfig[checkbox.top.text]" value="<?php echo $jlistConfig['checkbox.top.text']; ?>" size="50" maxlength="80"/></td>
@@ -3039,7 +3223,7 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_FRONTEND'),'fron
     					<?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_FILES_PER_SIDE_DESC');?>
     					</td>
 	  					</tr>
-
+                        <tr><td colspan="2"><hr></td></tr>
                         <tr>
                         <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_SORTCATSORDER_TEXT')." "; ?></strong><br />
                         <?php
@@ -3089,6 +3273,21 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_FRONTEND'),'fron
                         <?php echo JText::_('JLIST_BACKEND_SETTINGS_JCOMMENTS_VIEW_SUM_DESC');?>
                         </td>
                         </tr>
+                        <tr><td colspan="2"><hr></td></tr>
+                        <tr>
+                        <td width="330"><font color="#990000"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_JOM_COMMENT_TITLE')." "; ?></strong></font><br />
+                               <?php echo JHTML::_('select.booleanlist',"jlistConfig[view.jom.comment]","",($jlistConfig['view.jom.comment']) ? 1:0);?>
+                        </td>
+                        <td>
+                               <?php 
+                               if (file_exists(JPATH_PLUGINS . DS . 'content' . DS . 'jom_comment_bot.php')){
+                                    echo JText::_('JLIST_BACKEND_SETTINGS_JOM_COMMENT_EXISTS_DESC');
+                               } else {
+                                    echo JText::_('JLIST_BACKEND_SETTINGS_JOM_COMMENT_DESC');
+                               } ?>
+                        </td>  
+                        </tr>
+                        <tr><td colspan="2"><font color="#990000"><?php echo JText::_('JLIST_BACKEND_SETTINGS_JOM_COMMENT_NOTE'); ?></font></td></tr>
 		  				</table>
 		  			</td>
 		  		</tr>
@@ -3544,7 +3743,7 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_MEDIA_TAB_TITLE'),'multi
                        </tr>
                         <tr>
                         <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_MP3_CONFIG_TITLE')." "; ?></strong><br />
-                            <textarea name="jlistConfig[mp3.player.config]" rows="6" cols="40"><?php echo $jlistConfig['mp3.player.config']; ?></textarea>
+                            <textarea name="jlistConfig[mp3.player.config]" rows="6" cols="40"><?php echo stripslashes($jlistConfig['mp3.player.config']); ?></textarea>
                         </td>
                         <td valign="top">
                             <br />
@@ -3563,7 +3762,7 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_MEDIA_TAB_TITLE'),'multi
                        
                         <tr>
                         <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_MP3_CONFIG_VIEW_ID3_LAY_TITLE')." "; ?></strong><br />
-                            <textarea name="jlistConfig[mp3.info.layout]" rows="12" cols="40"><?php echo $jlistConfig['mp3.info.layout']; ?></textarea>
+                            <textarea name="jlistConfig[mp3.info.layout]" rows="12" cols="40"><?php echo stripslashes($jlistConfig['mp3.info.layout']); ?></textarea>
                         </td>
                         <td valign="top">
                             <br />
@@ -3698,7 +3897,7 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_FE_UPLOAD_TAB_TITLE'),'u
 
                          <tr>
                         <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_UPLOADS_FORM_TEXT')." "; ?></strong><br />
-                                <textarea name="jlistConfig[upload.form.text]" rows="8" cols="40"><?php echo $jlistConfig['upload.form.text']; ?></textarea>
+                                <textarea name="jlistConfig[upload.form.text]" rows="8" cols="40"><?php echo stripslashes($jlistConfig['upload.form.text']); ?></textarea>
                                 </td>
                                 <td valign="top"><br />
                                 <?php echo JText::_('JLIST_BACKEND_SETTINGS_FRONTEND_UPLOADS_FORM_TEXT_DESC');?>
@@ -3929,7 +4128,7 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_EMAIL'),'email')
                         
                         <tr>
                           <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_GLOBAL_MAIL_UPLOAD_TEMPLATE_TITLE')." "; ?></strong><br />
-                              <textarea name="jlistConfig[send.mailto.template.download]" rows="10" cols="40"><?php echo $jlistConfig['send.mailto.template.download']; ?></textarea>
+                              <textarea name="jlistConfig[send.mailto.template.download]" rows="10" cols="40"><?php echo stripslashes($jlistConfig['send.mailto.template.download']); ?></textarea>
                           </td>
                           <td valign="top">
                             <br />
@@ -3986,7 +4185,7 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_EMAIL'),'email')
                           </tr>
                         <tr>
                           <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_GLOBAL_MAIL_UPLOAD_TEMPLATE_TITLE')." "; ?></strong><br />
-                              <textarea name="jlistConfig[send.mailto.template.upload]" rows="10" cols="40"><?php echo $jlistConfig['send.mailto.template.upload']; ?></textarea>
+                              <textarea name="jlistConfig[send.mailto.template.upload]" rows="10" cols="40"><?php echo stripslashes($jlistConfig['send.mailto.template.upload']); ?></textarea>
                           </td>
                           <td valign="top">
                             <br />
@@ -4014,7 +4213,7 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_SPECIALS'),'spec
         <td width="40%" valign="top">
 
 <?php /* upload config */ ?>
-                <table cellpadding="4" cellspacing="1" border="0" class="adminlist">
+           <table cellpadding="4" cellspacing="1" border="0" class="adminlist">
                 <tr>
                       <th class="adminheading" colspan="2"><?php echo JText::_('JLIST_BACKEND_SETTINGS_ADSENSE_TITLE')." "; ?></th>
                   </tr>
@@ -4034,7 +4233,7 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_SPECIALS'),'spec
 
                         <tr>
                         <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_ADSENSE_CODE_TITLE')." "; ?></strong><br />
-                                <textarea name="jlistConfig[google.adsense.code]" rows="10" cols="40"><?php echo $jlistConfig['google.adsense.code']; ?></textarea>
+                                <textarea name="jlistConfig[google.adsense.code]" rows="8" cols="40"><?php echo stripslashes($jlistConfig['google.adsense.code']); ?></textarea>
                                 </td>
                                 <td valign="top"><br />
                                 <?php echo JText::_('JLIST_BACKEND_SETTINGS_ADSENSE_CODE_DESC');?>
@@ -4077,7 +4276,7 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_SPECIALS'),'spec
 
                         <tr>
                         <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_WAITING_NOTE_TITLE')." "; ?></strong><br />
-                                <textarea name="jlistConfig[countdown.text]" rows="10" cols="40"><?php echo $jlistConfig['countdown.text']; ?></textarea>
+                                <textarea name="jlistConfig[countdown.text]" rows="8" cols="40"><?php echo stripslashes($jlistConfig['countdown.text']); ?></textarea>
                                 </td>
                                 <td valign="top"><br />
                                 <?php echo JText::_('JLIST_BACKEND_SETTINGS_WAITING_NOTE_DESC');?>
@@ -4087,6 +4286,52 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_SPECIALS'),'spec
                          </table>     
                       </td>    
                  </tr>
+                 
+        
+                <tr>
+                      <th class="adminheading" colspan="2"><?php echo JText::_('JLIST_BACKEND_SET_AUP_HEADER')." "; ?></th>
+                  </tr>
+                  <tr><td><font color="#990000"><?php echo JText::_('JLIST_BACKEND_SET_AUP_HEADER_TEXT'); ?></font></td></tr>
+                  <tr>
+                  <td valign="top" align="left" width="100%">
+                      <table width="100%">
+                  <tr>
+                        <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SET_AUP_TITLE')." "; ?></strong><br />
+                               <?php echo JHTML::_('select.booleanlist',"jlistConfig[use.alphauserpoints]","",($jlistConfig['use.alphauserpoints']) ? 1:0);?>
+                        </td>
+                        <td>
+                        <br />
+                               <?php echo JText::_('JLIST_BACKEND_SET_AUP_DESC');?>
+                        </td>                
+                        </tr>
+                          <tr>
+                        <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SET_AUP_DOWNLOAD_WHEN_ZERO_POINTS_TEXT')." "; ?></strong><br />
+                               <?php echo JHTML::_('select.booleanlist',"jlistConfig[user.can.download.file.when.zero.points]","",($jlistConfig['user.can.download.file.when.zero.points']) ? 1:0);?>
+                        </td>
+                        <td>
+                        <br />
+                               <?php echo JText::_('JLIST_BACKEND_SET_AUP_DOWNLOAD_WHEN_ZERO_POINTS_DESC');?>
+                        </td>                
+                        </tr>
+                        <tr>
+                        <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SET_AUP_FE_MESSAGE_NO_DOWNLOAD_EDIT')." "; ?></strong><br />
+                                <textarea name="jlistConfig[user.message.when.zero.points]" rows="3" cols="40"><?php echo stripslashes($jlistConfig['user.message.when.zero.points']); ?></textarea>
+                                </td>
+                                <td valign="top"><br />
+                                </td>
+                        </tr>
+                        <tr>
+                        <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SET_AUP_USE_FILE_PRICE_TITLE')." "; ?></strong><br />
+                               <?php echo JHTML::_('select.booleanlist',"jlistConfig[use.alphauserpoints.with.price.field]","",($jlistConfig['use.alphauserpoints.with.price.field']) ? 1:0);?>
+                        </td>
+                        <td>
+                        <br />
+                               <?php echo JText::_('JLIST_BACKEND_SET_AUP_USE_FILE_PRICE_DESC');?>
+                        </td>                
+                        </tr>                                                
+                         </table>     
+                  </td>    
+             </tr> 
                  
 <?php if ($jlistConfig['pad.exists']){ ?>
              </table> 
@@ -4215,7 +4460,7 @@ echo $pane->startPanel(JText::_('JLIST_BACKEND_SETTINGS_TABTEXT_PLUGINS'),'plugi
 
                <tr>
                  <td width="330"><strong><?php echo JText::_('JLIST_BACKEND_SETTINGS_FILEPLUGIN_OFFLINETITLE')." "; ?></strong><br />
-                     <textarea name="jlistConfig[fileplugin.offline_title]" rows="3" cols="40"><?php echo $jlistConfig['fileplugin.offline_title']; ?></textarea>
+                     <textarea name="jlistConfig[fileplugin.offline_title]" rows="3" cols="40"><?php echo stripslashes($jlistConfig['fileplugin.offline_title']); ?></textarea>
                  </td>
                  <td valign="top"><br />
                     <?php echo JText::_('JLIST_BACKEND_SETTINGS_FILEPLUGIN_OFFLINETITLE_DESC');?>

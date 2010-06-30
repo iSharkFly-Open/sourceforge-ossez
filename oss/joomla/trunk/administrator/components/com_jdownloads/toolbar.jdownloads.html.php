@@ -1,33 +1,13 @@
 <?php
 /**
- * Copyright (C) 2006-2010 YUCHENG HU
- *
- * ----------------------------------------------------------------------------------
- * HA WEBSYSTEMS
- * http://www.hawebs.net
- * http://www.tcivis.com
- *
- * Contact
- * huyuchengus@gmail.com / yuchenghu@hawebs.net
- *
- * ----------------------------------------------------------------------------------
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
- *
- * GNU GENERAL PUBLIC LICENSE
- *
- * ----------------------------------------------------------------------------------
- */
+* @version 1.5
+* @package JDownloads
+* @copyright (C) 2009 www.jdownloads.com
+* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
+*
+* 
+*
+*/
 
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
@@ -66,6 +46,7 @@ class menujlist {
 	function FILES_LIST(){
         JToolBarHelper::title( JText::_('JLIST_BACKEND_CPANEL_FILES'), 'jdlogo' ); 
         JToolBarHelper::addNew('files.edit');
+        JToolBarHelper::custom( 'files.move', 'move.png', 'move_f2.png', 'Move', false ); 
         JToolBarHelper::custom( 'files.copy', 'copy.png', 'copy_f2.png', 'Copy', false );     
 		JToolBarHelper::publish('files.publish');
 		JToolBarHelper::unpublish('files.unpublish');
@@ -79,8 +60,14 @@ class menujlist {
 		JToolBarHelper::cancel('files.cancel');
 	}
     
+    function FILES_MOVE(){
+        JToolBarHelper::title( JText::_('JLIST_BACKEND_FILES_MOVE_TITLE'), 'jdlogo' );
+        JToolBarHelper::save('files.move.save');
+        JToolBarHelper::cancel('files.list');
+    }     
+    
     function FILES_COPY(){
-        JToolBarHelper::title( JText::_(''), 'jdlogo' ); 
+        JToolBarHelper::title( JText::_('JLIST_BACKEND_FILES_COPY_TITLE'), 'jdlogo' ); 
         JToolBarHelper::save('files.copy.save');
         JToolBarHelper::cancel('files.list'); 
     }

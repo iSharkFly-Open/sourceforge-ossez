@@ -18,9 +18,9 @@ function checkAfterRestore() {
     
   //*********************************************
   // JD VERSION:
-     $jd_version = '1.6';
-     $jd_version_state = 'Stable';
-     $jd_version_svn = '730';   
+     $jd_version = '1.7.1';
+     $jd_version_state = 'RC';
+     $jd_version_svn = '754'; 
   //*********************************************
     
     $output = '';
@@ -304,8 +304,58 @@ function checkAfterRestore() {
             $database->SetQuery("INSERT INTO #__jdownloads_config (setting_name, setting_value) VALUES ('rating.only.for.regged', '0')");
             $database->query();
             $sum_configs++;                    
-        }                
-                               
+        }
+        
+        // added in version 1.7.0
+        // **********************
+        $database->setQuery("SELECT * FROM #__jdownloads_config WHERE setting_name = 'view.also.download.link.text'");
+        $temp = $database->loadResult();
+        if (!$temp) {   
+            $database->SetQuery("INSERT INTO #__jdownloads_config (setting_name, setting_value) VALUES ('view.also.download.link.text', '1')");
+            $database->query();
+            $sum_configs++;                    
+        
+            $database->SetQuery("INSERT INTO #__jdownloads_config (setting_name, setting_value) VALUES ('auto.file.short.description', '0')");
+            $database->query();
+            $sum_configs++;                    
+
+            $database->SetQuery("INSERT INTO #__jdownloads_config (setting_name, setting_value) VALUES ('auto.file.short.description.value', '200')");
+            $database->query();
+            $sum_configs++;
+            
+            $database->SetQuery("INSERT INTO #__jdownloads_config (setting_name, setting_value) VALUES ('view.jom.comment', '0')");
+            $database->query();
+            $sum_configs++; 
+            
+            $database->SetQuery("INSERT INTO #__jdownloads_config (setting_name, setting_value) VALUES ('use.lightbox.function', '1')");
+            $database->query();
+            $sum_configs++;                               
+            
+            $database->SetQuery("INSERT INTO #__jdownloads_config (setting_name, setting_value) VALUES ('use.alphauserpoints', '0')");
+            $database->query();
+            $sum_configs++;
+            
+            $database->SetQuery("INSERT INTO #__jdownloads_config (setting_name, setting_value) VALUES ('use.alphauserpoints.with.price.field', '0')");
+            $database->query();
+            $sum_configs++;
+
+            $database->SetQuery("INSERT INTO #__jdownloads_config (setting_name, setting_value) VALUES ('user.can.download.file.when.zero.points', '1')");
+            $database->query();
+            $sum_configs++;
+
+            $database->SetQuery("INSERT INTO #__jdownloads_config (setting_name, setting_value) VALUES ('user.message.when.zero.points', '".JText::_('JLIST_BACKEND_SET_AUP_FE_MESSAGE_NO_DOWNLOAD')."')");
+            $database->query();
+            $sum_configs++;
+                         
+            $database->SetQuery("INSERT INTO #__jdownloads_config (setting_name, setting_value) VALUES ('limited.download.number.per.day', '0')");
+            $database->query();
+            $sum_configs++;                    
+
+            $database->SetQuery("INSERT INTO #__jdownloads_config (setting_name, setting_value) VALUES ('limited.download.reached.message', '".JText::_('JLIST_FE_MESSAGE_AMOUNT_FILES_LIMIT')."')");
+            $database->query();
+            $sum_configs++;                                
+        
+        }            
                   
         if ($sum_configs == 0) {
             $output .= '<font color="green"><strong> '.JText::_('JLIST_INSTALL_1').'</strong></font><br />';
@@ -333,6 +383,8 @@ function checkAfterRestore() {
         }
         
         // new alias fields
+        $tables = array( $prefix.'jdownloads_cats' );
+        $result = $database->getTableFields( $tables );
         if (!$result[$prefix.'jdownloads_cats']['cat_alias']){
             $database->SetQuery("ALTER TABLE #__jdownloads_cats ADD cat_alias varchar(255) NOT NULL default '' AFTER cat_title");
             if ($database->query()) {
@@ -340,13 +392,60 @@ function checkAfterRestore() {
             }    
         }
         // new alias fields
+        $tables = array( $prefix.'jdownloads_files' );
+        $result = $database->getTableFields( $tables );
         if (!$result[$prefix.'jdownloads_files']['file_alias']){
             $database->SetQuery("ALTER TABLE #__jdownloads_files ADD file_alias varchar(255) NOT NULL default '' AFTER file_title");
             if ($database->query()) {
             $sum_added_fields++;
             }    
+        }        
+        // new field for created file user-id - submitted by id
+        if (!$result[$prefix.'jdownloads_files']['submitted_by']){
+            $database->SetQuery("ALTER TABLE #__jdownloads_files ADD submitted_by INT(11) NOT NULL default '0' AFTER modified_date");
+            if ($database->query()) {
+            $sum_added_fields++;
+            }    
         }
+
+        // new field for add AUP points when published
+        if (!$result[$prefix.'jdownloads_files']['set_aup_points']){
+            $database->SetQuery("ALTER TABLE #__jdownloads_files ADD set_aup_points TINYINT(1) NOT NULL default '0' AFTER submitted_by");
+            if ($database->query()) {
+            $sum_added_fields++;
+            }    
+        }          
         
+        // new field for file date
+        if (!$result[$prefix.'jdownloads_files']['file_date']){
+            $database->SetQuery("ALTER TABLE #__jdownloads_files ADD file_date datetime NOT NULL default '0000-00-00 00:00:00' AFTER date_added");
+            if ($database->query()) {
+            $sum_added_fields++;
+            }    
+        }       
+        // new field for publish date
+        if (!$result[$prefix.'jdownloads_files']['publish_from']){
+            $database->SetQuery("ALTER TABLE #__jdownloads_files ADD publish_from datetime NOT NULL default '0000-00-00 00:00:00' AFTER file_date");
+            if ($database->query()) {
+            $sum_added_fields++;
+            }    
+        }       
+        // new field for publish date
+        if (!$result[$prefix.'jdownloads_files']['publish_to']){
+            $database->SetQuery("ALTER TABLE #__jdownloads_files ADD publish_to datetime NOT NULL default '0000-00-00 00:00:00' AFTER publish_from");
+            if ($database->query()) {
+            $sum_added_fields++;
+            }    
+        }   
+        // new field for use publish from and end date
+        if (!$result[$prefix.'jdownloads_files']['use_timeframe']){
+            $database->SetQuery("ALTER TABLE #__jdownloads_files ADD use_timeframe TINYINT(1) NOT NULL default '0' AFTER publish_to");
+            if ($database->query()) {
+            $sum_added_fields++;
+            }    
+        }               
+        
+                
         if ($sum_added_fields == 0) {
             $output .= "<font color='green'><strong> ".JText::_('JLIST_INSTALL_1_2')."</strong></font><br />";
         } else {
