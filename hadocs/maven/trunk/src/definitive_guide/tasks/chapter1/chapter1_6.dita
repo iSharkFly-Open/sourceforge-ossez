@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_6" xml:lang="zh">
+  <title>Maven是Ant的另一种选择吗</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Apache</indexterm>
+        <indexterm>Maven</indexterm>
+        <indexterm>介绍</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>当然，Maven 是 Ant 的另一种选择，但是 <xref format="html" scope="external" href="http://ant.apache.org/">Apache Ant</xref> 继续是一个伟大的，被广泛使用的工具。它已经是多年以来 Java 构建的统治者，而你很容易的在你项目的 Maven 构建中集成 Ant 构建脚本。这是 Maven 项目一种很常见的使用模式。而另一方面，随着越来越多的开源项目转移到 Maven 用它作为项目管理平台，开发人员开始意识到 Maven 不仅仅简化了构建管理任务，它也帮助鼓励开发人员的软件项目使用通用的接口。Maven 不仅仅是一个工具，它更是一个平台，当你只是将 Maven 考虑成 Ant 的另一种选择的时候，你是在比较苹果和橘子。“Maven”包含了很多构建工具以外的东西。</p>
+    <p>有一个核心观点使得所有的关于 Maven 和. Ant， Maven 和 Buildr， Maven 和 Grandle 的争论变得无关紧要。Maven并不是完全根据你构建系统的机制来定义的，它不是为你构建的不同任务编写脚本，它提倡一组标注，一个一般的接口，一个生命周期，一个标准的仓库格式，一个标准的目录布局，等等。它当然也不太在意 POM 的格式正好是 XML 还是 YAML 还是 Ruby。它比这些大得多，Maven 涉及的比构建工具本身多得多。当本书讨论 Maven 的时候，它也设计到支持 Maven 的软件，系统和标准。Buildr，Ivy，Gradle，所有这些工具都和 Maven 帮助创建的仓库格式交互，而你可以很容易的使用如 Nexus 这样的工具来支持一个完全由 Buildr 编写的构建。Nexus 将在本书后面介绍。 </p>
+    <p>虽然 Maven 是很多类似工具的另一个选择？但社区需要向前发展，就要看清楚技术是资本经济中不友好的竞争者之间持续的、零和的游戏。这可能是大企业之前相互关联的方式，但是和开源社区的工作方式没太大关系。“谁是胜利者？Ant 还是 Maven”这个大标题没什么建设性意义。如果你非要我们来回答这个问题，我们会很明确的说作为构建的基本技术，Maven 是 Ant 的更好选择；同时，Maven 的边界在持续的移动，Maven 的社区也在持续的是试图找到新的方法，使其更通用，互操作性更好，更易协同工作。Maven 的核心财产是声明性构建，依赖管理，仓库管理，基于插件的高度和重用，但是当前，和开源社区相互协作以降低”企业级构建“的低效率这个目标来比，这些想法的特定实现没那么重要。 </p>
+  </conbody>
+</concept>
