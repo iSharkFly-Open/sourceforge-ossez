@@ -63,6 +63,9 @@
     <topicref href="tasks/oss/hudson/hudson.dita">
       <topicref href="tasks/oss/hudson/hudson_tutorials.dita"/>
     </topicref>
+    <topicref href="tasks/oss/zencart/zencart.dita">
+      <topicref href="tasks/oss/zencart/zencart_tutorials.dita"/>
+    </topicref>
   </topicref>
   <topicref href="tasks/pmt/pmt.dita">
     <topicref href="tasks/pmt/maven/maven.dita">
