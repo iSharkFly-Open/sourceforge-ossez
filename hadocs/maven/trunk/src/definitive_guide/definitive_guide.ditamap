@@ -67,5 +67,9 @@
     <topicref href="tasks/chapter1/chapter1_5.dita"/>
     <topicref href="tasks/chapter1/chapter1_6.dita"/>
     <topicref href="tasks/chapter1/chapter1_7.dita"/>
+    <topicref href="tasks/chapter1/chapter1_8.dita"/>
+  </topicref>
+  <topicref href="tasks/chapter2/chapter2.dita">
+    <topicref href="tasks/chapter2/chapter2_1.dita"/>
   </topicref>
 </map>
