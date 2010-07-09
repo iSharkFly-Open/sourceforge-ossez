@@ -1,10 +1,10 @@
-#Fri Jul 09 02:41:29 EDT 2010
+#Fri Jul 09 13:13:05 EDT 2010
 copytosourcelist=
-hreftargetslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/why_seo.dita
+hreftargetslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/seo_cheat.dita,tasks/why_seo.dita
 fullditatopicfile=fullditatopic.list
 fullditamapandtopicfile=fullditamapandtopic.list
-fullditatopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/why_seo.dita
-fullditamapandtopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,basic_guide.ditamap,tasks/why_seo.dita
+fullditatopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/seo_cheat.dita,tasks/why_seo.dita
+fullditamapandtopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/seo_cheat.dita,basic_guide.ditamap,tasks/why_seo.dita
 hrefditatopicfile=hrefditatopic.list
 hrefditatopiclist=tasks/info/hacopyright.dita
 user.input.file=basic_guide.ditamap
@@ -27,7 +27,7 @@ imagelist=images/halogo.jpg
 htmlfile=html.list
 htmllist=
 canditopicsfile=canditopics.list
-canditopicslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/why_seo.dita
+canditopicslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/seo_cheat.dita,tasks/why_seo.dita
 keyreffile=keyref.list
 subjectschemefile=subjectscheme.list
 keyreflist=
