@@ -72,4 +72,9 @@
       <topicref href="tasks/pmt/maven/maven_definitive_guide.dita"/>
     </topicref>
   </topicref>
+  <topicref href="tasks/web/web.dita">
+    <topicref href="tasks/web/seo/seo.dita">
+      <topicref href="tasks/web/seo/basic_guide.dita"/>
+    </topicref>
+  </topicref>
 </map>

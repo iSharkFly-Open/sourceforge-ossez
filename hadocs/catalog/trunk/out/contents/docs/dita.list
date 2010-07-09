@@ -1,12 +1,12 @@
-#Fri Jul 02 23:38:59 EDT 2010
+#Fri Jul 09 02:36:42 EDT 2010
 copytosourcelist=
-hreftargetslist=tasks/info/apachelicense.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/oss/oss.dita,tasks/oss/zencart/zencart.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/oss/hudson/hudson.dita,tasks/pmt/pmt.dita,tasks/info/hacopyright.dita,tasks/oss/zencart/zencart_tutorials.dita,tasks/pmt/maven/maven.dita
+hreftargetslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/web/seo/basic_guide.dita,tasks/oss/oss.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/web/web.dita,tasks/oss/zencart/zencart.dita,tasks/pmt/maven/maven.dita,tasks/oss/hudson/hudson.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/pmt/pmt.dita,tasks/web/seo/seo.dita,tasks/oss/zencart/zencart_tutorials.dita
 fullditatopicfile=fullditatopic.list
 fullditamapandtopicfile=fullditamapandtopic.list
-fullditatopiclist=tasks/info/apachelicense.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/oss/oss.dita,tasks/oss/zencart/zencart.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/oss/hudson/hudson.dita,tasks/pmt/pmt.dita,tasks/info/hacopyright.dita,tasks/oss/zencart/zencart_tutorials.dita,tasks/pmt/maven/maven.dita
-fullditamapandtopiclist=tasks/info/apachelicense.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/oss/oss.dita,tasks/oss/zencart/zencart.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/oss/hudson/hudson.dita,tasks/pmt/pmt.dita,contents.ditamap,tasks/info/hacopyright.dita,tasks/oss/zencart/zencart_tutorials.dita,tasks/pmt/maven/maven.dita
+fullditatopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/web/seo/basic_guide.dita,tasks/oss/oss.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/web/web.dita,tasks/oss/zencart/zencart.dita,tasks/pmt/maven/maven.dita,tasks/oss/hudson/hudson.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/pmt/pmt.dita,tasks/web/seo/seo.dita,tasks/oss/zencart/zencart_tutorials.dita
+fullditamapandtopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/web/seo/basic_guide.dita,tasks/oss/oss.dita,tasks/pmt/maven/maven_definitive_guide.dita,contents.ditamap,tasks/web/web.dita,tasks/oss/zencart/zencart.dita,tasks/pmt/maven/maven.dita,tasks/oss/hudson/hudson.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/pmt/pmt.dita,tasks/web/seo/seo.dita,tasks/oss/zencart/zencart_tutorials.dita
 hrefditatopicfile=hrefditatopic.list
-hrefditatopiclist=tasks/oss/hudson/hudson_tutorials.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/info/hacopyright.dita,tasks/oss/zencart/zencart_tutorials.dita
+hrefditatopiclist=tasks/info/hacopyright.dita,tasks/web/seo/basic_guide.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/oss/zencart/zencart_tutorials.dita
 user.input.file=contents.ditamap
 subtargetsfile=subtargets.list
 fullditamapfile=fullditamap.list
@@ -27,7 +27,7 @@ imagelist=images/halogo.jpg
 htmlfile=html.list
 htmllist=
 canditopicsfile=canditopics.list
-canditopicslist=tasks/info/apachelicense.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/oss/oss.dita,tasks/oss/zencart/zencart.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/oss/hudson/hudson.dita,tasks/pmt/pmt.dita,tasks/info/hacopyright.dita,tasks/oss/zencart/zencart_tutorials.dita,tasks/pmt/maven/maven.dita
+canditopicslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/web/seo/basic_guide.dita,tasks/oss/oss.dita,tasks/pmt/maven/maven_definitive_guide.dita,tasks/web/web.dita,tasks/oss/zencart/zencart.dita,tasks/pmt/maven/maven.dita,tasks/oss/hudson/hudson.dita,tasks/oss/hudson/hudson_tutorials.dita,tasks/pmt/pmt.dita,tasks/web/seo/seo.dita,tasks/oss/zencart/zencart_tutorials.dita
 keyreffile=keyref.list
 subjectschemefile=subjectscheme.list
 keyreflist=
