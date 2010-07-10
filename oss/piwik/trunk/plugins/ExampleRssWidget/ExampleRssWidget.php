@@ -44,7 +44,7 @@ class Piwik_ExampleRssWidget extends Piwik_Plugin
 	}
 }
 
-Piwik_AddWidget('Example Widgets', 'Piwik.org Blog', 'ExampleRssWidget', 'rssPiwik');
+Piwik_AddWidget('Example Widgets', 'HA WEBSYSTEMS', 'ExampleRssWidget', 'rssPiwik');
 Piwik_AddWidget('Example Widgets', 'Piwik Changelog', 'ExampleRssWidget', 'rssChangelog');
 
 /**
@@ -55,7 +55,7 @@ class Piwik_ExampleRssWidget_Controller extends Piwik_Controller
 {
 	function rssPiwik()
 	{
-		$rss = new Piwik_ExampleRssWidget_Rss('http://feeds.feedburner.com/Piwik');
+		$rss = new Piwik_ExampleRssWidget_Rss('http://feeds.feedburner.com/Oss-Seo');
 		$rss->showDescription(true);
 		echo $rss->get();
 	}
@@ -76,7 +76,7 @@ class Piwik_ExampleRssWidget_Controller extends Piwik_Controller
 class Piwik_ExampleRssWidget_Rss
 {
 	protected $url = null;
-	protected $count = 3;
+	protected $count = 5;
 	protected $showDescription = false;
 	protected $showContent = false;
 	function __construct($url) 
