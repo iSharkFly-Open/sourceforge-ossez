@@ -33,19 +33,24 @@
 -->
 
 <concept id="hudson_tutorials" xml:lang="zh">
-  <title>Hudson 快速入门</title>
-  <shortdesc>Hudson 快速入门参考手册</shortdesc>
+  <title>Hudson</title>
+  <shortdesc>Hudson 项目使用的所有技术文档。</shortdesc>
   <prolog>
     <metadata>
       <keywords>
         <indexterm>OSS</indexterm>
         <indexterm>开放源代码</indexterm>
+        <indexterm>Hudson</indexterm>
       </keywords>
     </metadata>
   </prolog>
   <conbody>
-    <p>Hudson 用来监视可重复执行的工作。例如，用来构建一个软工程或者后台守护进程自动执行任务。Hudson 可以完成很多工作。</p>
-    <p>参考手册的电子书请单击下面 连接。<note>单击链接将会弹出新窗口。</note></p>
-    <p><xref format="html" scope="external" href="http://docs.hawebs.net/xhtml/hudson/tutorials/mainp.html">Hudson 快速入门</xref></p>
+    <p>我们不保证所有的翻译都是正确的。</p>
+    <p>如果因为使用我们的翻译而导致了系统损坏或数据丢失，我们将不负有任何责任。</p>
+    <p><ul>
+        <li>
+          <xref href="http://docs.hawebs.net/xhtml/hudson/tutorials/mainp.html" format="html" scope="external">Hudson 快速入门</xref>
+        </li>
+      </ul></p>
   </conbody>
 </concept>
