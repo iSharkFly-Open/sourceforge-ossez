@@ -32,20 +32,24 @@
  * +++++++++++++++++++++++++++++++++++++++++++++++++
 -->
 
-<concept id="maven" xml:lang="zh">
-  <title>Maven</title>
-  <shortdesc>Maven 项目使用的所有技术文档。</shortdesc>
+<concept id="seo" xml:lang="zh">
+  <title>SEO 搜索引擎优化</title>
+  <shortdesc>针对搜索引擎做的各种优化方案的讨论。</shortdesc>
   <prolog>
     <metadata>
       <keywords>
-        <indexterm>PMT</indexterm>
-        <indexterm>项目管理</indexterm>
-        <indexterm>Maven</indexterm>
+        <indexterm>WEB</indexterm>
+        <indexterm>技术</indexterm>
       </keywords>
     </metadata>
   </prolog>
   <conbody>
     <p>我们不保证所有的翻译都是正确的。</p>
     <p>如果因为使用我们的翻译而导致了系统损坏或数据丢失，我们将不负有任何责任。</p>
+    <p><ul>
+        <li>
+          <xref href="http://docs.hawebs.net/xhtml/seo/basic_guide/mainp.html" format="html" scope="external">SEO 基础</xref>
+        </li>
+      </ul></p>
   </conbody>
 </concept>

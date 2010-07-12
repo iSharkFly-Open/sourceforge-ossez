@@ -64,13 +64,9 @@
     <topicref href="tasks/oss/zencart.dita"/>
   </topicref>
   <topicref href="tasks/pmt/pmt.dita">
-    <topicref href="tasks/pmt/maven/maven.dita">
-      <topicref href="tasks/pmt/maven/maven_definitive_guide.dita"/>
-    </topicref>
+    <topicref href="tasks/pmt/maven.dita"/>
   </topicref>
   <topicref href="tasks/web/web.dita">
-    <topicref href="tasks/web/seo/seo.dita">
-      <topicref href="tasks/web/seo/basic_guide.dita"/>
-    </topicref>
+    <topicref href="tasks/web/seo.dita"/>
   </topicref>
 </map>
