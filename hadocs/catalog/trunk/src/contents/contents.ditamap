@@ -60,6 +60,7 @@
   <topicref navtitle="" href="tasks/info/hacopyright.dita"/>
   <topicref href="tasks/info/apachelicense.dita"/>
   <topicref href="tasks/oss/oss.dita">
+    <topicref href="tasks/oss/vtiger.dita"/>
     <topicref href="tasks/oss/hudson.dita"/>
     <topicref href="tasks/oss/zencart.dita"/>
   </topicref>
