@@ -33,17 +33,26 @@
 -->
 
 <concept id="chapter1" xml:lang="zh">
-  <title>vTiger 基本特性</title>
+  <title>CRM 基础</title>
   <prolog>
     <metadata>
       <keywords>
         <indexterm>vTiger</indexterm>
         <indexterm>CRM</indexterm>
-        <indexterm>特性介绍</indexterm>
+        <indexterm>用户手册</indexterm>
+        <indexterm>HA WEBSYSTEMS</indexterm>
+        <indexterm>OSS 计算技术</indexterm>
       </keywords>
     </metadata>
   </prolog>
   <conbody>
-    <p>本章主要对 vTiger 的基本特性进行描述，简要介绍 vTiger 的使用环境和运行时需要注意的事项。</p>
+    <p>This chapter explains what CRM is, and introduces the main concepts and terminology. This chapter is intended for users and business managers unfamiliar with CRM and CRM concepts.</p>
+    <p>Customer Relationship Management (CRM) refers to the strategy, processes, and systems, used to manage a company&apos;s interaction with customers, users, and sales prospects. CRM is an integral part of every business, and CRM systems enable businesses to streamline and better manage their customer interactions. CRM systems help increase sales, enhance marketing, and improve customer service and support.</p>
+    <p>CRM software products, such as vtiger CRM, enable you to deploy CRM systems for your business. These products support useful CRM functions that help a business automate and manage a wide range of business activities, particularly those that deal with customers and sales prospects. With a CRM product, businesses can quickly setup a CRM system for their customer related activities, and use this system to manage and drive productivity in sales, marketing, andcustomer service and support functions.</p>
+    <p>CRM systems cover many different functional areas, including many aspects of sales, marketing, and customer support and service. However, a business may use a given CRM system for only part of their business activities. Not all businesses use all CRM system capabilities, and certainly many small businesses do not use a CRM system at all. Moreover, businesses that use CRM systems often use them in many different ways. For example, a business may use CRM only for sales management while not using any CRM systems for customer service or marketing, while another may use a CRM system only for customer support. CRM systems therefore need to support a wide range of usage scenarios as required by diverse businesses. vtiger CRM allows you to use the system just for specific business activities, or any combination of the business functions supported by the software.</p>
+    <p>In order to get the most out of the CRM implementation, business processes for the selected business functions must use and align with the CRM systems employed. This often requires changes in employee activities, e.g. entering sales data into the CRM system instead of paper records or spreadsheets. Without such changes to ensure their proper use, CRM systems will have limited value. This use is typically focused in functional areas, i.e. the entire business does not need to use the system, but only staff in the chosen functional areas such as sales, and the business managers that need to monitor that activity.、</p>
+    <p>To deploy a CRM system for your business, you will first want to understand the functions and features provided by the CRM software, so you can determine which of these capabilities will be useful and can be deployed for your business. You may choose to start with a simple subset of what is possible, to enable you to try out the system and gradually increase the use of the system for more of your business activities. You will also decide whether to start with a subset of users as a pilot or trial use of the CRM system. Once you have determined the functions to use in your initial implementation, you will install and setup your CRM system to support those business functions and setup user accounts for your CRM users with the requisite roles and permissions for each user. Your CRM users will need guidance on how they will use the system in the course of their business activities, to ensure that the system is used as planned. After a successful initial implementation, you may choose to use new functions in the CRM system to cover additional business activities.</p>
+    <p>Let&apos;s first look at the important CRM functions provided by CRM software. </p>
+    <p><xref format="html" scope="external" href="http://forums.hawebs.net/computer/forumdisplay.php?fid=50">OSS - vTiger 社区 / 论坛</xref></p>
   </conbody>
 </concept>

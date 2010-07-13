@@ -31,18 +31,18 @@
  *
  * +++++++++++++++++++++++++++++++++++++++++++++++++
 -->
-<map title="vTiger 用户指南" id="definitive-guide">
+<map title="vTiger 用户手册" id="definitive-guide">
   <topicmeta>
     <copyright>
       <copyryear year="2006, 2010"/>
       <copyrholder>HAWEBS信息技术股份有限公司</copyrholder>
     </copyright>
     <prodinfo>
-      <prodname>vTiger 用户指南</prodname>
+      <prodname>vTiger 用户手册</prodname>
       <vrmlist>
         <vrm version="1.0.0.0"/>
       </vrmlist>
-      <brand>HAWEBS vTiger 用户指南</brand>
+      <brand>HAWEBS vTiger 用户手册</brand>
     </prodinfo>
   </topicmeta>
   <reltable>
