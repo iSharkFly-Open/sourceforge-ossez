@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_1" xml:lang="zh">
+  <title>使用 vTiger 对个人计算机的基本要求</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>vTiger</indexterm>
+        <indexterm>CRM</indexterm>
+        <indexterm>特性介绍</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>vTiger RM 系统是基于 Web 方式的，你不需要安装任何程序，用你喜欢的浏览器就可以了。</p>
+    <p>请注意满足一些最基本的要求，这样能够让你的 vTiger 系统运行更加流畅。</p>
+    <p>硬件需要：</p>
+    <p>个人计算机或有浏览器的任何机器都可以，比操作系统不限制，也可以使用 Linux，为了让 vTiger 界面更加便于操作，建议屏幕的分辨率不小于 1024 × 768。</p>
+    <p>当然越高越好，这样可以在同一屏幕内显示跟多内容。
+
+浏览器：
+Firefox 1.5 或者更高版本， MS IE 6.0 或者更高版本，其他的浏览器，比如 Opera，google 浏览器等都是被支持的，请尽量升级到高版本的浏览器。
+
+</p>
+    <p>对Internet Explorer用户需要注意： </p>
+    <p>根据您的Internet Explorer版本，在某些特定情况下 Ajax 会提示脚本错误，因为在缓存里面有保存了历史浏览数据，同时大量的缓存会导致浏览速度降低，效率下降等问题。在实际使用的时候，建议及时清理浏览器缓存。
+
+</p>
+    <p>同时，您的浏览器配置还必须能够让你安全的运行JavaScrips 脚本，如果提示脚本错误，建议降低浏览器的安全级。</p>
+  </conbody>
+</concept>
