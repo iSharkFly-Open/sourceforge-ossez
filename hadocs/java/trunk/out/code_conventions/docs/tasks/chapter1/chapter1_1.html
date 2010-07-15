@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="程序编写规范"/>
+<meta name="DC.subject" content="Java, 编码规范"/>
+<meta name="keywords" content="Java, 编码规范"/>
+<meta name="DC.Relation" scheme="URI" content="../../tasks/chapter1/chapter1.html"/>
+<meta name="prodname" content="Java 编码规范"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS ZEN Java 编码规范"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="chapter1_1"/>
+<meta name="DC.Language" content="zh"/>
+<link rel="stylesheet" type="text/css" href="../../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+<title>程序编写规范</title>
+</head>
+<body id="chapter1_1"><a name="chapter1_1"><!-- --></a>
+
+
+  <h1 class="topictitle1">程序编写规范</h1>
+
+  
+  <div>
+    <div class="p"><ul>
+        <li>
+          <p>exit()</p>
+
+          <p>exit 除了在 main 中可以被调用外，其他的地方不应该调用。因为这样做不给任何代码代码机会来截获退出。一个类似后台服务地程序不应该因为某一个库模块决定了要退出就退出。</p>
+
+        </li>
+
+        <li>
+          <p>异常</p>
+
+          <p>申明的错误应该抛出一个RuntimeException或者派生的异常。顶层的main()函数应该截获所有的异常，并且打印（或者记录在日志中）在屏幕上。</p>
+
+        </li>
+
+        <li>
+          <p>垃圾收集</p>
+
+          <p>JAVA使用成熟的后台垃圾收集技术来代替引用计数。但是这样会导致一个问题：你必须在使用完对象的实例以后进行清场工作。除非输出流一出作用域就关闭，非引用计数的程序语言，比如JAVA，是不能自动完成变量的清场工作的。必须象下面一样写：</p>
+
+          <div class="p"><pre class="codeblock">FileOutputStream fos = new FileOutputStream(projectFile);
+project.save(fos, "IDE Project File"); 
+fos.close();</pre>
+</div>
+
+        </li>
+
+        <li>
+          <p>Clone</p>
+
+          <p>下面是一种有用的方法：</p>
+
+          <div class="p"><pre class="codeblock">implements Cloneable
+
+  public
+    Object clone()
+    {
+      try {
+        ThisClass obj = (ThisClass)super.clone();
+        obj.field1 = (int[])field1.clone();
+        obj.field2 = field2;
+        return obj;
+      } catch(CloneNotSupportedException e) {
+        throw new InternalError("Unexpected CloneNotSUpportedException: " + e.getMessage());
+      }
+  }</pre>
+</div>
+
+        </li>
+
+        <li>
+          <p>final 类</p>
+
+          <p>绝对不要因为性能的原因将类定义为 final 的（除非程序的框架要求）。如果一个类还没有准备好被继承，最好在类文档中注明，而不要将她定义为 final 的。这是因为没有人可以保证会不会由于什么原因需要继承她。</p>
+
+        </li>
+
+        <li>
+          <p>访问类的成员变量</p>
+
+          <p>大部分的类成员变量应该定义为 protected 的来防止继承类使用他们。注意，要用"int[] packets"，而不是"int packets[]"，后一种永远也不要用。</p>
+
+          <div class="p"><pre class="codeblock">public void setPackets(int[] packets) { this.packets = packets; }
+
+  CounterSet(int size)
+{
+  this.size = size;
+}</pre>
+</div>
+
+        </li>
+
+      </ul>
+</div>
+
+  </div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../../tasks/chapter1/chapter1.html" title="主要对为什么要进行编码规范和如何进行编码规范进行说明">Java 编码规范</a></div>
+</div>
+</div>
+
+</body>
+</html>
