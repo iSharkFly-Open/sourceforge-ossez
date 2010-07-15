@@ -50,6 +50,9 @@
         <li>
           <xref href="http://docs.hawebs.net/xhtml/java/code_conventions/mainp.html" format="html" scope="external">Java 编码规范</xref>
         </li>
+        <li>
+          <xref href="http://docs.hawebs.net/xhtml/java/java_mail/mainp.html" format="html" scope="external">Java Mail 简介</xref>
+        </li>
       </ul></p>
   </conbody>
 </concept>
