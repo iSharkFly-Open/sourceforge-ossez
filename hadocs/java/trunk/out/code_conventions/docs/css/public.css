@@ -101,6 +101,9 @@ a:hover {
 .codeph {
 	font-family: "Courier New", Courier, monospace;
 }
+.codeblock {
+	font-family: "Courier New", Courier, monospace;
+}
 .cmdname {
 	font-family:Arial, Helvetica, sans-serif;
 	font-weight: bolder;
