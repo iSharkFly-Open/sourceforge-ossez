@@ -31,18 +31,18 @@
  *
  * +++++++++++++++++++++++++++++++++++++++++++++++++
 -->
-<map title="Zen Cart 入门" id="zencart-tutorials">
+<map title="Java 编码规范" id="zencart-tutorials">
   <topicmeta>
     <copyright>
       <copyryear year="2006, 2010"/>
       <copyrholder>HAWEBS信息技术股份有限公司</copyrholder>
     </copyright>
     <prodinfo>
-      <prodname>Zen Cart 入门</prodname>
+      <prodname>Java 编码规范</prodname>
       <vrmlist>
         <vrm version="1.0.0.0"/>
       </vrmlist>
-      <brand>HAWEBS ZEN CART</brand>
+      <brand>HAWEBS ZEN Java 编码规范</brand>
     </prodinfo>
   </topicmeta>
   <reltable>
@@ -57,16 +57,9 @@
       <relcell/>
     </relrow>
   </reltable>
-  <topicref navtitle="" href="tasks/info/hacopyright.dita"/>
-  <topicref navtitle="Apache 许可证" href="tasks/info/apachelicense.dita"/>
-  <topicref navtitle="安装 Zen Cart" href="tasks/install/install.dita">
-    <topicref navtitle="Zen Cart 可以在同一主机上安装多次吗" href="tasks/install/install_on_the_same.dita"/>
-    <topicref navtitle="可以在Linux/Unix  服务器上设置 PHP 以 CGI 方式运行吗" href="tasks/install/install_run_php_as_cgi.dita"/>
-    <topicref navtitle="可以在 Apple 的 Mac 机器上安装 Zen Cart 吗" href="tasks/install/install_at_mac.dita"/>
-  </topicref>
-  <topicref navtitle="过滤与标记内容" href="tasks/proccond.dita">
-    <topicref navtitle="过滤内容" href="tasks/filtcontent.dita"/>
-    <topicref navtitle="标记内容" href="tasks/flagcontent.dita"/>
-    <topicref navtitle="显示版本" href="tasks/showrev.dita"/>
+  <topicref href="tasks/info/hacopyright.dita"/>
+  <topicref href="tasks/info/apachelicense.dita"/>
+  <topicref href="tasks/chapter1/chapter1.dita">
+
   </topicref>
 </map>

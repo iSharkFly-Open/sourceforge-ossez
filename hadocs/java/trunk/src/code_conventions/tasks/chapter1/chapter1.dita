@@ -33,7 +33,7 @@
 -->
 
 <concept id="condproc" xml:lang="zh">
-  <title>编码规范</title>
+  <title>Java 编码规范</title>
   <shortdesc>主要对为什么要进行编码规范和如何进行编码规范进行说明</shortdesc>
   <prolog>
     <metadata>
