@@ -53,6 +53,9 @@
         <li>
           <xref href="http://docs.hawebs.net/xhtml/java/java_mail/mainp.html" format="html" scope="external">Java Mail 简介</xref>
         </li>
+        <li>
+          <xref href="http://docs.hawebs.net/xhtml/java/java_app/mainp.html" format="html" scope="external">Java 应用程序开发与设计</xref>
+        </li>
       </ul></p>
   </conbody>
 </concept>
