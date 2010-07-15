@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="condproc" xml:lang="zh">
+  <title>概要</title>
+  <shortdesc>主要对 Java 进行应用程序开发的过程进行了说明</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Java</indexterm>
+        <indexterm>APP</indexterm>
+        <indexterm>应用程序</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>Java语言是SUN公司开发的一种编程语言。它具有平台独立性、安全性、面向对象、动态性、分布性等卓越的特性，具备强大的网络功能。更广义地说，Java是一个普遍适用的软件平台，可用于Internet、Intranet网及各种设备、系统、计算平台。它是一种基本的、结构紧凑的先进技术，一经产生就引起了广泛的关注，并在很短的时间内蓬勃发展起来。</p>
+    <p>这一部分主要对Java的背景、影响、特性等方面作简要的介绍，以使读者对Java技术有一个概要的了解。
+</p>
+  </conbody>
+</concept>

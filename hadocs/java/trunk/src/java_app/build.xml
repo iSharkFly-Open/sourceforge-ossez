@@ -17,14 +17,14 @@
   | they are relative paths.
   * -->
 
-<project name="DITA_OT_xhtml_gettingstarted" default="DITA_OT_xhtml_gettingstarted" basedir="../..">
+<project name="DITA_OT_xhtml" default="DITA_OT_xhtml_HAWEBS.NET" basedir="../..">
 	<property file="${basedir}/docs.properties"/>
 	
   
   <!-- dita.dir should point to the toolkit's root directory -->
 
-  <property name="book.name" value="java_mail"/>
-    <property name="xhtml.path" value="docs"/>
+  <property name="book.name" value="java_app"/>
+  <property name="xhtml.path" value="docs"/>
   <property name="dita.input.dir" value=""/>
   
   <property name="book.output.dir" value="${dita.output.dir}/${book.name}/${xhtml.path}"/>
@@ -33,7 +33,7 @@
   
   <import file="${dita.dir}${file.separator}integrator.xml"/>
   
-  <target name="DITA_OT_xhtml_gettingstarted" depends="integrate">
+  <target name="DITA_OT_xhtml_HAWEBS.NET" depends="integrate">
     <echo>This sample file uses a simple CSS file to create a new, more colorful look and feel for generatedXHTML files.</echo>
     
     <ant antfile="${dita.dir}${file.separator}build.xml" target="init">
