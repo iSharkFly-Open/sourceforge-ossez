@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="相关协议"/>
+<meta name="DC.subject" content="Java, Mail, API"/>
+<meta name="keywords" content="Java, Mail, API"/>
+<meta name="DC.Relation" scheme="URI" content="../../tasks/chapter1/chapter1.html"/>
+<meta name="prodname" content="Java 编码规范"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS ZEN Java 编码规范"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="chapter1_1"/>
+<meta name="DC.Language" content="zh"/>
+<link rel="stylesheet" type="text/css" href="../../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+<title>相关协议</title>
+</head>
+<body id="chapter1_1"><a name="chapter1_1"><!-- --></a>
+
+
+  <h1 class="topictitle1">相关协议</h1>
+
+  
+  <div>
+    <p>在学习JavaMail API的深层知识之前，让我们回过头来看一看在该API中使用的协议,本质上有4种人们常用的协议：</p>
+
+    <div class="p"><ul>
+        <li>SMTP</li>
+
+        <li>POP</li>
+
+        <li>IMAP</li>
+
+        <li>MIME</li>
+
+      </ul>
+</div>
+
+    <p>您还需要了解NNTP及其他一些协议。理解这些协议的基本原理有助于您理解如何使用JavaMail API。而该API的设计要与协议无关，所以不能克服这些基础协议的限制。如果选用的协议不支持某种功能，那么JavaMail API也无法在其上添加这种功能。（正如您一会儿就会看到的，在操作POP协议时，常常会碰到这种问题）。</p>
+
+    <div class="p"><ul>
+        <li>
+          <p>SMTP</p>
+
+          <p>简单邮件传输协议（SMTP）是用于传送电子邮件的机制。在JavaMail API环境中，您的基于JavaMail的程序将与您公司或Internet服务提供商（ISP）的SMTP服务器通信。该SMTP服务器将会把消息转发给用作接收消息的SMTP服务器，最后用户可通过POP或IMAP协议获取该消息。由于支持身份验证，所以不需要SMTP服务器是一种开放的转发器，但需要确保SMTP服务器配置正确。JavaMail API中没有集成用于处理诸如配置服务器以转发消息或添加/删除电子邮件帐户这一类任务的功能。</p>
+
+        </li>
+
+        <li>
+          <p>POP</p>
+
+          <p>POP的含义是邮局协议，当前的版本为3，也称作POP3，该协议是在RFC 1939中定义的。POP是Internet上的大多数人用来接收邮件的机制。它为每个用户的每个邮箱定义支持，这是它所做的全部工作，也是大多数问题的根源。在使用POP协议时，人们熟悉的很多功能，如查看收到了多少新邮件消息的功能，POP根本不支持。这些功能都内置到诸如Eudora或Microsoft Outlook之类的邮件程序中，能为您记住接收的上一封邮件，以及计算有多少新邮件这类信息。因此，使用JavaMail API时，如果想获取这类信息，将需要由自己进行计算。</p>
+
+        </li>
+
+        <li>
+          <p>IMAP</p>
+
+          <p>IMAP是用于接收消息的更加高级的协议，它是在RFC 2060中定义的。IMAP的含义是“Internet消息访问协议”，当前版本是第4版，也称作IMAP4。使用IMAP时，您的邮件服务器必须支持该协议。您不能只是简单地把程序转变为支持IMAP，而不是支持POP，就指望能支持IMAP中的一切。假定您的邮件服务器支持IMAP，那么基于JavaMail的程序就可利用在服务器上拥有多个文件夹的用户，并且这些文件夹可以被多个用户共享的功能。
+由于IMAP协议具有更高级的功能，您也许会想IMAP应该被每一个人使用，但事实不是这样。因为IMAP会加重邮件服务器的负荷，它需要服务器接收新消息，发送消息给请求的用户，并在多个文件夹中为每个用户维护这些消息。而这要集中备份，因而长期下去用户的文件夹会变得越来越大，当磁盘空间用光了时，每个人都会遭受损失。而使用POP协议时，已保存消息可以解除服务器的重负。</p>
+
+        </li>
+
+        <li>
+          <p>MIME</p>
+
+          <p>MIME的含义是“多用途的网际邮件扩充协议”。它不是一种邮件传输协议，相反，它定义传输的内容：消息的格式、附件等。许多文档都定义了MIME协议，包含：RFC 822、RFC 2045、RFC 2046和RFC 2047。作为JavaMail API的用户，一般不需要担心这些格式。但是，这些格式确实存在，并为您的程序所用。</p>
+
+        </li>
+
+        <li>
+          <p>NNP和其他协议</p>
+
+          <p>由于JavaMail API分开了提供程序和其他部分，所以您可以轻松地为附加协议添加支持。Sun公司提供第3方提供程序清单，这些提供程序要利用 Sun公司不支持的少见的协议。在这份清单中，您将会看到对NNTP（网络新闻传输协议）[新闻组]、S/MIME（安全多用途的网际邮件扩充协议）及其他协议的提供支持的第3方提供程序。</p>
+
+        </li>
+
+      </ul>
+</div>
+
+  </div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../../tasks/chapter1/chapter1.html" title="主要对 Java Mail 使用的 API 进行简要描述">Java Mail</a></div>
+</div>
+</div>
+
+</body>
+</html>
