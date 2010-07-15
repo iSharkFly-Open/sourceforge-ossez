@@ -1,0 +1,7 @@
+<img src="cache/images/656574030_pipeline_zh_cn_11401618562001-01-012100-01-01.png" border="0" usemap="#cache/images/656574030_pipeline_zh_cn_11401618562001-01-012100-01-01.png">
+<map name="cache/images/656574030_pipeline_zh_cn_11401618562001-01-012100-01-01.png">
+	<area shape="rect" coords="81,39,115,69" href="index.php?module=Potentials&action=ListView&sales_stage=Prospecting&closingdate_start=2001-01-01&closingdate_end=2100-01-01&query=true&type=dbrd&owner=admin&viewname=10" alt="admin - 1 潜在案件的客服场地 勘察" title="admin - 1 潜在案件的客服场地 勘察">
+	<area shape="rect" coords="81,79,167,109" href="index.php?module=Potentials&action=ListView&sales_stage=Qualification&closingdate_start=2001-01-01&closingdate_end=2100-01-01&query=true&type=dbrd&owner=admin&viewname=10" alt="admin - 1 潜在案件的客服场地 资格" title="admin - 1 潜在案件的客服场地 资格">
+	<area shape="rect" coords="81,158,339,188" href="index.php?module=Potentials&action=ListView&sales_stage=Value+Proposition&closingdate_start=2001-01-01&closingdate_end=2100-01-01&query=true&type=dbrd&owner=admin&viewname=10" alt="admin - 1 潜在案件的客服场地 已提价" title="admin - 1 潜在案件的客服场地 已提价">
+	<area shape="rect" coords="81,197,771,227" href="index.php?module=Potentials&action=ListView&sales_stage=Id.+Decision+Makers&closingdate_start=2001-01-01&closingdate_end=2100-01-01&query=true&type=dbrd&owner=admin&viewname=10" alt="admin - 5 潜在案件的客服场地 Id. 决策者" title="admin - 5 潜在案件的客服场地 Id. 决策者">
+</map>

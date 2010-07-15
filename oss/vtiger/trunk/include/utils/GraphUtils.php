@@ -18,6 +18,7 @@ DEFINE("FF_COMIC",'Comic');
 DEFINE("FF_ARIAL",'Arial');
 DEFINE("FF_GEORGIA",'Georgia');
 DEFINE("FF_TREBUCHE",'Trebuc');
+DEFINE("FF_DROIDSANSFALLBACK",'Droid Sans Fallback');
 
 // Chinese font
 DEFINE("FF_SIMSUN",'Simsun');
@@ -38,9 +39,9 @@ function calculate_font_name($locale)
 
 	switch($locale)
 	{
-		case 'cn_zh':
+		case 'zh_cn':
 			$log->debug("Exiting calculate_font_name method ...");
-			return FF_SIMSUN;
+			return FF_DROIDSANSFALLBACK;
 		case 'tw_zh':
 			if(!function_exists('iconv')){
 				echo " Unable to display traditional Chinese on the graphs.<BR>The function iconv does not exists please read more about <a href='http://us4.php.net/iconv'>iconv here</a><BR>";

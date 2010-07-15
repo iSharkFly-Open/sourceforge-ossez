@@ -1,99 +1,101 @@
 <?php
-/*********************************************************************************
- * The contents of this file are subject to the SugarCRM Public License Version 1.1.2
- * ("License"); You may not use this file except in compliance with the
- * License. You may obtain a copy of the License at http://www.sugarcrm.com/SPL
- * Software distributed under the License is distributed on an  "AS IS"  basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
- * the specific language governing rights and limitations under the License.
- * The Original Code is:  SugarCRM Open Source
- * The Initial Developer of the Original Code is SugarCRM, Inc.
- * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.;
- * All Rights Reserved.
- * Contributor(s): ______________________________________.
- ********************************************************************************/
-/*********************************************************************************
- * $Header: /advent/projects/wesat/vtiger_crm/sugarcrm/modules/Dashboard/language/en_us.lang.php,v 1.4 2005/01/25 06:01:38 jack Exp $
- * Description:  Defines the English language pack for the Account module.
- * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
- * All Rights Reserved.
- * Contributor(s): ______________________________________..
- ********************************************************************************/
- 
+/**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * ---------------------------------------------
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * https://www.hawebs.org/forums/computer/
+ *
+ * CONTACT
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * ---------------------------------------------
+ * [A] GNU GENERAL PUBLIC LICENSE GNU/LGPL
+ * [B] Apache License, Version 2.0
+ *
+ * ---------------------------------------------
+ * NOTE
+ * 1. 所有的语言配置文件请采用 UTF-8 编码 
+ *
+ * ---------------------------------------------
+ */
 $mod_strings = Array(
 'LBL_SALES_STAGE_FORM_TITLE' => '销售策略统计',
-  'LBL_SALES_STAGE_FORM_DESC' => '显示选择的客服策略、使用者累计客服数量在指定期间内预期要结案.',
- 'LBL_MONTH_BY_OUTCOME' => '月客服统计',
-  'LBL_MONTH_BY_OUTCOME_DESC' => '显示选取使用者于指定期间的对外按月累计潜在案件，对外指的是根据客服策略判断优劣.',
-  'LBL_LEAD_SOURCE_FORM_TITLE' => '经由接触来源的潜在案件',
-  'LBL_LEAD_SOURCE_FORM_DESC' => '显示选取使用者潜在客户来源的累计潜在案件数量.',
-  'LBL_LEAD_SOURCE_BY_OUTCOME' => '由潜在客户来源显示所有对外潜在案件',
-  'LBL_LEAD_SOURCE_BY_OUTCOME_DESC' => '显示选取潜在客户来源于指定期间的对外按月累计潜在案件，对外指的是根据销售策略判断优劣.',
-  'LBL_PIPELINE_FORM_TITLE_DESC' => '显示预期在指定期间结案的销售策略潜在案件数量.',
- 'LBL_DATE_RANGE' => '日期范围从',
-  'LBL_DATE_RANGE_TO' => '到',
-  'ERR_NO_OPPS' => '请新增潜在案件，然后才能看见潜在案件图.',
-  'LBL_TOTAL_PIPELINE' => '总处理数 ',
-  'LBL_ALL_OPPORTUNITIES' => '潜在案件总数',
-  'LBL_OPP_SIZE' => '预算在1万元以下的潜在案件',
-  'LBL_OPP_SIZE_VALUE' => '1K',
-  'NTC_NO_LEGENDS' => '无',
-  'LBL_LEAD_SOURCE_OTHER' => '其它',
-  'LBL_EDIT' => '编辑',
-  'LBL_REFRESH' => '更新画面',
-  'LBL_CREATED_ON' => '最后执行 ',
-  'LBL_OPPS_IN_STAGE' => '潜在案件的客服场地',
-  'LBL_OPPS_IN_LEAD_SOURCE' => '潜在案件的接触来源',
-  'LBL_OPPS_OUTCOME' => '该潜在案件的处理结果',
-  'LBL_USERS' => '使用者：',
-  'LBL_SALES_STAGES' => '客服场地：',
-  'LBL_LEAD_SOURCES' => '接触来源：',
-  'LBL_DATE_START' => '开始日期：',
-  'LBL_DATE_END' => '结束日期：',
+'LBL_SALES_STAGE_FORM_DESC' =>'显示选择的客服策略、使用者累计客服数量在指定期间内预期要结案.',
+'LBL_MONTH_BY_OUTCOME'=>'月客服统计',
+'LBL_MONTH_BY_OUTCOME_DESC' => '显示选取使用者于指定期间的对外按月累计潜在案件，对外指的是根据客服策略判断优劣.',
+'LBL_LEAD_SOURCE_FORM_TITLE' => '经由接触来源的潜在案件',
+'LBL_LEAD_SOURCE_FORM_DESC' => '显示选取使用者潜在客户来源的累计潜在案件数量.',
+'LBL_LEAD_SOURCE_BY_OUTCOME' => '由潜在客户来源显示所有对外潜在案件',
+'LBL_LEAD_SOURCE_BY_OUTCOME_DESC' => '显示选取潜在客户来源于指定期间的对外按月累计潜在案件，对外指的是根据销售策略判断优劣.',
+'LBL_PIPELINE_FORM_TITLE_DESC' => '显示预期在指定期间结案的销售策略潜在案件数量.',
+'LBL_DATE_RANGE' => '日期范围从',
+'LBL_DATE_RANGE_TO' => '到',
+'ERR_NO_OPPS' => '请新增潜在案件，然后才能看见潜在案件图.',
+'LBL_TOTAL_PIPELINE' => '总处理数 ',
+'LBL_ALL_OPPORTUNITIES' => '潜在案件总数',
+'LBL_OPP_SIZE' => '预算在1万元以下的潜在案件',
+'LBL_OPP_SIZE_VALUE' => '1K',
+'NTC_NO_LEGENDS' => '无',
+'LBL_LEAD_SOURCE_OTHER' => '其它',
+'LBL_EDIT' => '编辑',
+'LBL_REFRESH' => '更新画面',
+'LBL_CREATED_ON' => '最后执行 ',
+'LBL_OPPS_IN_STAGE' => '潜在案件的客服场地',
+'LBL_OPPS_IN_LEAD_SOURCE' => '潜在案件的接触来源',
+'LBL_OPPS_OUTCOME' => '该潜在案件的处理结果',
+'LBL_USERS' => '使用者：',
+'LBL_SALES_STAGES' => '客服场地：',
+'LBL_LEAD_SOURCES' => '接触来源：',
+'LBL_DATE_START' => '开始日期：',
+'LBL_DATE_END' => '结束日期：',
 //Added for 5.0 
- 'LBL_NO_PERMISSION' => '您没有检视这个模块图形的权限',
-  'LBL_NO_PERMISSION_FIELD' => '您没有检视这个模块或字段图形的权限',
+'LBL_NO_PERMISSION'=>'您没有检视这个模块图形的权限',
+'LBL_NO_PERMISSION_FIELD'=>'您没有检视这个模块或字段图形的权限',
 
- 'leadsource' => '依照来源显示潜在客户',
-  'leadstatus' => '依照状态显示潜在客户',
-  'leadindustry' => '依照行业显示潜在客户',
- 'salesbyleadsource' => '依照潜在客户来源显示业绩',
-  'salesbyaccount' => '依照客户显示业绩',
-  'salesbyuser' => '依照业务显示业绩',
-  'salesbyteam' => '依照团队显示业绩',
-  'accountindustry' => '依照产业显示客户',
-  'productcategory' => '依照类别显示产品',
-  'productbyqtyinstock' => '依照库存数量显示产品',
-  'productbypo' => '依照采购订单显示产品',
-  'productbyquotes' => '依照报价单显示产品',
-  'productbyinvoice' => '依照发票显示产品',
-'sobyaccounts' => '依照客户显示销售订单',
-  'sobystatus' => '依照状态显示销售订单',
-  'pobystatus' => '依照状态显示采购订单',
-  'quotesbyaccounts' => '依照客户显示报价单',
-  'quotesbystage' => '依照销售策略显示报价单',
-  'invoicebyacnts' => '依照公司显示发票',
-  'invoicebystatus' => '依照状态显示发票',
- 'ticketsbystatus' => '依照状态显示传票',
-  'ticketsbypriority' => '依照优先级显示传票',
-  'ticketsbycategory' => '依照类别显示传票',
-'ticketsbyuser' => '依照业务显示传票',
-  'ticketsbyteam' => '依照团队显示传票',
-  'ticketsbyproduct' => '依照产品显示传票',
-  'contactbycampaign' => '依照活动显示联络人',
-  'ticketsbyaccount' => '依照客户显示传票',
-  'ticketsbycontact' => '依照联络人显示传票',
-'LBL_DASHBRD_HOME' => '统计图表首页',
-  'LBL_HORZ_BAR_CHART' => '水平长条图',
-  'LBL_VERT_BAR_CHART' => '垂直长条图',
-  'LBL_PIE_CHART' => '圆饼图',
-  'LBL_NO_DATA' => '没有资料',
-  'DashboardHome' => '统计图表首页',
-  'GRIDVIEW' => '格状检视',
-  'NORMALVIEW' => '一般检视',
-  'VIEWCHART' => '检视图表',
-  
-'LBL_DASHBOARD' => '统计图表',
+"leadsource" => "依照来源显示潜在客户",
+"leadstatus" => "依照状态显示潜在客户",
+"leadindustry" => "依照行业显示潜在客户",
+"salesbyleadsource" => "按照潜在客户来源显示销售情况",
+"salesbyaccount" => "按照客户显示销售情况",
+"salesbyuser" => "按照用户显示销售情况",
+"salesbyteam"=>"按照团队显示销售情况",
+"accountindustry" => "依照产业显示客户",
+"productcategory" => "依照类别显示产品",
+"productbyqtyinstock" => "依照库存数量显示产品",
+"productbypo" => "依照采购订单显示产品",
+"productbyquotes" => "依照报价单显示产品",
+"productbyinvoice" => "依照税单显示产品",
+"sobyaccounts" => "依照客户显示销售订单",
+"sobystatus" => "依照状态显示销售订单",
+"pobystatus" => "依照状态显示采购订单",
+"quotesbyaccounts" => "依照客户显示报价单",
+"quotesbystage" => "依照销售策略显示报价单",
+"invoicebyacnts" => "依照公司显示税单",
+"invoicebystatus" => "依照状态显示税单",
+"ticketsbystatus" => "依照状态显示服务请求",
+"ticketsbypriority" => "依照优先级显示服务请求",
+"ticketsbycategory" => "依照类别显示服务请求",
+"ticketsbyuser"=>"依照用户显示服务请求",
+"ticketsbyteam"=>"依照团队显示服务请求",
+"ticketsbyproduct"=>"依照产品显示服务请求t",
+"contactbycampaign"=>"依照活动显示联络人",
+"ticketsbyaccount"=>"依照客户显示服务请求",
+"ticketsbycontact"=>"依照联系显示服务请求",
+
+'LBL_DASHBRD_HOME'=>'统计图表',
+'LBL_HORZ_BAR_CHART'=>'水平柱状图',
+'LBL_VERT_BAR_CHART'=>'垂直柱状图',
+'LBL_PIE_CHART'=>'饼图',
+'LBL_NO_DATA'=>'无可用数据',
+'DashboardHome'=>'统计图表',
+'GRIDVIEW'=>'网格视图',
+'NORMALVIEW'=>'正常视图',
+'VIEWCHART'=>'查看图表',
+'LBL_DASHBOARD'=>'图表',
+
+// Added/Updated for vtiger CRM 5.0.4
 "Approved"=>"批准",
 "Created"=>"创造",
 "Cancelled"=>"取消",

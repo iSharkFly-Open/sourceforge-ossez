@@ -123,6 +123,7 @@ $currencies = array(
 	'Venezuela, Bolivares Fuertes'=>array('VEF','Bs'),
 	'Vietnam, Dong'=>array('VND','₫'),
 	'Zimbabwe Dollars'=>array('ZWD','Z$'),
+	'China, Yuan Renminbi'=>array('CNY','￥'),
 	);	
 /*
 	'China, Yuan Renminbi'=>array('SAR','﷼'),	
