@@ -33,7 +33,7 @@
 -->
 
 <concept id="condproc" xml:lang="zh">
-  <title>Java Mail</title>
+  <title>Java Mail 简介</title>
   <shortdesc>主要对 Java Mail 使用的 API 进行简要描述</shortdesc>
   <prolog>
     <metadata>
