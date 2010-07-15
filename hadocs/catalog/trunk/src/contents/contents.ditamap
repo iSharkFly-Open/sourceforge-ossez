@@ -70,4 +70,7 @@
   <topicref href="tasks/web/web.dita">
     <topicref href="tasks/web/seo.dita"/>
   </topicref>
+  <topicref href="tasks/programing/programing.dita">
+    <topicref href="tasks/programing/java.dita"/>
+  </topicref>
 </map>
