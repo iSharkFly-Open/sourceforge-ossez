@@ -1,10 +1,10 @@
-#Wed Jul 14 22:59:00 EDT 2010
+#Thu Jul 15 00:03:07 EDT 2010
 copytosourcelist=
-hreftargetslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_2.dita,tasks/chapter1/chapter1_1.dita
+hreftargetslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_2.dita,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_1.dita
 fullditatopicfile=fullditatopic.list
 fullditamapandtopicfile=fullditamapandtopic.list
-fullditatopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_2.dita,tasks/chapter1/chapter1_1.dita
-fullditamapandtopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_2.dita,code_conventions.ditamap,tasks/chapter1/chapter1_1.dita
+fullditatopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_2.dita,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_1.dita
+fullditamapandtopiclist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_2.dita,code_conventions.ditamap,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_1.dita
 hrefditatopicfile=hrefditatopic.list
 hrefditatopiclist=tasks/info/hacopyright.dita,tasks/chapter1/chapter1.dita
 user.input.file=code_conventions.ditamap
@@ -27,7 +27,7 @@ imagelist=images/halogo.jpg
 htmlfile=html.list
 htmllist=
 canditopicsfile=canditopics.list
-canditopicslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_2.dita,tasks/chapter1/chapter1_1.dita
+canditopicslist=tasks/info/hacopyright.dita,tasks/info/apachelicense.dita,tasks/chapter1/chapter1.dita,tasks/chapter1/chapter1_2.dita,tasks/chapter1/chapter1_3.dita,tasks/chapter1/chapter1_1.dita
 keyreffile=keyref.list
 subjectschemefile=subjectscheme.list
 keyreflist=
