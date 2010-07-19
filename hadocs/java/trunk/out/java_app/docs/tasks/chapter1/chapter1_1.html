@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="DC.Type" content="concept"/>
-<meta name="DC.Title" content="相关协议"/>
-<meta name="DC.subject" content="Java, Mail, API"/>
-<meta name="keywords" content="Java, Mail, API"/>
+<meta name="DC.Title" content="Java 语言产生和发展的背景"/>
+<meta name="DC.subject" content="Java, APP, 应用程序"/>
+<meta name="keywords" content="Java, APP, 应用程序"/>
 <meta name="DC.Relation" scheme="URI" content="../../tasks/chapter1/chapter1.html"/>
 <meta name="prodname" content="Java 编码规范"/>
 <meta name="version" content="1.0.0.0"/>
@@ -19,70 +19,24 @@
 <meta name="DC.Language" content="zh"/>
 <link rel="stylesheet" type="text/css" href="../../css/commonltr.css"/>
 <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
-<title>相关协议</title>
+<title>Java 语言产生和发展的背景</title>
 </head>
 <body id="chapter1_1"><a name="chapter1_1"><!-- --></a>
 
 
-  <h1 class="topictitle1">相关协议</h1>
+  <h1 class="topictitle1">Java 语言产生和发展的背景</h1>
 
   
   <div>
-    <p>在学习JavaMail API的深层知识之前，让我们回过头来看一看在该API中使用的协议,本质上有4种人们常用的协议：</p>
+    <p>Java语言源于Oak语言，这是SUN公司在一项消费性电子产品软件发展方案中采用的语言。Oak的设计目标是用以开发可靠、紧凑、易于移植的分布式嵌入系统。尽管Oak语言在技术上颇为成功，但由于商业上的原因，却未能在市场的激烈竞争中站稳脚跟。然而，Internet和WWW日新月异的发展却为Oak创造了新的生存空间。Oak经过改进，成为一种非常适合网络开发的独特语言——Java，从而脱颖而出，一举成名。</p>
 
-    <div class="p"><ul>
-        <li>SMTP</li>
+    <p>Internet，中译为“因特网”或“互联网”，是当今最大的国际性计算机互联网络。它源于美国国防部高级研究计划局（Advanced Research Project Agency）的网络ARPANET，但发展到今天，已成为一个庞大的全球网。顾名思义，这是一个“网间网”它把各种异构网络联接一起，使位于世界各地、不同网络中的人们能够自由地交换信息。Internet在全球的用户以千万计，并在不断激增；被它直接、间接连通的国家也越来越多。Internet上的协议标准也日益受到广泛支持并在不断地得到扩充。</p>
 
-        <li>POP</li>
+    <p>WWW全称为World Wide Web，中译为“万维网”、“全球网”等，是Internet中最为直观和富有魅力的资源。它运用超文本（Hypertext）技术将信息组织成文字、声音、图像，用户可以用浏览器读取这些信息。WWW上信息种类繁多，用户可以根据自己的需要在任何时间访问自己所需的信息。WWW上的信息由页面组成，页面中包含超文本链接(Hypertext Link)，把位于不同页面的相关内容链在一起，因而检索信息非常方便。WWW的发展也是日新月异，它已不止局限于展示静止信息，正在不断增强交互和动态性。许多商家和企业也把目光瞄准了WWW，可以预料，WWW世界将变得越来越丰富多彩。</p>
 
-        <li>IMAP</li>
+    <p>Internet(含WWW)为人们提供了许多有用的信息，然而，Internet上的用户使用着各种各样的计算机，系统软件和用户软件也缺乏兼容性。在这些不兼容的平台间交换信息，就像对许多语言不通的人讲话一样，是非常困难的。而Java与生俱来的特性刚好可以解决这道电脑界的“世纪难题”。它建立的虚拟环境运行标准解决了软件跨平台执行的问题，使不同的平台都能理解用Java编写的程序，命名Java语言成了网络世界的通用语言。因此，Java在Internet和WWW环境下如鱼得水，迅速风靡全球。</p>
 
-        <li>MIME</li>
-
-      </ul>
-</div>
-
-    <p>您还需要了解NNTP及其他一些协议。理解这些协议的基本原理有助于您理解如何使用JavaMail API。而该API的设计要与协议无关，所以不能克服这些基础协议的限制。如果选用的协议不支持某种功能，那么JavaMail API也无法在其上添加这种功能。（正如您一会儿就会看到的，在操作POP协议时，常常会碰到这种问题）。</p>
-
-    <div class="p"><ul>
-        <li>
-          <p>SMTP</p>
-
-          <p>简单邮件传输协议（SMTP）是用于传送电子邮件的机制。在JavaMail API环境中，您的基于JavaMail的程序将与您公司或Internet服务提供商（ISP）的SMTP服务器通信。该SMTP服务器将会把消息转发给用作接收消息的SMTP服务器，最后用户可通过POP或IMAP协议获取该消息。由于支持身份验证，所以不需要SMTP服务器是一种开放的转发器，但需要确保SMTP服务器配置正确。JavaMail API中没有集成用于处理诸如配置服务器以转发消息或添加/删除电子邮件帐户这一类任务的功能。</p>
-
-        </li>
-
-        <li>
-          <p>POP</p>
-
-          <p>POP的含义是邮局协议，当前的版本为3，也称作POP3，该协议是在RFC 1939中定义的。POP是Internet上的大多数人用来接收邮件的机制。它为每个用户的每个邮箱定义支持，这是它所做的全部工作，也是大多数问题的根源。在使用POP协议时，人们熟悉的很多功能，如查看收到了多少新邮件消息的功能，POP根本不支持。这些功能都内置到诸如Eudora或Microsoft Outlook之类的邮件程序中，能为您记住接收的上一封邮件，以及计算有多少新邮件这类信息。因此，使用JavaMail API时，如果想获取这类信息，将需要由自己进行计算。</p>
-
-        </li>
-
-        <li>
-          <p>IMAP</p>
-
-          <p>IMAP是用于接收消息的更加高级的协议，它是在RFC 2060中定义的。IMAP的含义是“Internet消息访问协议”，当前版本是第4版，也称作IMAP4。使用IMAP时，您的邮件服务器必须支持该协议。您不能只是简单地把程序转变为支持IMAP，而不是支持POP，就指望能支持IMAP中的一切。假定您的邮件服务器支持IMAP，那么基于JavaMail的程序就可利用在服务器上拥有多个文件夹的用户，并且这些文件夹可以被多个用户共享的功能。
-由于IMAP协议具有更高级的功能，您也许会想IMAP应该被每一个人使用，但事实不是这样。因为IMAP会加重邮件服务器的负荷，它需要服务器接收新消息，发送消息给请求的用户，并在多个文件夹中为每个用户维护这些消息。而这要集中备份，因而长期下去用户的文件夹会变得越来越大，当磁盘空间用光了时，每个人都会遭受损失。而使用POP协议时，已保存消息可以解除服务器的重负。</p>
-
-        </li>
-
-        <li>
-          <p>MIME</p>
-
-          <p>MIME的含义是“多用途的网际邮件扩充协议”。它不是一种邮件传输协议，相反，它定义传输的内容：消息的格式、附件等。许多文档都定义了MIME协议，包含：RFC 822、RFC 2045、RFC 2046和RFC 2047。作为JavaMail API的用户，一般不需要担心这些格式。但是，这些格式确实存在，并为您的程序所用。</p>
-
-        </li>
-
-        <li>
-          <p>NNP和其他协议</p>
-
-          <p>由于JavaMail API分开了提供程序和其他部分，所以您可以轻松地为附加协议添加支持。Sun公司提供第3方提供程序清单，这些提供程序要利用 Sun公司不支持的少见的协议。在这份清单中，您将会看到对NNTP（网络新闻传输协议）[新闻组]、S/MIME（安全多用途的网际邮件扩充协议）及其他协议的提供支持的第3方提供程序。</p>
-
-        </li>
-
-      </ul>
-</div>
+    <p>总之，Java作为一种独特的语言，诞生于Internet和WWW蓬勃发展的时期，可谓恰逢其时。如今的Java与当初的Oak语言已不可同日而语。而且，Java技术的创始者SUN公司采用了一种“开放”策略，将它公诸于众，更激发了第三方软件开发商的极大热情，纷纷发展Java技术。Java的前景是非常广阔的。 </p>
 
   </div>
 
