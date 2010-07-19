@@ -21,8 +21,7 @@ limitations under the License.
   <target name="usage">
 	<ant antfile="src/code_conventions/build.xml" />
 	<ant antfile="src/java_mail/build.xml" />
-	
-	
+	<ant antfile="src/java_app/build.xml" />
   </target>
 
 
