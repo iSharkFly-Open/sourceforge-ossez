@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="condproc" xml:lang="zh">
+  <title>PHP 概述</title>
+  <shortdesc>主要对 PHP 进行简要的描述和说明</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>PHP</indexterm>
+        <indexterm>概述</indexterm>
+        <indexterm>程序语言</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p/>
+    <p>JavaMail API的设计是，为收发信息提供与协议无关的访问。方式是把该API划分成两个部分：<ul>
+        <li>该API的第一个部分是本课程的重点。基本上是如何发送和接收独立于提供程序/协议的消息。</li>
+        <li>第二个部分则使用特定的协议语言，如：SMTP、POP、IMAP和NNTP。如果要让JavaMail API与服务器通信，就需要为之提供协议。由于Sun公司对特定协议提供程序有充分的介绍，用户可以免费获取，所以本课程没有介绍创建特定协议提供程序的内容。</li>
+      </ul></p>
+  </conbody>
+</concept>
