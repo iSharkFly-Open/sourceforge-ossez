@@ -33,47 +33,25 @@
 -->
 
 <concept id="chapter1_1" xml:lang="zh">
-  <title>相关协议</title>
+  <title>PHP 的优点</title>
   <prolog>
     <metadata>
       <keywords>
-        <indexterm>Java</indexterm>
-        <indexterm>Mail</indexterm>
-        <indexterm>API</indexterm>
+        <indexterm>HAWEBS</indexterm>
+        <indexterm>PHP</indexterm>
+        <indexterm>程序设计</indexterm>
       </keywords>
     </metadata>
   </prolog>
   <conbody>
-    <p>在学习JavaMail API的深层知识之前，让我们回过头来看一看在该API中使用的协议,本质上有4种人们常用的协议：</p>
-    <p><ul>
-        <li>SMTP</li>
-        <li>POP</li>
-        <li>IMAP</li>
-        <li>MIME</li>
-      </ul></p>
-    <p>您还需要了解NNTP及其他一些协议。理解这些协议的基本原理有助于您理解如何使用JavaMail API。而该API的设计要与协议无关，所以不能克服这些基础协议的限制。如果选用的协议不支持某种功能，那么JavaMail API也无法在其上添加这种功能。（正如您一会儿就会看到的，在操作POP协议时，常常会碰到这种问题）。</p>
-    <p><ul>
-        <li>
-          <p>SMTP</p>
-          <p>简单邮件传输协议（SMTP）是用于传送电子邮件的机制。在JavaMail API环境中，您的基于JavaMail的程序将与您公司或Internet服务提供商（ISP）的SMTP服务器通信。该SMTP服务器将会把消息转发给用作接收消息的SMTP服务器，最后用户可通过POP或IMAP协议获取该消息。由于支持身份验证，所以不需要SMTP服务器是一种开放的转发器，但需要确保SMTP服务器配置正确。JavaMail API中没有集成用于处理诸如配置服务器以转发消息或添加/删除电子邮件帐户这一类任务的功能。</p>
-        </li>
-        <li>
-          <p>POP</p>
-          <p>POP的含义是邮局协议，当前的版本为3，也称作POP3，该协议是在RFC 1939中定义的。POP是Internet上的大多数人用来接收邮件的机制。它为每个用户的每个邮箱定义支持，这是它所做的全部工作，也是大多数问题的根源。在使用POP协议时，人们熟悉的很多功能，如查看收到了多少新邮件消息的功能，POP根本不支持。这些功能都内置到诸如Eudora或Microsoft Outlook之类的邮件程序中，能为您记住接收的上一封邮件，以及计算有多少新邮件这类信息。因此，使用JavaMail API时，如果想获取这类信息，将需要由自己进行计算。</p>
-        </li>
-        <li>
-          <p>IMAP</p>
-          <p>IMAP是用于接收消息的更加高级的协议，它是在RFC 2060中定义的。IMAP的含义是“Internet消息访问协议”，当前版本是第4版，也称作IMAP4。使用IMAP时，您的邮件服务器必须支持该协议。您不能只是简单地把程序转变为支持IMAP，而不是支持POP，就指望能支持IMAP中的一切。假定您的邮件服务器支持IMAP，那么基于JavaMail的程序就可利用在服务器上拥有多个文件夹的用户，并且这些文件夹可以被多个用户共享的功能。
-由于IMAP协议具有更高级的功能，您也许会想IMAP应该被每一个人使用，但事实不是这样。因为IMAP会加重邮件服务器的负荷，它需要服务器接收新消息，发送消息给请求的用户，并在多个文件夹中为每个用户维护这些消息。而这要集中备份，因而长期下去用户的文件夹会变得越来越大，当磁盘空间用光了时，每个人都会遭受损失。而使用POP协议时，已保存消息可以解除服务器的重负。</p>
-        </li>
-        <li>
-          <p>MIME</p>
-          <p>MIME的含义是“多用途的网际邮件扩充协议”。它不是一种邮件传输协议，相反，它定义传输的内容：消息的格式、附件等。许多文档都定义了MIME协议，包含：RFC 822、RFC 2045、RFC 2046和RFC 2047。作为JavaMail API的用户，一般不需要担心这些格式。但是，这些格式确实存在，并为您的程序所用。</p>
-        </li>
-        <li>
-          <p>NNP和其他协议</p>
-          <p>由于JavaMail API分开了提供程序和其他部分，所以您可以轻松地为附加协议添加支持。Sun公司提供第3方提供程序清单，这些提供程序要利用 Sun公司不支持的少见的协议。在这份清单中，您将会看到对NNTP（网络新闻传输协议）[新闻组]、S/MIME（安全多用途的网际邮件扩充协议）及其他协议的提供支持的第3方提供程序。</p>
-        </li>
-      </ul></p>
+    <p><ol>
+        <li>跨平台，性能优越，跟Linux/Unix结合别跟Windows结合性能强45%，并且和很多免费的平台结合非常省钱，比如LAMP (Linux/Apache/Mysql/PHP)或者FAMP(FreeBSD/Apache/Mysql/PHP)结合，或者数据应用够大可以考虑换 PostgreSQL或者Oracle，支持N种数据库。（N &gt;= 10）</li>
+        <li>语法简单，如果有学习C和Perl的很容易上手，并且跟ASP有部分类似。有成熟的开发工具，比如NuPHPed，或者Zend Studio等等，再Linux平台下可以使用Eclipse等等。</li>
+        <li>目前主流技术都支持，比如WebService、Ajax、XML等等，足够应用。</li>
+        <li>有比较完整的支持，比如使用ADODB或者PEAR::DB做数据库抽象层，用Smarty或者smart template做模板层，如果是PHP 5.1的话，还能够使用PDO（PHP Data Object）来访问数据库。</li>
+        <li>有很成熟的框架，比支持MVC的框架：phpMVC，支持类似ASP.net的事件驱动的框架：Prado，支持类似Ruby On Rails的快速开发的框架：Cake等等，足够满足你的应用需求。 PHP6. P</li>
+        <li>有成熟的社区来支持PHP的开发，比如国内的CSDN，喜悦国际村等等。 </li>
+        <li>目前已经很多大型应用都是使用PHP，比如淘宝网、Yahoo、163、Sina等等大型门户，很多选用PHP来作为他们的开发语言，所以大型门户都能够选用它，我想足够能够你的使用了。</li>
+      </ol></p>
   </conbody>
 </concept>
