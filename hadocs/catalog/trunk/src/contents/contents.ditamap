@@ -72,5 +72,6 @@
   </topicref>
   <topicref href="tasks/programing/programing.dita">
     <topicref href="tasks/programing/java.dita"/>
+    <topicref href="tasks/programing/php.dita"/>
   </topicref>
 </map>
