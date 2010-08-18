@@ -16,7 +16,7 @@
 
 .small {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
+	font-size: 11px;
 	color: #000000;
 }
 
@@ -2016,7 +2016,7 @@ textarea {
 }
 
 .TaxShow{
-	display:inline-table;
+	border:3px;
 }
 
 .TaxHide{
