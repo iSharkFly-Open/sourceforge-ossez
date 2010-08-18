@@ -2,7 +2,7 @@
 
 
 //This is the sharing access privilege file
-$defaultOrgSharingPermission=array('2'=>2,'4'=>2,'6'=>2,'7'=>2,'9'=>3,'13'=>2,'16'=>3,'20'=>2,'21'=>2,'22'=>0,'23'=>2,'26'=>2,'8'=>2,'30'=>3,'31'=>2,);
+$defaultOrgSharingPermission=array('2'=>2,'4'=>2,'6'=>2,'7'=>2,'9'=>3,'13'=>2,'16'=>3,'20'=>2,'21'=>2,'22'=>2,'23'=>2,'26'=>2,'8'=>2,'30'=>3,'31'=>2,'40'=>2,'41'=>2,'42'=>2,'43'=>2,'44'=>2,'45'=>2,'46'=>2,'47'=>2,);
 
 $related_module_share=array(2=>array(6,),13=>array(6,),20=>array(6,2,),22=>array(6,2,20,),23=>array(6,22,),);
 
@@ -105,5 +105,33 @@ $PBXManager_share_write_permission=array('ROLE'=>array(),'GROUP'=>array());
 $ServiceContracts_share_read_permission=array('ROLE'=>array(),'GROUP'=>array());
 
 $ServiceContracts_share_write_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$Assets_share_read_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$Assets_share_write_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$ModComments_share_read_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$ModComments_share_write_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$ProjectMilestone_share_read_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$ProjectMilestone_share_write_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$ProjectTask_share_read_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$ProjectTask_share_write_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$ProjectTeam_share_read_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$ProjectTeam_share_write_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$Project_share_read_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$Project_share_write_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$SMSNotifier_share_read_permission=array('ROLE'=>array(),'GROUP'=>array());
+
+$SMSNotifier_share_write_permission=array('ROLE'=>array(),'GROUP'=>array());
 
 ?>
