@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-05 02:00:46
+<?php /* Smarty version 2.6.18, created on 2010-08-03 22:45:39
          compiled from Home/HomeButtons.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'Home/HomeButtons.tpl', 27, false),array('modifier', 'getTranslatedString', 'Home/HomeButtons.tpl', 158, false),)), $this); ?>

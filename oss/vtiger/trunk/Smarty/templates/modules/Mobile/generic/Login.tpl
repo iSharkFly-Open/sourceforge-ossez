@@ -11,7 +11,7 @@
 
 <tr>
 	<td>	
-		<form method="post" action="index.php?action=Login">
+		<form method="post" action="index.php?_operation=loginAndFetchModules">
 		
 		<table width=100% cellpadding=5 cellspacing=0 border=0 class="panel_login">
 		<tr>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-23 13:31:41
+<?php /* Smarty version 2.6.18, created on 2010-08-09 23:40:23
          compiled from RssFeeds.tpl */ ?>
 <table width="100%"  border="0" cellspacing="0" cellpadding="0" >
 	<tr><td colspan="2" class="mailSubHeader" height=25><b><?php echo $this->_tpl_vars['MOD']['LBL_FEEDS_LIST']; ?>

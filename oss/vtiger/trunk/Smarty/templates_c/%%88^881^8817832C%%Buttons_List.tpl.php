@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:12:20
+<?php /* Smarty version 2.6.18, created on 2010-08-03 22:48:53
          compiled from Buttons_List.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslatedString', 'Buttons_List.tpl', 18, false),array('modifier', 'vtiger_imageurl', 'Buttons_List.tpl', 34, false),)), $this); ?>
@@ -129,8 +129,8 @@ btnL3Tracker.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_LAST_VIEWED']; ?>
 			<tr>
 
 			
-			<?php if ($this->_tpl_vars['MODULE'] == 'Vendors' || $this->_tpl_vars['MODULE'] == 'HelpDesk' || $this->_tpl_vars['MODULE'] == 'Contacts' || $this->_tpl_vars['MODULE'] == 'Leads' || $this->_tpl_vars['MODULE'] == 'Accounts' || $this->_tpl_vars['MODULE'] == 'Potentials' || $this->_tpl_vars['MODULE'] == 'Products' || $this->_tpl_vars['MODULE'] == 'Documents' || $this->_tpl_vars['CUSTOM_MODULE'] == 'true'): ?>
-		   		<?php if ($this->_tpl_vars['CHECK']['Import'] == 'yes' && $this->_tpl_vars['MODULE'] != 'Documents'): ?>	
+			<?php if ($this->_tpl_vars['MODULE'] == 'Vendors' || $this->_tpl_vars['MODULE'] == 'HelpDesk' || $this->_tpl_vars['MODULE'] == 'Contacts' || $this->_tpl_vars['MODULE'] == 'Leads' || $this->_tpl_vars['MODULE'] == 'Accounts' || $this->_tpl_vars['MODULE'] == 'Potentials' || $this->_tpl_vars['MODULE'] == 'Products' || $this->_tpl_vars['MODULE'] == 'Documents' || $this->_tpl_vars['CUSTOM_MODULE'] == 'true' || $this->_tpl_vars['MODULE'] == 'Calendar'): ?>
+		   		<?php if ($this->_tpl_vars['CHECK']['Import'] == 'yes' && $this->_tpl_vars['MODULE'] != 'Documents' && $this->_tpl_vars['MODULE'] != 'Calendar'): ?>	
 					<td style="padding-right:0px;padding-left:10px;"><a href="index.php?module=<?php echo $this->_tpl_vars['MODULE']; ?>
 &action=Import&step=1&return_module=<?php echo $this->_tpl_vars['MODULE']; ?>
 &return_action=index&parenttab=<?php echo $this->_tpl_vars['CATEGORY']; ?>
@@ -140,14 +140,28 @@ tbarImport.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_IMPORT']; ?>
 " title="<?php echo $this->_tpl_vars['APP']['LBL_IMPORT']; ?>
  <?php echo ((is_array($_tmp=$this->_tpl_vars['MODULE'])) ? $this->_run_mod_handler('getTranslatedString', true, $_tmp, $this->_tpl_vars['MODULE']) : getTranslatedString($_tmp, $this->_tpl_vars['MODULE'])); ?>
 " border="0"></a></td>	
+				<?php elseif ($this->_tpl_vars['CHECK']['Import'] == 'yes' && $this->_tpl_vars['MODULE'] == 'Calendar'): ?>
+                    <td style="padding-right:10px"><a name='export_link' href="javascript:void(0);" onclick="fnvshobj(this,'CalImport');" ><img src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
+tbarImport.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_EXPORT']; ?>
+ <?php echo ((is_array($_tmp=$this->_tpl_vars['MODULE'])) ? $this->_run_mod_handler('getTranslatedString', true, $_tmp, $this->_tpl_vars['MODULE']) : getTranslatedString($_tmp, $this->_tpl_vars['MODULE'])); ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_EXPORT']; ?>
+ <?php echo ((is_array($_tmp=$this->_tpl_vars['MODULE'])) ? $this->_run_mod_handler('getTranslatedString', true, $_tmp, $this->_tpl_vars['MODULE']) : getTranslatedString($_tmp, $this->_tpl_vars['MODULE'])); ?>
+" border="0"></a></td>
 				<?php else: ?>	
 					<td style="padding-right:0px;padding-left:10px;"><img src="<?php echo vtiger_imageurl('tbarImport-Faded.gif', $this->_tpl_vars['THEME']); ?>
 " border="0"></td>	
 				<?php endif; ?>	
-				<?php if ($this->_tpl_vars['CHECK']['Export'] == 'yes'): ?>	
-                                <td style="padding-right:10px"><a name='export_link' href="javascript:void(0)" onclick="return selectedRecords('<?php echo $this->_tpl_vars['MODULE']; ?>
+				<?php if ($this->_tpl_vars['CHECK']['Export'] == 'yes' && $this->_tpl_vars['MODULE'] != 'Calendar'): ?>	
+                    <td style="padding-right:10px"><a name='export_link' href="javascript:void(0)" onclick="return selectedRecords('<?php echo $this->_tpl_vars['MODULE']; ?>
 ','<?php echo $this->_tpl_vars['CATEGORY']; ?>
 ')"><img src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
+tbarExport.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_EXPORT']; ?>
+ <?php echo ((is_array($_tmp=$this->_tpl_vars['MODULE'])) ? $this->_run_mod_handler('getTranslatedString', true, $_tmp, $this->_tpl_vars['MODULE']) : getTranslatedString($_tmp, $this->_tpl_vars['MODULE'])); ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_EXPORT']; ?>
+ <?php echo ((is_array($_tmp=$this->_tpl_vars['MODULE'])) ? $this->_run_mod_handler('getTranslatedString', true, $_tmp, $this->_tpl_vars['MODULE']) : getTranslatedString($_tmp, $this->_tpl_vars['MODULE'])); ?>
+" border="0"></a></td>
+				<?php elseif ($this->_tpl_vars['CHECK']['Export'] == 'yes' && $this->_tpl_vars['MODULE'] == 'Calendar'): ?>
+                    <td style="padding-right:10px"><a name='export_link' href="javascript:void(0);" onclick="fnvshobj(this,'CalExport');" ><img src="<?php echo $this->_tpl_vars['IMAGE_PATH']; ?>
 tbarExport.gif" alt="<?php echo $this->_tpl_vars['APP']['LBL_EXPORT']; ?>
  <?php echo ((is_array($_tmp=$this->_tpl_vars['MODULE'])) ? $this->_run_mod_handler('getTranslatedString', true, $_tmp, $this->_tpl_vars['MODULE']) : getTranslatedString($_tmp, $this->_tpl_vars['MODULE'])); ?>
 " title="<?php echo $this->_tpl_vars['APP']['LBL_EXPORT']; ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-20 23:13:21
+<?php /* Smarty version 2.6.18, created on 2010-08-09 22:54:34
          compiled from modules/FieldFormulas/ModuleTitle.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslatedString', 'modules/FieldFormulas/ModuleTitle.tpl', 8, false),)), $this); ?>

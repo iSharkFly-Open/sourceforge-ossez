@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-05 02:00:45
+<?php /* Smarty version 2.6.18, created on 2010-08-03 22:45:37
          compiled from Header.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'Header.tpl', 75, false),array('modifier', 'escape', 'Header.tpl', 83, false),array('modifier', 'getTranslatedString', 'Header.tpl', 109, false),array('modifier', 'vtlib_purify', 'Header.tpl', 308, false),array('function', 'math', 'Header.tpl', 557, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'Header.tpl', 78, false),array('modifier', 'escape', 'Header.tpl', 86, false),array('modifier', 'getTranslatedString', 'Header.tpl', 112, false),array('modifier', 'vtlib_purify', 'Header.tpl', 378, false),array('function', 'math', 'Header.tpl', 627, false),)), $this); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,7 +13,18 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imag
 	<link REL="SHORTCUT ICON" HREF="themes/images/vtigercrm_icon.ico">	
 	<style type="text/css">@import url("themes/<?php echo $this->_tpl_vars['THEME']; ?>
 /style.css");</style>
-	<!-- ActivityReminder customization for callback -->
+	<link rel="stylesheet" type="text/css" media="all" href="jscalendar/calendar-win2k-cold-1.css">
+		<?php if ($this->_tpl_vars['HEADERCSS']): ?>
+		<!-- Custom Header CSS -->
+		<?php $_from = $this->_tpl_vars['HEADERCSS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['HDRCSS']):
+?>
+			<link rel="stylesheet" type="text/css" href="<?php echo $this->_tpl_vars['HDRCSS']->linkurl; ?>
+"></script>
+		<?php endforeach; endif; unset($_from); ?>
+		<!-- END -->
+	<?php endif; ?>
+		<!-- ActivityReminder customization for callback -->
 	<?php echo '
 	<style type="text/css">div.fixedLay1 { position:fixed; }</style>
 	<!--[if lte IE 6]>
@@ -27,6 +38,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imag
 	<a name="top"></a>
 	<!-- header -->
 	<!-- header-vtiger crm name & RSS -->
+	<script language="JavaScript" type="text/javascript" src="include/js/json.js"></script>
 	<script language="JavaScript" type="text/javascript" src="include/js/general.js"></script>
 	<!-- vtlib customization: Javascript hook -->	
 	<script language="JavaScript" type="text/javascript" src="include/js/vtlib.js"></script>
@@ -39,7 +51,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imag
 	<script language="JavaScript" type="text/javascript" src="modules/Calendar/script.js"></script>
 	<script language="javascript" type="text/javascript" src="include/scriptaculous/dom-drag.js"></script>
 	<script language="JavaScript" type="text/javascript" src="include/js/notificationPopup.js"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="jscalendar/calendar-win2k-cold-1.css">
         <script type="text/javascript" src="jscalendar/calendar.js"></script>
         <script type="text/javascript" src="jscalendar/calendar-setup.js"></script>
         <script type="text/javascript" src="jscalendar/lang/calendar-<?php echo $this->_tpl_vars['APP']['LBL_JSCALENDAR_LANG']; ?>
@@ -60,16 +71,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imag
     foreach ($_from as $this->_tpl_vars['HEADERSCRIPT']):
 ?>
 			<script type="text/javascript" src="<?php echo $this->_tpl_vars['HEADERSCRIPT']->linkurl; ?>
-"></script>
-		<?php endforeach; endif; unset($_from); ?>
-		<!-- END -->
-	<?php endif; ?>
-	<?php if ($this->_tpl_vars['HEADERCSS']): ?>
-		<!-- Custom Header CSS -->
-		<?php $_from = $this->_tpl_vars['HEADERCSS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['HDRCSS']):
-?>
-			<link rel="stylesheet" type="text/css" href="<?php echo $this->_tpl_vars['HDRCSS']->linkurl; ?>
 "></script>
 		<?php endforeach; endif; unset($_from); ?>
 		<!-- END -->
@@ -159,6 +160,78 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imag
 <div id='miniCal' style='width:300px; position:absolute; display:none; left:100px; top:100px; z-index:100000'>
 </div>
 
+<?php if ($this->_tpl_vars['MODULE_NAME'] == 'Calendar'): ?>
+<div id="CalExport" style="width:300px; position:absolute; display:none; left:500px; top:100px; z-index:100000" class="layerPopup">
+	<table border=0 cellspacing=0 cellpadding=5 width=100% class=layerHeadingULine>
+	<tr>
+		<td class="genHeaderSmall" nowrap align="left" width="30%" ><?php echo $this->_tpl_vars['APP']['LBL_EXPORT']; ?>
+ </td>
+		<td align="right"><a href='javascript:ghide("CalExport");'><img src="<?php echo vtiger_imageurl('close.gif', $this->_tpl_vars['THEME']); ?>
+" align="right" border="0"></a></td>
+	</tr>
+	</table>
+	<table border=0 cellspacing=0 cellpadding=5 width=95% align=center> 
+	<tr>
+		<td class="small">
+			<table border=0 celspacing=0 cellpadding=5 width=100% align=center bgcolor=white>
+			<tr>
+				<td align="right" nowrap class="cellLabel small">
+					<input class="small" type='radio' name='exportCalendar' value = 'iCal' onclick="$('ics_filename').removeAttribute('disabled');" checked /> iCal Format
+				</td>
+				<td align="left">
+					<input class="small" type='text' name='ics_filename' id='ics_filename' size='25' value='vtiger.calendar'/>
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+	<table border=0 cellspacing=0 cellpadding=5 width=100% class="layerPopupTransport">
+	<tr>
+		<td class="small" align="center">
+		<input type="button" onclick="return exportCalendar();" value="Export" class="crmbutton small edit" name="button"/>
+		</td>
+	</tr>
+	</table>
+</div>
+<div id='CalImport' style='width:300px; position:absolute; display:none; left:500px; top:100px; z-index:100000' class="layerPopup">
+	<?php $this->assign('label_filename', 'LBL_FILENAME'); ?>
+	<form name='ical_import' id='ical_import' onsubmit="VtigerJS_DialogBox.block();" enctype="multipart/form-data" action="index.php" method="POST">
+	<input type='hidden' name='module' value=''>
+	<input type='hidden' name='action' value=''>
+		<table border=0 cellspacing=0 cellpadding=5 width=100% class=layerHeadingULine>
+			<tr>
+				<td class="genHeaderSmall" nowrap align="left" width="30%" id="editfolder_info"><?php echo $this->_tpl_vars['APP']['LBL_IMPORT']; ?>
+</td>
+				<td align="right"><a href='javascript:ghide("CalImport");'><img src="<?php echo vtiger_imageurl('close.gif', $this->_tpl_vars['THEME']); ?>
+" align="absmiddle" border="0"></a></td>
+			</tr>
+		</table>
+		<table border=0 cellspacing=0 cellpadding=5 width=95% align=center> 
+			<tr>
+				<td class="small">
+					<table border=0 celspacing=0 cellpadding=5 width=100% align=center bgcolor=white>
+						<tr>
+							<td align="right" nowrap class="cellLabel small"><b><?php echo getTranslatedString($this->_tpl_vars['label_filename']); ?>
+ </b></td>
+							<td align="left">
+								<input class="small" type='file' name='ics_file' id='ics_file'/>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table border=0 cellspacing=0 cellpadding=5 width=100% class="layerPopupTransport">
+			<tr>
+				<td class="small" align="center">
+				<input type="button" onclick="return importCalendar();" value="Import" class="crmbutton small edit" name="button"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+<?php endif; ?>
 <!-- header - master tabs -->
 <TABLE border=0 cellspacing=0 cellpadding=0 width=100% class="hdrTabBg">
 <tr>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-21 12:42:30
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:57:53
          compiled from RelatedListNew.tpl */ ?>
 <script language="JavaScript" type="text/javascript" src="modules/PriceBooks/PriceBooks.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/ListView.js"></script>
@@ -40,43 +40,6 @@ function gotoUpdateListPrice(id,pbid,proid)
 '; ?>
 
 
-function loadCvList(type,id)
-{
-	if($("lead_cv_list").value != 'None' || $("cont_cv_list").value != 'None')
-	{
-        	$("status").style.display="inline";
-
-		if(type === 'Leads')
-		{
-			new Ajax.Request(
-                        'index.php',
-                        {queue: {position: 'end', scope: 'command'},
-                                method: 'post',
-                                postBody: 'module=Campaigns&action=CampaignsAjax&file=LoadList&ajax=true&return_action=DetailView&return_id='+id+'&list_type='+type+'&cvid='+$("lead_cv_list").value,
-                                onComplete: function(response) {
-                                        $("status").style.display="none";
-                                        $("RLContents").innerHTML= response.responseText;
-                                }
-                        }
-                	);
-		}
-
-		if(type === 'Contacts')
-		{
-			new Ajax.Request(
-                        'index.php',
-                        {queue: {position: 'end', scope: 'command'},
-                                method: 'post',
-                                postBody: 'module=Campaigns&action=CampaignsAjax&file=LoadList&ajax=true&return_action=DetailView&return_id='+id+'&list_type='+type+'&cvid='+$("cont_cv_list").value,
-                                onComplete: function(response) {
-                                        $("status").style.display="none";
-                                        $("RLContents").innerHTML= response.responseText;
-                                }
-                        }
-                	);
-		}
-	}
-}
 </script>
 
 <!-- Contents -->

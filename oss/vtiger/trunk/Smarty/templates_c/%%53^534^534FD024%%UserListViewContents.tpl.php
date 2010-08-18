@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:32:03
+<?php /* Smarty version 2.6.18, created on 2010-08-09 12:20:05
          compiled from UserListViewContents.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'UserListViewContents.tpl', 48, false),array('modifier', 'strip_tags', 'UserListViewContents.tpl', 63, false),array('modifier', 'trim', 'UserListViewContents.tpl', 63, false),)), $this); ?>
-
+smarty_core_load_plugins(array('plugins' => array(array('function', 'math', 'UserListViewContents.tpl', 53, false),array('modifier', 'vtiger_imageurl', 'UserListViewContents.tpl', 54, false),array('modifier', 'strip_tags', 'UserListViewContents.tpl', 69, false),array('modifier', 'trim', 'UserListViewContents.tpl', 69, false),)), $this); ?>
+<script language="JavaScript" type="text/javascript" src="include/js/ListView.js"></script>
 <table border=0 cellspacing=0 cellpadding=5 width=100% class="tableHeading">
 <tr>
 	<td class="big"><strong><?php echo $this->_tpl_vars['MOD']['LBL_USERS_LIST']; ?>
@@ -13,7 +13,18 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imag
 					
 <table border=0 cellspacing=0 cellpadding=5 width=100% class="listTableTopButtons">
 <tr>
-	<td class=small align=right><input title="<?php echo $this->_tpl_vars['CMOD']['LBL_NEW_USER_BUTTON_TITLE']; ?>
+	<td class="small" nowrap align="left">
+		<?php echo $this->_tpl_vars['recordListRange']; ?>
+
+	</td>
+	<!-- Page Navigation -->
+	<td nowrap width="30%" align="center">
+		<table border=0 cellspacing=0 cellpadding=0 class="small">
+			<tr><?php echo $this->_tpl_vars['NAVIGATION']; ?>
+</tr>
+		</table>
+    </td>
+	<td class=small width="30%" align="right"><input title="<?php echo $this->_tpl_vars['CMOD']['LBL_NEW_USER_BUTTON_TITLE']; ?>
 " accessyKey="<?php echo $this->_tpl_vars['CMOD']['LBL_NEW_USER_BUTTON_KEY']; ?>
 " type="submit" name="button" value="<?php echo $this->_tpl_vars['CMOD']['LBL_NEW_USER_BUTTON_LABEL']; ?>
 " class="crmButton create small"></td>
@@ -50,7 +61,7 @@ if ($this->_foreach['userlist']['total'] > 0):
 ?>
 		<?php $this->assign('flag', 0); ?>
 <tr>
-	<td class="listTableRow small" valign=top><?php echo $this->_foreach['userlist']['iteration']; ?>
+	<td class="listTableRow small" valign=top><?php echo smarty_function_math(array('equation' => "x + y",'x' => $this->_foreach['userlist']['iteration'],'y' => $this->_tpl_vars['PAGE_START_RECORD']), $this);?>
 </td>
 	<td class="listTableRow small" nowrap valign=top><a href="index.php?action=EditView&return_action=ListView&return_module=Users&module=Users&parenttab=Settings&record=<?php echo $this->_tpl_vars['userid']; ?>
 "><img src="<?php echo vtiger_imageurl('editfield.gif', $this->_tpl_vars['THEME']); ?>
@@ -99,7 +110,26 @@ if ($this->_foreach['userlist']['total'] > 0):
 	<?php endif; ?>	
 
 </tr>
-	<?php endforeach; endif; unset($_from); ?>
+	<?php endforeach; else: ?>
+	<tr>
+		<td colspan="7">
+			<table width="100%">
+				<tr>
+					<td rowspan="2" width="45%" align="right"><img src="<?php echo vtiger_imageurl('empty.jpg', $this->_tpl_vars['THEME']); ?>
+" height="60" width="61"></td>
+					<td nowrap="nowrap" width="65%" align="left">
+						<span class="genHeaderSmall">
+							<?php echo $this->_tpl_vars['APP']['LBL_NO']; ?>
+ <?php echo $this->_tpl_vars['MOD']['LBL_USERS']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_FOUND']; ?>
+ !
+						</span>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<?php endif; unset($_from); ?>
 </table>
 <table border=0 cellspacing=0 cellpadding=5 width=100% >
 	<tr><td class="small" nowrap align=right><a href="#top"><?php echo $this->_tpl_vars['MOD']['LBL_SCROLL']; ?>

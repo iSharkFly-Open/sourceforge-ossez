@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:12:39
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:57:54
          compiled from Inventory/InventoryActions.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'Inventory/InventoryActions.tpl', 44, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'Inventory/InventoryActions.tpl', 44, false),array('modifier', 'getTranslatedString', 'Inventory/InventoryActions.tpl', 166, false),)), $this); ?>
 
 <!-- Avoid this actions display for PriceBook module-->
 <?php if ($this->_tpl_vars['MODULE'] != 'PriceBooks'): ?>
@@ -232,6 +232,113 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imag
 
 	<!-- Module based actions ends -->
 
+<?php if ($this->_tpl_vars['CUSTOM_LINKS'] && $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEWBASIC']): ?>
+	<table width="100%" border="0" cellpadding="5" cellspacing="0">
+	<?php $_from = $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEWBASIC']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['CUSTOMLINK']):
+?>
+	<tr>
+		<td align="left" style="padding-left:10px;">
+			<?php $this->assign('customlink_href', $this->_tpl_vars['CUSTOMLINK']->linkurl); ?>
+			<?php $this->assign('customlink_label', $this->_tpl_vars['CUSTOMLINK']->linklabel); ?>
+			<?php if ($this->_tpl_vars['customlink_label'] == ''): ?>
+				<?php $this->assign('customlink_label', $this->_tpl_vars['customlink_href']); ?>
+			<?php else: ?>
+								<?php $this->assign('customlink_label', getTranslatedString($this->_tpl_vars['customlink_label'], $this->_tpl_vars['CUSTOMLINK']->module())); ?>
+			<?php endif; ?>
+			<?php if ($this->_tpl_vars['CUSTOMLINK']->linkicon): ?>
+			<a class="webMnu" href="<?php echo $this->_tpl_vars['customlink_href']; ?>
+"><img hspace=5 align="absmiddle" border=0 src="<?php echo $this->_tpl_vars['CUSTOMLINK']->linkicon; ?>
+"></a>
+			<?php endif; ?>
+			<a class="webMnu" href="<?php echo $this->_tpl_vars['customlink_href']; ?>
+"><?php echo $this->_tpl_vars['customlink_label']; ?>
+</a>
+		</td>
+	</tr>
+	<?php endforeach; endif; unset($_from); ?>
+	</table>
+<?php endif; ?>
+
+<?php if ($this->_tpl_vars['CUSTOM_LINKS']): ?>
+	<br>
+	<?php if (! empty ( $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEW'] )): ?>					
+		<table width="100%" border="0" cellpadding="5" cellspacing="0">
+			<tr><td align="left" class="dvtUnSelectedCell dvtCellLabel">
+				<a href="javascript:;" onmouseover="fnvshobj(this,'vtlib_customLinksLay');" onclick="fnvshobj(this,'vtlib_customLinksLay');"><b><?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_ACTIONS']; ?>
+ &#187;</b></a>
+			</td></tr>
+		</table>
+		<br>
+		<div style="display: none; left: 193px; top: 106px;width:155px; position:absolute;" id="vtlib_customLinksLay" 
+			onmouseout="fninvsh('vtlib_customLinksLay')" onmouseover="fnvshNrm('vtlib_customLinksLay')">
+			<table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr><td style="border-bottom: 1px solid rgb(204, 204, 204); padding: 5px;"><b><?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_ACTIONS']; ?>
+ &#187;</b></td></tr>
+			<tr>
+				<td>
+					<?php $_from = $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEW']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['CUSTOMLINK']):
+?>
+						<?php $this->assign('customlink_href', $this->_tpl_vars['CUSTOMLINK']->linkurl); ?>
+						<?php $this->assign('customlink_label', $this->_tpl_vars['CUSTOMLINK']->linklabel); ?>
+						<?php if ($this->_tpl_vars['customlink_label'] == ''): ?>
+							<?php $this->assign('customlink_label', $this->_tpl_vars['customlink_href']); ?>
+						<?php else: ?>
+														<?php $this->assign('customlink_label', getTranslatedString($this->_tpl_vars['customlink_label'], $this->_tpl_vars['CUSTOMLINK']->module())); ?>
+						<?php endif; ?>
+						<a href="<?php echo $this->_tpl_vars['customlink_href']; ?>
+" class="drop_down"><?php echo $this->_tpl_vars['customlink_label']; ?>
+</a>
+					<?php endforeach; endif; unset($_from); ?>
+				</td>
+			</tr>
+			</table>
+		</div>
+	<?php endif; ?>
+	
+	<?php if (! empty ( $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEWWIDGET'] )): ?>
+	<?php $_from = $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEWWIDGET']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['CUSTOMLINK_NO'] => $this->_tpl_vars['CUSTOMLINK']):
+?>
+		<?php $this->assign('customlink_href', $this->_tpl_vars['CUSTOMLINK']->linkurl); ?>
+		<?php $this->assign('customlink_label', $this->_tpl_vars['CUSTOMLINK']->linklabel); ?>
+				<?php if (! preg_match ( "/^block:\/\/.*/" , $this->_tpl_vars['customlink_href'] )): ?>
+			<?php if ($this->_tpl_vars['customlink_label'] == ''): ?>
+				<?php $this->assign('customlink_label', $this->_tpl_vars['customlink_href']); ?>
+			<?php else: ?>
+								<?php $this->assign('customlink_label', getTranslatedString($this->_tpl_vars['customlink_label'], $this->_tpl_vars['CUSTOMLINK']->module())); ?>
+			<?php endif; ?>
+			<br/>
+			<table border=0 cellspacing=0 cellpadding=0 width=100% class="rightMailMerge">
+  				<tr>
+					<td class="rightMailMergeHeader">
+						<b><?php echo $this->_tpl_vars['customlink_label']; ?>
+</b>
+						<img id="detailview_block_<?php echo $this->_tpl_vars['CUSTOMLINK_NO']; ?>
+_indicator" style="display:none;" src="<?php echo vtiger_imageurl('vtbusy.gif', $this->_tpl_vars['THEME']); ?>
+" border="0" align="absmiddle" />
+					</td>
+  				</tr>
+  				<tr style="height:25px">
+					<td class="rightMailMergeContent"><div id="detailview_block_<?php echo $this->_tpl_vars['CUSTOMLINK_NO']; ?>
+"></div></td>
+  				</tr>
+  				<script type="text/javascript">
+  					vtlib_loadDetailViewWidget("<?php echo $this->_tpl_vars['customlink_href']; ?>
+", "detailview_block_<?php echo $this->_tpl_vars['CUSTOMLINK_NO']; ?>
+", "detailview_block_<?php echo $this->_tpl_vars['CUSTOMLINK_NO']; ?>
+_indicator");
+  				</script>
+			</table>
+		<?php endif; ?>
+	<?php endforeach; endif; unset($_from); ?>
+	<?php endif; ?>
+	
+<?php endif; ?>
+<!-- Action links END -->
 
 
 

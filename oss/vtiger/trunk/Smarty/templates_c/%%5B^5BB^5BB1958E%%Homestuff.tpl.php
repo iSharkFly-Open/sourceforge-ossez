@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-05 02:00:46
+<?php /* Smarty version 2.6.18, created on 2010-08-03 22:45:39
          compiled from Home/Homestuff.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'Home/Homestuff.tpl', 23, false),array('modifier', 'getTranslatedString', 'Home/Homestuff.tpl', 36, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'Home/Homestuff.tpl', 23, false),array('modifier', 'getTranslatedString', 'Home/Homestuff.tpl', 36, false),array('modifier', 'count', 'Home/Homestuff.tpl', 58, false),)), $this); ?>
 <script language="javascript" type="text/javascript" src="modules/Home/Homestuff.js"></script>
 <script language="javascript" type="text/javascript" src="include/scriptaculous/prototype.js"></script>
 <script language="javascript" type="text/javascript" src="include/scriptaculous/scriptaculous.js"></script>
@@ -39,7 +39,7 @@ unset($_smarty_tpl_vars);
 										<?php if ($this->_tpl_vars['tablestuff']['Stufftype'] == 'Default' && $this->_tpl_vars['tablestuff']['Stufftitle'] == getTranslatedString('Home Page Dashboard', 'Home')): ?>
 						fetch_homeDB(<?php echo $this->_tpl_vars['tablestuff']['Stuffid']; ?>
 );
-					<?php else: ?>
+					<?php elseif ($this->_tpl_vars['tablestuff']['Stufftype'] == 'DashBoard'): ?>
 						loadStuff(<?php echo $this->_tpl_vars['tablestuff']['Stuffid']; ?>
 ,'<?php echo $this->_tpl_vars['tablestuff']['Stufftype']; ?>
 ');
@@ -52,6 +52,25 @@ unset($_smarty_tpl_vars);
 </table>
 	
 <script>
+var Vt_homePageWidgetInfoList = [
+<?php $_from = $this->_tpl_vars['HOMEFRAME']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['homeframe'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['homeframe']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['index'] => $this->_tpl_vars['tablestuff']):
+        $this->_foreach['homeframe']['iteration']++;
+?>
+	<?php if (( $this->_tpl_vars['tablestuff']['Stufftype'] != 'Default' || $this->_tpl_vars['tablestuff']['Stufftitle'] != getTranslatedString('Home Page Dashboard', 'Home') ) && $this->_tpl_vars['tablestuff']['Stufftype'] != 'DashBoard'): ?>
+		{
+			'widgetId':<?php echo $this->_tpl_vars['tablestuff']['Stuffid']; ?>
+,
+			'widgetType':'<?php echo $this->_tpl_vars['tablestuff']['Stufftype']; ?>
+'
+		}
+		<?php if ($this->_tpl_vars['index']+1 < count($this->_tpl_vars['HOMEFRAME'])): ?>,<?php endif; ?>
+	<?php endif; ?>
+<?php endforeach; endif; unset($_from); ?>
+	];
+loadAllWidgets(Vt_homePageWidgetInfoList, <?php echo $this->_tpl_vars['widgetBlockSize']; ?>
+);
 <?php echo '
 initHomePage();
 

@@ -1,14 +1,107 @@
-<?php /* Smarty version 2.6.18, created on 2010-03-27 02:26:42
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:57:53
          compiled from RelatedListContents.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslatedString', 'RelatedListContents.tpl', 25, false),)), $this); ?>
-
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslatedString', 'RelatedListContents.tpl', 114, false),array('modifier', 'replace', 'RelatedListContents.tpl', 123, false),array('modifier', 'vtiger_imageurl', 'RelatedListContents.tpl', 124, false),array('modifier', 'in_array', 'RelatedListContents.tpl', 149, false),)), $this); ?>
 <script type='text/javascript' src='include/js/Mail.js'></script>
-<?php if ($this->_tpl_vars['SinglePane_View'] == 'true'): ?>
-	<?php $this->assign('return_modname', 'DetailView'); ?>
-<?php else: ?>
-	<?php $this->assign('return_modname', 'CallRelatedList'); ?>
-<?php endif; ?>
+<script type='text/javascript'>
+<?php echo '
+
+function isRelatedListBlockLoaded(id,urldata){
+	var elem = document.getElementById(id);
+	if(elem == null || typeof elem == \'undefined\' || urldata.indexOf(\'order_by\') != -1 ||
+		urldata.indexOf(\'start\') != -1 || urldata.indexOf(\'withCount\') != -1){
+		return false;
+	}
+	var tables = elem.getElementsByTagName(\'table\');
+	return tables.length > 0;
+}
+
+function loadRelatedListBlock(urldata,target,imagesuffix) {
+	var showdata = \'show_\'+imagesuffix;
+	var showdata_element = $(showdata);
+
+	var hidedata = \'hide_\'+imagesuffix;
+	var hidedata_element = $(hidedata);
+	if(isRelatedListBlockLoaded(target,urldata) == true){
+		$(target).show();
+		showdata_element.hide();
+      	hidedata_element.show();
+		$(\'delete_\'+imagesuffix).show();
+		return;
+	}
+	var indicator = \'indicator_\'+imagesuffix;
+	var indicator_element = $(indicator);
+	indicator_element.show();
+	$(\'delete_\'+imagesuffix).show();
+	
+	var target_element = $(target);
+	
+	new Ajax.Request(
+		\'index.php\',
+        {queue: {position: \'end\', scope: \'command\'},
+                method: \'post\',
+                postBody: urldata,
+                onComplete: function(response) {
+					var responseData = trim(response.responseText);
+      				target_element.innerHTML = responseData;
+					target_element.show();
+      				showdata_element.hide();
+      				hidedata_element.show();
+      				indicator_element.hide();
+				}
+        }
+	);
+}
+
+function hideRelatedListBlock(target, imagesuffix) {
+	
+	var showdata = \'show_\'+imagesuffix;
+	var showdata_element = $(showdata);
+	
+	var hidedata = \'hide_\'+imagesuffix;
+	var hidedata_element = $(hidedata);
+	
+	var target_element = $(target);
+	if(target_element){
+		target_element.hide();
+	}
+	hidedata_element.hide();
+	showdata_element.show();
+	$(\'delete_\'+imagesuffix).hide();
+}
+
+function disableRelatedListBlock(urldata,target,imagesuffix){
+	var showdata = \'show_\'+imagesuffix;
+	var showdata_element = $(showdata);
+
+	var hidedata = \'hide_\'+imagesuffix;
+	var hidedata_element = $(hidedata);
+
+	var indicator = \'indicator_\'+imagesuffix;
+	var indicator_element = $(indicator);
+	indicator_element.show();
+	
+	var target_element = $(target);
+	new Ajax.Request(
+		\'index.php\',
+        {queue: {position: \'end\', scope: \'command\'},
+                method: \'post\',
+                postBody: urldata,
+                onComplete: function(response) {
+					var responseData = trim(response.responseText);
+					target_element.hide();
+					$(\'delete_\'+imagesuffix).hide();
+      				hidedata_element.hide();
+					showdata_element.show();
+      				indicator_element.hide();
+				}
+        }
+	);
+}
+
+'; ?>
+
+</script>
 
 <?php $_from = $this->_tpl_vars['RELATEDLISTS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['header'] => $this->_tpl_vars['detail']):
@@ -17,116 +110,107 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslat
 <?php $this->assign('rel_mod', $this->_tpl_vars['header']); ?>
 <?php $this->assign('HEADERLABEL', getTranslatedString($this->_tpl_vars['header'], $this->_tpl_vars['rel_mod'])); ?>
 
-<table border=0 cellspacing=0 cellpadding=0 width=100% class="small" style="border-bottom:1px solid #999999;padding:5px;">
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="small lvt">
 	<tr>
-		<td  valign=bottom><b><?php echo $this->_tpl_vars['HEADERLABEL']; ?>
-</b> 
-			<?php if ($this->_tpl_vars['MODULE'] == 'Campaigns' && ( $this->_tpl_vars['rel_mod'] == 'Contacts' || $this->_tpl_vars['rel_mod'] == 'Leads' )): ?>
-					<br><br><?php echo $this->_tpl_vars['APP']['LBL_SELECT_BUTTON_LABEL']; ?>
-: <a href="javascript:;" onclick="clear_checked_all('<?php echo $this->_tpl_vars['rel_mod']; ?>
-');"><?php echo $this->_tpl_vars['APP']['LBL_NONE_NO_LINE']; ?>
-</a>
-			<?php endif; ?> 
+		<td class="dvInnerHeader">
+			<div style="font-weight: bold;height: 1.75em;">
+				<span>
+					<a href="javascript:loadRelatedListBlock(
+						'module=<?php echo $this->_tpl_vars['MODULE']; ?>
+&action=<?php echo $this->_tpl_vars['MODULE']; ?>
+Ajax&file=DetailViewAjax&record=<?php echo $this->_tpl_vars['ID']; ?>
+&ajxaction=LOADRELATEDLIST&header=<?php echo $this->_tpl_vars['header']; ?>
+&relation_id=<?php echo $this->_tpl_vars['detail']['relationId']; ?>
+&actions=<?php echo $this->_tpl_vars['detail']['actions']; ?>
+',
+						'tbl_<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+','<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+');">
+						<img id="show_<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+" src="<?php echo vtiger_imageurl('inactivate.gif', $this->_tpl_vars['THEME']); ?>
+" style="border: 0px solid #000000;" alt="Display" title="Display"/>
+					</a>
+					<a href="javascript:hideRelatedListBlock('tbl_<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+','<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+');">
+						<img id="hide_<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+" src="<?php echo vtiger_imageurl('activate.gif', $this->_tpl_vars['THEME']); ?>
+" style="border: 0px solid #000000;display:none;" alt="Display" title="Display"/>
+					</a>					
+				</span>
+				&nbsp;<?php echo $this->_tpl_vars['HEADERLABEL']; ?>
+&nbsp;
+				<img id="indicator_<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+" style="display:none;" src="<?php echo vtiger_imageurl('vtbusy.gif', $this->_tpl_vars['THEME']); ?>
+" border="0" align="absmiddle" />
+				<div style="float: right;width: 2em;">
+					<a href="javascript:disableRelatedListBlock(
+						'module=<?php echo $this->_tpl_vars['MODULE']; ?>
+&action=<?php echo $this->_tpl_vars['MODULE']; ?>
+Ajax&file=DetailViewAjax&ajxaction=DISABLEMODULE&relation_id=<?php echo $this->_tpl_vars['detail']['relationId']; ?>
+&header=<?php echo $this->_tpl_vars['header']; ?>
+',
+						'tbl_<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+','<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+');">
+						<img id="delete_<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+" style="display:none;" src="<?php echo vtiger_imageurl('windowMinMax.gif', $this->_tpl_vars['THEME']); ?>
+" border="0" align="absmiddle" />
+					</a>
+				</div>
+			</div>
 		</td>
-		<?php if ($this->_tpl_vars['detail'] != ''): ?>
-		<td align=center><?php echo $this->_tpl_vars['detail']['navigation']['0']; ?>
-</td>
-			<?php echo $this->_tpl_vars['detail']['navigation']['1']; ?>
-
-		<?php endif; ?>
-		<td align=right>
-			<?php echo $this->_tpl_vars['detail']['CUSTOM_BUTTON']; ?>
-
+	</tr>
+	<tr>
+		<td>
+			<div id="tbl_<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+"></div>
 		</td>
-
-			<?php if ($this->_tpl_vars['header'] == 'Contacts' && $this->_tpl_vars['MODULE'] != 'Campaigns' && $this->_tpl_vars['MODULE'] != 'Accounts' && $this->_tpl_vars['MODULE'] != 'Potentials' && $this->_tpl_vars['MODULE'] != 'Products' && $this->_tpl_vars['MODULE'] != 'Vendors'): ?>
-				<?php if ($this->_tpl_vars['MODULE'] == 'Calendar'): ?>
-					<input alt="<?php echo $this->_tpl_vars['APP']['LBL_SELECT_CONTACT_BUTTON_LABEL']; ?>
-" title="<?php echo $this->_tpl_vars['APP']['LBL_SELECT_CONTACT_BUTTON_LABEL']; ?>
-" accessKey="" class="crmbutton small edit" value="<?php echo $this->_tpl_vars['APP']['LBL_SELECT_BUTTON_LABEL']; ?>
- <?php echo $this->_tpl_vars['APP']['Contacts']; ?>
-" LANGUAGE=javascript onclick='return window.open("index.php?module=Contacts&return_module=<?php echo $this->_tpl_vars['MODULE']; ?>
-&action=Popup&popuptype=detailview&select=enable&form=EditView&form_submit=false&recordid=<?php echo $this->_tpl_vars['ID']; ?>
-<?php echo $this->_tpl_vars['search_string']; ?>
-","test","width=640,height=602,resizable=0,scrollbars=0");' type="button"  name="button"></td>
-				<?php elseif ($this->_tpl_vars['MODULE'] != 'Services'): ?>
-					<input title="<?php echo $this->_tpl_vars['APP']['LBL_ADD_NEW']; ?>
- <?php echo $this->_tpl_vars['APP']['Contact']; ?>
-" accessyKey="F" class="crmbutton small create" onclick="this.form.action.value='EditView';this.form.module.value='Contacts'" type="submit" name="button" value="<?php echo $this->_tpl_vars['APP']['LBL_ADD_NEW']; ?>
- <?php echo $this->_tpl_vars['APP']['Contact']; ?>
-"></td>
-				<?php endif; ?>
-			<?php elseif ($this->_tpl_vars['header'] == 'Users'): ?>
-                    <?php if ($this->_tpl_vars['MODULE'] == 'Calendar'): ?>
-						<input title="Change" accessKey="" tabindex="2" type="button" class="crmbutton small edit" value="<?php echo $this->_tpl_vars['APP']['LBL_SELECT_USER_BUTTON_LABEL']; ?>
-" name="button" LANGUAGE=javascript onclick='return window.open("index.php?module=Users&return_module=Calendar&return_action=<?php echo $this->_tpl_vars['return_modname']; ?>
-&activity_mode=Events&action=Popup&popuptype=detailview&form=EditView&form_submit=true&select=enable&return_id=<?php echo $this->_tpl_vars['ID']; ?>
-&recordid=<?php echo $this->_tpl_vars['ID']; ?>
-","test","width=640,height=525,resizable=0,scrollbars=0")';>
-                    <?php endif; ?>
-            <?php elseif ($this->_tpl_vars['header'] == 'Activity History'): ?>
-                    &nbsp;</td>
-            <?php endif; ?>
 	</tr>
 </table>
-<?php $this->assign('check_status', $this->_tpl_vars['detail']); ?>
-<?php if ($this->_tpl_vars['detail'] != '' && $this->_tpl_vars['detail']['header'] != ''): ?>
-	<?php $_from = $this->_tpl_vars['detail']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['header'] => $this->_tpl_vars['detail']):
-?>
-		<?php if ($this->_tpl_vars['header'] == 'header'): ?>
-			<table border=0 cellspacing=1 cellpadding=3 width=100% style="background-color:#eaeaea;" class="small">
-				<tr style="height:25px" bgcolor=white>
-                                <?php if ($this->_tpl_vars['MODULE'] == 'Campaigns' && ( $this->_tpl_vars['rel_mod'] == 'Contacts' || $this->_tpl_vars['rel_mod'] == 'Leads' )): ?>
-                                        <td class="lvtCol"><input name ="<?php echo $this->_tpl_vars['rel_mod']; ?>
-_selectall" onclick="rel_toggleSelect(this.checked,'<?php echo $this->_tpl_vars['rel_mod']; ?>
-_selected_id','<?php echo $this->_tpl_vars['rel_mod']; ?>
-');"  type="checkbox"></td>
-                                <?php endif; ?>
-				<?php $_from = $this->_tpl_vars['detail']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['header'] => $this->_tpl_vars['headerfields']):
-?>
-					<td class="lvtCol"><?php echo $this->_tpl_vars['headerfields']; ?>
-</td>
-				<?php endforeach; endif; unset($_from); ?>
-                                </tr>
-		<?php elseif ($this->_tpl_vars['header'] == 'entries'): ?>
-			<?php $_from = $this->_tpl_vars['detail']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['header'] => $this->_tpl_vars['detail']):
-?>
-				<tr bgcolor=white>
-                                <?php if ($this->_tpl_vars['MODULE'] == 'Campaigns' && ( $this->_tpl_vars['rel_mod'] == 'Contacts' || $this->_tpl_vars['rel_mod'] == 'Leads' )): ?>
-                                        <td><input name="<?php echo $this->_tpl_vars['rel_mod']; ?>
-_selected_id" id="<?php echo $this->_tpl_vars['header']; ?>
-" value="<?php echo $this->_tpl_vars['header']; ?>
-" onclick="rel_check_object(this,'<?php echo $this->_tpl_vars['rel_mod']; ?>
-');" toggleselectall(this.name,="" selectall="" )="" type="checkbox"  <?php echo $this->_tpl_vars['check_status']['checked'][$this->_tpl_vars['header']]; ?>
-></td>
-                                <?php endif; ?>
-				<?php $_from = $this->_tpl_vars['detail']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['header'] => $this->_tpl_vars['listfields']):
-?>
-									 	                                 <td onmouseover="vtlib_listview.trigger('cell.onmouseover', $(this))" onmouseout="vtlib_listview.trigger('cell.onmouseout', $(this))"><?php echo $this->_tpl_vars['listfields']; ?>
-</td>
-	                                 				<?php endforeach; endif; unset($_from); ?>
-				</tr>
-			<?php endforeach; endif; unset($_from); ?>
-			</table>
-		<?php endif; ?>
-	<?php endforeach; endif; unset($_from); ?>
-<?php else: ?>
-	<table style="background-color:#eaeaea;color:#000000" border="0" cellpadding="3" cellspacing="1" width="100%" class="small">
-		<tr style="height: 25px;" bgcolor="white">
-			<td><i><?php echo $this->_tpl_vars['APP']['LBL_NONE_INCLUDED']; ?>
-</i></td>
-		</tr>
-	</table>
-<?php endif; ?>
-<br><br>
-<?php if ($this->_tpl_vars['MODULE'] == 'Campaigns' && ( $this->_tpl_vars['rel_mod'] == 'Contacts' || $this->_tpl_vars['rel_mod'] == 'Leads' )): ?>
-<script>
-rel_default_togglestate('<?php echo $this->_tpl_vars['rel_mod']; ?>
+<br />
+<?php if ($this->_tpl_vars['SELECTEDHEADERS'] != '' && ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('in_array', true, $_tmp, $this->_tpl_vars['SELECTEDHEADERS']) : in_array($_tmp, $this->_tpl_vars['SELECTEDHEADERS']))): ?>
+<script type='text/javascript'>
+if(typeof('Event') != 'undefined') {
+<?php if ($_REQUEST['ajax'] != 'true'): ?>
+	Event.observe(window, 'load', function(){
+		loadRelatedListBlock('module=<?php echo $this->_tpl_vars['MODULE']; ?>
+&action=<?php echo $this->_tpl_vars['MODULE']; ?>
+Ajax&file=DetailViewAjax&record=<?php echo $this->_tpl_vars['ID']; ?>
+&ajxaction=LOADRELATEDLIST&header=<?php echo $this->_tpl_vars['header']; ?>
+&relation_id=<?php echo $this->_tpl_vars['detail']['relationId']; ?>
+&actions=<?php echo $this->_tpl_vars['detail']['actions']; ?>
+','tbl_<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+','<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
 ');
+	});
+<?php else: ?>
+	loadRelatedListBlock('module=<?php echo $this->_tpl_vars['MODULE']; ?>
+&action=<?php echo $this->_tpl_vars['MODULE']; ?>
+Ajax&file=DetailViewAjax&record=<?php echo $this->_tpl_vars['ID']; ?>
+&ajxaction=LOADRELATEDLIST&header=<?php echo $this->_tpl_vars['header']; ?>
+&relation_id=<?php echo $this->_tpl_vars['detail']['relationId']; ?>
+&actions=<?php echo $this->_tpl_vars['detail']['actions']; ?>
+','tbl_<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+','<?php echo $this->_tpl_vars['MODULE']; ?>
+_<?php echo ((is_array($_tmp=$this->_tpl_vars['header'])) ? $this->_run_mod_handler('replace', true, $_tmp, ' ', '') : smarty_modifier_replace($_tmp, ' ', '')); ?>
+');
+<?php endif; ?>
+}
 </script>
 <?php endif; ?>
 <?php endforeach; endif; unset($_from); ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-05-12 13:08:09
+<?php /* Smarty version 2.6.18, created on 2010-08-18 08:24:36
          compiled from modules/RecycleBin/RecycleBin.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'modules/RecycleBin/RecycleBin.tpl', 22, false),array('function', 'html_options', 'modules/RecycleBin/RecycleBin.tpl', 55, false),)), $this); ?>
@@ -38,7 +38,7 @@ unset($_smarty_tpl_vars);
 	<td class="showPanelBg" valign="top" width=100% style="padding:10px;">
 
 		<form name="basicSearch" action="index.php" onsubmit="return false;">
-		<div id="searchAcc" style="z-index:1;display:none;position:relative;">
+		<div id="searchAcc" style="display: block;position:relative;">
 			<table width="80%" cellpadding="5" cellspacing="0"  class="searchUIBasic small" align="center" border=0>
 				<tr>
 					<td class="searchUIName small" nowrap align="left">

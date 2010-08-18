@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-10 23:31:20
+<?php /* Smarty version 2.6.18, created on 2010-08-09 23:23:10
          compiled from UnifiedSearchAjax.tpl */ ?>
 <?php if ($this->_tpl_vars['MODULE'] == $this->_tpl_vars['SEARCH_MODULE'] && $this->_tpl_vars['SEARCH_MODULE'] != ''): ?>
 	<div id="global_list_<?php echo $this->_tpl_vars['SEARCH_MODULE']; ?>

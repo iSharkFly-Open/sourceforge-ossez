@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:12:10
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:59:04
          compiled from EditViewUI.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'EditViewUI.tpl', 34, false),array('modifier', 'getTranslatedCurrencyString', 'EditViewUI.tpl', 407, false),array('modifier', 'substr', 'EditViewUI.tpl', 464, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'EditViewUI.tpl', 34, false),array('modifier', 'getTranslatedString', 'EditViewUI.tpl', 61, false),array('modifier', 'getTranslatedCurrencyString', 'EditViewUI.tpl', 407, false),array('modifier', 'substr', 'EditViewUI.tpl', 464, false),)), $this); ?>
 		<?php $this->assign('uitype', ($this->_tpl_vars['maindata'][0][0])); ?>
 		<?php $this->assign('fldlabel', ($this->_tpl_vars['maindata'][1][0])); ?>
 		<?php $this->assign('fldlabel_sel', ($this->_tpl_vars['maindata'][1][1])); ?>
@@ -64,9 +64,8 @@ _display.value=""; document.EditView.<?php echo $this->_tpl_vars['fldname']; ?>
 				<option value="<?php echo $this->_tpl_vars['option']; ?>
 " 
 				<?php if ($this->_tpl_vars['fldlabel']['selected'] == $this->_tpl_vars['option']): ?>selected<?php endif; ?>>
-				<?php if ($this->_tpl_vars['APP'][$this->_tpl_vars['option']] != ''): ?><?php echo $this->_tpl_vars['APP'][$this->_tpl_vars['option']]; ?>
-<?php else: ?><?php echo $this->_tpl_vars['option']; ?>
-<?php endif; ?>
+				<?php echo getTranslatedString($this->_tpl_vars['option'], $this->_tpl_vars['option']); ?>
+
 				</option> 
 			<?php endforeach; endif; unset($_from); ?>
 			</select>
@@ -322,7 +321,8 @@ _mass_edit_check" class="small" ><?php endif; ?>
 				
 				<span id="assign_user" style="<?php echo $this->_tpl_vars['style_user']; ?>
 ">
-					<select name="assigned_user_id" class="small">
+					<select name="<?php echo $this->_tpl_vars['fldname']; ?>
+" class="small">
 						<?php $_from = $this->_tpl_vars['fldvalue']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['key_one'] => $this->_tpl_vars['arr']):
 ?>
@@ -368,9 +368,12 @@ _mass_edit_check" class="small" ><?php endif; ?>
 			</td>
 			<td width="30%" align=left class="dvtCellInfo">
 				<?php if ($this->_tpl_vars['uitype'] == 52): ?>
-					<select name="assigned_user_id" class="small">
+					<select name="<?php echo $this->_tpl_vars['fldname']; ?>
+" tabindex="<?php echo $this->_tpl_vars['vt_tab']; ?>
+" class="small">
 				<?php elseif ($this->_tpl_vars['uitype'] == 77): ?>
-					<select name="assigned_user_id1" tabindex="<?php echo $this->_tpl_vars['vt_tab']; ?>
+					<select name="<?php echo $this->_tpl_vars['fldname']; ?>
+" tabindex="<?php echo $this->_tpl_vars['vt_tab']; ?>
 " class="small">
 				<?php else: ?>
 					<select name="<?php echo $this->_tpl_vars['fldname']; ?>
@@ -1336,8 +1339,10 @@ _mass_edit_check" class="small" ><?php endif; ?>
 					<input name="<?php echo $this->_tpl_vars['fldname']; ?>
 "  type="file" value="<?php echo $this->_tpl_vars['maindata'][3]['0']['name']; ?>
 " tabindex="<?php echo $this->_tpl_vars['vt_tab']; ?>
-" onchange="validateFilename(this);" />[<?php echo $this->_tpl_vars['IMAGENAME']; ?>
-]<br><?php echo $this->_tpl_vars['APP']['LBL_IMG_FORMATS']; ?>
+" onchange="validateFilename(this);" /><div id="replaceimage">[<?php echo $this->_tpl_vars['IMAGENAME']; ?>
+]&nbsp;<a href="javascript:;" onClick="delUserImage(<?php echo $this->_tpl_vars['ID']; ?>
+)">Del</a></div>
+					<br><?php echo getTranslatedString('LBL_IMG_FORMATS', $this->_tpl_vars['MODULE']); ?>
 
 					<input name="<?php echo $this->_tpl_vars['fldname']; ?>
 _hidden"  type="hidden" value="<?php echo $this->_tpl_vars['maindata'][3]['0']['name']; ?>
@@ -1346,7 +1351,7 @@ _hidden"  type="hidden" value="<?php echo $this->_tpl_vars['maindata'][3]['0']['
 					<input name="<?php echo $this->_tpl_vars['fldname']; ?>
 "  type="file" value="<?php echo $this->_tpl_vars['maindata'][3]['0']['name']; ?>
 " tabindex="<?php echo $this->_tpl_vars['vt_tab']; ?>
-" onchange="validateFilename(this);" /><br><?php echo $this->_tpl_vars['APP']['LBL_IMG_FORMATS']; ?>
+" onchange="validateFilename(this);" /><br><?php echo getTranslatedString('LBL_IMG_FORMATS', $this->_tpl_vars['MODULE']); ?>
 
 					<input name="<?php echo $this->_tpl_vars['fldname']; ?>
 _hidden"  type="hidden" value="<?php echo $this->_tpl_vars['maindata'][3]['0']['name']; ?>
@@ -1379,13 +1384,18 @@ _mass_edit_check" id="<?php echo $this->_tpl_vars['fldname']; ?>
 _mass_edit_check" class="small" ><?php endif; ?>
 	            </td>
 				<td width="30%" align=left class="dvtCellInfo">
-				<input readonly name='reports_to_name' class="small" type="text" value='<?php echo $this->_tpl_vars['fldvalue']; ?>
+					<input readonly name='reports_to_name' class="small" type="text" value='<?php echo $this->_tpl_vars['fldvalue']; ?>
 ' tabindex="<?php echo $this->_tpl_vars['vt_tab']; ?>
-" ><input name='reports_to_id' type="hidden" value='<?php echo $this->_tpl_vars['secondvalue']; ?>
+" >
+					<input name='reports_to_id' type="hidden" value='<?php echo $this->_tpl_vars['secondvalue']; ?>
 '>&nbsp;<input title="Change [Alt+C]" accessKey="C" type="button" class="small" value='<?php echo $this->_tpl_vars['UMOD']['LBL_CHANGE']; ?>
 ' name=btn1 LANGUAGE=javascript onclick='return window.open("index.php?module=Users&action=Popup&form=UsersEditView&form_submit=false&fromlink=<?php echo $this->_tpl_vars['fromlink']; ?>
 &recordid=<?php echo $this->_tpl_vars['ID']; ?>
 ","test","width=640,height=603,resizable=0,scrollbars=0");'>
+	            	&nbsp;<input type="image" src="<?php echo vtiger_imageurl('clear_field.gif', $this->_tpl_vars['THEME']); ?>
+" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_CLEAR']; ?>
+" LANGUAGE=javascript onClick="this.form.reports_to_id.value=''; this.form.reports_to_name.value=''; return false;" align="absmiddle" style='cursor:hand;cursor:pointer'>
 	            </td>
 			<?php elseif ($this->_tpl_vars['uitype'] == 116 || $this->_tpl_vars['uitype'] == 117): ?><!-- for currency in users details-->	
 			<td width="20%" class="dvtCellLabel" align=right>

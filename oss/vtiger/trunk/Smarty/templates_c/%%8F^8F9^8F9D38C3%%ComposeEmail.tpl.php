@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:27:23
+<?php /* Smarty version 2.6.18, created on 2010-08-10 00:07:13
          compiled from ComposeEmail.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'ComposeEmail.tpl', 82, false),array('modifier', 'emails_checkFieldVisiblityPermission', 'ComposeEmail.tpl', 88, false),array('modifier', 'vtlib_purify', 'ComposeEmail.tpl', 136, false),)), $this); ?>
@@ -19,7 +19,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imag
 <script src="include/scriptaculous/scriptaculous.js" type="text/javascript"></script>
 <script src="include/js/general.js" type="text/javascript"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/<?php  echo $_SESSION['authenticated_user_language']; ?>.lang.js?<?php  echo $_SESSION['vtiger_version']; ?>"></script>
-<script type="text/javascript" src="include/fckeditor/fckeditor.js"></script>
+<script type="text/javascript" src="include/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="modules/Products/multifile.js"></script>
 </head>
 <body marginheight="0" marginwidth="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
@@ -86,13 +86,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imag
 			<?php $_from = $this->_tpl_vars['elements']['1']['0']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['labelval'] => $this->_tpl_vars['selectval']):
 ?>
-				<?php if ($this->_tpl_vars['select_module'] == $this->_tpl_vars['APP'][$this->_tpl_vars['labelval']]): ?>
-					<?php $this->assign('selectval', 'selected'); ?>
+				<?php if ($this->_tpl_vars['selectval'] == selected): ?>
+					<?php $this->assign('selectmodule', 'selected'); ?>
 				<?php else: ?>
-					<?php $this->assign('selectval', ""); ?>
+					<?php $this->assign('selectmodule', ""); ?>
 				<?php endif; ?>
 				<option value="<?php echo $this->_tpl_vars['labelval']; ?>
-" <?php echo $this->_tpl_vars['selectval']; ?>
+" <?php echo $this->_tpl_vars['selectmodule']; ?>
 ><?php echo $this->_tpl_vars['APP'][$this->_tpl_vars['labelval']]; ?>
 </option>
 			<?php endforeach; endif; unset($_from); ?>
@@ -432,9 +432,11 @@ function delAttachments(id)
 
 </script>
 <script type="text/javascript" defer="1">
-var oFCKeditor = null;
-oFCKeditor = new FCKeditor( "description" ,"100%","370") ;
-oFCKeditor.BasePath   = "include/fckeditor/" ;
-oFCKeditor.ReplaceTextarea();
+	var textAreaName = 'description';
+	CKEDITOR.replace( textAreaName,	{
+		extraPlugins : 'uicolor',
+		uiColor: '#dfdff1'
+	} ) ;
+	var oCKeditor = CKEDITOR.instances[textAreaName];
 </script>
 </html>

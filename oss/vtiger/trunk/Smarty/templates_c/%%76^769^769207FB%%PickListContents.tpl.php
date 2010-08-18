@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-20 23:17:14
+<?php /* Smarty version 2.6.18, created on 2010-08-06 02:03:05
          compiled from modules/PickList/PickListContents.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslatedString', 'modules/PickList/PickListContents.tpl', 21, false),)), $this); ?>

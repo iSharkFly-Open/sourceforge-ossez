@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:12:09
+<?php /* Smarty version 2.6.18, created on 2010-08-07 13:44:53
          compiled from CreateView.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtlib_purify', 'CreateView.tpl', 33, false),array('modifier', 'vtiger_imageurl', 'CreateView.tpl', 62, false),array('modifier', 'cat', 'CreateView.tpl', 80, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtlib_purify', 'CreateView.tpl', 33, false),array('modifier', 'vtiger_imageurl', 'CreateView.tpl', 62, false),array('modifier', 'getTranslatedString', 'CreateView.tpl', 74, false),array('modifier', 'cat', 'CreateView.tpl', 80, false),)), $this); ?>
 
 
 <link rel="stylesheet" type="text/css" media="all" href="jscalendar/calendar-win2k-cold-1.css">
@@ -70,7 +70,7 @@ unset($_smarty_tpl_vars);
 			 <span class="lvtHeaderText"><font color="purple">[ <?php echo $this->_tpl_vars['ID']; ?>
  ] </font><?php echo $this->_tpl_vars['NAME']; ?>
  -  <?php echo $this->_tpl_vars['APP']['LBL_EDITING']; ?>
- <?php echo $this->_tpl_vars['SINGLE_MOD_LABEL']; ?>
+ <?php echo getTranslatedString($this->_tpl_vars['SINGLE_MOD'], $this->_tpl_vars['MODULE']); ?>
  <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
 </span> <br>
 			<?php echo $this->_tpl_vars['UPDATEINFO']; ?>
@@ -87,7 +87,7 @@ unset($_smarty_tpl_vars);
 				<?php else: ?>
 					<span class="lvtHeaderText"><?php echo $this->_tpl_vars['APP']['LBL_CREATING']; ?>
  <?php echo $this->_tpl_vars['APP']['LBL_NEW']; ?>
- <?php echo $this->_tpl_vars['SINGLE_MOD']; ?>
+ <?php echo getTranslatedString($this->_tpl_vars['SINGLE_MOD'], $this->_tpl_vars['MODULE']); ?>
 </span> <br>
 				<?php endif; ?>
 		        
@@ -370,20 +370,21 @@ unset($_smarty_tpl_vars);
 </table>
 </form>
 
-<?php if (( $this->_tpl_vars['MODULE'] == 'Emails' || 'Documents' ) && ( $this->_tpl_vars['FCKEDITOR_DISPLAY'] == 'true' )): ?>
-       <script type="text/javascript" src="include/fckeditor/fckeditor.js"></script>
-       <script type="text/javascript" defer="1">
-
-       var oFCKeditor = null;
-
-       <?php if ($this->_tpl_vars['MODULE'] == 'Documents'): ?>
-               oFCKeditor = new FCKeditor( "notecontent" ) ;
-       <?php endif; ?>
-
-       oFCKeditor.BasePath   = "include/fckeditor/" ;
-       oFCKeditor.ReplaceTextarea() ;
-
-       </script>
+<?php if (( $this->_tpl_vars['MODULE'] == 'Emails' || 'Documents' ) && ( $this->_tpl_vars['USE_RTE'] == 'true' )): ?>
+<script type="text/javascript" src="include/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" defer="1">
+	var textAreaName = null;
+	<?php if ($this->_tpl_vars['MODULE'] == 'Documents'): ?>
+		textAreaName = "notecontent";
+	<?php else: ?>
+		textAreaName = 'description';
+	<?php endif; ?>
+	CKEDITOR.replace( textAreaName,	{
+		extraPlugins : 'uicolor',
+		uiColor: '#dfdff1'
+	} ) ;
+	var oCKeditor = CKEDITOR.instances[textAreaName];
+</script>
 <?php endif; ?>
 <?php if ($this->_tpl_vars['MODULE'] == 'Accounts'): ?>
 <script>

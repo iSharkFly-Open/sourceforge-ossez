@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-05-12 12:01:41
+<?php /* Smarty version 2.6.18, created on 2010-08-04 22:33:20
          compiled from ShowHistoryContents.tpl */ ?>
 
 <table width="100%" border="0">

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:12:39
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:57:51
          compiled from Inventory/InventoryDetailView.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'Inventory/InventoryDetailView.tpl', 129, false),array('modifier', 'getTranslatedString', 'Inventory/InventoryDetailView.tpl', 141, false),array('modifier', 'replace', 'Inventory/InventoryDetailView.tpl', 224, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'Inventory/InventoryDetailView.tpl', 129, false),array('modifier', 'getTranslatedString', 'Inventory/InventoryDetailView.tpl', 141, false),array('modifier', 'replace', 'Inventory/InventoryDetailView.tpl', 234, false),)), $this); ?>
 <script language="JavaScript" type="text/javascript" src="include/js/dtlviewajax.js"></script>
 <script src="include/scriptaculous/scriptaculous.js" type="text/javascript"></script>
 <div id="convertleaddiv" style="display:block;position:absolute;left:225px;top:150px;"></div>
@@ -165,13 +165,31 @@ unset($_smarty_tpl_vars);
  <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
 </td>	
 								<td class="dvtTabCache" style="width:10px">&nbsp;</td>
-								<?php if ($this->_tpl_vars['SinglePane_View'] == 'false'): ?>
-								<td class="dvtUnSelectedCell" align=center nowrap><a href="index.php?action=CallRelatedList&module=<?php echo $this->_tpl_vars['MODULE']; ?>
+								<?php if ($this->_tpl_vars['SinglePane_View'] == 'false' && $this->_tpl_vars['IS_REL_LIST'] != false): ?>
+									<td class="dvtUnSelectedCell" onmouseout="fnHideDrop('More_Information_Modules_List');" onmouseover="fnDropDown(this,'More_Information_Modules_List');" align="center" nowrap>
+										<a href="index.php?action=CallRelatedList&module=<?php echo $this->_tpl_vars['MODULE']; ?>
 &record=<?php echo $this->_tpl_vars['ID']; ?>
 &parenttab=<?php echo $this->_tpl_vars['CATEGORY']; ?>
 "><?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
  <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
-</a></td>
+</a>
+										<div onmouseover="fnShowDrop('More_Information_Modules_List')" onmouseout="fnHideDrop('More_Information_Modules_List')"
+													 id="More_Information_Modules_List" class="drop_mnu" style="left: 502px; top: 76px; display: none;">
+											<table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<?php $_from = $this->_tpl_vars['IS_REL_LIST']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['_RELATION_ID'] => $this->_tpl_vars['_RELATED_MODULE']):
+?>
+												<tr><td><a class="drop_down" href="index.php?action=CallRelatedList&module=<?php echo $this->_tpl_vars['MODULE']; ?>
+&record=<?php echo $this->_tpl_vars['ID']; ?>
+&parenttab=<?php echo $this->_tpl_vars['CATEGORY']; ?>
+&selected_header=<?php echo $this->_tpl_vars['_RELATED_MODULE']; ?>
+&relation_id=<?php echo $this->_tpl_vars['_RELATION_ID']; ?>
+"><?php echo getTranslatedString($this->_tpl_vars['_RELATED_MODULE'], $this->_tpl_vars['MODULE']); ?>
+</a></td></tr>
+											<?php endforeach; endif; unset($_from); ?>
+											</table>
+										</div>
+									</td>
 								<?php endif; ?>
 								<td class="dvtTabCache" align="right" style="width:100%">
 									<?php if ($this->_tpl_vars['EDIT_DUPLICATE'] == 'permitted'): ?>
@@ -247,7 +265,7 @@ unset($_smarty_tpl_vars);
 				   <tr>
 					<td valign=top align=left >
 						<table border=0 cellspacing=0 cellpadding=3 width=100% class="dvtContentSpace" style="border-bottom:0px;">
-						   <tr>
+						   <tr valign=top>
 
 							<td align=left style="padding:10px;">
 							<!-- content cache -->
@@ -366,6 +384,18 @@ unset($_smarty_tpl_vars);
  
 <!-- Entity information(blocks) display - ends -->
 
+<?php if ($this->_tpl_vars['CUSTOM_LINKS'] && ! empty ( $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEWWIDGET'] )): ?>
+<?php $_from = $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEWWIDGET']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['CUSTOM_LINK_DETAILVIEWWIDGET']):
+?>
+	<?php if (preg_match ( "/^block:\/\/.*/" , $this->_tpl_vars['CUSTOM_LINK_DETAILVIEWWIDGET']->linkurl )): ?>
+		<br>
+		<?php 
+			echo vtlib_process_widget($this->_tpl_vars['CUSTOM_LINK_DETAILVIEWWIDGET'], $this->_tpl_vars);
+		 ?>
+	<?php endif; ?>
+<?php endforeach; endif; unset($_from); ?>
+<?php endif; ?>
 									<br>
 
 										<!-- Product Details informations -->

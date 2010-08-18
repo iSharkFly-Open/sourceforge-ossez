@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-05-12 13:08:10
+<?php /* Smarty version 2.6.18, created on 2010-08-18 08:24:36
          compiled from modules/RecycleBin/RecycleBinContents.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslatedString', 'modules/RecycleBin/RecycleBinContents.tpl', 40, false),array('modifier', 'vtiger_imageurl', 'modules/RecycleBin/RecycleBinContents.tpl', 80, false),array('function', 'html_options', 'modules/RecycleBin/RecycleBinContents.tpl', 152, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslatedString', 'modules/RecycleBin/RecycleBinContents.tpl', 41, false),array('modifier', 'vtiger_imageurl', 'modules/RecycleBin/RecycleBinContents.tpl', 81, false),array('function', 'html_options', 'modules/RecycleBin/RecycleBinContents.tpl', 153, false),)), $this); ?>
 
 <form>
 <table border=0 cellspacing=1 cellpadding=0 width=100%>
@@ -11,6 +11,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslat
         <tr>
 	<!-- Buttons -->
     		<td style="padding-right:20px" nowrap>
+				<input type="hidden" id="search_url" value="<?php echo $this->_tpl_vars['SEARCH_URL']; ?>
+">
 				<input type="hidden" name="idlist" id="idlist">
 				<input type="hidden" id="allselectedboxes" name="allselectedboxes">
 				<input type="hidden" name="selected_module" id="selected_module" value="<?php echo $this->_tpl_vars['SELECTED_MODULE']; ?>

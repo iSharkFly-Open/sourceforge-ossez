@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-03 01:26:28
+<?php /* Smarty version 2.6.18, created on 2010-08-09 23:54:09
          compiled from salesEditView.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtlib_purify', 'salesEditView.tpl', 33, false),array('modifier', 'vtiger_imageurl', 'salesEditView.tpl', 66, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtlib_purify', 'salesEditView.tpl', 33, false),array('modifier', 'vtiger_imageurl', 'salesEditView.tpl', 66, false),array('modifier', 'getTranslatedString', 'salesEditView.tpl', 78, false),)), $this); ?>
 
 
 <link rel="stylesheet" type="text/css" media="all" href="jscalendar/calendar-win2k-cold-1.css">
@@ -74,7 +74,7 @@ unset($_smarty_tpl_vars);
 				<span class="lvtHeaderText"><font color="purple">[ <?php echo $this->_tpl_vars['USE_ID_VALUE']; ?>
  ] </font><?php echo $this->_tpl_vars['NAME']; ?>
  - <?php echo $this->_tpl_vars['APP']['LBL_EDITING']; ?>
- <?php echo $this->_tpl_vars['SINGLE_MOD_LABEL']; ?>
+ <?php echo getTranslatedString($this->_tpl_vars['SINGLE_MOD'], $this->_tpl_vars['MODULE']); ?>
  <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
 </span> <br>
 				<?php echo $this->_tpl_vars['UPDATEINFO']; ?>
@@ -82,7 +82,7 @@ unset($_smarty_tpl_vars);
 			<?php endif; ?>
 			<?php if ($this->_tpl_vars['OP_MODE'] == 'create_view'): ?>
 				<span class="lvtHeaderText"><?php echo $this->_tpl_vars['APP']['LBL_CREATING']; ?>
- <?php echo $this->_tpl_vars['SINGLE_MOD_LABEL']; ?>
+ <?php echo getTranslatedString($this->_tpl_vars['SINGLE_MOD'], $this->_tpl_vars['MODULE']); ?>
 </span> <br>
 			<?php endif; ?>
 
@@ -101,7 +101,7 @@ unset($_smarty_tpl_vars);
 					<table border=0 cellspacing=0 cellpadding=3 width=100% class="small">
 					   <tr>
 						<td class="dvtTabCache" style="width:10px" nowrap>&nbsp;</td>
-						<td class="dvtSelectedCell" align=center nowrap><?php echo $this->_tpl_vars['APP'][$this->_tpl_vars['SINGLE_MOD']]; ?>
+						<td class="dvtSelectedCell" align=center nowrap> <?php echo getTranslatedString($this->_tpl_vars['SINGLE_MOD'], $this->_tpl_vars['MODULE']); ?>
  <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
 </td>
 						<td class="dvtTabCache" style="width:10px">&nbsp;</td>
@@ -294,16 +294,21 @@ unset($_smarty_tpl_vars);
 </form>
 
 
-<?php if (( $this->_tpl_vars['MODULE'] == 'Emails' || 'Documents' ) && ( $this->_tpl_vars['FCKEDITOR_DISPLAY'] == 'true' )): ?>
-	<script type="text/javascript" src="include/fckeditor/fckeditor.js"></script>
-	<script type="text/javascript" defer="1">
-		var oFCKeditor = null;
-		<?php if ($this->_tpl_vars['MODULE'] == 'Documents'): ?>
-			oFCKeditor = new FCKeditor( "notecontent" ) ;
-		<?php endif; ?>
-		oFCKeditor.BasePath   = "include/fckeditor/" ;
-		oFCKeditor.ReplaceTextarea() ;
-	</script>
+<?php if (( $this->_tpl_vars['MODULE'] == 'Emails' || 'Documents' ) && ( $this->_tpl_vars['USE_RTE'] == 'true' )): ?>
+	<script type="text/javascript" src="include/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" defer="1">
+	var textAreaName = null;
+	<?php if ($this->_tpl_vars['MODULE'] == 'Documents'): ?>
+		textAreaName = "notecontent";
+	<?php else: ?>
+		textAreaName = 'description';
+	<?php endif; ?>
+	CKEDITOR.replace( textAreaName,	{
+		extraPlugins : 'uicolor',
+		uiColor: '#dfdff1'
+	} ) ;
+	var oCKeditor = CKEDITOR.instances[textAreaName];
+</script>
 <?php endif; ?>
 
 <?php if ($this->_tpl_vars['MODULE'] == 'Accounts'): ?>

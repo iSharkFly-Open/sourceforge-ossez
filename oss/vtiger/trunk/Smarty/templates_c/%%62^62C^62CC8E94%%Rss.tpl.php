@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-23 13:31:40
+<?php /* Smarty version 2.6.18, created on 2010-08-09 23:40:23
          compiled from Rss.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'Rss.tpl', 101, false),)), $this); ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:10:39
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:57:51
          compiled from DetailViewHidden.tpl */ ?>
 <input type="hidden" name="parenttab" value="<?php echo $this->_tpl_vars['CATEGORY']; ?>
 ">

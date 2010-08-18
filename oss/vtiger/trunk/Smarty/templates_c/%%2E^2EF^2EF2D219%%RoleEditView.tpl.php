@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-20 13:22:37
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:09:05
          compiled from RoleEditView.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'RoleEditView.tpl', 62, false),)), $this); ?>

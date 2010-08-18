@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-02 16:23:59
+<?php /* Smarty version 2.6.18, created on 2010-08-09 22:52:33
          compiled from DetailView.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'DetailView.tpl', 192, false),array('modifier', 'getTranslatedString', 'DetailView.tpl', 202, false),array('modifier', 'replace', 'DetailView.tpl', 310, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'DetailView.tpl', 191, false),array('modifier', 'getTranslatedString', 'DetailView.tpl', 201, false),array('modifier', 'count', 'DetailView.tpl', 216, false),array('modifier', 'replace', 'DetailView.tpl', 319, false),)), $this); ?>
 <link rel="stylesheet" type="text/css" media="all" href="jscalendar/calendar-win2k-cold-1.css">
 <script type="text/javascript" src="jscalendar/calendar.js"></script>
 <script type="text/javascript" src="jscalendar/lang/calendar-en.js"></script>
@@ -101,7 +101,6 @@ function getListOfRecords(obj, sModule, iId,sParentTab)
 		}
 	);
 }
-<!-- End of code added by SAKTI on 16th Jun, 2008 -->
 '; ?>
 
 function tagvalidate()
@@ -229,13 +228,31 @@ unset($_smarty_tpl_vars);
  <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
 </td>	
 					<td class="dvtTabCache" style="width:10px">&nbsp;</td>
-					<?php if ($this->_tpl_vars['SinglePane_View'] == 'false'): ?>
-					<td class="dvtUnSelectedCell" align=center nowrap><a href="index.php?action=CallRelatedList&module=<?php echo $this->_tpl_vars['MODULE']; ?>
+					<?php if ($this->_tpl_vars['SinglePane_View'] == 'false' && $this->_tpl_vars['IS_REL_LIST'] != false && count($this->_tpl_vars['IS_REL_LIST']) > 0): ?>
+					<td class="dvtUnSelectedCell" onmouseout="fnHideDrop('More_Information_Modules_List');" onmouseover="fnDropDown(this,'More_Information_Modules_List');" align="center" nowrap>
+						<a href="index.php?action=CallRelatedList&module=<?php echo $this->_tpl_vars['MODULE']; ?>
 &record=<?php echo $this->_tpl_vars['ID']; ?>
 &parenttab=<?php echo $this->_tpl_vars['CATEGORY']; ?>
 "><?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
  <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
-</a></td>
+</a>
+						<div onmouseover="fnShowDrop('More_Information_Modules_List')" onmouseout="fnHideDrop('More_Information_Modules_List')"
+									 id="More_Information_Modules_List" class="drop_mnu" style="left: 502px; top: 76px; display: none;">
+							<table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<?php $_from = $this->_tpl_vars['IS_REL_LIST']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['_RELATION_ID'] => $this->_tpl_vars['_RELATED_MODULE']):
+?>
+								<tr><td><a class="drop_down" href="index.php?action=CallRelatedList&module=<?php echo $this->_tpl_vars['MODULE']; ?>
+&record=<?php echo $this->_tpl_vars['ID']; ?>
+&parenttab=<?php echo $this->_tpl_vars['CATEGORY']; ?>
+&selected_header=<?php echo $this->_tpl_vars['_RELATED_MODULE']; ?>
+&relation_id=<?php echo $this->_tpl_vars['_RELATION_ID']; ?>
+"><?php echo getTranslatedString($this->_tpl_vars['_RELATED_MODULE'], $this->_tpl_vars['MODULE']); ?>
+</a></td></tr>
+							<?php endforeach; endif; unset($_from); ?>
+							</table>
+						</div>
+					</td>
 					<?php endif; ?>
 					<td class="dvtTabCache" align="right" style="width:100%">
 						<?php if ($this->_tpl_vars['EDIT_DUPLICATE'] == 'permitted'): ?>
@@ -313,14 +330,14 @@ unset($_smarty_tpl_vars);
 		<tr>
 			<td valign=top align=left >                
 				 <table border=0 cellspacing=0 cellpadding=3 width=100% class="dvtContentSpace" style="border-bottom:0;">
-				<tr>
+				<tr valign=top>
 
 					<td align=left>
 					<!-- content cache -->
 										
 					
 				<table border=0 cellspacing=0 cellpadding=0 width=100%>
-                <tr>
+                <tr valign=top>
 					<td style="padding:5px">
 					<!-- Command Buttons -->
 				  	<table border=0 cellspacing=0 cellpadding=0 width=100%>
@@ -464,9 +481,26 @@ unset($_smarty_tpl_vars);
 <?php endif; ?>
                      	                      </td>
 					   </tr>
-		<tr>                                                                                                               <td style="padding:10px">
+		<tr><td style="padding:5px">
 			<?php endforeach; endif; unset($_from); ?>
-                    			   
+                                        
+						<?php if ($this->_tpl_vars['CUSTOM_LINKS'] && ! empty ( $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEWWIDGET'] )): ?>
+			<?php $_from = $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEWWIDGET']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['CUSTOM_LINK_DETAILVIEWWIDGET']):
+?>
+				<?php if (preg_match ( "/^block:\/\/.*/" , $this->_tpl_vars['CUSTOM_LINK_DETAILVIEWWIDGET']->linkurl )): ?>
+				<tr>
+					<td style="padding:5px;" >
+					<?php 
+						echo vtlib_process_widget($this->_tpl_vars['CUSTOM_LINK_DETAILVIEWWIDGET'], $this->_tpl_vars);
+					 ?>
+					</td>
+				</tr>
+				<?php endif; ?>
+			<?php endforeach; endif; unset($_from); ?>
+			<?php endif; ?>
+			                    
+                  			   
 			</td>
                 </tr>
 		<!-- Inventory - Product Details informations -->
@@ -478,7 +512,7 @@ unset($_smarty_tpl_vars);
 			</form>	
 			<!-- End the form related to detail view -->			
 
-			<?php if ($this->_tpl_vars['SinglePane_View'] == 'true' && $this->_tpl_vars['IS_REL_LIST'] == 'true'): ?>
+			<?php if ($this->_tpl_vars['SinglePane_View'] == 'true' && count($this->_tpl_vars['IS_REL_LIST']) > 0): ?>
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => 'RelatedListNew.tpl', 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -761,12 +795,9 @@ unset($_smarty_tpl_vars);
 				</table>
 			<?php endif; ?>
 			
-						<?php if ($this->_tpl_vars['CUSTOM_LINKS']): ?>
+						<?php if ($this->_tpl_vars['CUSTOM_LINKS'] && $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEW']): ?>
 				<br>
-				<?php if (isset ( $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEW'] )): ?>
-					<?php $this->assign('CUSTOM_LINKS', $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEW']); ?>
-				<?php endif; ?>
-				<?php if (! empty ( $this->_tpl_vars['CUSTOM_LINKS'] )): ?>					
+				<?php if (! empty ( $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEW'] )): ?>					
 					<table width="100%" border="0" cellpadding="5" cellspacing="0">
 						<tr><td align="left" class="dvtUnSelectedCell dvtCellLabel">
 							<a href="javascript:;" onmouseover="fnvshobj(this,'vtlib_customLinksLay');" onclick="fnvshobj(this,'vtlib_customLinksLay');"><b><?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
@@ -783,7 +814,7 @@ unset($_smarty_tpl_vars);
  &#187;</b></td></tr>
 						<tr>
 							<td>
-								<?php $_from = $this->_tpl_vars['CUSTOM_LINKS']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+								<?php $_from = $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEW']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['CUSTOMLINK']):
 ?>
 									<?php $this->assign('customlink_href', $this->_tpl_vars['CUSTOMLINK']->linkurl); ?>
@@ -813,9 +844,9 @@ unset($_smarty_tpl_vars);
 tagCloudName.gif" border=0></td>
 		</tr>
 		<tr>
-              		<td><div id="tagdiv" style="display:visible;"><form method="POST" action="javascript:void(0);" onsubmit="return tagvalidate();"><input class="textbox"  type="text" id="txtbox_tagfields" name="textbox_First Name" value="" style="width:100px;margin-left:5px;"></input>&nbsp;&nbsp;<input name="button_tagfileds" type="submit" class="crmbutton small save" value="<?php echo $this->_tpl_vars['APP']['LBL_TAG_IT']; ?>
+			<td><div id="tagdiv" style="display:visible;"><form method="POST" action="javascript:void(0);" onsubmit="return tagvalidate();"><input class="textbox"  type="text" id="txtbox_tagfields" name="textbox_First Name" value="" style="width:100px;margin-left:5px;"></input>&nbsp;&nbsp;<input name="button_tagfileds" type="submit" class="crmbutton small save" value="<?php echo $this->_tpl_vars['APP']['LBL_TAG_IT']; ?>
 " /></form></div></td>
-                </tr>
+        </tr>
 		<tr>
 			<td class="tagCloudDisplay" valign=top> <span id="tagfields"><?php echo $this->_tpl_vars['ALL_TAG']; ?>
 </span></td>
@@ -859,12 +890,47 @@ tagCloudName.gif" border=0></td>
   				</table>
 				</form>
 				<?php endif; ?>
+				
+				<?php if (! empty ( $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEWWIDGET'] )): ?>
+				<?php $_from = $this->_tpl_vars['CUSTOM_LINKS']['DETAILVIEWWIDGET']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['CUSTOMLINK_NO'] => $this->_tpl_vars['CUSTOMLINK']):
+?>
+					<?php $this->assign('customlink_href', $this->_tpl_vars['CUSTOMLINK']->linkurl); ?>
+					<?php $this->assign('customlink_label', $this->_tpl_vars['CUSTOMLINK']->linklabel); ?>
+										<?php if (! preg_match ( "/^block:\/\/.*/" , $this->_tpl_vars['customlink_href'] )): ?>
+						<?php if ($this->_tpl_vars['customlink_label'] == ''): ?>
+							<?php $this->assign('customlink_label', $this->_tpl_vars['customlink_href']); ?>
+						<?php else: ?>
+														<?php $this->assign('customlink_label', getTranslatedString($this->_tpl_vars['customlink_label'], $this->_tpl_vars['CUSTOMLINK']->module())); ?>
+						<?php endif; ?>
+						<br/>
+						<table border=0 cellspacing=0 cellpadding=0 width=100% class="rightMailMerge">
+			  				<tr>
+								<td class="rightMailMergeHeader">
+									<b><?php echo $this->_tpl_vars['customlink_label']; ?>
+</b>
+									<img id="detailview_block_<?php echo $this->_tpl_vars['CUSTOMLINK_NO']; ?>
+_indicator" style="display:none;" src="<?php echo vtiger_imageurl('vtbusy.gif', $this->_tpl_vars['THEME']); ?>
+" border="0" align="absmiddle" />
+								</td>
+			  				</tr>
+			  				<tr style="height:25px">
+								<td class="rightMailMergeContent"><div id="detailview_block_<?php echo $this->_tpl_vars['CUSTOMLINK_NO']; ?>
+"></div></td>
+			  				</tr>
+			  				<script type="text/javascript">
+			  					vtlib_loadDetailViewWidget("<?php echo $this->_tpl_vars['customlink_href']; ?>
+", "detailview_block_<?php echo $this->_tpl_vars['CUSTOMLINK_NO']; ?>
+", "detailview_block_<?php echo $this->_tpl_vars['CUSTOMLINK_NO']; ?>
+_indicator");
+			  				</script>
+						</table>
+					<?php endif; ?>
+				<?php endforeach; endif; unset($_from); ?>
+				<?php endif; ?>
 			</td>
 		</tr>
 		</table>
-		
-			
-			
 		
 		</div>
 		<!-- PUBLIC CONTENTS STOPS-->
@@ -880,7 +946,7 @@ tagCloudName.gif" border=0></td>
  <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
 </td>	
 					<td class="dvtTabCacheBottom" style="width:10px">&nbsp;</td>
-					<?php if ($this->_tpl_vars['SinglePane_View'] == 'false'): ?>
+					<?php if ($this->_tpl_vars['SinglePane_View'] == 'false' && $this->_tpl_vars['IS_REL_LIST'] != false && count($this->_tpl_vars['IS_REL_LIST']) > 0): ?>
 					<td class="dvtUnSelectedCell" align=center nowrap><a href="index.php?action=CallRelatedList&module=<?php echo $this->_tpl_vars['MODULE']; ?>
 &record=<?php echo $this->_tpl_vars['ID']; ?>
 &parenttab=<?php echo $this->_tpl_vars['CATEGORY']; ?>

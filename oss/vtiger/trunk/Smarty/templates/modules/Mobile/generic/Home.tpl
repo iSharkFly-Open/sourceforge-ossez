@@ -6,7 +6,7 @@
 
 	<table width=100% cellpadding=0 cellspacing=0 border=0>
 	<tr class="toolbar">
-		<td align="left"><a class="link" href="index.php?action=Logout" target="_self"><img src="resources/images/iconza/yellow/logout_32x32.png" border="0"></a></td>
+		<td align="left"><a class="link" href="index.php?_operation=logout" target="_self"><img src="resources/images/iconza/yellow/logout_32x32.png" border="0"></a></td>
 		<td width="100%"><h1 class='page_title'>{$TITLE}</h1></td>
 		<td align="right"><a class="link" href="javascript:void(0);" xonclick="$fnT('__homebox__','__settingsbox__');" target="_self"><img src="resources/images/iconza/yellow/user_32x32.png" border="0"></a></td>
 	</tr>
@@ -17,10 +17,10 @@
 				{foreach item=_MODULE from=$_MODULES}
 				<tr>
 				<td width="100%">			
-					<a href="index.php?action=List&module={$_MODULE->name}" target="_blank">{$_MODULE->label}</a>				
+					<a href="index.php?_operation=listModuleRecords&module={$_MODULE->name()}" target="_blank">{$_MODULE->label()}</a>				
 				</td>
 				<td>
-					<a href="index.php?action=List&module={$_MODULE->name}" target="_blank" class="link_rhook"><img src="resources/images/iconza/royalblue/right_arrow_16x16.png" border="0"></a>
+					<a href="index.php?_operation=listModuleRecords&module={$_MODULE->name()}" target="_blank" class="link_rhook"><img src="resources/images/iconza/royalblue/right_arrow_16x16.png" border="0"></a>
 				</td>
 				
 				</tr>

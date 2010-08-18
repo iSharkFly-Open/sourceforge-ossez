@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-03 01:36:42
+<?php /* Smarty version 2.6.18, created on 2010-08-09 12:21:09
          compiled from modules/Vtiger/Settings.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'modules/Vtiger/Settings.tpl', 15, false),)), $this); ?>

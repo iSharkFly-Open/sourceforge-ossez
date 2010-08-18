@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-05 02:00:46
+<?php /* Smarty version 2.6.18, created on 2010-08-03 22:45:40
          compiled from Home/MainHomeBlock.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslatedString', 'Home/MainHomeBlock.tpl', 3, false),array('modifier', 'vtiger_imageurl', 'Home/MainHomeBlock.tpl', 19, false),)), $this); ?>
@@ -25,44 +25,60 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslat
 				<a id="editlink" style='cursor:pointer;' onclick="showEditrow(<?php echo $this->_tpl_vars['tablestuff']['Stuffid']; ?>
 )">
 					<img src="<?php echo vtiger_imageurl('windowSettings.gif', $this->_tpl_vars['THEME']); ?>
-" border="0" alt="Edit" title="Edit" hspace="2" align="absmiddle"/>
+" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_EDIT_BUTTON']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_EDIT_BUTTON_TITLE']; ?>
+" hspace="2" align="absmiddle"/>
 				</a>	
 <?php else: ?>
 				<img src="<?php echo vtiger_imageurl('windowSettings-off.gif', $this->_tpl_vars['THEME']); ?>
-" border="0" alt="Edit" title="Edit" hspace="2" align="absmiddle"/>
+" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_EDIT_BUTTON']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_EDIT_BUTTON_TITLE']; ?>
+" hspace="2" align="absmiddle"/>
 <?php endif; ?>
 
 <?php if ($this->_tpl_vars['tablestuff']['Stufftitle'] == $this->_tpl_vars['homepagedashboard_title']): ?>
 				<a style='cursor:pointer;' onclick="fetch_homeDB(<?php echo $this->_tpl_vars['tablestuff']['Stuffid']; ?>
 );">
 					<img src="<?php echo vtiger_imageurl('windowRefresh.gif', $this->_tpl_vars['THEME']); ?>
-" border="0" alt="Refresh" title="Refresh" hspace="2" align="absmiddle"/>
+" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_REFRESH']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_REFRESH']; ?>
+" hspace="2" align="absmiddle"/>
 				</a>
 <?php else: ?>
 				<a style='cursor:pointer;' onclick="loadStuff(<?php echo $this->_tpl_vars['tablestuff']['Stuffid']; ?>
 ,'<?php echo $this->_tpl_vars['tablestuff']['Stufftype']; ?>
 ');">
 					<img src="<?php echo vtiger_imageurl('windowRefresh.gif', $this->_tpl_vars['THEME']); ?>
-" border="0" alt="Refresh" title="Refresh" hspace="2" align="absmiddle"/>
+" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_REFRESH']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_REFRESH']; ?>
+" hspace="2" align="absmiddle"/>
 				</a>
 <?php endif; ?>
 
 <?php if ($this->_tpl_vars['tablestuff']['Stufftype'] == 'Default' || $this->_tpl_vars['tablestuff']['Stufftype'] == 'Tag Cloud'): ?>
 				<a style='cursor:pointer;' onclick="HideDefault(<?php echo $this->_tpl_vars['tablestuff']['Stuffid']; ?>
 )"><img src="<?php echo vtiger_imageurl('windowMinMax.gif', $this->_tpl_vars['THEME']); ?>
-" border="0" alt="Hide" title="Hide" hspace="5" align="absmiddle"/></a>
+" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_HIDE']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_HIDE']; ?>
+" hspace="5" align="absmiddle"/></a>
 <?php else: ?>
 				<img src="<?php echo vtiger_imageurl('windowMinMax-off.gif', $this->_tpl_vars['THEME']); ?>
-" border="0" alt="Hide" title="Hide" hspace="5" align="absmiddle"/>
+" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_HIDE']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_HIDE']; ?>
+" hspace="5" align="absmiddle"/>
 <?php endif; ?>
 
 <?php if ($this->_tpl_vars['tablestuff']['Stufftype'] != 'Default' && $this->_tpl_vars['tablestuff']['Stufftype'] != 'Tag Cloud'): ?>
 				<a id="deletelink" style='cursor:pointer;' onclick="DelStuff(<?php echo $this->_tpl_vars['tablestuff']['Stuffid']; ?>
 )"><img src="<?php echo vtiger_imageurl('windowClose.gif', $this->_tpl_vars['THEME']); ?>
-" border="0" alt="Close" title="Close" hspace="5" align="absmiddle"/></a>
+" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLOSE']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_CLOSE']; ?>
+" hspace="5" align="absmiddle"/></a>
 <?php else: ?>
 				<img src="<?php echo vtiger_imageurl('windowClose-off.gif', $this->_tpl_vars['THEME']); ?>
-" border="0" alt="Close" title="Close" hspace="5" align="absmiddle"/>
+" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_CLOSE']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_CLOSE']; ?>
+" hspace="5" align="absmiddle"/>
 <?php endif; ?>
 			</td>
 		</tr>

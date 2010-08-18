@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:32:26
+<?php /* Smarty version 2.6.18, created on 2010-08-09 23:38:20
          compiled from RolePopup.tpl */ ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>

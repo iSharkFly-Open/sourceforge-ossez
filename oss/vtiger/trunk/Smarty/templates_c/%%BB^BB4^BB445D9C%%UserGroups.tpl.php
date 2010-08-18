@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-20 23:26:53
+<?php /* Smarty version 2.6.18, created on 2010-08-09 12:20:20
          compiled from UserGroups.tpl */ ?>
 <table class="listTable" border="0" cellpadding="5" cellspacing="0" width="100%">
 <tr>

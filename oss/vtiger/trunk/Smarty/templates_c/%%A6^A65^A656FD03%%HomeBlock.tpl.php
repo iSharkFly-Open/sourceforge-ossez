@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-05 02:00:45
+<?php /* Smarty version 2.6.18, created on 2010-08-03 22:45:39
          compiled from Home/HomeBlock.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'Home/HomeBlock.tpl', 58, false),array('modifier', 'truncate', 'Home/HomeBlock.tpl', 106, false),array('modifier', 'is_array', 'Home/HomeBlock.tpl', 122, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'Home/HomeBlock.tpl', 54, false),array('modifier', 'vtiger_imageurl', 'Home/HomeBlock.tpl', 59, false),array('modifier', 'truncate', 'Home/HomeBlock.tpl', 114, false),array('modifier', 'is_array', 'Home/HomeBlock.tpl', 130, false),)), $this); ?>
 
 <div class='hide_tab' id="editRowmodrss_<?php echo $this->_tpl_vars['HOME_STUFFID']; ?>
 " style="position:absolute; top:0px;left:0px;">
@@ -51,9 +51,15 @@ $this->_sections['iter']['last']       = ($this->_sections['iter']['iteration'] 
 
 		</td>
 		<td align="right" class="homePageMatrixHdr" nowrap style="height:28px;" width=60%>
-			<input type="button" name="save" value="Save" class="crmbutton small save" onclick="saveEntries('maxentries_<?php echo $this->_tpl_vars['HOME_STUFFID']; ?>
+			<input type="button" title="<?php echo $this->_tpl_vars['APP']['LBL_SAVE_BUTTON_TITLE']; ?>
+" accessKey="<?php echo $this->_tpl_vars['APP']['LBL_SAVE_BUTTON_KEY']; ?>
+" value="  <?php echo $this->_tpl_vars['APP']['LBL_SAVE_BUTTON_LABEL']; ?>
+  " name="save" class="crmbutton small save" onclick="saveEntries('maxentries_<?php echo $this->_tpl_vars['HOME_STUFFID']; ?>
 ')">
-			<input type="button" name="cancel" value="Cancel" class="crmbutton small cancel" onclick="cancelEntries('editRowmodrss_<?php echo $this->_tpl_vars['HOME_STUFFID']; ?>
+			<input type="button" title="<?php echo $this->_tpl_vars['APP']['LBL_CANCEL_BUTTON_TITLE']; ?>
+" accessKey="<?php echo $this->_tpl_vars['APP']['LBL_CANCEL_BUTTON_KEY']; ?>
+" value="  <?php echo $this->_tpl_vars['APP']['LBL_CANCEL_BUTTON_LABEL']; ?>
+  " name="cancel" class="crmbutton small cancel" onclick="cancelEntries('editRowmodrss_<?php echo $this->_tpl_vars['HOME_STUFFID']; ?>
 ')">
 		</td>		
 <?php elseif ($this->_tpl_vars['HOME_STUFFTYPE'] == 'DashBoard'): ?>
@@ -68,9 +74,15 @@ $this->_sections['iter']['last']       = ($this->_sections['iter']['iteration'] 
 		</tr>
 		<tr>
 			<td  valign="top" align="center" class="homePageMatrixHdr" nowrap style="height:28px;" width="40%">
-			<input type="button" name="save" value="Save" class="crmbutton small save" onclick="saveEditDash(<?php echo $this->_tpl_vars['HOME_STUFFID']; ?>
+			<input type="button" name="save" title="<?php echo $this->_tpl_vars['APP']['LBL_SAVE_BUTTON_TITLE']; ?>
+" accessKey="<?php echo $this->_tpl_vars['APP']['LBL_SAVE_BUTTON_KEY']; ?>
+" value="  <?php echo $this->_tpl_vars['APP']['LBL_SAVE_BUTTON_LABEL']; ?>
+  " class="crmbutton small save" onclick="saveEditDash(<?php echo $this->_tpl_vars['HOME_STUFFID']; ?>
 )">
-			<input type="button" name="cancel" value="Cancel" class="crmbutton small cancel" onclick="cancelEntries('editRowmodrss_<?php echo $this->_tpl_vars['HOME_STUFFID']; ?>
+			<input type="button" name="cancel" title="<?php echo $this->_tpl_vars['APP']['LBL_CANCEL_BUTTON_TITLE']; ?>
+" accessKey="<?php echo $this->_tpl_vars['APP']['LBL_CANCEL_BUTTON_KEY']; ?>
+" value="  <?php echo $this->_tpl_vars['APP']['LBL_CANCEL_BUTTON_LABEL']; ?>
+  " class="crmbutton small cancel" onclick="cancelEntries('editRowmodrss_<?php echo $this->_tpl_vars['HOME_STUFFID']; ?>
 ')">
 			</td>
 		</tr>		
@@ -102,6 +114,7 @@ $this->_sections['iter']['last']       = ($this->_sections['iter']['iteration'] 
 		</td>
 		<?php endforeach; endif; unset($_from); ?>
 	</tr>
+	<?php if (count($this->_tpl_vars['HOME_STUFF']['Entries']) > 0): ?>
 		<?php $_from = $this->_tpl_vars['HOME_STUFF']['Entries']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['crmid'] => $this->_tpl_vars['row']):
 ?>
@@ -111,7 +124,11 @@ $this->_sections['iter']['last']       = ($this->_sections['iter']['iteration'] 
 &action=DetailView&record=<?php echo $this->_tpl_vars['crmid']; ?>
 ">
 				<img src="<?php echo vtiger_imageurl('bookMark.gif', $this->_tpl_vars['THEME']); ?>
-" align="absmiddle" border="0" alt="Details" title="Details"/>
+" align="absmiddle" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
+"/>
 			</a>
 		</td>
 			<?php $_from = $this->_tpl_vars['row']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
@@ -124,6 +141,10 @@ $this->_sections['iter']['last']       = ($this->_sections['iter']['iteration'] 
 			<?php endforeach; endif; unset($_from); ?>
 	</tr>
 		<?php endforeach; endif; unset($_from); ?>
+	<?php else: ?>
+		<div class="componentName"><?php echo $this->_tpl_vars['APP']['LBL_NO_DATA']; ?>
+</div>
+	<?php endif; ?>
 	</table>
 
 <?php elseif ($this->_tpl_vars['HOME_STUFFTYPE'] == 'Default'): ?>
@@ -139,34 +160,55 @@ $this->_sections['iter']['last']       = ($this->_sections['iter']['iteration'] 
 		<td align="left"><b><?php echo $this->_tpl_vars['header']; ?>
 </b></td>
 	<?php endforeach; endif; unset($_from); ?>
-	</tr>	
-	<?php $_from = $this->_tpl_vars['HOME_STUFF']['Details']['Entries']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+	</tr>
+	<?php if (count($this->_tpl_vars['HOME_STUFF']['Details']['Entries']) > 0): ?>
+		<?php $_from = $this->_tpl_vars['HOME_STUFF']['Details']['Entries']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['crmid'] => $this->_tpl_vars['row']):
 ?>
 	<tr>
 		<td>
-		<?php if ($this->_tpl_vars['HOME_STUFF']['Details']['Title']['1'] == 'My Sites'): ?>
+			<?php if ($this->_tpl_vars['HOME_STUFF']['Details']['Title']['1'] == 'My Sites'): ?>
 			<img src="<?php echo vtiger_imageurl('bookMark.gif', $this->_tpl_vars['THEME']); ?>
-" align="absmiddle" border="0" alt="Details" title="Details"/>
-		<?php elseif ($this->_tpl_vars['HOME_STUFF']['Details']['Title']['1'] != 'Key Metrics' && $this->_tpl_vars['HOME_STUFF']['Details']['Title']['1'] != 'My Group Allocation'): ?>
+" align="absmiddle" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
+"/>
+			<?php elseif ($this->_tpl_vars['HOME_STUFF']['Details']['Title']['1'] != 'Key Metrics' && $this->_tpl_vars['HOME_STUFF']['Details']['Title']['1'] != 'My Group Allocation'): ?>
 			<img src="<?php echo vtiger_imageurl('bookMark.gif', $this->_tpl_vars['THEME']); ?>
-" align="absmiddle" border="0" alt="Details" title="Details"/>
-		<?php elseif ($this->_tpl_vars['HOME_STUFF']['Details']['Title']['1'] == 'Key Metrics'): ?>
+" align="absmiddle" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
+"/>
+			<?php elseif ($this->_tpl_vars['HOME_STUFF']['Details']['Title']['1'] == 'Key Metrics'): ?>
 			<img src="<?php echo vtiger_imageurl('bookMark.gif', $this->_tpl_vars['THEME']); ?>
-" align="absmiddle" border="0" alt="Details" title="Details"/>
-		<?php elseif ($this->_tpl_vars['HOME_STUFF']['Details']['Title']['1'] == 'My Group Allocation'): ?>
+" align="absmiddle" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
+ "/>
+			<?php elseif ($this->_tpl_vars['HOME_STUFF']['Details']['Title']['1'] == 'My Group Allocation'): ?>
 			<img src="<?php echo vtiger_imageurl('bookMark.gif', $this->_tpl_vars['THEME']); ?>
-" align="absmiddle" border="0" alt="Details" title="Details"/>
-		<?php endif; ?>
+" align="absmiddle" border="0" alt="<?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
+" title="<?php echo $this->_tpl_vars['APP']['LBL_MORE']; ?>
+ <?php echo $this->_tpl_vars['APP']['LBL_INFORMATION']; ?>
+"/>
+			<?php endif; ?>
 		</td>
-		<?php $_from = $this->_tpl_vars['row']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+			<?php $_from = $this->_tpl_vars['row']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['element']):
 ?>
 		<td align="left"/> <?php echo $this->_tpl_vars['element']; ?>
 </td>
-		<?php endforeach; endif; unset($_from); ?>
+			<?php endforeach; endif; unset($_from); ?>
 	</tr>
-	<?php endforeach; endif; unset($_from); ?>	
+		<?php endforeach; endif; unset($_from); ?>
+	<?php else: ?>
+		<div class="componentName"><?php echo $this->_tpl_vars['APP']['LBL_NO_DATA']; ?>
+</div>
+	<?php endif; ?>
 	</table>
 	
 <?php elseif ($this->_tpl_vars['HOME_STUFFTYPE'] == 'RSS'): ?>

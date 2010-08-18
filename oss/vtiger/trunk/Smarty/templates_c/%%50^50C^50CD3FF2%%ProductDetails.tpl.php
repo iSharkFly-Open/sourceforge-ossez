@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-08 23:43:49
+<?php /* Smarty version 2.6.18, created on 2010-08-04 12:00:10
          compiled from Inventory/ProductDetails.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslatedCurrencyString', 'Inventory/ProductDetails.tpl', 120, false),array('modifier', 'vtiger_imageurl', 'Inventory/ProductDetails.tpl', 172, false),)), $this); ?>

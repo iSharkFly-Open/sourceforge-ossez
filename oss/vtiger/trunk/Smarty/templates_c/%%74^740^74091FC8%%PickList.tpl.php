@@ -1,14 +1,13 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-20 23:17:13
+<?php /* Smarty version 2.6.18, created on 2010-08-06 02:03:04
          compiled from modules/PickList/PickList.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'modules/PickList/PickList.tpl', 22, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'modules/PickList/PickList.tpl', 21, false),)), $this); ?>
 
 <script language="JAVASCRIPT" type="text/javascript" src="include/js/smoothscroll.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/menu.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/picklist.js"></script>
 <script language="JAVASCRIPT" src="include/scriptaculous/scriptaculous.js" type="text/javascript"></script>
 <script language="JAVASCRIPT" src="modules/Home/Homestuff.js" type="text/javascript"></script>
-<script language="JAVASCRIPT" src="include/js/json.js" type="text/javascript"></script>
 <br>
 <table align="center" border="0" cellpadding="0" cellspacing="0" width="98%">
 <tbody><tr>

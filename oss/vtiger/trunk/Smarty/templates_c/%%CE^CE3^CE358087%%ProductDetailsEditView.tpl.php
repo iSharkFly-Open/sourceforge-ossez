@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-11 23:25:33
+<?php /* Smarty version 2.6.18, created on 2010-08-14 09:29:04
          compiled from Inventory/ProductDetailsEditView.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getTranslatedCurrencyString', 'Inventory/ProductDetailsEditView.tpl', 115, false),array('modifier', 'cat', 'Inventory/ProductDetailsEditView.tpl', 150, false),array('modifier', 'vtiger_imageurl', 'Inventory/ProductDetailsEditView.tpl', 184, false),)), $this); ?>

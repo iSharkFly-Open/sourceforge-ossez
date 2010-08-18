@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-05 02:00:39
+<?php /* Smarty version 2.6.18, created on 2010-08-03 22:45:14
          compiled from loginheader.tpl */ ?>
 <!--
 /*********************************************************************************

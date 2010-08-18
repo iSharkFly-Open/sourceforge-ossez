@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-03-24 20:18:51
+<?php /* Smarty version 2.6.18, created on 2010-08-04 08:12:13
          compiled from UserDetailView.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'UserDetailView.tpl', 25, false),array('modifier', 'getTranslatedString', 'UserDetailView.tpl', 160, false),array('modifier', 'vtlib_purify', 'UserDetailView.tpl', 274, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'UserDetailView.tpl', 25, false),array('modifier', 'getTranslatedString', 'UserDetailView.tpl', 161, false),array('modifier', 'vtlib_purify', 'UserDetailView.tpl', 275, false),)), $this); ?>
 <script language="JavaScript" type="text/javascript" src="include/js/menu.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/ColorPicker2.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/dtlviewajax.js"></script>
@@ -47,10 +47,12 @@ unset($_smarty_tpl_vars);
 							<input type="hidden" name="return_action" value="ListView"  style="margin:0px">
 							<input type="hidden" name="return_id" style="margin:0px">
 							<input type="hidden" name="forumDisplay" style="margin:0px">
-                                                        <input type="hidden" name="hour_format" id="hour_format" value="<?php echo $this->_tpl_vars['HOUR_FORMAT']; ?>
+							<input type="hidden" name="hour_format" id="hour_format" value="<?php echo $this->_tpl_vars['HOUR_FORMAT']; ?>
 " style="margin:0px">
-                                                        <input type="hidden" name="start_hour" id="start_hour" value="<?php echo $this->_tpl_vars['START_HOUR']; ?>
+							<input type="hidden" name="start_hour" id="start_hour" value="<?php echo $this->_tpl_vars['START_HOUR']; ?>
 " style="margin:0px">
+							<input type="hidden" name="form_token" value="<?php echo $this->_tpl_vars['FORM_TOKEN']; ?>
+">
 							<?php if ($this->_tpl_vars['CATEGORY'] == 'Settings'): ?>
 							<input type="hidden" name="parenttab" value="<?php echo $this->_tpl_vars['PARENTTAB']; ?>
 " style="margin:0px">

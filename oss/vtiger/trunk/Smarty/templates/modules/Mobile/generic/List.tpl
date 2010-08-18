@@ -9,16 +9,16 @@
 		<td width="100%">
 			<h1 class='page_title'>
 			
-			{if $_PAGER->hasPrevious()}
-			<a class="link" href="?action=List&module={$_MODULE->name}&page={$_PAGER->previous()}&q={$_SEARCH_Q}"><img src="resources/images/iconza/yellow/left_arrow_24x24.png" border="0"></a>
+			{if $_PAGER && $_PAGER->hasPrevious()}
+			<a class="link" href="?_operation=listModuleRecords&module={$_MODULE->name()}&page={$_PAGER->previous()}&search={$_SEARCH}"><img src="resources/images/iconza/yellow/left_arrow_24x24.png" border="0"></a>
 			{else}
 			<a class="link" href="javascript:void(0);"><img src="resources/images/iconza/white/left_arrow_24x24.png" border="0"></a>
 			{/if}
 			
-			{$_MODULE->label}
+			{$_MODULE->label()}
 			
-			{if $_PAGER->hasNext(count($_RECORDS))}
-			<a class="link" href="?action=List&module={$_MODULE->name}&page={$_PAGER->next()}&q={$_SEARCH_Q}"><img src="resources/images/iconza/yellow/right_arrow_24x24.png" border="0"></a>
+			{if $_PAGER && $_PAGER->hasNext(count($_RECORDS))}
+			<a class="link" href="?_operation=listModuleRecords&module={$_MODULE->name()}&page={$_PAGER->next()}&search={$_SEARCH}"><img src="resources/images/iconza/yellow/right_arrow_24x24.png" border="0"></a>
 			{else}
 			<a class="link" href="javascript:void(0);"><img src="resources/images/iconza/white/right_arrow_24x24.png" border="0"></a>
 			{/if}
@@ -35,10 +35,10 @@
 				{foreach item=_RECORD from=$_RECORDS}
 				<tr>
 				<td width="100%">
-					<a href="?action=Detail&id={$_RECORD->id}" target="_self">{$_RECORD}</a>
+					<a href="?_operation=fetchRecordWithGrouping&record={$_RECORD->id()}" target="_self">{$_RECORD->label()}</a>
 				</td>
 				<td>
-					<a href="?action=Detail&id={$_RECORD->id}" target="_self" class="link_rhook"><img src="resources/images/iconza/royalblue/right_arrow_16x16.png" border="0"></a>								
+					<a href="?_operation=fetchRecordWithGrouping&record={$_RECORD->id()}" target="_self" class="link_rhook"><img src="resources/images/iconza/royalblue/right_arrow_16x16.png" border="0"></a>								
 				</td>
 				</tr>
 				
@@ -68,10 +68,10 @@
 <div id="__searchbox__" {if $_MODE neq 'search'}style='display:none;'{/if}>
 	<table width=100% cellpadding=0 cellspacing=0 border=0>
 	<tr class="toolbar">
-		<td><a class="link" href="?action=SearchConfig&module={$_MODULE->name}" target="_self"><img src="resources/images/iconza/yellow/wrench_32x32.png" border="0"></a></td>
+		<td><a class="link" href="?_operation=searchConfig&module={$_MODULE->name()}" target="_self"><img src="resources/images/iconza/yellow/wrench_32x32.png" border="0"></a></td>
 		<td width="100%">
 			<h1 class='page_title'>
-			Search {$_MODULE->label}
+			Search {$_MODULE->label()}
 			</h1>
 		</td>
 		<td align="right" style="padding-right: 5px;"><a class="link" href="javascript:void(0);" onclick="$fnT('__searchbox__','__listview__');"><img src="resources/images/iconza/yellow/zoom_out_32x32.png" border="0"></a></td>
@@ -80,10 +80,10 @@
 	<tr>
 		<td colspan=3 align="center">
 		
-			<form action="index.php" method="GET" onsubmit="if(this.q.value == '') return false;">
-				<input type="hidden" name="action" value="List" />
-				<input type="hidden" name="module" value="{$_MODULE->name}" />
-				<input id='__searchbox__q_' type="text" name="q" class="searchbox" value="{$_SEARCH_Q}"/>
+			<form action="index.php" method="GET" onsubmit="if(this.search.value == '') return false;">
+				<input type="hidden" name="_operation" value="listModuleRecords" />
+				<input type="hidden" name="module" value="{$_MODULE->name()}" />
+				<input id='__searchbox__q_' type="text" name="search" class="searchbox" value="{$_SEARCH}"/>
 			</form>
 		
 		</td>

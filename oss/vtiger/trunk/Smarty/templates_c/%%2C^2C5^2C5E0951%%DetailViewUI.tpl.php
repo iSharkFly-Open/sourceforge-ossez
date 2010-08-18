@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:10:39
+<?php /* Smarty version 2.6.18, created on 2010-08-04 08:12:14
          compiled from DetailViewUI.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'DetailViewUI.tpl', 41, false),array('modifier', 'vtiger_imageurl', 'DetailViewUI.tpl', 53, false),array('modifier', 'getTranslatedCurrencyString', 'DetailViewUI.tpl', 64, false),array('modifier', 'cat', 'DetailViewUI.tpl', 126, false),array('modifier', 'replace', 'DetailViewUI.tpl', 131, false),array('modifier', 'wordwrap', 'DetailViewUI.tpl', 133, false),array('modifier', 'regex_replace', 'DetailViewUI.tpl', 193, false),array('modifier', 'parse_calendardate', 'DetailViewUI.tpl', 361, false),)), $this); ?>
@@ -23,6 +23,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'De
 					<?php if ($this->_tpl_vars['USE_ASTERISK'] == 'true'): ?>
 						&nbsp;&nbsp;<span id="dtlview_<?php echo $this->_tpl_vars['label']; ?>
 "><a href='javascript:;' onclick='startCall("<?php echo $this->_tpl_vars['keyval']; ?>
+", "<?php echo $this->_tpl_vars['ID']; ?>
 ")'><?php echo $this->_tpl_vars['keyval']; ?>
 </a></span>
 					<?php else: ?>
@@ -693,7 +694,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'De
                     	<div id="editarea_<?php echo $this->_tpl_vars['label']; ?>
 " style="display:none;">
                     	<?php if ($this->_tpl_vars['MODULE'] != 'Documents'): ?>
-                        	<?php if ($this->_tpl_vars['keyval'] == 'yes'): ?>                                              		  
+                        	<?php if ($this->_tpl_vars['keyval'] == $this->_tpl_vars['APP']['yes']): ?>
                             	<input id="txtbox_<?php echo $this->_tpl_vars['label']; ?>
 " name="<?php echo $this->_tpl_vars['keyfldname']; ?>
 " type="checkbox" style="border:1px solid #bababa;" checked value="1">
@@ -703,7 +704,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'De
 " style="border:1px solid #bababa;" value="0">
                        		<?php endif; ?>
                        	<?php else: ?>
-                         	<?php if ($this->_tpl_vars['keyval'] == 'yes'): ?>                                              		  
+                         	<?php if ($this->_tpl_vars['keyval'] == $this->_tpl_vars['APP']['yes']): ?>
                             	<input id="txtbox_<?php echo $this->_tpl_vars['label']; ?>
 " name="<?php echo $this->_tpl_vars['keyfldname']; ?>
 " type="checkbox" style="border:1px solid #bababa;" checked value="0">

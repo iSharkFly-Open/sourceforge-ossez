@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:32:06
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:59:02
          compiled from UserEditView.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'UserEditView.tpl', 69, false),array('modifier', 'getTranslatedString', 'UserEditView.tpl', 183, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'UserEditView.tpl', 69, false),array('modifier', 'getTranslatedString', 'UserEditView.tpl', 184, false),)), $this); ?>
 <script language="JavaScript" type="text/javascript" src="include/js/menu.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/ColorPicker2.js"></script>
 <script language="JAVASCRIPT" type="text/javascript" src="include/js/smoothscroll.js"></script>
@@ -98,6 +98,8 @@ unset($_smarty_tpl_vars);
 		<input type="hidden" name="hour_format" value="<?php echo $this->_tpl_vars['HOUR_FORMAT']; ?>
 ">
 		<input type="hidden" name="start_hour" value="<?php echo $this->_tpl_vars['START_HOUR']; ?>
+">
+		<input type="hidden" name="form_token" value="<?php echo $this->_tpl_vars['FORM_TOKEN']; ?>
 ">
 
 	<table width="100%"  border="0" cellspacing="0" cellpadding="0" class="settingsSelUITopLine">

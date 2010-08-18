@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:12:39
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:57:54
          compiled from TagCloudDisplay.tpl */ ?>
 
 <?php if ($this->_tpl_vars['TAG_CLOUD_DISPLAY'] == 'true'): ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-10 23:31:20
+<?php /* Smarty version 2.6.18, created on 2010-08-09 23:23:10
          compiled from UnifiedSearchDisplay.tpl */ ?>
 <script language="JavaScript" type="text/javascript" src="include/js/general.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/search.js"></script>

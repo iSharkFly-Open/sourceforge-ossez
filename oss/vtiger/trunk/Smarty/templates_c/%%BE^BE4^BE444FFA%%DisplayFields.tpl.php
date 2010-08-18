@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:12:09
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:59:03
          compiled from DisplayFields.tpl */ ?>
 
 <?php $this->assign('fromlink', ""); ?>

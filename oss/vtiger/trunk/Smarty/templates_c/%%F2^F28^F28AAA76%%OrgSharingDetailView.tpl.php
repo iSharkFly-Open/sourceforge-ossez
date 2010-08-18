@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-03 09:47:43
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:07:27
          compiled from OrgSharingDetailView.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'OrgSharingDetailView.tpl', 39, false),array('modifier', 'cat', 'OrgSharingDetailView.tpl', 118, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'OrgSharingDetailView.tpl', 39, false),array('modifier', 'getTranslatedString', 'OrgSharingDetailView.tpl', 111, false),array('modifier', 'cat', 'OrgSharingDetailView.tpl', 115, false),)), $this); ?>
 <script language="JAVASCRIPT" type="text/javascript" src="include/js/smoothscroll.js"></script>
 <?php echo '
 <style>
@@ -131,10 +131,7 @@ unset($_smarty_tpl_vars);
 				<?php $_from = $this->_tpl_vars['MODSHARING']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['modulename'] => $this->_tpl_vars['details']):
 ?>
-				<?php $this->assign('MODULELABEL', $this->_tpl_vars['modulename']); ?>
-				<?php if ($this->_tpl_vars['APP'][$this->_tpl_vars['modulename']] != ''): ?>
-					<?php $this->assign('MODULELABEL', $this->_tpl_vars['APP'][$this->_tpl_vars['modulename']]); ?>
-				<?php endif; ?>
+				<?php $this->assign('MODULELABEL', getTranslatedString($this->_tpl_vars['modulename'], $this->_tpl_vars['modulename'])); ?>
 				<?php $this->assign('mod_display', $this->_tpl_vars['MODULELABEL']); ?>
 				<?php if ($this->_tpl_vars['mod_display'] == $this->_tpl_vars['APP']['Accounts']): ?>
 					<?php $this->assign('xx', $this->_tpl_vars['APP']['Contacts']); ?>

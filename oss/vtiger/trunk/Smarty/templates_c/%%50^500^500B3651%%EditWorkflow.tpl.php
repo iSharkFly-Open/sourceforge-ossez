@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-20 12:28:45
+<?php /* Smarty version 2.6.18, created on 2010-08-06 02:05:05
          compiled from com_vtiger_workflow/EditWorkflow.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'com_vtiger_workflow/EditWorkflow.tpl', 30, false),array('modifier', 'getTranslatedString', 'com_vtiger_workflow/EditWorkflow.tpl', 82, false),array('modifier', 'to_html', 'com_vtiger_workflow/EditWorkflow.tpl', 212, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'com_vtiger_workflow/EditWorkflow.tpl', 30, false),array('modifier', 'getTranslatedString', 'com_vtiger_workflow/EditWorkflow.tpl', 82, false),array('modifier', 'to_html', 'com_vtiger_workflow/EditWorkflow.tpl', 216, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => 'com_vtiger_workflow/Header.tpl', 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -206,15 +206,20 @@ unset($_smarty_tpl_vars);
 				<td><?php echo $this->_tpl_vars['MOD']['LBL_ONLY_ON_FIRST_SAVE']; ?>
 .</td></tr>
 			<tr><td><input type="radio" name="execution_condition" value="ONCE" 
-							<?php if ($this->_tpl_vars['workflow']->executionConditionAsLabel() == 'ONCE'): ?>checked<?php endif; ?> /></td>
-							<td><?php echo $this->_tpl_vars['MOD']['LBL_UNTIL_FIRST_TIME_CONDITION_TRUE']; ?>
+				<?php if ($this->_tpl_vars['workflow']->executionConditionAsLabel() == 'ONCE'): ?>checked<?php endif; ?> /></td>
+				<td><?php echo $this->_tpl_vars['MOD']['LBL_UNTIL_FIRST_TIME_CONDITION_TRUE']; ?>
 .</td></tr>
-						<tr><td><input type="radio" name="execution_condition" value="ON_EVERY_SAVE" 
+			<tr><td><input type="radio" name="execution_condition" value="ON_EVERY_SAVE" 
 				<?php if ($this->_tpl_vars['workflow']->executionConditionAsLabel() == 'ON_EVERY_SAVE'): ?>checked<?php endif; ?>/></td>
 				<td><?php echo $this->_tpl_vars['MOD']['LBL_EVERYTIME_RECORD_SAVED']; ?>
 .</td></tr>
-		</table>
-		
+			<tr><td><input type="radio" name="execution_condition" value="ON_MODIFY" 
+				<?php if ($this->_tpl_vars['workflow']->executionConditionAsLabel() == 'ON_MODIFY'): ?>checked<?php endif; ?>/></td>
+				<td><?php echo $this->_tpl_vars['MOD']['LBL_ON_MODIFY']; ?>
+.</td></tr>
+					
+
+<!-- Workflow Conditions -->		
 		<table class="tableHeading" width="100%" border="0" cellspacing="0" cellpadding="5">
 			<tr>
 				<td class="big" nowrap="nowrap">

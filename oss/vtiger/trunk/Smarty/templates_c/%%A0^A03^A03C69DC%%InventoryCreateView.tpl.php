@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:12:24
+<?php /* Smarty version 2.6.18, created on 2010-08-04 12:00:08
          compiled from Inventory/InventoryCreateView.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'Inventory/InventoryCreateView.tpl', 55, false),array('modifier', 'getTranslatedString', 'Inventory/InventoryCreateView.tpl', 64, false),)), $this); ?>

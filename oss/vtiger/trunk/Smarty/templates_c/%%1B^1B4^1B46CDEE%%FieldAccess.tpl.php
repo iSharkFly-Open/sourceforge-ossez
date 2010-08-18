@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-04-03 09:47:18
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:08:20
          compiled from FieldAccess.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'FieldAccess.tpl', 17, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'FieldAccess.tpl', 17, false),array('modifier', 'getTranslatedString', 'FieldAccess.tpl', 62, false),)), $this); ?>
 <script language="JAVASCRIPT" type="text/javascript" src="include/js/smoothscroll.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/menu.js"></script>
 <br>
@@ -71,10 +71,7 @@ unset($_smarty_tpl_vars);
 			<?php $_from = $this->_tpl_vars['FIELD_INFO']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['module']):
 ?>
-				<?php $this->assign('MODULELABEL', $this->_tpl_vars['module']); ?>
-				<?php if ($this->_tpl_vars['APP'][$this->_tpl_vars['module']] != ''): ?>
-					<?php $this->assign('MODULELABEL', $this->_tpl_vars['APP'][$this->_tpl_vars['module']]); ?>
-				<?php endif; ?>
+				<?php $this->assign('MODULELABEL', getTranslatedString($this->_tpl_vars['module'], $this->_tpl_vars['module'])); ?>
 				<?php if ($this->_tpl_vars['module'] == $this->_tpl_vars['DEF_MODULE']): ?>
 					<option selected value='<?php echo $this->_tpl_vars['module']; ?>
 '><?php echo $this->_tpl_vars['MODULELABEL']; ?>

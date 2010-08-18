@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.18, created on 2010-03-27 02:26:42
+<?php /* Smarty version 2.6.18, created on 2010-08-04 11:57:53
          compiled from RelatedListsHidden.tpl */ ?>
 
 <form border="0" action="index.php" method="post" name="form" id="form">

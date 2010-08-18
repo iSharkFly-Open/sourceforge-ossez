@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.18, created on 2010-02-09 19:12:20
+<?php /* Smarty version 2.6.18, created on 2010-08-03 22:48:53
          compiled from ListView.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'ListView.tpl', 228, false),array('function', 'html_options', 'ListView.tpl', 262, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imageurl', 'ListView.tpl', 208, false),array('function', 'html_options', 'ListView.tpl', 242, false),)), $this); ?>
 
 <script language="JavaScript" type="text/javascript" src="include/js/ListView.js"></script>
 <script language="JavaScript" type="text/javascript" src="include/js/search.js"></script>
@@ -9,35 +9,35 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'vtiger_imag
 <script language="JavaScript" type="text/javascript" src="include/js/dtlviewajax.js"></script>
 <script language="javascript" type="text/javascript">
 var typeofdata = new Array();
-typeofdata['E'] = ['is','isn','bwt','ewt','cts','dcts'];
-typeofdata['V'] = ['is','isn','bwt','ewt','cts','dcts'];
-typeofdata['N'] = ['is','isn','lst','grt','lsteq','grteq'];
-typeofdata['NN'] = ['is','isn','lst','grt','lsteq','grteq'];
-typeofdata['T'] = ['is','isn','lst','grt','lsteq','grteq'];
-typeofdata['I'] = ['is','isn','lst','grt','lsteq','grteq'];
-typeofdata['C'] = ['is','isn'];
-typeofdata['DT'] = ['is','isn','lst','grt','lsteq','grteq'];
-typeofdata['D'] = ['is','isn','lst','grt','lsteq','grteq'];
+typeofdata['E'] = ['e','n','s','ew','c','k'];
+typeofdata['V'] = ['e','n','s','ew','c','k'];
+typeofdata['N'] = ['e','n','l','g','m','h'];
+typeofdata['NN'] = ['e','n','l','g','m','h'];
+typeofdata['T'] = ['e','n','l','g','m','h'];
+typeofdata['I'] = ['e','n','l','g','m','h'];
+typeofdata['C'] = ['e','n'];
+typeofdata['DT'] = ['e','n','l','g','m','h'];
+typeofdata['D'] = ['e','n','l','g','m','h'];
 var fLabels = new Array();
-fLabels['is'] = "<?php echo $this->_tpl_vars['APP']['is']; ?>
+fLabels['e'] = "<?php echo $this->_tpl_vars['APP']['is']; ?>
 ";
-fLabels['isn'] = "<?php echo $this->_tpl_vars['APP']['is_not']; ?>
+fLabels['n'] = "<?php echo $this->_tpl_vars['APP']['is_not']; ?>
 ";
-fLabels['bwt'] = "<?php echo $this->_tpl_vars['APP']['begins_with']; ?>
+fLabels['s'] = "<?php echo $this->_tpl_vars['APP']['begins_with']; ?>
 ";
-fLabels['ewt'] = "<?php echo $this->_tpl_vars['APP']['ends_with']; ?>
+fLabels['ew'] = "<?php echo $this->_tpl_vars['APP']['ends_with']; ?>
 ";
-fLabels['cts'] = "<?php echo $this->_tpl_vars['APP']['contains']; ?>
+fLabels['c'] = "<?php echo $this->_tpl_vars['APP']['contains']; ?>
 ";
-fLabels['dcts'] = "<?php echo $this->_tpl_vars['APP']['does_not_contains']; ?>
+fLabels['k'] = "<?php echo $this->_tpl_vars['APP']['does_not_contains']; ?>
 ";
-fLabels['lst'] = "<?php echo $this->_tpl_vars['APP']['less_than']; ?>
+fLabels['l'] = "<?php echo $this->_tpl_vars['APP']['less_than']; ?>
 ";
-fLabels['grt'] = "<?php echo $this->_tpl_vars['APP']['greater_than']; ?>
+fLabels['g'] = "<?php echo $this->_tpl_vars['APP']['greater_than']; ?>
 ";
-fLabels['lsteq'] = "<?php echo $this->_tpl_vars['APP']['less_or_equal']; ?>
+fLabels['m'] = "<?php echo $this->_tpl_vars['APP']['less_or_equal']; ?>
 ";
-fLabels['grteq'] = "<?php echo $this->_tpl_vars['APP']['greater_or_equal']; ?>
+fLabels['h'] = "<?php echo $this->_tpl_vars['APP']['greater_or_equal']; ?>
 ";
 var noneLabel;
 <?php echo '
@@ -57,22 +57,6 @@ function updatefOptions(sel, opSelName) {
     
     var fld = currField.value.split(":");
     var tod = fld[4];
-  /*  if(fld[4] == \'D\' || (fld[4] == \'T\' && fld[1] != \'time_start\' && fld[1] != \'time_end\') || fld[4] == \'DT\')
-    {
-	$("and"+sel.id).innerHTML =  "";
-	if(sel.id != "fcol5")
-		$("and"+sel.id).innerHTML =  "<em old=\'(yyyy-mm-dd)\'>("+$("user_dateformat").value+")</em>&nbsp;"+alert_arr.LBL_AND;
-	else
-		$("and"+sel.id).innerHTML =  "<em old=\'(yyyy-mm-dd)\'>("+$("user_dateformat").value+")</em>&nbsp;";
-    }
-    else {
-	$("and"+sel.id).innerHTML =  "";
-	if(sel.id != "fcol5")
-		$("and"+sel.id).innerHTML =  "&nbsp;"+alert_arr.LBL_AND;
-	else
-		$("and"+sel.id).innerHTML =  "&nbsp;";
-    } 	
-*/
     if(currField.value != null && currField.value.length != 0)
     {
 	fieldtype = trimfValues(currField.value);
@@ -87,10 +71,6 @@ function updatefOptions(sel, opSelName) {
 		{
 			selObj.remove(0);
 		}
-	/*	selObj.options[0] = new Option (\'None\', \'\');
-		if (currField.value == \'\') {
-			selObj.options[0].selected = true;
-		}*/
 		for (var i = 0; i < ops.length; i++)
 		{
 			var label = fLabels[ops[i]];
@@ -257,7 +237,7 @@ unset($_smarty_tpl_vars);
 
 	<td class="showPanelBg" valign="top" width=100% style="padding:10px;">
 	 <!-- SIMPLE SEARCH -->
-<div id="searchAcc" style="z-index:1;display:none;position:relative;">
+<div id="searchAcc" style="display: block;position:relative;">
 <form name="basicSearch" method="post" action="index.php" onSubmit="return callSearch('Basic');">
 <table width="80%" cellpadding="5" cellspacing="0"  class="searchUIBasic small" align="center" border=0>
 	<tr>

@@ -7,13 +7,13 @@
 
 <link href="resources/images/appicon.jpg" rel="apple-touch-icon" />
 
-{php}if(Mobile::isSafari()) {{/php}
+{if $IS_SAFARI}
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-{php}}{/php}
+{/if}
 
 <title>{if $TITLE}{$TITLE}{else}vtiger CRM Mobile{/if}</title>
 
-<link rel="stylesheet" type="text/css" href="resources/skins/{php}echo Mobile_COre_Skin::selected(){/php}" />
+<link rel="stylesheet" type="text/css" href="resources/skins/{$SKIN}" />
 <script type="text/javascript" src="Mobile.js"></script>
 
 </head>
