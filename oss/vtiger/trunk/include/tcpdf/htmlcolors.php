@@ -2,11 +2,11 @@
 //============================================================+
 // File name   : htmlcolors.php
 // Begin       : 2002-04-09
-// Last Update : 2008-11-17
-// Version     : 1.0.002
+// Last Update : 2009-09-06
+// Version     : 1.0.003
 // License     : GNU LGPL (http://www.gnu.org/copyleft/lesser.html)
 // 	----------------------------------------------------------------------------
-//  Copyright (C) 2002-2008  Nicola Asuni - Tecnick.com S.r.l.
+//  Copyright (C) 2002-2009  Nicola Asuni - Tecnick.com S.r.l.
 // 	
 // 	This program is free software: you can redistribute it and/or modify
 // 	it under the terms of the GNU Lesser General Public License as published by
@@ -41,7 +41,7 @@
 /**
  * Array of WEB safe colors.
  * @author Nicola Asuni
- * @copyright 2004-2008 Nicola Asuni - Tecnick.com S.r.l (www.tecnick.com) Via Della Pace, 11 - 09044 - Quartucciu (CA) - ITALY - www.tecnick.com - info@tecnick.com
+ * @copyright 2004-2009 Nicola Asuni - Tecnick.com S.r.l (www.tecnick.com) Via Della Pace, 11 - 09044 - Quartucciu (CA) - ITALY - www.tecnick.com - info@tecnick.com
  * @package com.tecnick.tcpdf
  * @link http://www.tcpdf.org
  * @license http://www.gnu.org/copyleft/lesser.html LGPL
@@ -77,6 +77,7 @@ $webcolor = array (
 'darkblue' => '00008b',
 'darkcyan' => '008b8b',
 'darkgoldenrod' => 'b8860b',
+'dkgray' => 'a9a9a9',
 'darkgray' => 'a9a9a9',
 'darkgrey' => 'a9a9a9',
 'darkgreen' => '006400',
@@ -124,6 +125,7 @@ $webcolor = array (
 'lightcoral' => 'f08080',
 'lightcyan' => 'e0ffff',
 'lightgoldenrodyellow' => 'fafad2',
+'ltgray' => 'd3d3d3',
 'lightgray' => 'd3d3d3',
 'lightgrey' => 'd3d3d3',
 'lightgreen' => '90ee90',

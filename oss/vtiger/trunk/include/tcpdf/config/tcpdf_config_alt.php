@@ -2,7 +2,7 @@
 //============================================================+
 // File name   : tcpdf_config.php
 // Begin       : 2004-06-11
-// Last Update : 2008-11-17
+// Last Update : 2009-09-30
 //
 // Description : Alternative configuration file for TCPDF.
 //
@@ -172,29 +172,34 @@ define ('PDF_MARGIN_LEFT', 15);
 define ('PDF_MARGIN_RIGHT', 15);
 
 /**
- * main font name
+ * default main font name
  */
 define ('PDF_FONT_NAME_MAIN', 'helvetica');
 
 /**
- * main font size
+ * default main font size
  */
 define ('PDF_FONT_SIZE_MAIN', 10);
 
 /**
- * data font name
+ * default data font name
  */
 define ('PDF_FONT_NAME_DATA', 'helvetica');
 
 /**
- * data font size
+ * default data font size
  */
 define ('PDF_FONT_SIZE_DATA', 8);
 
 /**
- * Ratio used to scale the images
+ * default monospaced font name
  */
-define ('PDF_IMAGE_SCALE_RATIO', 4);
+define ('PDF_FONT_MONOSPACED', 'courier');
+
+/**
+ * ratio used to adjust the conversion of pixels to user units
+ */
+define ('PDF_IMAGE_SCALE_RATIO', 1);
 
 /**
  * magnification factor for titles

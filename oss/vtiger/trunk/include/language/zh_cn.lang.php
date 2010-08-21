@@ -1206,25 +1206,25 @@ $app_strings = array (
 
 // vtiger News & Feedback
 'LBL_VTIGER_NEWS'=>'软件新闻',
-'LBL_FEEDBACK'=>'Feedback',
+'LBL_FEEDBACK'=>'反馈',
 // END
 
 //added for asterisk integration
-'CallHistory'=>'Call History',
-'PBXManager'=>'PBX Manager',
-'LBL_OUTGOING_CALL_MESSAGE'=>'Pick up the extensions receiver to dial the number',
-'LBL_OUTGOING_CALL'=>'Outgoing Call',
-'LBL_OPERATION_NOT_SUPPORTED'=>'This Operation is currently not supported',
-'LBL_ASTERISK_SET_ERROR'=>'Asterisk server details are not set. Set them first.',
+'CallHistory'=>'呼叫记录',
+'PBXManager'=>'PBX 管理',
+'LBL_OUTGOING_CALL_MESSAGE'=>'请联通接收机后开始拨号',
+'LBL_OUTGOING_CALL'=>'去电',
+'LBL_OPERATION_NOT_SUPPORTED'=>'不支持当前选项',
+'LBL_ASTERISK_SET_ERROR'=>'Asterisk 服务器数据未设定。请先设置这些数据。',
 'LBL_CREATE_LEAD'=>'Create Lead',
-'LBL_CREATE_CONTACT'=>'Create Contact',
-'LBL_CREATE_ACCOUNT'=>'Create Account',
-'LBL_CREATE_TICKET'=>'Create Tickets',
-'LBL_INCOMING_CALL'=>'Incoming Call',
-'LBL_CALLER_INFORMATION'=>'Caller Information',
-'LBL_CALLER_NUMBER'=>'Number :',
-'LBL_CALLER_NAME'=>'Name :',
-'LBL_INFORMATION_VTIGER'=>'Information from Vtiger',
+'LBL_CREATE_CONTACT'=>'创建联系人',
+'LBL_CREATE_ACCOUNT'=>'创建帐号',
+'LBL_CREATE_TICKET'=>'创建服务请求',
+'LBL_INCOMING_CALL'=>'来电',
+'LBL_CALLER_INFORMATION'=>'呼叫者信息',
+'LBL_CALLER_NUMBER'=>'电话号码 :',
+'LBL_CALLER_NAME'=>'姓名 :',
+'LBL_INFORMATION_VTIGER'=>'vTtiger 的提示',
 //asterisk integration ends
 
 // Module Sequence Numbering
