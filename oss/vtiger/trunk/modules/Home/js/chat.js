@@ -72,8 +72,7 @@ function Chat(conf)
   {
     me.ajax = null;
     try{
-      me.doRefresh(decodeURI(response.responseText));
-      
+      me.doRefresh(response.responseText);
     }catch(e){
       debug("debug","Chat Error: "+response.responseText);
       clearInterval(me.interv);
@@ -82,7 +81,7 @@ function Chat(conf)
       return;
     }
     me.ajax = new Ajax(me.callback);
-    debug("debug",decodeURI(response.responseText));
+    debug("debug",response.responseText);
     window.status=Date();
   };
 

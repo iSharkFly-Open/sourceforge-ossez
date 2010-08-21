@@ -13,7 +13,7 @@ global $app_strings, $mod_strings, $theme, $currentModule;
 
 $ftimeout = 60;
 $fparser = new Vtiger_Feed_Parser();
-$fparser->vt_dofetch('http://feeds.feedburner.com/hawebs/fbDz', $ftimeout);
+$fparser->vt_dofetch('http://www.vtiger.com/products/crm/newsfeed.php', $ftimeout);
 $items = $fparser->get_items();
 $NEWSLIST = Array();
 foreach($items as $item) {

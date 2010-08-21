@@ -18,53 +18,56 @@
  ********************************************************************************/
  
 $mod_strings = Array(
-  'LBL_NEW_FORM_TITLE' => '新增联系人',
-  'LBL_FIRST_NAME' => '姓名：',
-  'LBL_LAST_NAME' => '姓氏：',
-  'LBL_LIST_LAST_NAME' => '姓氏：',
-  'LBL_ACCOUNT_NAME' => '客户名称：',
-  'LBL_LIST_ACCOUNT_NAME' => '客户名称',
-  'LBL_PHONE' => '电话：',
-  'LBL_EMAIL_ADDRESS' => '电子邮件：',
-  'LBL_TOTAL' => '总计：',
+'LBL_NEW_FORM_TITLE'=>'新增联系人',
+'LBL_FIRST_NAME'=>'姓名：',
+'LBL_LAST_NAME'=>'姓氏：',
+'LBL_LIST_LAST_NAME'=>'姓氏：',
+'LBL_ACCOUNT_NAME'=>'客户名称：',
+'LBL_LIST_ACCOUNT_NAME'=>'客户名称',
+'LBL_PHONE'=>'电话：',
+'LBL_EMAIL_ADDRESS'=>'电子邮件：',
+'LBL_TOTAL'=>'总计：',
 
- 'LBL_MY_HOME' => '我的首页',
-  'LBL_MODIFIED_TIME' => '异动时间',
-  'LBL_LOGIN_ID' => '代号',
-  'LBL_MODIFIED_BY' => '修改者',
-  'LBL_TYPE' => '类型',
+'LBL_MY_HOME'=>'我的首页',
+'LBL_MODIFIED_TIME'=>'异动时间',
+'LBL_LOGIN_ID'=>'代号',
+'LBL_MODIFIED_BY'=>'修改者',
+'LBL_TYPE'=>'类型',
 
-  'LBL_PIPELINE_FORM_TITLE' => '我的统计图表',
+'LBL_PIPELINE_FORM_TITLE'=>'我的统计图表',
 
- 'ERR_ONE_CHAR' => '请至少输入1个字符以上的号码，以供搜寻 ...',
+'ERR_ONE_CHAR'=>'请至少输入1个字符以上的号码，以供搜寻 ...',
 
-'LBL_OPEN_TASKS' => '我的进行中任务',
+'LBL_OPEN_TASKS'=>'我的进行中任务',
 
-  'LBL_LEADS_BY_SOURCE' => '准客户来源',
-  'LBL_LEADS_BY_STATUS' => '准客户状态',
+'LBL_LEADS_BY_SOURCE'=>'准客户来源',
+'LBL_LEADS_BY_STATUS'=>'准客户状态',
 
- 'LBL_UPCOMING_EVENTS' => '未来事件',
-  'LBL_PENDING_EVENTS' => '暂停事件',
-  'LBL_SINGLE_PENDING_EVENT' => '最近十天事件',
-  'LBL_MULTIPLE_PENDING_EVENTS' => '最近十天事件',
+'LBL_UPCOMING_EVENTS'=>'未来事件',
+'LBL_PENDING_EVENTS'=>'暂停事件',
+'LBL_SINGLE_PENDING_EVENT'=>'最近十天事件',
+'LBL_MULTIPLE_PENDING_EVENTS'=>'最近十天事件',
 
-  'recordsforuser' => '资料于',
+'recordsforuser'=>'资料于',
 
- 'Today' => '今天',
-  'This Week' => '这个星期',
-  'This Month' => '这个月',
-  'This Year' => '今年',
-  'Last Week' => '上星期',
-  'Last 2 Days' => '过去两天',
-  'Last Ten Days' => '过去十天',
-                                                                                                                             
+'Today'=>'今天',
+'This Week'=>'这个星期',
+'This Month'=>'这个月',
+'This Year'=>'今年',
+'Last Week'=>'上星期',
+'Last 2 Days'=>'过去两天',
+'Last Ten Days'=>'过去十天',
+
+// Added/Updated for vtiger CRM 5.0.4 
 'TITLE_AJAX_CSS_POPUP_CHAT'=>'员工聊天室',
 'User List'=>'使用者列表',
 
+// Added after 5.0.4 GA
+
 //ADDED for Home Page Customization
-'LBL_HOME_MODULE' => '模块',
-'LBL_HOME_RSS' => 'RSS',
-'LBL_HOME_DASHBOARD' => '图表',
+'LBL_HOME_MODULE'=>'模块',
+'LBL_HOME_RSS'=>'RSS',
+'LBL_HOME_DASHBOARD'=>'图表',
 'LBL_HOME_STUFFTITLE'=>'窗口标题',
 'LBL_HOME_SHOW'=>'显示',
 'LBL_HOME_FILTERBY'=>'过滤',
@@ -113,8 +116,8 @@ $mod_strings = Array(
 'Home Page Dashboard'=>'首页图表',
 'Tag Cloud'=>'常用标签',
 
-'MSG_NO_FILTERS' => '无过滤器可用',
-'MSG_NO_FIELDS' => '无可用字段',
+'MSG_NO_FILTERS'=>'无过滤器可用',
+'MSG_NO_FIELDS'=>'无可用字段',
 
 );
 

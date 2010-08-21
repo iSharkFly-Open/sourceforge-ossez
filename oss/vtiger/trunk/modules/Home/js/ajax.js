@@ -16,15 +16,6 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-function debug(dib,msg)
-{
-  if(document.getElementById(dib))
-    document.getElementById(dib).innerHTML = msg;
-  else
-    alert(msg);
-};
-
-
 function getRequester()
 {
   try
@@ -92,13 +83,10 @@ function Ajax(cb)
   };
 
   this.process = function(url, parameters){
-	  
     me.requester.open("POST", url, true);
-    me.requester.setRequestHeader("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+    me.requester.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     me.requester.setRequestHeader("Content-length", parameters.length);
     //me.requester.setRequestHeader("Connection", "close");
-    debug("debug",parameters);
     me.requester.send(parameters);
-    
   };
 };
