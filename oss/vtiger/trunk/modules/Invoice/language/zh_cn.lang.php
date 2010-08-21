@@ -1,25 +1,25 @@
 <?php
-/*********************************************************************************
- * The contents of this file are subject to the SugarCRM Public License Version 1.1.2
- * ("License"); You may not use this file except in compliance with the
- * License. You may obtain a copy of the License at http://www.sugarcrm.com/SPL
- * Software distributed under the License is distributed on an  "AS IS"  basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
- * the specific language governing rights and limitations under the License.
- * The Original Code is:  SugarCRM Open Source
- * The Initial Developer of the Original Code is SugarCRM, Inc.
- * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.;
- * All Rights Reserved.
- * Contributor(s): ______________________________________.
- ********************************************************************************/
-/*********************************************************************************
- * $Header$
- * Description:  Defines the English language pack 
- * Portions created by SugarCRM are Copyright (C) SugarCRM, Inc.
- * All Rights Reserved.
- * Contributor(s): ______________________________________..
- ********************************************************************************/
- 
+/**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * ---------------------------------------------
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * https://www.hawebs.org/forums/computer/
+ *
+ * CONTACT
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * ---------------------------------------------
+ * [A] GNU GENERAL PUBLIC LICENSE GNU/LGPL
+ * [B] Apache License, Version 2.0
+ *
+ * ---------------------------------------------
+ * NOTE
+ * 1. 所有的语言配置文件请采用 UTF-8 编码 
+ *
+ * ---------------------------------------------
+ */
 $mod_strings = Array(
   'LBL_MODULE_NAME' => '发票',
   'LBL_SO_MODULE_NAME' => '发票',
@@ -115,34 +115,35 @@ $mod_strings = Array(
 // Added for 4GA
   'LBL_TOOL_FORM_TITLE' => '客户工具',
 //Added for 4GA
- 'Subject' => '标题',
-  'Quote Name' => '报价名称',
-  'Vendor Name' => '卖方名称',
-  'Invoice Terms' => '发票期限',
- 'Contact Name' => '联络人名称',//to include contact name vtiger_field in Invoice
- 'Invoice Date' => '发票日期',
-  'Sub Total' => '小计',
-  'Due Date' => '应付日期',
-  'Carrier' => '货运商',
-  'Type' => '类型',
-  'Sales Tax' => '销售税金',
-  'Sales Commission' => '销售佣金',
-  'Excise Duty' => '营业税',
-  'Total' => '总计 ',
-  'Product Name' => '商品名称',
- 'Assigned To' => '负责人',
-  'Billing Address' => '发票地址',
-  'Shipping Address' => '送货地址',
-  'Billing City' => '[发票地址]乡镇市区',
-  'Billing State' => '[发票地址]市(县)',
-  'Billing Code' => '[发票地址]邮政编码',
-  'Billing Country' => '[发票地址]省（市/自治区）',
-  'Billing Po Box' => '[发票地址]邮政信箱',
-  'Shipping Po Box' => '[送货地址]邮政信箱',
-  'Shipping City' => '[送货地址]乡镇市区',
-  'Shipping State' => '[送货地址]市(县)',
-  'Shipping Code' => '[送货地址]邮政编码',
-  'Shipping Country' => '[送货地址]省（市/自治区）',
+'Subject' => '标题',
+'Quote Name' => '报价名称',
+'Vendor Name' => '卖方名称',
+'Invoice Terms' => '发票期限',
+'Contact Name' => '联络人名称',//to include contact name vtiger_field in Invoice
+'Invoice Date' => '发票日期',
+'Sub Total' => '小计',
+'Issued Date' => '创建日期',
+'Due Date' => '应付日期',
+'Carrier' => '货运商',
+'Type' => '类型',
+'Sales Tax' => '销售税金',
+'Sales Commission' => '销售佣金',
+'Excise Duty' => '营业税',
+'Total' => '总计 ',
+'Product Name' => '商品名称',
+'Assigned To' => '负责人',
+'Billing Address' => '发票地址',
+'Shipping Address' => '送货地址',
+'Billing City' => '[发票地址]乡镇市区',
+'Billing State' => '[发票地址]市(县)',
+'Billing Code' => '[发票地址]邮政编码',
+'Billing Country' => '[发票地址]省（市/自治区）',
+'Billing Po Box' => '[发票地址]邮政信箱',
+'Shipping Po Box' => '[送货地址]邮政信箱',
+'Shipping City' => '[送货地址]乡镇市区',
+'Shipping State' => '[送货地址]市(县)',
+'Shipping Code' => '[送货地址]邮政编码',
+'Shipping Country' => '[送货地址]省（市/自治区）',
 'City' => '乡镇市区',
   'State' => '市(县)',
   'Code' => '邮政编码',
