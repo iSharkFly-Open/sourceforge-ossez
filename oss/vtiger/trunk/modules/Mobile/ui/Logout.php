@@ -8,6 +8,12 @@
  * All Rights Reserved.
  ************************************************************************************/
 
-//require_once('include/Ajax/CommonAjax.php'); // DO NOTHING
+class Mobile_UI_Logout extends Mobile_WS_Controller {
+	
+	function process(Mobile_API_Request $request) {
+		HTTP_Session::destroy(HTTP_Session::detectId());
+		header('Location: index.php');
+		exit;
+	}
 
-?>
+}
