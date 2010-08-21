@@ -612,8 +612,6 @@ function get_so_pdf() {
 	
 	$valid_till = $focus->column_fields["duedate"];
 	$valid_till = getDisplayDate($valid_till);
-	$create_time = $focus->column_fields["createdtime"];
-	$create_time = getDisplayDate(date("Y-m-d",strtotime($create_time)));
 	$bill_street = $focus->column_fields["bill_street"];
 	$bill_city = $focus->column_fields["bill_city"];
 	$bill_state = $focus->column_fields["bill_state"];
@@ -732,7 +730,7 @@ function get_so_pdf() {
 		$product_id[$i] = $associated_products[$i]['hdnProductId'.$i];
 		$qty[$i] = $associated_products[$i]['qty'.$i];
 		$unit_price[$i] = number_format($associated_products[$i]['unitPrice'.$i],2,'.',',');
-		$list_price[$i] = number_format($associated_products[$i]['listPrice'.$i],3,'.',',');
+		$list_price[$i] = number_format($associated_products[$i]['listPrice'.$i],2,'.',',');
 		$list_pricet[$i] = $associated_products[$i]['listPrice'.$i];
 		$discount_total[$i] = $associated_products[$i]['discountTotal'.$i];
 	        //aded for 5.0.3 pdf changes
