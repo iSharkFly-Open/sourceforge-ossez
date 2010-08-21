@@ -1,13 +1,12 @@
 <?php
-/*+********************************************************************************
+/*+**********************************************************************************
  * The contents of this file are subject to the vtiger CRM Public License Version 1.0
  * ("License"); You may not use this file except in compliance with the License
  * The Original Code is:  vtiger CRM Open Source
  * The Initial Developer of the Original Code is vtiger.
  * Portions created by vtiger are Copyright (C) vtiger.
  * All Rights Reserved.
- ********************************************************************************/
-
+ ************************************************************************************/
 global $app_strings, $mod_strings, $current_language, $currentModule, $theme;
 global $list_max_entries_per_page;
 
@@ -15,17 +14,18 @@ require_once('Smarty_setup.php');
 require_once('include/ListView/ListView.php');
 require_once('modules/CustomView/CustomView.php');
 require_once('include/DatabaseUtil.php');
+
+checkFileAccess("modules/$currentModule/$currentModule.php");
 require_once("modules/$currentModule/$currentModule.php");
 
 $category = getParentTab();
 $url_string = '';
 
-$tool_buttons = array("index"=>"yes",);
-$tool_buttons["moduleSettings"] = isModuleSettingPermitted($currentModule);
+$tool_buttons = Button_Check($currentModule);
 $list_buttons = Array();
-if(isPermitted($currentModule,'Delete','') == 'yes') $list_buttons['del'] = $app_strings[LBL_MASS_DELETE];
 
 $focus = new $currentModule();
+$focus->initSortbyField($currentModule);
 $sorder = $focus->getSortOrder();
 $order_by = $focus->getOrderBy();
 
@@ -35,16 +35,16 @@ $_SESSION[$currentModule."_Sort_Order"]=$sorder;
 $smarty = new vtigerCRM_Smarty();
 
 // Identify this module as custom module.
-$smarty->assign('CUSTOM_MODULE', true);
+$smarty->assign('CUSTOM_MODULE', false);
 
 $smarty->assign('MOD', $mod_strings);
 $smarty->assign('APP', $app_strings);
-$smarty->assign("THEME", $theme);
 $smarty->assign('MODULE', $currentModule);
-$smarty->assign('SINGLE_MOD', "CallHistory");
+$smarty->assign('SINGLE_MOD', getTranslatedString('SINGLE_'.$currentModule));
 $smarty->assign('CATEGORY', $category);
 $smarty->assign('BUTTONS', $list_buttons);
 $smarty->assign('CHECK', $tool_buttons);
+$smarty->assign('THEME', $theme);
 $smarty->assign('IMAGE_PATH', "themes/$theme/images/");
 
 $smarty->assign('CHANGE_OWNER', getUserslist());
@@ -75,6 +75,28 @@ $smarty->assign("VIEWID", $viewid);
 
 if($viewinfo['viewname'] == 'All') $smarty->assign('ALL', 'All');
 
+if($viewid ==0)
+{
+	echo "<table border='0' cellpadding='5' cellspacing='0' width='100%' height='450px'><tr><td align='center'>";
+	echo "<div style='border: 3px solid rgb(153, 153, 153); background-color: rgb(255, 255, 255); width: 55%; position: relative; z-index: 10000000;'>
+
+		<table border='0' cellpadding='5' cellspacing='0' width='98%'>
+		<tbody><tr>
+		<td rowspan='2' width='11%'><img src='". vtiger_imageurl('denied.gif', $theme) ."' ></td>
+		<td style='border-bottom: 1px solid rgb(204, 204, 204);' nowrap='nowrap' width='70%'><span clas
+		s='genHeaderSmall'>$app_strings[LBL_PERMISSION]</span></td>
+		</tr>
+		<tr>
+		<td class='small' align='right' nowrap='nowrap'>
+		<a href='javascript:window.history.back();'>$app_strings[LBL_GO_BACK]</a><br>
+		</td>
+		</tr>
+		</tbody></table>
+		</div>";
+	echo "</td></tr></table>";
+	exit;
+}
+
 global $current_user;
 $queryGenerator = new QueryGenerator($currentModule, $current_user);
 if ($viewid != "0") {
@@ -93,15 +115,28 @@ if($_REQUEST['query'] == 'true') {
 }
 
 $list_query = $queryGenerator->getQuery();
+
 // Sorting
 if(!empty($order_by)) {
-	if($order_by == 'smownerid') $list_query .= ' ORDER BY user_name '.$sorder;
-	else {
-		$tablename = getTableNameForField($currentModule, $order_by);
-		$tablename = ($tablename != '')? ($tablename . '.') : '';
-		$list_query .= ' ORDER BY ' . $tablename . $order_by . ' ' . $sorder;
+	$meta = $queryGenerator->getMeta($currentModule);
+	$moduleFields = $meta->getModuleFields();
+	$found = false;
+	foreach ($moduleFields as $field) {
+		if($field->getColumnName() == $order_by) {
+			$found = true;
+			break;
+		}
+	}
+	if($found === false) {
+		$list_query .= " ORDER BY $order_by $sorder";
+	} else {
+		$list_query .= " ORDER BY ".$field->getTableName().".$order_by $sorder";
 	}
 }
+
+//Postgres 8 fixes
+if( $adb->dbType == "pgsql")
+	$list_query = fixPostgresQuery( $list_query, $log, 0);
 
 if(PerformancePrefs::getBoolean('LISTVIEW_COMPUTE_PAGE_COUNT', false) === true){
 	$count_result = $adb->query( mkCountQuery( $list_query));
@@ -128,32 +163,16 @@ $smarty->assign('recordListRange',$recordListRangeMsg);
 $smarty->assign("CUSTOMVIEW_OPTION",$customview_html);
 
 // Navigation
-$start = $_SESSION['lvs'][$currentModule]['start'];
 $navigationOutput = getTableHeaderSimpleNavigation($navigation_array, $url_string, $currentModule, 'index', $viewid);
 $smarty->assign("NAVIGATION", $navigationOutput);
 
 $controller = new ListViewController($adb, $current_user, $queryGenerator);
 $listview_header = $controller->getListViewHeader($focus,$currentModule,$url_string,$sorder,
-		$order_by);
+		$order_by,true);
 $listview_entries = $controller->getListViewEntries($focus,$currentModule,$list_result,
-		$navigation_array);
+		$navigation_array,true);
 $listview_header_search = $controller->getBasicSearchFieldInfoList();
 
-// Convert field value to DetailView Link
-if(isset($focus->detailview_links) && count($focus->detailview_links)) {
-	foreach($listview_entries as $listview_recid=>$listview_row) {
-		foreach($listview_row as $listview_key=>$listview_val) {
-			$listview_key_header = $listview_header[$listview_key];
-			preg_match('/(<[^>]+>)([^<]+)(<[^>]+>)/', $listview_key_header, $matches);
-			$linktext = array_search(trim($matches[2], ' &nbsp;\t\r\n'), $mod_strings);
-			if(in_array($linktext, $focus->detailview_links)) {
-				$listview_row[$listview_key] = 
-					"<a href='index.php?action=DetailView&module=$currentModule&record=$listview_recid&parenttab=$category'>".$listview_val."</a>";
-			}
-		}
-		$listview_entries[$listview_recid] = $listview_row;
-	}
-}
 $smarty->assign('LISTHEADER', $listview_header);
 $smarty->assign('LISTENTITY', $listview_entries);
 $smarty->assign('SEARCHLISTHEADER',$listview_header_search);
@@ -165,6 +184,15 @@ $criteria = getcriteria_options();
 $smarty->assign("ALPHABETICAL", $alphabetical);
 $smarty->assign("FIELDNAMES", $fieldnames);
 $smarty->assign("CRITERIA", $criteria);
+
+$smarty->assign("AVALABLE_FIELDS", getMergeFields($currentModule,"available_fields"));
+$smarty->assign("FIELDS_TO_MERGE", getMergeFields($currentModule,"fileds_to_merge"));
+
+//Added to select Multiple records in multiple pages
+$smarty->assign("SELECTEDIDS", vtlib_purify($_REQUEST['selobjs']));
+$smarty->assign("ALLSELECTEDIDS", vtlib_purify($_REQUEST['allselobjs']));
+$smarty->assign("CURRENT_PAGE_BOXES", implode(array_keys($listview_entries),";"));
+$_SESSION[$currentModule.'_listquery'] = $list_query;
 
 // Gather the custom link information to display
 include_once('vtlib/Vtiger/Link.php');

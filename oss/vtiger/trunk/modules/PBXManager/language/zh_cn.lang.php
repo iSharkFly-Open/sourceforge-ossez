@@ -24,6 +24,10 @@
 $mod_strings = Array(
 	'Asterisk' => 'Asterisk',
 	'LBL_ASTERISK_INFORMATION' => 'ASTERISK 信息',
+	
+	'Call From'=>'来电',
+	'Call To'=>'去电',
+	'Time Of Call'=>'通话时间',
 );
 
 ?>
