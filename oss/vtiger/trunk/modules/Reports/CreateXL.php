@@ -42,16 +42,16 @@ $enddate = getDBInsertDateValue($_REQUEST['enddate']);
 $oReportRun = new ReportRun($reportid);
 $filterlist = $oReportRun->RunTimeFilter($filtercolumn,$filter,$startdate,$enddate);
 $arr_val = $oReportRun->GenerateReport("PDF",$filterlist);
+$totalxls = $oReportRun->GenerateReport("TOTALXLS",$filterlist);
 
 if(isset($arr_val))
 {
 	foreach($arr_val[0] as $key=>$value)
 	{
-		$key = '中国';
-		$worksheet->write(0, $count, iconv("UTF-8", "UTF-8", $key), $header);
+		$worksheet->write(0, $count, $key , $header);
 		$count = $count + 1;
 	}
-	
+	$rowcount=1;
 	foreach($arr_val as $key=>$array_value)
 	{
 		$dcount = 0;
@@ -59,12 +59,36 @@ if(isset($arr_val))
 		{
 			//$worksheet->write($key+1, $dcount, iconv("UTF-8", "ISO-8859-1", $value));
 			$value = decode_html($value);
-//			$worksheet->write($key+1, $dcount, utf8_decode($value));
-			$worksheet->write($key+1, $dcount, iconv("UTF-8", "gb2312" ,$value));
+			$worksheet->write($key+1, $dcount, utf8_decode($value));
 			$dcount = $dcount + 1;
 		}
+		$rowcount++; 
 	}
 
+	$rowcount++;
+	$count=1;
+	if(is_array($totalxls[0])) {
+		foreach($totalxls[0] as $key=>$value)
+		{
+				$chdr=substr($key,-3,3);
+			$worksheet->write($rowcount, $count, $mod_strings[$chdr]);
+			$count = $count + 1;
+		}
+	}
+	$rowcount++;
+	foreach($totalxls as $key=>$array_value)
+	{
+			$dcount = 1;
+			foreach($array_value as $hdr=>$value)
+			{
+					//$worksheet->write($key+1, $dcount, iconv("UTF-8", "ISO-8859-1", $value));
+					if ($dcount==1)
+							$worksheet->write($key+$rowcount, 0, utf8_decode(substr($hdr,0,strlen($hdr)-4)));
+				$value = decode_html($value);
+					$worksheet->write($key+$rowcount, $dcount, utf8_decode($value));
+					$dcount = $dcount + 1;
+			}
+	} 
 }
 
 $workbook->close();
