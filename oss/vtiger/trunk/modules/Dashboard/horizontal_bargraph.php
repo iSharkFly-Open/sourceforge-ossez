@@ -117,8 +117,6 @@ function horizontal_graph($referdata,$refer_code,$width,$height,$left,$right,$to
 		$fill =& Image_Graph::factory('gradient', array(IMAGE_GRAPH_GRAD_VERTICAL_MIRRORED, 'blue', 'white'));
 	elseif($theme == 'softed')
 		$fill =& Image_Graph::factory('gradient', array(IMAGE_GRAPH_GRAD_VERTICAL_MIRRORED, 'blue', 'white'));
-	elseif($theme == 'hawebs')
-		$fill =& Image_Graph::factory('gradient', array(IMAGE_GRAPH_GRAD_VERTICAL_MIRRORED, 'blue', 'white'));
 	else
 		$fill =& Image_Graph::factory('gradient', array(IMAGE_GRAPH_GRAD_VERTICAL_MIRRORED, 'black', 'white'));
 	

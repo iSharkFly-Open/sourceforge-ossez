@@ -43,7 +43,7 @@ function vertical_graph($referdata,$refer_code,$width,$height,$left,$right,$top,
 		else
 			$name=$datax[$i];
 		$pos = substr_count($name," ");
-		$alts[]=htmlentities($name,ENT_QUOTES,'UTF-8')."=%d";
+		$alts[]=htmlentities($name)."=%d";
 //If the datax value of a string is greater, adding '\n' to it so that it'll cme inh 2nd line
 		 if(strlen($name)>=15)
                         $name=substr($name, 0, 15);
@@ -117,8 +117,6 @@ function vertical_graph($referdata,$refer_code,$width,$height,$left,$right,$top,
 		$fill =& Image_Graph::factory('gradient', array(IMAGE_GRAPH_GRAD_HORIZONTAL_MIRRORED, 'blue', 'white'));
 	elseif($theme == 'softed')
 		$fill =& Image_Graph::factory('gradient', array(IMAGE_GRAPH_GRAD_HORIZONTAL_MIRRORED, 'blue', 'white'));
-	elseif($theme == 'hawebs')
-		$fill =& Image_Graph::factory('gradient', array(IMAGE_GRAPH_GRAD_VERTICAL_MIRRORED, 'blue', 'white'));
 	else
 		$fill =& Image_Graph::factory('gradient', array(IMAGE_GRAPH_GRAD_HORIZONTAL_MIRRORED, 'black', 'white'));
 	

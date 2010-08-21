@@ -21,7 +21,7 @@
 *---------------------------------------------
 */
 $mod_strings=Array(
-//Addedinrelease5.0
+// Added in release 5.0
 'LBL_CAMPAIGN_INFORMATION'=>'活动信息',
 'LBL_CUSTOM_INFORMATION'=>'自订信息',
 'LBL_DESCRIPTION_INFORMATION'=>'说明信息',
