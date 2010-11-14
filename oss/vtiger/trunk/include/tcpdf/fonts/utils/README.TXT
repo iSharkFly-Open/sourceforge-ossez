@@ -25,19 +25,15 @@ The PDF Core (standard) fonts are:
 
 Setting up a font for usage with TCPDF requires the following steps:
 
-   1. Convert all font filenames to lowercase and rename using the following schema:
-          * [basic-font-name-in-lowercase].ttf for regular font
-          * [basic-font-name-in-lowercase]b.ttf for bold variation
-          * [basic-font-name-in-lowercase]i.ttf for oblique variation
-          * [basic-font-name-in-lowercase]bi.ttf for bold oblique variation
+   1. Convert all font filenames to lowercase.
 
    2. Generate the font's metrics file.
-          * For Type1 font files this first step is not necessary because the AFM file is usually shipped with the font. In case you have only a metric file in PFM format, use the pfm2afm utility (fonts/utils/pfm2afm) to get the AFM file. If you own a Type1 font in ASCII format (.pfa), you can convert it to binary format with Type 1 utilities.
-          * For TrueTypeUnicode or TrueType font files, use the the provided ttf2ufm utility (fonts/utils/ttf2ufm):
+          * For Type1 font files this first step is not necessary because the AFM file is usually shipped with the font. In case you have only a metric file in PFM format, use the pfm2afm utility (fonts/utils/pfm2afm.exe) to get the AFM file. If you own a Type1 font in ASCII format (.pfa), you can convert it to binary format with Type 1 utilities.
+          * For TrueTypeUnicode or TrueType font files, use the the provided ttf2ufm utility (fonts/utils/ttf2ufm.exe):
 
             $ ttf2ufm -a -F myfont.ttf
 
-          * For OpenTypeUnicode or OpenType font files, use the the provided ttf2ufm utility (fonts/utils/ttf2ufm):
+          * For OpenTypeUnicode or OpenType font files, use the the provided ttf2ufm utility (fonts/utils/ttf2ufm.exe):
 
             $ ttf2ufm -a -F myfont.otf
 
@@ -95,7 +91,6 @@ Setting up a font for usage with TCPDF requires the following steps:
 
    4. Edit and copy resulting files by case:
           * For embedded fonts: copy the resulting .php, .z and .ctg.z (if available) files to the TCPDF fonts directory.
-          * For not-embedding the font, edit the .php file and comment the $file entry.
           * For CID-0 fonts (not embeddeed) you have to edit the .php file:
                 o change the font type to: $type='cidfont0';
                 o set the default font width by adding the line: $dw=1000;

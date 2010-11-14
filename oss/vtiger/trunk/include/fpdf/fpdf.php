@@ -472,7 +472,7 @@ function AddFont($family,$style='',$file='')
 	if($file=='')
 		$file=str_replace(' ','',$family).strtolower($style).'.php';
 	if($family=='arial')
-		$family='msyh';
+		$family='helvetica';
 	$style=strtoupper($style);
 	if($style=='IB')
 		$style='BI';
@@ -522,7 +522,7 @@ function SetFont($family,$style='',$size=0)
 	if($family=='')
 		$family=$this->FontFamily;
 	if($family=='arial')
-		$family='stsongstdlight';
+		$family='helvetica';
 	elseif($family=='symbol' || $family=='zapfdingbats')
 		$style='';
 	$style=strtoupper($style);
@@ -551,7 +551,7 @@ function SetFont($family,$style='',$size=0)
 			{
 				//Load metric file
 				$file=$family;
-				if($family=='times' || $family=='stsongstdlight')
+				if($family=='times' || $family=='helvetica')
 					$file.=strtolower($style);
 				include($this->_getfontpath().$file.'.php');
 				if(!isset($fpdf_charwidths[$fontkey]))

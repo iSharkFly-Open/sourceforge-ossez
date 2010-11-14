@@ -150,7 +150,18 @@ class ListViewController {
 						$idList[] = $id;
 					}
 				}
-				$this->ownerNameList[$fieldName] = getOwnerNameList($idList);
+				if(count($idList) > 0) {
+					if(!is_array($this->ownerNameList[$fieldName])) {
+						$this->ownerNameList[$fieldName] = getOwnerNameList($idList);
+					} else {
+						//array_merge API loses key information so need to merge the arrays
+						// manually.
+						$newOwnerList = getOwnerNameList($idList);
+						foreach ($newOwnerList as $id => $name) {
+							$this->ownerNameList[$fieldName][$id] = $name;
+						}
+					}
+				}
 			}
 		}
 
@@ -294,6 +305,7 @@ class ListViewController {
 						$value = "<font color='red'>".getTranslatedString('LBL_NOT_ACCESSIBLE',
 								$module)."</font>";
 					} else {
+						$value = getTranslatedString($value,$module);
 						$value = textlength_check($value);
 					}
 				}elseif($field->getFieldDataType() == 'date' ||

@@ -401,7 +401,6 @@ $app_strings = array (
 'Rss' => '新闻',
 'Portal' => '我的网站',
 'Webmails' => '网页邮件',
-'Attachments' => '附加档案',
 'Activity History' => '存取纪录',
 'Ticket History' => '传票纪录',
 'Purchase Order' => '采购订单',
@@ -418,7 +417,7 @@ $app_strings = array (
 'Sales' => '销售管理',
 'Support' => '支持',
 'Analytics' => '统计分析',
-'Inventory' => '财务管理',
+'Inventory' => '库存管理',
 'Tools' => '工具',
 'Settings' => '设定',
 'LBL_INFORMATION' => '信息',
@@ -439,7 +438,6 @@ $app_strings = array (
 'Quote' => '报价',
 'Ticket' => '传票',
 'Campaign' => '活动',
-'Note' => '记事',
 'Dashboard' => '统计图表',
 'Report' => '报表',
 'Vendor' => '厂商',
@@ -556,7 +554,6 @@ $app_strings = array (
 'LBL_PO_STATUS' => '采购订单状态',
 'LBL_SO_STATUS' => '销售订单状态',
 'LBL_INVOICE_STATUS' => '发票状态',
-'LBL_NOTE' => '备注',
 'LBL_MODULE' => '模块',
 'Active' => '启用',
 'Inactive' => '停用',
@@ -611,6 +608,7 @@ $app_strings = array (
 'VTIGER' => 'vtiger',
 'LBL_DIRECT_AMOUNT_DISCOUNT' => '直接金额折扣',
 'LBL_NO_DISCOUNT_FOR_THIS_PRODUCT' => '这个产品没有折扣',
+'LBL_NO_DISCOUNT_FOR_THIS_LINE_ITEM'=> '这个产品线没有折扣',
 'LBL_TOTAL_TAX_AMOUNT' => '总税额',
 'LBL_FINAL_DISCOUNT_AMOUNT' => '最终折扣金额',
 'LBL_SHIPPING_AND_HANDLING_CHARGE' => '货运与处理费',
@@ -661,10 +659,13 @@ $app_strings = array (
 'LABEL_SET_DISCOUNT_FOR_X_COLON'=>'订折扣× :',
 'LABEL_SET_TAX_FOR_X'=>'定税 x',
 'LABEL_SET_SH_TAX_FOR_COLON'=>'设置S&H税 :',
+
 'NO_DATA_AVAILABLE_WITH_SPECIFIED_PERIOD'=>'特定的时间内没有数据',
+
 //Added for 5.0.3
 'Files_Maximum_6'=>'最多文件数为6',
 'To'=>'TO:',
+
 'Date & Time' => '日期 & 时间',
 'Reminder' => '提示:',
 'Visit_Link' => '在活动里访问接洽联系的更多细节',
@@ -678,7 +679,6 @@ $app_strings = array (
 'kindly_renew' => '</b> 结束不久. 期待为您再次服务.<br><br>问候,<br>服务台团队<br>',
 'Dear_Admin' => '亲爱的管理员,<br> 这里通知你，有太多的传票没有解决，应该采取必要行动<br><br> Thanks and Regards,<br> HelpDesk Team<br>',
 'Pending_Tickets' => '太多等候传票',
-
 'Pending_Ticket_notification' => '等候购票通知',
 'Kind_Attention' => '亲爱的管理员,<br> 请记住你的传票号码 ',
 'Thank_You_HelpDesk' => ' 尚未关闭<br> Thank You,<br> HelpDesk Team<br>',
@@ -822,7 +822,7 @@ $app_strings = array (
 'MSG_THANK_YOU'=>'谢谢',
 'MSG_HAS_BEEN_CREATED_FOR'=>'已创造',
 'MSG_THANKS'=>'谢谢,',
-'MSG_VTIGERTEAM'=>' 韩岛团队',
+'MSG_VTIGERTEAM'=>' HAWEBS 小组',
 'MSG_IS_NOT_UPLOADED'=>'不能上传。允许的档案类型jpeg, png, jpg, pjpeg, x-png or gif',
 'MSG_IMAGE_ERROR'=>'图片没有找到',
 
@@ -906,9 +906,9 @@ $app_strings = array (
 'LBL_UPDATE' => '升级',
 
 'ERR_INVALID_PAGE_COUNT' => "无效页计数",
-'LBL_CAL_LIMIT_MSG'=>'对不起，必须在1970年至2037年期间',
+'LBL_CAL_LIMIT_MSG'=>'对不起，年份必须在1970年至2037年期间',
 
-
+//added for fix i18n issue #4038 when importing contacts
 'Mobile' => '手机号码',
 'Home Phone' => '家庭电话',
 'Other Phone' => '其他电话',
@@ -969,12 +969,12 @@ $app_strings = array (
 'Trouble Tickets'=>'问题传票',
 'LBL_NOT_ACCESSIBLE'=>'无法访问',
 
-
+//Added for Existing Picklist Strings for both Lead module (convert div) and for potential module.
 
 'Prospecting'=>'Prospecting',
 'Qualification'=>'Qualification',
 'Needs Analysis'=>'需求分析',
-'Value Proposition'=>'Value Proposition',
+'Value Proposition'=>'价值主张',
 'Id. Decision Makers'=>'Id. Decision Makers',
 'Perception Analysis'=>'Perception Analysis',
 'Proposal/Price Quote'=>'Proposal/Price Quote',
@@ -1085,7 +1085,7 @@ $app_strings = array (
 'For Your Business'=>'For Your Business',
 'Subtotal'=>'小计',
 'Tax'=>'税',
-'Adjustment'=>'折让',
+'Adjustment'=>'调整',
 'Total'=>'合计',
 'Description'=>'描述',
 'Terms & Conditions'=>'条款及条件',
@@ -1106,7 +1106,7 @@ $app_strings = array (
 'SO Number'=>'订单编号',
 'Account Number'=>'帐户号码',
 'Valid Till'=>'有效期',
-'Quote Number'=>'Quote Number',
+'Quote Number'=>'询价单号',
 'Invoice Number'=>'发票号码',
 'Product Code'=>'产品编号',
 'Qty'=>'数量',
@@ -1304,6 +1304,22 @@ $app_strings = array (
 'LBL_SELECT_FIELDS_TO_UDPATE_WITH_NEW_VALUE'=>'选择字段进行更新和提供新的内容。',
 
 'LBL_LOADING'=>'下载中...',
+
+//Added for Sub Products
+'Parent Product' => '上级产品',
+
+//Added for Service Contracts
+'Service Contracts' => '服务合同',
+'ServiceContracts' => '服务合同',
+'Services' => 'Services',
+	'LBL_REFRESH' => 'Refresh',
+	'LBL_Reminder' => 'Reminder',
+	'LBL_RESET_PASSWORD' => 'Reset Password',
+	'LBL_PHP_UPGRADE' => 'You have updated your php version. due changes in crypt API your password
+		  is no longer applicable, please reset your password.',
+	'LBL_RESET_PASSWORD_DESCRIPTION' => 'you can reset password for all users using a script and set it to thier respective
+			  user names.',
+
 );
 
 $app_list_strings = array (

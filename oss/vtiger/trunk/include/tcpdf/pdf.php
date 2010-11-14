@@ -125,11 +125,11 @@ function addCompany( $nom, $address, $location='' )
 	$y1 = $location[1];
 	//Positionnement en bas
 	$this->SetXY( $x1, $y1 );
-	$this->SetFont('Droidsansfallback','B',12);
+	$this->SetFont('Arial','B',12);
 	$length = $this->GetStringWidth( $nom );
 	$this->Cell( $length, 2, $nom);
 	$this->SetXY( $x1, $y1 + 4 );
-	$this->SetFont('Droidsansfallback','',10);
+	$this->SetFont('Arial','',10);
 	$length = $this->GetStringWidth( $address );
 	//Coordonnées de la société
 	$lines = $this->sizeOfText( $address, $length) ;
@@ -148,7 +148,7 @@ function title ($label, $total, $position)
 	$this->SetFillColor(192);
 	$this->RoundedRect($r1-16, $y1-1, 52, $y2+1, 2.5, 'DF');
 	$this->SetXY( $r1 + 4, $y1+1 );
-	$this->SetFont( "Droidsansfallback", "B", 15);
+	$this->SetFont( "Helvetica", "B", 15);
 	$this->Cell($width,5, $label." ".$total, 0, 0, "C");
 }
 
@@ -158,10 +158,10 @@ function addTextBlock( $title,$text,$positions )
 	$r1  = $positions[0];
 	$y1  = $positions[1];
 	$this->SetXY( $r1, $y1);
-	$this->SetFont( "Droidsansfallback", "B", 10);
+	$this->SetFont( "Helvetica", "B", 10);
 	$this->Cell( $positions[2], 4,$title);
 	$this->SetXY( $r1, $y1+4);
-	$this->SetFont( "Droidsansfallback", "", 10);
+	$this->SetFont( "Helvetica", "", 10);
 	$this->MultiCell( $positions[2], 4, $text);
 }
 
@@ -177,7 +177,7 @@ function tableWrapper($position)
 
 	$mid = $y1 + (13 / 2);
 	$width=10;
-	$this->RoundedRect($r1, $y1, ($r2 - $r1), $y2, 0, 'D');
+	$this->RoundedRect($r1, $y1, ($r2 - $r1), $y2, 4.5, 'D');
 	$this->Line( $r1, $mid, $r2, $mid);
 	$this->SetXY( $r1 + ($r2-$r1)/2 - 3, $y1+3 );
 	$this->SetXY( $r1 + ($r2-$r1)/2 - 5, $y1 + 9 );
@@ -198,10 +198,10 @@ function addBubble($page,$title,$position)
 	$this->RoundedRect($r1, $y1, ($r2 - $r1), $y2, 4.5, 'D');
 	$this->Line( $r1, $mid, $r2, $mid);
 	$this->SetXY( $r1 + ($r2-$r1)/2 - 3, $y1+3 );
-	$this->SetFont( "Droidsansfallback", "B", 10);
+	$this->SetFont( "Helvetica", "B", 10);
 	$this->Cell($width,5, $title, 0, 0, "C");
 	$this->SetXY( $r1 + ($r2-$r1)/2 - 5, $y1 + 9 );
-	$this->SetFont( "Droidsansfallback", "", 10);
+	$this->SetFont( "Helvetica", "", 10);
 	$this->MultiCell($width,5,$page, 0,0, "C");
 }
 
@@ -218,10 +218,10 @@ function addBubbleBlock ($page, $title, $position)
 	$this->RoundedRect($r1, $y1, ($r2 - $r1), $y2, 4.5, 'D');
 	$this->Line( $r1, $mid, $r2, $mid);
 	$this->SetXY( $r1 + ($r2-$r1)/2 - 5, $y1+3 );
-	$this->SetFont( "Droidsansfallback", "B", 10);
+	$this->SetFont( "Helvetica", "B", 10);
 	$this->Cell($width,5, $title, 0, 0, "C");
 	$this->SetXY( $r1 + ($r2-$r1)/2 - 5, $y1 + 9 );
-	$this->SetFont( "Droidsansfallback", "", 10);
+	$this->SetFont( "Helvetica", "", 10);
 	$this->Cell($width,5,$page, 0,0, "C");
 }
 
@@ -240,10 +240,10 @@ function addRecBlock( $data, $title, $postion )
 	$this->RoundedRect($r1, $y1, ($r2 - $r1), ($y2-$y1), 2.5, 'D');
 	$this->Line( $r1, $mid, $r2, $mid);
 	$this->SetXY( $r1 + ($r2-$r1)/2 -5 , $y1+1 );
-	$this->SetFont( "Droidsansfallback", "B", 10);
+	$this->SetFont( "Helvetica", "B", 10);
 	$this->Cell(10,4, $title, 0, 0, "C");
 	$this->SetXY( $r1 + ($r2-$r1)/2 -5 , $y1 + 5 );
-	$this->SetFont( "Droidsansfallback", "", 10);
+	$this->SetFont( "Helvetica", "", 10);
 	$this->Cell(10,4,$data, 0, 0, "C");
 }
 
@@ -264,11 +264,11 @@ function addDescBlock( $data, $title, $position )
 	$this->Line( $r1, $mid, $r2, $mid);
 
 	$this->SetXY( $position[0]+2 , $y1 + 1 );
-	$this->SetFont( "Droidsansfallback", "B", 10);
+	$this->SetFont( "Helvetica", "B", 10);
 	$this->Cell(10,4, $title);
 
 	$this->SetXY( $position[0]+2 , $y1 + 6 );
-	$this->SetFont( "Droidsansfallback", "", 10);
+	$this->SetFont( "Helvetica", "", 10);
 	$this->MultiCell(($length+36),4,$data);
 }
 
@@ -291,7 +291,7 @@ function addCols( $tab ,$positions ,$bottom, $taxtype = 'group')
 	$x1  = $positions[1];
 	$y2  = $bottom;
 	$this->SetXY( $r1, $y1 );
-	$this->SetFont( "Droidsansfallback", "", 10);
+	$this->SetFont( "Helvetica", "", 10);
 
 	$colX = $r1;
 	$columns = $tab;
@@ -356,7 +356,7 @@ function addProductLine( $line, $tab, $totals='' )
 
 function addTotalsRec($names, $totals, $positions)
 {
-	$this->SetFont( "Droidsansfallback", "B", 8);
+	$this->SetFont( "Arial", "B", 8);
 	$r1  = $positions[0];
 	$r2  = $r1 + 90;
 	$y1  = $positions[1];
@@ -386,16 +386,16 @@ function addTotalsRec($names, $totals, $positions)
 	$this->SetXY( $r1+66, $y1+5 );
 	$this->Cell( 10,4, $totals[3] );
 
-	$this->SetFont( "Droidsansfallback", "B", 6);
+	$this->SetFont( "Arial", "B", 6);
 	$this->SetXY( $r1+90, $y2 - 8 );
-	$this->SetFont( "Droidsansfallback", "", 10);
+	$this->SetFont( "Helvetica", "", 10);
 }
 
 // add a watermark (temporary estimate, DUPLICATA...)
 // call this method first
 function watermark( $text, $positions, $rotate = array('45','50','180') )
 {
-	$this->SetFont('Droidsansfallback','B',50);
+	$this->SetFont('Arial','B',50);
 	$this->SetTextColor(230,230,230);
 	$this->Rotate($rotate[0],$rotate[1],$rotate[2]);
 	$this->Text($positions[0],$positions[1],$text);

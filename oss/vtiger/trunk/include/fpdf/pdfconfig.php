@@ -19,7 +19,7 @@
 $bottom="130";//"130"
 
 //how may products per page 
-$products_per_page="2";//used in modules/{PO/SO/Quotes/Invoice}/CreatePDF.php
+$products_per_page="6";//used in modules/{PO/SO/Quotes/Invoice}/CreatePDF.php
 
 
 //where the top line starts

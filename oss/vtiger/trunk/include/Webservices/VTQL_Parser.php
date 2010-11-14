@@ -1,13 +1,4 @@
 <?php
-/*+***********************************************************************************
- * The contents of this file are subject to the vtiger CRM Public License Version 1.0
- * ("License"); You may not use this file except in compliance with the License
- * The Original Code is:  vtiger CRM Open Source
- * The Initial Developer of the Original Code is vtiger.
- * Portions created by vtiger are Copyright (C) vtiger.
- * All Rights Reserved.
- *************************************************************************************/
-
 /* Driver template for the PHP_VTQL_ParserrGenerator parser generator. (PHP port of LEMON)
 */
 
@@ -183,7 +174,7 @@ function buildSelectStmt($sqlDump){
 	$fieldcol = $meta->getFieldColumnMapping();
 	$columnTable = $meta->getColumnTableMapping();
 	$this->query = 'SELECT ';
-	if(is_string($this->out['column_list']) && strcmp($sqlDump['column_list'],'*')===0){
+	if(in_array('*', $sqlDump['column_list'])){
 		$i=0;
 		foreach($fieldcol as $field=>$col){
 			if($i===0){
@@ -193,7 +184,7 @@ function buildSelectStmt($sqlDump){
 				$this->query = $this->query.','.$columnTable[$col].'.'.$col;
 			}
 		}
-	}else if(is_string($this->out['column_list']) && strcmp($sqlDump['column_list'],'count(*)')===0){
+	}else if(in_array('count(*)', $sqlDump['column_list'])){
 		$this->query = $this->query." COUNT(*)";
 	}else{
 		$i=0;
@@ -212,6 +203,7 @@ function buildSelectStmt($sqlDump){
 	$this->query = $this->query.' FROM '.$sqlDump['tableName'].$sqlDump['defaultJoinConditions'];
 	$deletedQuery = $meta->getEntityDeletedQuery();
 	$accessControlQuery = $meta->getEntityAccessControlQuery();
+	$this->query = $this->query.' '.$accessControlQuery;
 	if($sqlDump['where_condition']){
 		if((sizeof($sqlDump['where_condition']['column_names']) == 
 		sizeof($sqlDump['where_condition']['column_values'])) && 
@@ -272,7 +264,7 @@ function buildSelectStmt($sqlDump){
 		$this->query = $this->query.")";
 		$nextToken = ' AND ';
 	}else{
-		if(!empty($deletedQuery) || !empty($accessControlQuery)){
+		if(!empty($deletedQuery)){
 			$nextToken = " WHERE ";
 		}
 	}
@@ -287,7 +279,6 @@ function buildSelectStmt($sqlDump){
 	}
 	
 	$this->query = $this->query.' '.$deletedQuery;
-	$this->query = $this->query.' '.$accessControlQuery;
 	
 	if($sqlDump['orderby']){
 		$i=0;
@@ -1184,20 +1175,20 @@ $this->out['column_list'][] = $this->yystack[$this->yyidx + 0]->minor;
 #line 1181 "e:\workspace\nonadmin\pkg\vtiger\extensions\Webservices\VTQL_parser.php"
 #line 22 "e:\workspace\nonadmin\pkg\vtiger\extensions\Webservices\VTQL_parser.y"
     function yy_r3(){
-$this->out['column_list'] = $this->yystack[$this->yyidx + 0]->minor;
+$this->out['column_list'][] = $this->yystack[$this->yyidx + 0]->minor;
     }
 #line 1186 "e:\workspace\nonadmin\pkg\vtiger\extensions\Webservices\VTQL_parser.php"
 #line 25 "e:\workspace\nonadmin\pkg\vtiger\extensions\Webservices\VTQL_parser.y"
     function yy_r4(){
-$this->out['column_list'] = 'count(*)';
+$this->out['column_list'][] = 'count(*)';
     }
 #line 1191 "e:\workspace\nonadmin\pkg\vtiger\extensions\Webservices\VTQL_parser.php"
 #line 30 "e:\workspace\nonadmin\pkg\vtiger\extensions\Webservices\VTQL_parser.y"
     function yy_r7(){
-if(is_array($this->out["column_list"])){
+if(!in_array("*", $this->out["column_list"]) && !in_array("count(*)", array_map(strtolower, $this->out["column_list"]))){
 if(!in_array("id",$this->out["column_list"])){
 	$this->out["column_list"][] = "id";
-} 
+}
 }
 $moduleName = $this->yystack[$this->yyidx + 0]->minor;
 if(!$moduleName){
@@ -1339,9 +1330,9 @@ $this->out['meta'] = $objectMeta;
 $meta = $this->out['meta'];
 $fieldcol = $meta->getFieldColumnMapping();
 $columns = array();
-if(is_string($this->out['column_list']) && strcmp($this->out['column_list'],'*')===0){
+if(in_array('*', $this->out['column_list'])){
 $columns = array_values($fieldcol);
-}else if(is_string($this->out['column_list']) && strcmp($this->out['column_list'],'count(*)')!==0){
+}elseif( !in_array('count(*)', array_map(strtolower, $this->out['column_list']))){
 foreach($this->out['column_list'] as $ind=>$field){
 $columns[] = $fieldcol[$field];
 }
@@ -1352,7 +1343,7 @@ $columns[] = $fieldcol[$field];
 }
 }
 $tables = $this->getTables($this->out, $columns);
-if(sizeof($tables)===0){
+if(!in_array($objectMeta->getEntityBaseTable(), $tables)){
 $tables[] = $objectMeta->getEntityBaseTable();
 }
 $defaultTableList = $objectMeta->getEntityDefaultTableList();

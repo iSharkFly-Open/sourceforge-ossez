@@ -9,9 +9,9 @@
  ********************************************************************************/
 
 	
-	var alert_arr = {       DELETE:'Are you sure you want to delete the selected ',
-                                RECORDS:' records?',
-                                SELECT:'Please select at least one entity',
+	var alert_arr = {       DELETE:'确定删除已选择的内容吗 ',
+                                RECORDS:' 记录？',
+                                SELECT:'请至少选择一个实体',
                                 DELETE_ACCOUNT:'Deleting this account(s) will remove its related Potentials & Quotes. Are you sure you want to delete the selected ',
                                 DELETE_VENDOR:'Deleting this vendor(s) will remove its related Purchase Orders. Are you sure you want to delete the selected ',
                                 SELECT_MAILID:'Please Select a mailid',

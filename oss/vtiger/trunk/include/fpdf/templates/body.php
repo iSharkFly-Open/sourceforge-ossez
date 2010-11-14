@@ -94,12 +94,12 @@ if($focus->column_fields["hdnTaxType"] != "individual")
 	$pdf->drawLine($lineData);
 	$data= $app_strings['LBL_NET_TOTAL'].":";//                                                                  ".$price_subtotal."";
 	$pdf->SetXY( 105 , ($nettotal_y+(0*$next_y)) );
-	$pdf->SetFont( "stsongstdlight", "", 10);
+	$pdf->SetFont( "Helvetica", "", 10);
 	$pdf->MultiCell(110, 4, $data);
 
 //Added for value field alignment
         $pdf->SetXY( $space[strlen($price_subtotal)] , ($nettotal_y+(0*$next_y)) );
-        $pdf->SetFont( "stsongstdlight", "", 10);
+        $pdf->SetFont( "Helvetica", "", 10);
         $pdf->MultiCell(110, 4, $price_subtotal);
 
 
@@ -112,36 +112,36 @@ if($focus->column_fields["hdnTaxType"] != "individual")
 	else
 		$data= $app_strings['LBL_DISCOUNT'].":";//                                                                  ".$price_discount."";
 	$pdf->SetXY( 105 , ($nettotal_y+(1*$next_y)) );
-	$pdf->SetFont( "stsongstdlight", "", 10);
+	$pdf->SetFont( "Helvetica", "", 10);
 	$pdf->MultiCell(110, 4, $data);
 
 //Added for value field alignment
         $pdf->SetXY( $space[strlen($price_discount)] , ($nettotal_y+(1*$next_y)) );
-        $pdf->SetFont( "stsongstdlight", "", 10);
+        $pdf->SetFont( "Helvetica", "", 10);
         $pdf->MultiCell(110, 4, $price_discount);
 
 	$lineData=array("105",$bottom+49,"94");
 	$pdf->drawLine($lineData);
 	$data= $app_strings['LBL_TAX'].":  ($group_total_tax_percent %)";//                                                                  ".$price_salestax."";
 	$pdf->SetXY( 105 , ($nettotal_y+(2*$next_y)) );
-	$pdf->SetFont( "stsongstdlight", "", 10);
+	$pdf->SetFont( "Helvetica", "", 10);
 	$pdf->MultiCell(110, 4, $data);
 
 	//Added for value field alignment
 	$pdf->SetXY( $space[strlen($price_salestax)] , ($nettotal_y+(2*$next_y)) );
-	$pdf->SetFont( "stsongstdlight", "", 10);
+	$pdf->SetFont( "Helvetica", "", 10);
 	$pdf->MultiCell(110, 4, $price_salestax);
 
 	$lineData=array("105",$bottom+55,"94");
 	$pdf->drawLine($lineData);
 	$data = $app_strings['LBL_SHIPPING_AND_HANDLING_CHARGES'].":";//                                  ".$price_shipping;
 	$pdf->SetXY( 105 , ($nettotal_y+(3*$next_y)) );
-	$pdf->SetFont( "stsongstdlight", "", 10);
+	$pdf->SetFont( "Helvetica", "", 10);
 	$pdf->MultiCell(110, 4, $data);
 
 //Added for value field alignment
         $pdf->SetXY( $space[strlen($price_shipping)] , ($nettotal_y+(3*$next_y)) );
-        $pdf->SetFont( "stsongstdlight", "", 10);
+        $pdf->SetFont( "Helvetica", "", 10);
         $pdf->MultiCell(110, 4, $price_shipping);
 }
 else
@@ -151,13 +151,13 @@ else
 	$pdf->drawLine($lineData);
 	$data= $app_strings['LBL_NET_TOTAL'].":";//                                              ".$price_subtotal."";
 	$pdf->SetXY( 105 , ($nettotal_y+(1*$next_y)) );
-	$pdf->SetFont( "stsongstdlight", "", 10);
+	$pdf->SetFont( "Helvetica", "", 10);
 	$pdf->MultiCell(110, 4, $data);
 
 // added for value field allignment
 
 	$pdf->SetXY( $space[strlen($price_subtotal)] , ($nettotal_y+(1*$next_y)) );
-        $pdf->SetFont( "stsongstdlight", "", 10);
+        $pdf->SetFont( "Helvetica", "", 10);
         $pdf->MultiCell(110, 4,$price_subtotal);
 
 
@@ -171,11 +171,11 @@ else
 		$data= $app_strings['LBL_DISCOUNT'].":";//                                                                   ".$price_discount."";
 
 	$pdf->SetXY( 105 , ($nettotal_y+(2*$next_y)) );
-	$pdf->SetFont( "stsongstdlight", "", 10);
+	$pdf->SetFont( "Helvetica", "", 10);
 	$pdf->MultiCell(110, 4, $data);
 //Added for value field alignment
         $pdf->SetXY( $space[strlen($price_discount)] , ($nettotal_y+(2*$next_y)) );
-        $pdf->SetFont( "stsongstdlight", "", 10);
+        $pdf->SetFont( "Helvetica", "", 10);
         $pdf->MultiCell(110, 4, $price_discount);
 
 
@@ -183,13 +183,13 @@ else
 	$pdf->drawLine($lineData);
 	$data = $app_strings['LBL_SHIPPING_AND_HANDLING_CHARGES'].":";//                                  ".$price_shipping;
 	$pdf->SetXY( 105 , ($nettotal_y+(3*$next_y)) );
-	$pdf->SetFont( "stsongstdlight", "", 10);
+	$pdf->SetFont( "Helvetica", "", 10);
 	$pdf->MultiCell(110, 4, $data);
 
 //Added for value field alignment
 
         $pdf->SetXY( $space[strlen($price_shipping)] , ($nettotal_y+(3*$next_y)) );
-        $pdf->SetFont( "stsongstdlight", "", 10);
+        $pdf->SetFont( "Helvetica", "", 10);
         $pdf->MultiCell(110, 4, $price_shipping);
 
 }
@@ -199,24 +199,24 @@ $lineData=array("105",$bottom+61,"94");
 $pdf->drawLine($lineData);
 $data = $app_strings['LBL_TAX_FOR_SHIPPING_AND_HANDLING'].":  ($sh_tax_percent %)";//               ".$price_shipping_tax;
 $pdf->SetXY( 105 , ($nettotal_y+(4*$next_y)) );
-$pdf->SetFont( "stsongstdlight", "", 10);
+$pdf->SetFont( "Helvetica", "", 10);
 $pdf->MultiCell(110, 4, $data);
 
 //Added for value field alignment
 $pdf->SetXY( $space[strlen($price_shipping_tax)] , ($nettotal_y+(4*$next_y)) );
-$pdf->SetFont( "stsongstdlight", "", 10);
+$pdf->SetFont( "Helvetica", "", 10);
 $pdf->MultiCell(110, 4, $price_shipping_tax);
 
 $lineData=array("105",$bottom+67,"94");
 $pdf->drawLine($lineData);
 $data = $app_strings['LBL_ADJUSTMENT'].":";//                                                                   ".$price_adjustment;
 $pdf->SetXY( 105 , ($nettotal_y+(5*$next_y)) );
-$pdf->SetFont( "stsongstdlight", "", 10);
+$pdf->SetFont( "Helvetica", "", 10);
 $pdf->MultiCell(110, 4, $data);
 
 //Added for value field alignment
 $pdf->SetXY( $space[strlen($price_adjustment)] , ($nettotal_y+(5*$next_y)) );
-$pdf->SetFont( "stsongstdlight", "", 10);
+$pdf->SetFont( "Helvetica", "", 10);
 $pdf->MultiCell(110, 4, $price_adjustment);
 
 
@@ -224,12 +224,12 @@ $lineData=array("105",$bottom+73,"94");
 $pdf->drawLine($lineData);
 $data = $app_strings['LBL_GRAND_TOTAL'].":(in $currency_symbol)";//                                                    ".$price_total;
 $pdf->SetXY( 105 , ($nettotal_y+(6*$next_y)) );
-$pdf->SetFont( "stsongstdlight", "", 10);
+$pdf->SetFont( "Helvetica", "", 10);
 $pdf->MultiCell(110, 4, $data);
 
 //Added for value field alignment
 $pdf->SetXY( $space[strlen($price_total)] , ($nettotal_y+(6*$next_y)) );
-$pdf->SetFont( "stsongstdlight", "", 10);
+$pdf->SetFont( "Helvetica", "", 10);
 $pdf->MultiCell(110, 4, $price_total);
 
 /* ************** End Totals *********************** */
