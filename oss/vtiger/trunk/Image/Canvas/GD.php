@@ -1354,7 +1354,6 @@ class Image_Canvas_GD extends Image_Canvas_WithMap
         $alignment = (isset($params['alignment']) ? $params['alignment'] : false);
 
         $text = str_replace("\r", '', $text);
-   
 
         if (!is_array($alignment)) {
             $alignment = array('vertical' => 'top', 'horizontal' => 'left');
