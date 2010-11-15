@@ -71,11 +71,11 @@ $mod_strings = Array(
 'Telemarketing'=>'Telemarketing',
 'Others'=>'Others',
 
-'Planning'=>'Planning',						      	    
-'Active'=>'Active',	
+'Planning'=>'Planning',
+'Active'=>'Active',
 'Inactive'=>'Inactive',
 'Complete'=>'Complete',
-'Cancelled'=>'Cancelled',							      
+'Cancelled'=>'Cancelled',
 
 'Excellent'=>'Excellent',
 'Good'=>'Good',
