@@ -5,7 +5,7 @@
  * ---------------------------------------------
  * HA WEBSYSTEMS
  * http://www.hawebs.net
- * https://www.hawebs.org/forums/computer/
+ * http://forums.hawebs.net/computer/index.php
  *
  * CONTACT
  * huyuchengus@gmail.com / yuchenghu@hawebs.net
