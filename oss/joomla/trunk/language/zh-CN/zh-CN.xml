@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Id: zh-CN.xml 129 2008-07-08 09:45:23Z protege $ -->
-<metafile version="1.5.20" client="site">
+<metafile version="1.5.22" client="site">
 	<name>简体中文 (Simplified Chinese)</name>
-	<version>1.5.20</version>
-	<creationDate>2010-07-30</creationDate>
+	<version>1.5.22</version>
+	<creationDate>2010-12-324</creationDate>
 	<author>YUCHENG HU</author>
-	<authorEmail>huyuchengus@gmail.com</authorEmail>
+	<authorEmail>service@hawebs.net</authorEmail>
 	<authorUrl>www.hawebs.net</authorUrl>
-	<copyright>HA WEBSYSTEMS (C) 2006-2010</copyright>
+	<copyright>HA WEBSYSTEMS (C) 2006-2011</copyright>
 	<license>http://www.gnu.org/licenses/gpl-3.0-standalone.html</license>
 	<description>Joomla 简体中文语言支持, YUCHENG HU, Manchester, NH 03103</description>
 	<metadata>
