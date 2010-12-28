@@ -194,7 +194,7 @@ $mod_strings=Array(
 //Added for 4.2 Release -- CustomView
 'Name'=>'名称',
 'LBL_ALL'=>'全部',
-'LBL_MAXIMUM_LIMIT_ERROR'=>'抱歉，文件超过系统限制，请保持上传文件在800000bytes以下',
+'LBL_MAXIMUM_LIMIT_ERROR'=>'抱歉，文件超过系统限制，请保持上传文件在 80KB 以下',
 'LBL_UPLOAD_ERROR'=>'上传失败，请重试！',
 'LBL_IMAGE_ERROR'=>'提供的文件不是图片格式(.gif/.jpg/.png)',
 'LBL_INVALID_IMAGE'=>'文件有误或是没有数据',
