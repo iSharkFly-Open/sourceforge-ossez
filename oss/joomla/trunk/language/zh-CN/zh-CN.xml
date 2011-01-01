@@ -3,13 +3,13 @@
 <metafile version="1.5.22" client="site">
 	<name>简体中文 (Simplified Chinese)</name>
 	<version>1.5.22</version>
-	<creationDate>2010-12-324</creationDate>
+	<creationDate>2011-01-01</creationDate>
 	<author>YUCHENG HU</author>
 	<authorEmail>service@hawebs.net</authorEmail>
 	<authorUrl>www.hawebs.net</authorUrl>
 	<copyright>HA WEBSYSTEMS (C) 2006-2011</copyright>
 	<license>http://www.gnu.org/licenses/gpl-3.0-standalone.html</license>
-	<description>Joomla 简体中文语言支持, YUCHENG HU, Manchester, NH 03103</description>
+	<description>Joomla 简体中文语言支持, 罕布什尔 (中国)信息技术有限公司 - [OSS 计算技术]提供版本升级服务。</description>
 	<metadata>
 		<name>简体中文</name>
 		<tag>zh-CN</tag>
