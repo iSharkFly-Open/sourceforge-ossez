@@ -2,14 +2,14 @@
 <install version="1.5.20" method="upgrade" client="both" type="language">
     <name>简体中文 ()</name>
     <tag>zh-CN</tag>
-    <version>1.5.20</version>
-    <creationdate>2010-08-13</creationdate>
+    <version>1.5.22</version>
+    <creationdate>2010-01-01</creationdate>
     <author>Joomla 简体中文 - YUCHENG HU</author>
-    <authorEmail>huyuchengus@gmail.com</authorEmail>
+    <authorEmail>service@hawebs.net</authorEmail>
 	<authorUrl>www.hawebs.net</authorUrl>
-    <copyright>HA WEBSYSTEMS (C) 2006-2010</copyright>
+    <copyright>HA WEBSYSTEMS (C) 2006-2011</copyright>
 	<license>http://www.gnu.org/licenses/gpl-3.0-standalone.html</license>
-    <description>Joomla 简体中文 NB 20100813 已被成功安装了, YUCHENG HU, Manchester, NH 03103</description>
+    <description>Joomla 简体中文 NB 20110101 已被成功安装。罕布什尔 (中国)信息技术有限公司 - [OSS 计算技术]提供版本升级服务。</description>
     <administration>
       <files folder="administrator">
       	<filename file="meta">zh-CN.xml</filename>
