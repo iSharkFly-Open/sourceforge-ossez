@@ -17,89 +17,117 @@
 <project name="Joomla" default="zh_cn.lang" basedir=".">
 	
 	<!-- Settings -->
-	<property name="project.name" value="Joomla"/>
-	<property name="current.rev" value="1.5.20"/>
+    <property name="project.name" value="Joomla"/>
+    <property name="current.rev" value="1.5.22"/>
 	
-	<property name="project.installation" value="installation"/>
+    <property name="project.installation" value="installation"/>
 	
-	<property name="administrator.folder.name" value="administrator"/>
-	<property name="front.folder.name" value="site"/>
-	
-	
-	<property name="install.dir" value="makeinstall"/>
-	<property name="out.dir" value="Releases"/>
-	<property name="temp.dir" value="temp"/>
+    <property name="administrator.folder.name" value="administrator"/>
+    <property name="front.folder.name" value="site"/>
 
-	<tstamp prefix="hawebs">
-	        <format property="nightly.build.number" pattern="yyyyMMdd"/>
-	</tstamp>
+    <property name="install.dir" value="makeinstall"/>
+    <property name="out.dir" value="Releases"/>
+    <property name="temp.dir" value="temp"/>
+
+    <property name="extensiondev.dir" value="extensiondev"/>
+
+    <tstamp prefix="hawebs">
+        <format property="nightly.build.number" pattern="yyyyMMdd"/>
+    </tstamp>
 	
-	<target name="zh_cn.lang">
-		<zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_zh_cn_${current.rev}_${hawebs.nightly.build.number}.zip" 
+    <target name="zh_cn.lang">
+        <zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_zh_cn_${current.rev}_NB_${hawebs.nightly.build.number}.zip"
 			basedir="${basedir}"
 			includes="**/zh-CN.*,Readme_zh.txt,zh-CN.xml"
 		/>
-	</target>
+    </target>
 	
-	<target name="zh_cn.install">
-			<zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_${project.installation}_zh_cn_${current.rev}_${hawebs.nightly.build.number}.zip" 
+    <target name="zh_cn.install">
+        <zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_${project.installation}_zh_cn_${current.rev}_NB_${hawebs.nightly.build.number}.zip"
 				basedir="${basedir}${file.separator}${install.dir}"
 			/>
-		</target>
-	<target name="ai_package" depends="copy.lang.files, zip.lang.files, clean" />
+    </target>
+    <target name="ai_package" depends="copy.lang.files, zip.lang.files, clean" />
 	
 	
-	<target name="copy.lang.files">
-		<antcall target="copy.admin.ini" />
-		<antcall target="copy.front.ini" />
-		<antcall target="copy.pdf.font" />
-		<antcall target="copy.install.script" />
-	</target>
-	<target name="zip.lang.files">
-		<zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_AI_zh_cn_${current.rev}_${hawebs.nightly.build.number}.zip" 
+    <target name="copy.lang.files">
+        <antcall target="copy.admin.ini" />
+        <antcall target="copy.front.ini" />
+        <antcall target="copy.pdf.font" />
+        <antcall target="copy.install.script" />
+    </target>
+    <target name="zip.lang.files">
+        <zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_AI_zh_cn_${current.rev}_${hawebs.nightly.build.number}.zip"
 			basedir="${temp.dir}"
 			includes="**/*.*"
 		/>
-	</target>
+    </target>
 	
-	<target name="copy.admin.ini">
-		<copydir src="${basedir}/administrator/language/zh-CN"
+    <target name="copy.admin.ini">
+        <copydir src="${basedir}/administrator/language/zh-CN"
 			dest="${basedir}/${temp.dir}/${administrator.folder.name}"
 
 		/>
-	</target>
+    </target>
 	
-	<target name="copy.front.ini">
-		<copydir src="${basedir}/language/zh-CN"
+    <target name="copy.front.ini">
+        <copydir src="${basedir}/language/zh-CN"
 			dest="${basedir}/${temp.dir}/${front.folder.name}"
 		/>
-	</target>
+    </target>
 	
-	<target name="copy.pdf.font">
-		<copy todir="${temp.dir}">
-			<fileset dir="${basedir}/language/pdf_fonts">
-				<include name="**/droidsansfallback.ctg.z"/>
-				<include name="**/droidsansfallback.php"/>
-				<include name="**/droidsansfallback.z"/>
-		    </fileset>
-		  </copy>
-	</target>
 	
-	<target name="copy.install.script">
-		<copy todir="${temp.dir}">
-			<fileset dir="resources">
-				<include name="**/install.xml"/>
-			</fileset>
-		</copy>
-	</target>
+    <target name="copy.pdf.font">
+	<!--
+        <copy todir="${temp.dir}">
+            <fileset dir="${basedir}/language/pdf_fonts">
+                <include name="**/droidsansfallback.ctg.z"/>
+                <include name="**/droidsansfallback.php"/>
+                <include name="**/droidsansfallback.z"/>
+            </fileset>
+        </copy>
+        -->
+		  
+    </target>
 	
-	<target name="clean" description="Delete all generated files">
-		<delete failonerror="false" includeEmptyDirs="true">
-			<fileset dir="${temp.dir}"/>
-		</delete>
-	</target>
+    <target name="copy.install.script">
+        <copy todir="${temp.dir}">
+            <fileset dir="resources">
+                <include name="**/install.xml"/>
+            </fileset>
+        </copy>
+    </target>
 	
+    <target name="clean" description="Delete all generated files">
+        <delete failonerror="false" includeEmptyDirs="true">
+            <fileset dir="${temp.dir}"/>
+        </delete>
+    </target>
+
+    <target name="vtigerforms">
+        <zip zipfile="${basedir}${file.separator}${extensiondev.dir}${file.separator}releases\vtigerforms\com.zip"
+			basedir="${basedir}\${extensiondev.dir}\src\vtigerforms\com"
+			includes="**/*.*"
+		/>
+        <zip zipfile="${basedir}${file.separator}${extensiondev.dir}${file.separator}releases\vtigerforms\mod.zip"
+			basedir="${basedir}\${extensiondev.dir}\src\vtigerforms\mod"
+			includes="**/*.*"
+		/>
+    </target>
+    
+    <target name="arrauser">
+        <zip zipfile="${basedir}\${extensiondev.dir}\releases\arrauser_NB_${hawebs.nightly.build.number}.zip"
+			basedir="${basedir}\${extensiondev.dir}\src\arrauser"
+			includes="**/*.*"
+		/>
+    </target>
+
+    <target name="joomsef">
+        <zip zipfile="${basedir}\${extensiondev.dir}\releases\joomsef_NB_${hawebs.nightly.build.number}.zip"
+			basedir="${basedir}\${extensiondev.dir}\src\joomsef"
+			includes="**/*.*"
+		/>
+    </target>
 
 
-	
 </project>
