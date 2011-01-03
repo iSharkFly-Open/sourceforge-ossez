@@ -15,26 +15,153 @@
   * -->
 
 <project name="vTiger" default="zh_cn.lang" basedir=".">
-	
-	<!-- dita.dir should point to the toolkit's root directory -->
+
+	<!-- Settings -->
 	<property name="project.name" value="vTiger"/>
-	<property name="current.rev" value="5.1"/>
-	
+	<property name="current.rev" value="5.2.1"/>
+
 	<property name="out.dir" value="Releases"/>
+	<property name="temp.dir" value="temp"/>
+	<property name="zh_cn" value="zh_cn"/>
+	<property name="zh_tw" value="zh_tw"/>
+	<property name="package.dir" value="extensions/package/debug"/>
 
 	<tstamp prefix="hawebs">
-        <format property="nightly.build.number" pattern="yyyyMMdd"/>
-    </tstamp>
-
-	
+		<format property="nightly.build.number" pattern="yyyyMMdd"/>
+	</tstamp>
 
 	<target name="zh_cn.lang">
-		<zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_zh_cn_${current.rev}_${hawebs.nightly.build.number}.zip" 
+		<zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_${zh_cn}_${current.rev}_${hawebs.nightly.build.number}.zip" 
 			basedir="${basedir}"
-			includes="**/zh_cn.lang.php,Readme_zh.txt"
+			includes="**/${zh_cn}.lang.php,Readme_zh.txt"
 	/>
 	</target>
 
+	<target name="zh_tw.lang">
+		<zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_${zh_tw}_${current.rev}_${hawebs.nightly.build.number}.zip" 
+				basedir="${basedir}"
+				includes="**/${zh_tw}.lang.php,Readme_tw.txt"
+		/>
+	</target>
 
+	<!-- ================================= 
+          target: name              
+         ================================= -->
+	<target name="ai_package_zh_cn" depends="copy.lang.files.zh_cn, zip.lang.files.zh_cn, clean" description="description">
+
+	</target>
+
+	<target name="ai_package_zh_tw" depends="copy.lang.files.zh_tw, zip.lang.files.zh_tw, clean" description="description">
+
+	</target>
+
+	<target name="copy.lang.files.zh_cn">
+		<antcall target="copy.lang.zh_cn" />
+		<antcall target="copy.install.script.zh_cn" />
+	</target>
+
+	<target name="copy.lang.files.zh_tw">
+		<antcall target="copy.lang.zh_tw" />
+		<antcall target="copy.install.script.zh_tw" />
+	</target>
+
+	<target name="zip.lang.files.zh_cn">
+		<zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_AI_zh_cn_${current.rev}_${hawebs.nightly.build.number}.zip" 
+				basedir="${temp.dir}"
+				includes="**/*.*"
+			/>
+	</target>
+	<target name="zip.lang.files.zh_tw">
+		<zip zipfile="${basedir}${file.separator}${out.dir}${file.separator}${project.name}_AI_zh_tw_${current.rev}_${hawebs.nightly.build.number}.zip" 
+					basedir="${temp.dir}"
+					includes="**/*.*"
+				/>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: copy.lang - zh_cn                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="copy.lang.zh_cn">
+		<copy todir="${temp.dir}">
+			<fileset dir="${basedir}">
+				<include name="**/zh_cn.lang.php"/>
+				<include name="**/zh_cn.lang.js"/>
+			</fileset>
+		</copy>
+	</target>
+
+
+	<target name="copy.lang.zh_tw">
+		<copy todir="${temp.dir}">
+			<fileset dir="${basedir}">
+				<include name="**/zh_tw.lang.php"/>
+				<include name="**/zh_tw.lang.js"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: copy.install.script - zh_cn                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="copy.install.script.zh_cn">
+		<copy todir="${temp.dir}">
+			<fileset dir="${basedir}/extensions/zh_cn">
+				<include name="**/*.*"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: copy.install.script - zh_tw                      
+	         - - - - - - - - - - - - - - - - - -->
+	<target name="copy.install.script.zh_tw">
+		<copy todir="${temp.dir}">
+			<fileset dir="${basedir}/extensions/zh_tw">
+				<include name="**/*.*"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: Clean                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="clean" description="Delete all generated files">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${temp.dir}"/>
+		</delete>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: PDF_ZH                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="PDF_ZH">
+		<delete failonerror="false" includeEmptyDirs="true">
+			<fileset dir="${package.dir}"/>
+		</delete>
+
+		<!--	<copy todir="${package.dir}/include/tcpdf">
+			<fileset dir="${basedir}/include/tcpdf">
+				<include name="**/*.*" />
+			</fileset>
+		</copy> -->
+
+		<copy todir="${package.dir}/modules">
+			<fileset dir="${basedir}/modules">
+				<include name="**/SalesOrderPDFHeaderViewer.php" />
+				<include name="**/CreatePDF.php" />
+				<include name="**/CreateXL.php" />
+			</fileset>
+		</copy>
+		<copy todir="${package.dir}/vtlib">
+			<fileset dir="${basedir}/vtlib">
+				<include name="**/ContentViewer.php" />
+				<include name="**/ContentViewer2.phpp" />
+			</fileset>
+		</copy>
+
+
+
+	</target>
 
 </project>
