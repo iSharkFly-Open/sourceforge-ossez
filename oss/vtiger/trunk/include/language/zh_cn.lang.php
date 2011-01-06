@@ -21,7 +21,7 @@
  * ---------------------------------------------
  */
 $app_strings = array (
-'LBL_BROWSER_TITLE' => 'vTiger CRM 5 - 商用开源客户关系管理系统',
+'LBL_BROWSER_TITLE' => 'XCRM - 商用客户关系管理系统',
 'LBL_MY_ACCOUNT' => '我的客户',
 'LBL_MY_PREFERENCES' => '我的设定',
 'LBL_ADMIN' => '后台管理',
@@ -63,7 +63,7 @@ $app_strings = array (
 'LBL_FIND_BUTTON' => '查找',
 'LBL_CONVERT_BUTTON_TITLE' => '转换 [Alt+C]',
 'LBL_CONVERT_BUTTON_KEY' => 'C',
-'LBL_CONVERT_BUTTON_LABEL' => '改换潜在客户',
+'LBL_CONVERT_BUTTON_LABEL' => '转换潜在客户为客户',
 'LBL_TABCUSTOMISE_BUTTON_KEY' => 'C',
 'LBL_TABCUSTOMISE_BUTTON_LABEL' => '设定个别选项',
 'LBL_ROLES_BUTTON_LABEL' => '显示职位',
@@ -325,6 +325,7 @@ $app_strings = array (
 'LBL_NONE_NO_LINE' => '无',
 'LBL_SELECT_GROUP' => '选择用户组',
 'LBL_HOUR_AND_MINUTE' => '(小时/分钟)',
+
 'YEAR_MONTH_DATE' => '24:00',
 'COMBO_LEADS' => '负责人',
 'COMBO_ACCOUNTS' => '客户',
@@ -393,7 +394,6 @@ $app_strings = array (
 'Home' => '首页',
 'Campaigns' => '活动',
 'PriceBooks' => '价格表',
-'Notes' => '记事',
 'Faq' => '常见问答',
 'Dashboards' => '统计图表',
 'Reports' => '报表',
@@ -401,6 +401,7 @@ $app_strings = array (
 'Rss' => '新闻',
 'Portal' => '我的网站',
 'Webmails' => '网页邮件',
+'ProjectMilestone' => '项目里程碑',
 'Activity History' => '存取纪录',
 'Ticket History' => '传票纪录',
 'Purchase Order' => '采购订单',
@@ -651,6 +652,7 @@ $app_strings = array (
 'less_than'=>'小于',
 'greater_or_equal'=>'大或等于',
 'less_or_equal'=>'少于或等于',
+
 //For Product Details
 'LABEL_SET_DISCOUNT_FOR_COLON'=>'订折扣 :',
 'LABEL_SET_TAX_FOR'=>'定税',
@@ -690,6 +692,7 @@ $app_strings = array (
 'Task_Not_completed' => '任务尚未完成',
 'Too_many_pending_tickets' => '太多等候传票',
 'Dear_Admin_too_ many_tickets_pending' => 'Dear Admin,<br> 这里通知你，有太多的传票没有解决，应该采取必要行动<br><br> Thanks and Regards,<br> HelpDesk Team<br>',
+
 //Added for java script alerts
 'DELETE_CONFIRMATION' => '您确认要删除选定 ',
 'SELECT_ATLEAST_ONE' => '请至少选择一个实体',
@@ -890,7 +893,6 @@ $app_strings = array (
 'LBL_CREATING_NEW_Campaigns' => '创建新的活动',
 'LBL_CREATING_NEW_Leads' => '创建新的负责人',
 'LBL_CREATING_NEW_Accounts' => '创建新的客户',
-'LBL_CREATING_NEW_Notes' => '创建新的日记',
 'LBL_CREATING_NEW_Potentials' => '创建新的潜在机会',
 'LBL_CREATING_NEW_Quotes' => '创建新的报价',
 'LBL_CREATING_NEW_SalesOrder' => '创建新的销售订单',
@@ -904,7 +906,7 @@ $app_strings = array (
 
 'LBL_SEND_EMAIL_PDF' => 'PDF格式发送电子邮件', 
 'LBL_UPDATE' => '升级',
-
+//Added for incoming mail server settings form js validation
 'ERR_INVALID_PAGE_COUNT' => "无效页计数",
 'LBL_CAL_LIMIT_MSG'=>'对不起，年份必须在1970年至2037年期间',
 
@@ -926,21 +928,6 @@ $app_strings = array (
 'Support Start Date' => '支持开始日期',
 'Support End Date' => '支持结束日期',
 
-'Mailing Street' => '邮寄街',
-
-'Other Street' => '其他街道',
-'Mailing City' => '邮寄全市',
-'Other City' => '其他城市',
-'Mailing State' => '邮件状态',
-'Other State' => '其他国家',
-'Mailing Zip' => '邮寄邮编',
-'Other Zip' => '其他邮编',
-
-'Mailing Country' => '邮寄全国',
-'Other Country' => '其他国家',
-'Mailing Po Box' => '邮寄邮政信箱',
-'Other Po Box' => '其他邮政信箱',
-'Contact Image' => '接触式图像',
 //Export Records STARTS--->
 'LBL_EXPORT_TYPE_1'=>'导出型1:',
 'LBL_EXPORT_TYPE_2'=>'导出型2:',
@@ -971,8 +958,8 @@ $app_strings = array (
 
 //Added for Existing Picklist Strings for both Lead module (convert div) and for potential module.
 
-'Prospecting'=>'Prospecting',
-'Qualification'=>'Qualification',
+'Prospecting'=>'展望',
+'Qualification'=>'限定条件',
 'Needs Analysis'=>'需求分析',
 'Value Proposition'=>'价值主张',
 'Id. Decision Makers'=>'Id. Decision Makers',
@@ -988,53 +975,6 @@ $app_strings = array (
 'as'=>'as',
 'ie'=>'ie.,',
 'add_at_end_of_file'=>'Please add the following lines at the end of the file config.inc.php',
-//Added to Fix i18N issue in Email Template
-'Account_Account_Name'=>'Account: Account Name',
-'Account_Account_Type'=>'Account: Account Type',
-'Account_Industry'=>'Account: Industry',
-'Account_Annual_Revenue'=>'Account: Annual Revenue',
-'Account_Phone'=>'Account: Phone',
-'Account_Email'=>'Account: Email',
-'Account_Rating'=>'Account: Rating',
-'Account_Website'=>'Account: Website',
-'Account_Fax'=>'Account: Fax',
-//For Contact
-'Contact_First_Name'=>'Contact: First Name',
-'Contact_Last_Name'=>'Contact: Last Name',
-'Contact_Salutation'=>'Contact: Salutation',
-'Contact_Title'=>'Contact: Title',
-'Contact_Email'=>'Contact: Email',
-'Contact_Department'=>'Contact: Department',
-'Contact_Office_Phone'=>'Contact: Office Phone',
-'Contact_Mobile'=>'Contact: Mobile',
-'Contact_Support_Start_Date'=>'Contact: Support Start Date',
-'Contact_Support_End_Date'=>'Contact: Support End Date',
-//For Leads
-'Lead_First_Name'=>'Lead: First Name',
-'Lead_Last_Name'=>'Lead: Last Name',
-'Lead_Lead_Source'=>'Lead: Lead Source',
-'Lead_Status'=>'Lead: Status',
-'Lead_Rating'=>'Lead: Rating',
-'Lead_Industry'=>'Lead: Industry',
-'Lead_Yahoo_ID'=>'Lead: Yahoo ID',
-'Lead_Email'=>'Lead: Email',
-'Lead_Annual_Revenue'=>'Lead: Annual Revenue',
-'Lead_Title'=>'Lead: Title',
-'Lead_Salutation'=>'Lead: Salutation',
-//For Users
-'User_First_Name'=>'User: First Name',
-'User_Last_Name'=>'User: Last Name',
-'User_Title'=>'User: Title',
-'User_Department'=>'User: Department',
-'User_HomePhone'=>'User: HomePhone',
-'User_Mobile'=>'User: Mobile',
-'User_Signature'=>'User: Signature',
-'User_Email'=>'User: Email',
-'User_Street'=>'User: Street',
-'User_City'=>'User: City',
-'User_State'=>'User: State',
-'User_Country'=>'User: Country',
-'User_PostalCode'=>'User: PostalCode',
 // Added for Error message on Send Email failure
 'LBL_MAIL_SEND_STATUS' => 'Mail Send Status:',
 'LBL_MAIL_NOT_SENT_TO_USER' => 'Mail Could not be sent to user',
@@ -1077,7 +1017,6 @@ $app_strings = array (
 //Added for Notification
 'Dear_Admin_tasks_not_been_completed' => 'Dear Admin,<br><br> Please note that there are certain tasks in the system which have not been completed even after 24hours of their existence<br>',
 'Task_sign'=>'Thank You<br>HelpDesk Team<br>',
-'DELETE_PICKLIST_VALUES'=>'Delete PickList Values',
 //Added for PDF notification
 'LBL_PDF'=>'PDF格式无法生成，宽度超过最大限制。 ',
 //Added for pdf internalization in 5.0.4
@@ -1113,6 +1052,7 @@ $app_strings = array (
 'Price'=>'单价',
 'Discount'=>'折扣',
 'LBL_ADD_BUTTON'=>'新建',
+
 // Added after 5.0.4 GA
 
 //Added to Fix i18N issue in Email Template
@@ -1134,7 +1074,7 @@ $app_strings = array (
 'LBL_OTHERS'=>'Others',
 
 //For Configuring/Using PurchaseOrder number
-'PO Number'=>'PO Number',
+'PO Number'=>'PO 号',
 'MSG_AUTO_GEN_ON_SAVE'=>'AUTO GEN ON SAVE',
 
 //For Duplicate merging feature
@@ -1225,6 +1165,7 @@ $app_strings = array (
 'LBL_CALLER_NUMBER'=>'电话号码 :',
 'LBL_CALLER_NAME'=>'姓名 :',
 'LBL_INFORMATION_VTIGER'=>'vTtiger 的提示',
+
 //asterisk integration ends
 
 // Module Sequence Numbering
@@ -1234,7 +1175,7 @@ $app_strings = array (
 
 // For Privacy Policy
 'LNK_PRIVACY_POLICY'=>'隐私权政策',
-'LBL_MOVE_BLOCK_FIELD' => 'Move Fields',
+'LBL_MOVE_BLOCK_FIELD' => '移动字段',
  
 //added for find duplicate
 'LBL_DUPLICATE_DATA_IN'=>'复制 ',
@@ -1245,7 +1186,7 @@ $app_strings = array (
 'LBL_ACTION'=>'操作',
 'LBL_FIELDLISTS'=> '字段列表',
 'LBL_RECORD'=>'记录 #',
-'LBL_DUP_PERMISSION' => '您不能删除 ',
+'LBL_DUP_PERMISSION' => '您没有删除权限 ',
 'recordid' => '记录编号',
 'Entity Type' => '实体类型',
 
@@ -1280,6 +1221,7 @@ $app_strings = array (
 
 //To handle plurals of module names
 'Todos' => '全部',
+
 // For Popup reminder
 'LBL_POSTPONE'=>'推迟',
 
@@ -1332,7 +1274,6 @@ $app_list_strings = array (
     'Accounts' => '客户',
     'Potentials' => '潜在机会',
     'Campaigns' => '活动',
-    'Notes' => '备忘录',
     'Emails' => '电子邮件',
     'Activities' => '待办事项',
     'Products' => '产品',
@@ -1348,12 +1289,14 @@ $app_list_strings = array (
     'PriceBooks' => '价格表',
     'SalesOrder' => '销售订单',
     'Portal' => '我的网站',
+
 	// Added after 5.0.4 GA
     'Documents' => '文件',
   ),
 'opportunity_relationship_type_default_key' => '最高决策人',
   'opportunity_relationship_type_dom' =>
   array (
+    '' => '',
     'Primary Decision Maker' => '最高决策人',
     'Business Decision Maker' => '商务决策人',
     'Business Evaluator' => '商务顾问',
@@ -1362,7 +1305,6 @@ $app_list_strings = array (
     'Executive Sponsor' => '负责主管/助理',
     'Influencer' => '相关人员',
     'Other' => '其它人员',
-    '' => '',
   ),
   'case_relationship_type_default_key' => '主要联系人',
   'case_relationship_type_dom' =>
@@ -1370,7 +1312,6 @@ $app_list_strings = array (
     '' => '',
     'Primary Contact' => '主要联系人',
     'Alternate Contact' => '代理人',
-    
   ),
   'task_priority_dom' =>
   array (
@@ -1446,12 +1387,13 @@ $app_currency_strings = array(
 	'Costa Rica, Colón' 	=> 'Costa Rica, Colón',
 	'Croatia, Kuna' 		=> 'Croatia, Kuna',
 	'Cuba, Pesos' 			=> 'Cuba, Pesos',
+	'Cyprus, Pounds'		=> 'Cyprus, Pounds',
 	'Czech Republic, Koruny' => 'Czech Republic, Koruny',
 	'Denmark, Kroner' 		=> 'Denmark, Kroner',
 	'Dominican Republic, Pesos' => 'Dominican Republic, Pesos',
 	'East Caribbean, Dollars' => 'East Caribbean, Dollars',
 	'Egypt, Pounds' 		=> 'Egypt, Pounds',
-	'El Salvador, Colones' 	=> 'El Salvador, Colones',
+	'El Salvador, Colón' 	=> 'El Salvador, Colón',
 	'England, Pounds' 		=> 'England, Pounds',
 	'Estonia, Krooni' 		=> 'Estonia, Krooni',
 	'Euro' 					=> 'Euro',
@@ -1486,6 +1428,7 @@ $app_currency_strings = array(
 	'Lithuania, Litai' 		=> 'Lithuania, Litai',
 	'Macedonia, Denars' 	=> 'Macedonia, Denars',
 	'Malaysia, Ringgits' 	=> 'Malaysia, Ringgits',
+	'Malta, Liri'			=> 'Malta, Liri',
 	'Mauritius, Rupees' 	=> 'Mauritius, Rupees',
 	'Mexico, Pesos' 		=> 'Mexico, Pesos',
 	'Mongolia, Tugriks' 	=> 'Mongolia, Tugriks',
@@ -1505,6 +1448,7 @@ $app_currency_strings = array(
 	'Peru, Nuevos Soles' 	=> 'Peru, Nuevos Soles',
 	'Philippines, Pesos' 	=> 'Philippines, Pesos',
 	'Poland, Zlotych' 		=> 'Poland, Zlotych',
+	'Qatar, Rials'			=> 'Qatar, Rials',
 	'Romania, New Lei' 		=> 'Romania, New Lei',
 	'Russia, Rubles'		=> 'Russia, Rubles',
 	'Saint Helena, Pounds' => 'Saint Helena, Pounds',
@@ -1538,5 +1482,13 @@ $app_currency_strings = array(
 	'China, Yuan Renminbi' 	=> 'China, Yuan Renminbi',
 	'Afghanistan, Afghanis' => 'Afghanistan, Afghanis',
 	'Cambodia, Riels' 		=> 'Cambodia, Riels',
+	'China, Yuan Renminbi'	=> 'China, Yuan Renminbi',
+	'Jordan, Dinar'			=> 'Jordan, Dinar',
+	'Kenya, Shilling'		=> 'Kenya, Shilling',
+	'MADAGASCAR, Malagasy Ariary' => 'MADAGASCAR, Malagasy Ariary',
+	'United Arab Emirates, Dirham' => 'United Arab Emirates, Dirham',
+	'United Republic of Tanzania, Shilling' => 'United Republic OF Tanzania, Shilling',
+	'Yemen, Rials'			=> 'Yemen, Rials',
+	'Zambia, Kwacha'		=> 'Zambia, Kwacha',
 );
 ?>
