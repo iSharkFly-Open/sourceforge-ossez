@@ -1,31 +1,31 @@
 <?php
 /**
- * Copyright (C) 2006-2010 YUCHENG HU
+ * Copyright (C) 2006-2011 YUCHENG HU
  *
  * ---------------------------------------------
  * HA WEBSYSTEMS
  * http://www.hawebs.net
- * https://www.hawebs.org/forums/computer/
+ * http://www.ossez.com
  *
  * CONTACT
  * huyuchengus@gmail.com / yuchenghu@hawebs.net
- * 
+ *
  * ---------------------------------------------
  * [A] GNU GENERAL PUBLIC LICENSE GNU/LGPL
  * [B] Apache License, Version 2.0
  *
  * ---------------------------------------------
  * NOTE
- * 1. 所有的語言配置文件請采用 UTF-8 編碼 
+ * 1. 所有的 ini 文件必須采用無 BOM 的 UTF-8 編碼
  *
  * ---------------------------------------------
  */
 $app_strings = array (
-'LBL_BROWSER_TITLE' => 'CRM 5 - 商用開源客戶關系管理系統',
+'LBL_BROWSER_TITLE' => 'XCRM - 商用客戶關系管理系統',
 'LBL_MY_ACCOUNT' => '我的客戶',
 'LBL_MY_PREFERENCES' => '我的設定',
-'LBL_ADMIN' => '后臺管理',
-'LBL_LOGOUT' => '注銷',
+'LBL_ADMIN' => '後臺管理',
+'LBL_LOGOUT' => '註銷',
 'LBL_SEARCH' => '搜索',
 'LBL_LAST_VIEWED' => '最近瀏覽',
 'LBL_TODAY'=>'今日事項',
@@ -63,7 +63,7 @@ $app_strings = array (
 'LBL_FIND_BUTTON' => '查找',
 'LBL_CONVERT_BUTTON_TITLE' => '轉換 [Alt+C]',
 'LBL_CONVERT_BUTTON_KEY' => 'C',
-'LBL_CONVERT_BUTTON_LABEL' => '改換潛在客戶',
+'LBL_CONVERT_BUTTON_LABEL' => '轉換潛在客戶為客戶',
 'LBL_TABCUSTOMISE_BUTTON_KEY' => 'C',
 'LBL_TABCUSTOMISE_BUTTON_LABEL' => '設定個別選項',
 'LBL_ROLES_BUTTON_LABEL' => '顯示職位',
@@ -112,7 +112,7 @@ $app_strings = array (
 'LBL_SETTINGS' => '設定',
 'LBL_LIST_USERIP' => '使用者 IP',
 'LBL_LIST_SIGNIN' => '登錄時間',
-'LBL_LIST_SIGNOUT' => '注銷時間',
+'LBL_LIST_SIGNOUT' => '註銷時間',
 'LBL_LIST_STATUS' => '身份',
 'LBL_LIST_NAME' => '名稱',
 'LBL_LIST_USER_NAME' => '使用者名稱',
@@ -138,11 +138,11 @@ $app_strings = array (
 'LNK_LIST_NEXT' => '下一步',
 'LNK_LIST_PREVIOUS' => '上一步',
 'LNK_LIST_END' => '結束',
-'LBL_LIST_OF' => '于',
+'LBL_LIST_OF' => '於',
 'LNK_PRINT' => '打印',
 'LNK_HELP' => '幫助',
 'LNK_VTDOCS' => 'vtiger 文件',
-'LNK_ABOUT' => '關于',
+'LNK_ABOUT' => '關於',
 'LNK_OUTLOOK' => './include/images/outlook_download.gif',
 'SINGLE_Accounts' => '客戶',
 'SINGLE_Contacts' => '聯系人',
@@ -207,20 +207,20 @@ $app_strings = array (
 'LBL_QUICK_CREATE' => '快速新建...',
 'Export' => '導出',
 'Import' => '導入',
-'Merge' => '合并',
+'Merge' => '合並',
 'ConvertLead' => '轉換準客戶',
-'LBL_SHOW_RESULTS' => '顯示結果于',
+'LBL_SHOW_RESULTS' => '顯示結果於',
 'LBL_TOTAL_RECORDS_FOUND' => '找到數據總數：',
-'LBL_SEARCH_RESULTS_FOR' => ' -- 搜尋結果于',
-'LBL_TAG_SEARCH' => ' -- 標簽搜尋于',
+'LBL_SEARCH_RESULTS_FOR' => ' -- 搜尋結果於',
+'LBL_TAG_SEARCH' => ' -- 標簽搜尋於',
 'LBL_NO_DATA' => '找不到數據',
-'NTC_MERGE_CONFIRMATION' => '您確定要合并這筆記錄?',
-'LBL_MERGE_BUTTON_TITLE' => '合并',
-'LBL_MERGE_BUTTON_KEY' => '合并',
+'NTC_MERGE_CONFIRMATION' => '您確定要合並這筆記錄?',
+'LBL_MERGE_BUTTON_TITLE' => '合並',
+'LBL_MERGE_BUTTON_KEY' => '合並',
 'LBL_SELECTEMAILTEMPLATE_BUTTON_TITLE' => '選擇電子郵件布景樣式',
 'LBL_SELECTEMAILTEMPLATE_BUTTON_KEY' => '選擇布景',
 'LBL_SELECTEMAILTEMPLATE_BUTTON_LABEL' => '選擇電子郵件布景樣式',
-'LBL_MERGE_BUTTON_LABEL' => '合并',
+'LBL_MERGE_BUTTON_LABEL' => '合並',
 'LBL_SENDMAIL_BUTTON_TITLE' => '寄出郵件',
 'LBL_SENDMAIL_BUTTON_KEY' => '寄出',
 'LBL_SENDMAIL_BUTTON_LABEL' => '寄出郵件',
@@ -325,6 +325,7 @@ $app_strings = array (
 'LBL_NONE_NO_LINE' => '無',
 'LBL_SELECT_GROUP' => '選擇用戶組',
 'LBL_HOUR_AND_MINUTE' => '(小時/分鐘)',
+
 'YEAR_MONTH_DATE' => '24:00',
 'COMBO_LEADS' => '負責人',
 'COMBO_ACCOUNTS' => '客戶',
@@ -393,7 +394,6 @@ $app_strings = array (
 'Home' => '首頁',
 'Campaigns' => '活動',
 'PriceBooks' => '價格表',
-'Notes' => '記事',
 'Faq' => '常見問答',
 'Dashboards' => '統計圖表',
 'Reports' => '報表',
@@ -401,6 +401,8 @@ $app_strings = array (
 'Rss' => '新聞',
 'Portal' => '我的網站',
 'Webmails' => '網頁郵件',
+'Project' => '項目',
+'ProjectMilestone' => '項目裏程碑',
 'Activity History' => '存取紀錄',
 'Ticket History' => '傳票紀錄',
 'Purchase Order' => '采購訂單',
@@ -408,7 +410,7 @@ $app_strings = array (
 'Users' => '使用者',
 'Admin' => '管理',
 'PurchaseOrder Status History' => '采購訂單狀態紀錄',
-'SalesOrder Status History' => '銷售訂單狀態紀錄', 
+'SalesOrder Status History' => '銷售訂單狀態紀錄',
 'Quote Stage History' => '報價單策略紀錄',
 'Invoice Status History' => '發票狀態紀錄',
 'LBL_TROUBLE_TICKET' => '問題傳票',
@@ -450,8 +452,8 @@ $app_strings = array (
 'LBL_ADD_RSS_FEEDS' => '新增RSS來源',
 'LNK_NEW_FAQ' => '新增常見問答',
 'Vendor Name' => '廠商名稱',
-'LNK_WEARE' => '關于我們',
-'LBL_ABOUTUS_TITLE' => '關于我們',
+'LNK_WEARE' => '關於我們',
+'LBL_ABOUTUS_TITLE' => '關於我們',
 'LBL_DISCUSS' => '與其它使用者討論',
 'Quote Stage' => '報價策略',
 'Potential Name' => '潛在機會名稱',
@@ -519,7 +521,7 @@ $app_strings = array (
 'LBL_UPD_FIELD_ORD' => '更新字段順序',
 'LBL_SEND_CUSTOM_MAIL_BUTTON' => '寄送自訂郵件',
 'LBL_UPDATED_TODAY' => '今天更新',
-'LBL_UPDATED' => '更新于',
+'LBL_UPDATED' => '更新於',
 'LBL_DAY_AGO' => '天前',
 'LBL_DAYS_AGO' => '天前',
 'Jan' => '一',
@@ -550,7 +552,7 @@ $app_strings = array (
 'LBL_TAX_VALUE' => '值稅',
 'COVERED_PERCENTAGE' => '(%)',
 'LBL_TAG_CLOUD' => '常用關鍵詞',
-'LBL_FOR' => '于',
+'LBL_FOR' => '於',
 'LBL_PO_STATUS' => '采購訂單狀態',
 'LBL_SO_STATUS' => '銷售訂單狀態',
 'LBL_INVOICE_STATUS' => '發票狀態',
@@ -565,7 +567,7 @@ $app_strings = array (
 'This Year' => '今年',
 'LBL_PLEASE_CLICK' => '請點選',
 'LBL_TO_CONFIGURE' => '來設定',
-'LBL_HERE' => '這里',
+'LBL_HERE' => '這裏',
 'LBL_RECORDS' => '筆紀錄',
 'LBL_SCROLL' => '[卷動到上方]',
 'LBL_EXPAND_COLLAPSE' => '展開/收合',
@@ -590,7 +592,7 @@ $app_strings = array (
 'LBL_NET_PRICE' => '凈價格',
 'LBL_TOOLS' => '工具',
 'LBL_DISCOUNT' => '折扣',
-'LBL_TOTAL_AFTER_DISCOUNT' => '折扣后總計',
+'LBL_TOTAL_AFTER_DISCOUNT' => '折扣後總計',
 'LBL_NET_TOTAL' => '凈額',
 'LBL_SHIPPING_AND_HANDLING_CHARGES' => '貨運與處理費',
 'LBL_TAX_FOR_SHIPPING_AND_HANDLING' => '貨運與處理費稅額',
@@ -634,7 +636,7 @@ $app_strings = array (
 'LBL_START_DATE_TIME'=>'開始日期 & 時間',
 'LBL_END_DATE'=>'結束日期',
 'LBL_END_DATE_TIME'=>'結束日期 & 時間',
-'LBL_CREATE_MERGE_TEMPLATE' => '建立郵件合并樣板',
+'LBL_CREATE_MERGE_TEMPLATE' => '建立郵件合並樣板',
 'LBL_IMG_FORMATS' => '（只允許使用 jpg、gif、bmp 與 png 格式圖片）',
 //Added for Taxmode in detail view of Product Details.
 'group'=>'用戶組',
@@ -647,10 +649,11 @@ $app_strings = array (
 'is_not'=>'是不是',
 'begins_with'=>'開始',
 'ends_with'=>'結束',
-'greater_than'=>'大于',
-'less_than'=>'小于',
-'greater_or_equal'=>'大或等于',
-'less_or_equal'=>'少于或等于',
+'greater_than'=>'大於',
+'less_than'=>'小於',
+'greater_or_equal'=>'大或等於',
+'less_or_equal'=>'少於或等於',
+
 //For Product Details
 'LABEL_SET_DISCOUNT_FOR_COLON'=>'訂折扣 :',
 'LABEL_SET_TAX_FOR'=>'定稅',
@@ -668,16 +671,16 @@ $app_strings = array (
 
 'Date & Time' => '日期 & 時間',
 'Reminder' => '提示:',
-'Visit_Link' => '在活動里訪問接洽聯系的更多細節',
+'Visit_Link' => '在活動裏訪問接洽聯系的更多細節',
 'Click here' => '按此',
 'Subject' => '主題',
 'Support_starting' => '支援',
 'Congratulations' => '恭喜！你的支援從今天起',
-'Hello_Support' => '你好！支援開始于',
+'Hello_Support' => '你好！支援開始於',
 'Support_Ending_Subject' => 'Reg: 支援結束',
 'Support_Ending_Content' => '親愛的管理員,<br><br> 這是你的產品支援通知 <b>',
 'kindly_renew' => '</b> 結束不久. 期待為您再次服務.<br><br>問候,<br>服務臺團隊<br>',
-'Dear_Admin' => '親愛的管理員,<br> 這里通知你，有太多的傳票沒有解決，應該采取必要行動<br><br> Thanks and Regards,<br> HelpDesk Team<br>',
+'Dear_Admin' => '親愛的管理員,<br> 這裏通知你，有太多的傳票沒有解決，應該采取必要行動<br><br> Thanks and Regards,<br> HelpDesk Team<br>',
 'Pending_Tickets' => '太多等候傳票',
 'Pending_Ticket_notification' => '等候購票通知',
 'Kind_Attention' => '親愛的管理員,<br> 請記住你的傳票號碼 ',
@@ -689,7 +692,8 @@ $app_strings = array (
 'Dear_Team_Time_to_Party' => '親愛的團隊,<br>Congratulations!Time to Party! <br>We closed a deal worth more than 10000!!!!<br> Time to hit the dance floor!<br>',
 'Task_Not_completed' => '任務尚未完成',
 'Too_many_pending_tickets' => '太多等候傳票',
-'Dear_Admin_too_ many_tickets_pending' => 'Dear Admin,<br> 這里通知你，有太多的傳票沒有解決，應該采取必要行動<br><br> Thanks and Regards,<br> HelpDesk Team<br>',
+'Dear_Admin_too_ many_tickets_pending' => 'Dear Admin,<br> 這裏通知你，有太多的傳票沒有解決，應該采取必要行動<br><br> Thanks and Regards,<br> HelpDesk Team<br>',
+
 //Added for java script alerts
 'DELETE_CONFIRMATION' => '您確認要刪除選定 ',
 'SELECT_ATLEAST_ONE' => '請至少選擇一個實體',
@@ -705,15 +709,15 @@ $app_strings = array (
 'CANNOT_BE_NONE' => ' 不可無',
 'SERVERNAME_CANNOT_BE_EMPTY' => '服務器名稱不能為空',
 'ENTER_VALID' => '請填寫正確 ',
-'SHOULDBE_LESS' => ' 應少于 ',
-'SHOULDBE_LESS_EQUAL' => ' 應小于或等于 ',
+'SHOULDBE_LESS' => ' 應少於 ',
+'SHOULDBE_LESS_EQUAL' => ' 應小於或等於 ',
 'SHOULDBE_EQUAL' => ' 應一律平等 ',
-'SHOULDBE_GREATER' => ' 應大于 ',
-'SHOULDBE_GREATER_EQUAL' => ' 應大于或等于 ',
+'SHOULDBE_GREATER' => ' 應大於 ',
+'SHOULDBE_GREATER_EQUAL' => ' 應大於或等於 ',
 'INVALID' => '無效 ',
 'EXCEEDS_MAX' => ' 超過上限 ',
 'OUT_OF_RANGE' => ' 超出程度',
-'SHOULDNOTBE_EQUAL' => ' 不應該等于 ',
+'SHOULDNOTBE_EQUAL' => ' 不應該等於 ',
 'PORTAL_PROVIDE_EMAILID' => '門戶網站用戶提供電子郵件身份為門戶登錄',
 'ADD_CONFIRMATION' => '你確認要添加選定 ',
 'ACCOUNTNAME_CANNOT_EMPTY' => '帳戶名稱不能為空',
@@ -742,14 +746,14 @@ $app_strings = array (
 'NOT_VALID_ENTRY' => '是不是合法入境. 請輸入正確價格',
 'VALID_DISCOUNT_PERCENT' => '請輸入有效折扣百分比',
 'VALID_DISCOUNT_AMOUNT' => '請輸入一個有效的折扣數額',
-'SELECT_TEMPLATE_TO_MERGE' => '請選擇模板合并',
+'SELECT_TEMPLATE_TO_MERGE' => '請選擇模板合並',
 'MISSING_REQUIRED_FIELDS' => '漏填: ',
 'READONLY' => "只讀",
 'SELECT_ATLEAST_ONE_USER' => '請選擇至少一個用戶',
 'DISABLE_SHARING_CONFIRMATION' => '你確認要禁用共享選定嗎 ',
 'USERS' => ' 使用者 ?',
-'ENDTIME_GREATER_THAN_STARTTIME' => '結束時間應該大于開始時間 ',
-'FOLLOWUPTIME_GREATER_THAN_STARTTIME' => '跟進時間應大于結束時間 ',
+'ENDTIME_GREATER_THAN_STARTTIME' => '結束時間應該大於開始時間 ',
+'FOLLOWUPTIME_GREATER_THAN_STARTTIME' => '跟進時間應大於結束時間 ',
 'MISSING_EVENT_NAME' => '漏填時間名稱',
 'EVENT_TYPE_NOT_SELECTED' => '事件類型不可選',
 'OPPORTUNITYNAME_CANNOT_BE_EMPTY' => '潛在機會名稱不可為空',
@@ -811,7 +815,7 @@ $app_strings = array (
 
 //Added for 5.0.3
 'MSG_DEAR'=>'親愛的',
-'MSG_REGARDING'=>'關于',
+'MSG_REGARDING'=>'關於',
 'MSG_UPDATION'=>'更新 -',
 'MSG_THE'=>'這',
 'MSG_HAS_BEEN_UPDATED'=>'已經更新',
@@ -877,7 +881,7 @@ $app_strings = array (
 // Added/Updated for vtiger CRM 5.0.4
 'LBL_CHARSET' => 'UTF-8',
 'Lost Lead' => '失去機會',
-'LBL_SEND_EMAIL_PDF' => 'PDF格式發送電子郵件', 
+'LBL_SEND_EMAIL_PDF' => 'PDF格式發送電子郵件',
 //Added for incoming mail server settings form js validation
 'ERR_INVALID_PAGE_COUNT' => "無效頁計數",
 //'Product Code' => 'Part Number',
@@ -890,7 +894,6 @@ $app_strings = array (
 'LBL_CREATING_NEW_Campaigns' => '創建新的活動',
 'LBL_CREATING_NEW_Leads' => '創建新的負責人',
 'LBL_CREATING_NEW_Accounts' => '創建新的客戶',
-'LBL_CREATING_NEW_Notes' => '創建新的日記',
 'LBL_CREATING_NEW_Potentials' => '創建新的潛在機會',
 'LBL_CREATING_NEW_Quotes' => '創建新的報價',
 'LBL_CREATING_NEW_SalesOrder' => '創建新的銷售訂單',
@@ -902,9 +905,9 @@ $app_strings = array (
 'LBL_CREATING_NEW_Vendors' => '創建新的廠商',
 'LBL_CREATING_NEW_PurchaseOrder' => '創建新的采購訂單',
 
-'LBL_SEND_EMAIL_PDF' => 'PDF格式發送電子郵件', 
+'LBL_SEND_EMAIL_PDF' => 'PDF格式發送電子郵件',
 'LBL_UPDATE' => '升級',
-
+//Added for incoming mail server settings form js validation
 'ERR_INVALID_PAGE_COUNT' => "無效頁計數",
 'LBL_CAL_LIMIT_MSG'=>'對不起，年份必須在1970年至2037年期間',
 
@@ -926,21 +929,6 @@ $app_strings = array (
 'Support Start Date' => '支持開始日期',
 'Support End Date' => '支持結束日期',
 
-'Mailing Street' => '郵寄街',
-
-'Other Street' => '其他街道',
-'Mailing City' => '郵寄全市',
-'Other City' => '其他城市',
-'Mailing State' => '郵件狀態',
-'Other State' => '其他國家',
-'Mailing Zip' => '郵寄郵編',
-'Other Zip' => '其他郵編',
-
-'Mailing Country' => '郵寄全國',
-'Other Country' => '其他國家',
-'Mailing Po Box' => '郵寄郵政信箱',
-'Other Po Box' => '其他郵政信箱',
-'Contact Image' => '接觸式圖像',
 //Export Records STARTS--->
 'LBL_EXPORT_TYPE_1'=>'導出型1:',
 'LBL_EXPORT_TYPE_2'=>'導出型2:',
@@ -971,10 +959,10 @@ $app_strings = array (
 
 //Added for Existing Picklist Strings for both Lead module (convert div) and for potential module.
 
-'Prospecting'=>'Prospecting',
-'Qualification'=>'Qualification',
+'Prospecting'=>'展望',
+'Qualification'=>'限定條件',
 'Needs Analysis'=>'需求分析',
-'Value Proposition'=>'Value Proposition',
+'Value Proposition'=>'價值主張',
 'Id. Decision Makers'=>'Id. Decision Makers',
 'Perception Analysis'=>'Perception Analysis',
 'Proposal/Price Quote'=>'Proposal/Price Quote',
@@ -988,53 +976,6 @@ $app_strings = array (
 'as'=>'as',
 'ie'=>'ie.,',
 'add_at_end_of_file'=>'Please add the following lines at the end of the file config.inc.php',
-//Added to Fix i18N issue in Email Template
-'Account_Account_Name'=>'Account: Account Name',
-'Account_Account_Type'=>'Account: Account Type',
-'Account_Industry'=>'Account: Industry',
-'Account_Annual_Revenue'=>'Account: Annual Revenue',
-'Account_Phone'=>'Account: Phone',
-'Account_Email'=>'Account: Email',
-'Account_Rating'=>'Account: Rating',
-'Account_Website'=>'Account: Website',
-'Account_Fax'=>'Account: Fax',
-//For Contact
-'Contact_First_Name'=>'Contact: First Name',
-'Contact_Last_Name'=>'Contact: Last Name',
-'Contact_Salutation'=>'Contact: Salutation',
-'Contact_Title'=>'Contact: Title',
-'Contact_Email'=>'Contact: Email',
-'Contact_Department'=>'Contact: Department',
-'Contact_Office_Phone'=>'Contact: Office Phone',
-'Contact_Mobile'=>'Contact: Mobile',
-'Contact_Support_Start_Date'=>'Contact: Support Start Date',
-'Contact_Support_End_Date'=>'Contact: Support End Date',
-//For Leads
-'Lead_First_Name'=>'Lead: First Name',
-'Lead_Last_Name'=>'Lead: Last Name',
-'Lead_Lead_Source'=>'Lead: Lead Source',
-'Lead_Status'=>'Lead: Status',
-'Lead_Rating'=>'Lead: Rating',
-'Lead_Industry'=>'Lead: Industry',
-'Lead_Yahoo_ID'=>'Lead: Yahoo ID',
-'Lead_Email'=>'Lead: Email',
-'Lead_Annual_Revenue'=>'Lead: Annual Revenue',
-'Lead_Title'=>'Lead: Title',
-'Lead_Salutation'=>'Lead: Salutation',
-//For Users
-'User_First_Name'=>'User: First Name',
-'User_Last_Name'=>'User: Last Name',
-'User_Title'=>'User: Title',
-'User_Department'=>'User: Department',
-'User_HomePhone'=>'User: HomePhone',
-'User_Mobile'=>'User: Mobile',
-'User_Signature'=>'User: Signature',
-'User_Email'=>'User: Email',
-'User_Street'=>'User: Street',
-'User_City'=>'User: City',
-'User_State'=>'User: State',
-'User_Country'=>'User: Country',
-'User_PostalCode'=>'User: PostalCode',
 // Added for Error message on Send Email failure
 'LBL_MAIL_SEND_STATUS' => 'Mail Send Status:',
 'LBL_MAIL_NOT_SENT_TO_USER' => 'Mail Could not be sent to user',
@@ -1077,7 +1018,6 @@ $app_strings = array (
 //Added for Notification
 'Dear_Admin_tasks_not_been_completed' => 'Dear Admin,<br><br> Please note that there are certain tasks in the system which have not been completed even after 24hours of their existence<br>',
 'Task_sign'=>'Thank You<br>HelpDesk Team<br>',
-'DELETE_PICKLIST_VALUES'=>'Delete PickList Values',
 //Added for PDF notification
 'LBL_PDF'=>'PDF格式無法生成，寬度超過最大限制。 ',
 //Added for pdf internalization in 5.0.4
@@ -1113,10 +1053,11 @@ $app_strings = array (
 'Price'=>'單價',
 'Discount'=>'折扣',
 'LBL_ADD_BUTTON'=>'新建',
+
 // Added after 5.0.4 GA
 
 //Added to Fix i18N issue in Email Template
-'LBL_GENERAL_FIELDS'=>'General Fields', 
+'LBL_GENERAL_FIELDS'=>'General Fields',
 //For Users fields
 'HomePhone'=>'HomePhone',
 'Signature'=>'Signature',
@@ -1134,12 +1075,12 @@ $app_strings = array (
 'LBL_OTHERS'=>'Others',
 
 //For Configuring/Using PurchaseOrder number
-'PO Number'=>'PO Number',
+'PO Number'=>'PO 號',
 'MSG_AUTO_GEN_ON_SAVE'=>'AUTO GEN ON SAVE',
 
 //For Duplicate merging feature
-'LBL_MERGE' => '合并',
-'LBL_MERGE_BUTTON_TITLE' => '合并',
+'LBL_MERGE' => '合並',
+'LBL_MERGE_BUTTON_TITLE' => '合並',
 'LBL_SAVE_MERGE_BUTTON_TITLE' => '查找重復記錄',
 'LBL_SELECT_MERGECRITERIA_HEADER' => '查詢準則',
 'LBL_SELECT_AS_PARENT' => '(select as primary record)',
@@ -1156,9 +1097,9 @@ $app_strings = array (
 'LBL_SELECTED_FIELDS'=>' 批配字段',
 'LBL_MERGE_SELECT'=>'選取記錄 (max: 3)',
 'DuplicatesHandling' => '重復處理',
-'LBL_DESC_FOR_MERGE_FIELDS' => '主要記錄將保留合并后。您可以選擇欄保留價值。其他記錄將被刪除，但相關的信息將被合并。',
-'LBL_DUPLICATE_MERGING' => '重復的合并',
-'LBL_SELECT_TO_ENABLE_MERGING' => '選擇此選項，以使設置重復的合并標準',
+'LBL_DESC_FOR_MERGE_FIELDS' => '主要記錄將保留合並後。您可以選擇欄保留價值。其他記錄將被刪除，但相關的信息將被合並。',
+'LBL_DUPLICATE_MERGING' => '重復的合並',
+'LBL_SELECT_TO_ENABLE_MERGING' => '選擇此選項，以使設置重復的合並標準',
 
 // Local Backup Feature
 'LBL_BACKEDUPSUCCESSFULLY_TO_FILE' => 'Backed Up Successfully To File',//BACKUP
@@ -1212,7 +1153,7 @@ $app_strings = array (
 //added for asterisk integration
 'CallHistory'=>'呼叫記錄',
 'PBXManager'=>'PBX 管理',
-'LBL_OUTGOING_CALL_MESSAGE'=>'請聯通接收機后開始撥號',
+'LBL_OUTGOING_CALL_MESSAGE'=>'請聯通接收機後開始撥號',
 'LBL_OUTGOING_CALL'=>'去電',
 'LBL_OPERATION_NOT_SUPPORTED'=>'不支持當前選項',
 'LBL_ASTERISK_SET_ERROR'=>'Asterisk 服務器數據未設定。請先設置這些數據。',
@@ -1225,6 +1166,7 @@ $app_strings = array (
 'LBL_CALLER_NUMBER'=>'電話號碼 :',
 'LBL_CALLER_NAME'=>'姓名 :',
 'LBL_INFORMATION_VTIGER'=>'vTtiger 的提示',
+
 //asterisk integration ends
 
 // Module Sequence Numbering
@@ -1234,18 +1176,18 @@ $app_strings = array (
 
 // For Privacy Policy
 'LNK_PRIVACY_POLICY'=>'隱私權政策',
-'LBL_MOVE_BLOCK_FIELD' => 'Move Fields',
- 
+'LBL_MOVE_BLOCK_FIELD' => '移動字段',
+
 //added for find duplicate
 'LBL_DUPLICATE_DATA_IN'=>'復制 ',
 'LBL_DELETE'=>'刪除',
-'LBL_MERGE_SELECT'=>'合并選擇',
-'LBL_MERGE_DATA_IN'=>'合并字段',
-'LBL_MERGE'=>'合并',
+'LBL_MERGE_SELECT'=>'合並選擇',
+'LBL_MERGE_DATA_IN'=>'合並字段',
+'LBL_MERGE'=>'合並',
 'LBL_ACTION'=>'操作',
 'LBL_FIELDLISTS'=> '字段列表',
 'LBL_RECORD'=>'記錄 #',
-'LBL_DUP_PERMISSION' => '您不能刪除 ',
+'LBL_DUP_PERMISSION' => '您沒有刪除權限 ',
 'recordid' => '記錄編號',
 'Entity Type' => '實體類型',
 
@@ -1260,7 +1202,7 @@ $app_strings = array (
 'PUBLIC_FILTER'=>'公開',
 
 // Account Hierarchy
-'LBL_ACCOUNT_HIERARCHY' => '帳戶層次', 
+'LBL_ACCOUNT_HIERARCHY' => '帳戶層次',
 
 //Prod Bundles
 'LBL_NO_SUB_PRODUCTS'=>'不是一個套餐',
@@ -1280,12 +1222,13 @@ $app_strings = array (
 
 //To handle plurals of module names
 'Todos' => '全部',
+
 // For Popup reminder
 'LBL_POSTPONE'=>'推遲',
 
 // Unified Search extended support
 'LBL_SELECT_MODULES_FOR_SEARCH' => '選擇要搜索的模塊',
-'LBL_SELECT_ALL' => '選擇全部', 
+'LBL_SELECT_ALL' => '選擇全部',
 'LBL_UNSELECT_ALL' => '全部不選',
 'LBL_FIELD_FOR_COMPARISION' => '字段比較',
 'LBL_DONE' => ' 執行 ',
@@ -1295,9 +1238,9 @@ $app_strings = array (
 'CANNOT_CONVERT' => '不能轉換',
 
 // For note link on the detailview
-'LBL_ADD_NOTE'=>'增加備注',
+'LBL_ADD_NOTE'=>'增加備註',
 
-// For Layout Editor 
+// For Layout Editor
 'LBL_UNHIDE_FIELDS'=>'取消隱藏字段',
 
 // For Mass Edit
@@ -1323,7 +1266,7 @@ $app_strings = array (
 );
 
 $app_list_strings = array (
-  'moduleList' => 
+  'moduleList' =>
   array (
     'Home' => '首頁',
     'Dashboard' => '統計圖表',
@@ -1332,7 +1275,6 @@ $app_list_strings = array (
     'Accounts' => '客戶',
     'Potentials' => '潛在機會',
     'Campaigns' => '活動',
-    'Notes' => '備忘錄',
     'Emails' => '電子郵件',
     'Activities' => '待辦事項',
     'Products' => '產品',
@@ -1348,12 +1290,14 @@ $app_list_strings = array (
     'PriceBooks' => '價格表',
     'SalesOrder' => '銷售訂單',
     'Portal' => '我的網站',
+
 	// Added after 5.0.4 GA
     'Documents' => '文件',
   ),
 'opportunity_relationship_type_default_key' => '最高決策人',
   'opportunity_relationship_type_dom' =>
   array (
+    '' => '',
     'Primary Decision Maker' => '最高決策人',
     'Business Decision Maker' => '商務決策人',
     'Business Evaluator' => '商務顧問',
@@ -1362,7 +1306,6 @@ $app_list_strings = array (
     'Executive Sponsor' => '負責主管/助理',
     'Influencer' => '相關人員',
     'Other' => '其它人員',
-    '' => '',
   ),
   'case_relationship_type_default_key' => '主要聯系人',
   'case_relationship_type_dom' =>
@@ -1370,7 +1313,6 @@ $app_list_strings = array (
     '' => '',
     'Primary Contact' => '主要聯系人',
     'Alternate Contact' => '代理人',
-    
   ),
   'task_priority_dom' =>
   array (
@@ -1417,8 +1359,8 @@ $app_list_strings = array (
     'Leads' => '潛在客戶',
     'Opportunities' => '機會',
   ),
-  
-); 
+
+);
 // Translation for currency names
 $app_currency_strings = array(
 	'Albania, Leke' 		=> 'Albania, Leke',
@@ -1446,12 +1388,13 @@ $app_currency_strings = array(
 	'Costa Rica, Colón' 	=> 'Costa Rica, Colón',
 	'Croatia, Kuna' 		=> 'Croatia, Kuna',
 	'Cuba, Pesos' 			=> 'Cuba, Pesos',
+	'Cyprus, Pounds'		=> 'Cyprus, Pounds',
 	'Czech Republic, Koruny' => 'Czech Republic, Koruny',
 	'Denmark, Kroner' 		=> 'Denmark, Kroner',
 	'Dominican Republic, Pesos' => 'Dominican Republic, Pesos',
 	'East Caribbean, Dollars' => 'East Caribbean, Dollars',
 	'Egypt, Pounds' 		=> 'Egypt, Pounds',
-	'El Salvador, Colones' 	=> 'El Salvador, Colones',
+	'El Salvador, Colón' 	=> 'El Salvador, Colón',
 	'England, Pounds' 		=> 'England, Pounds',
 	'Estonia, Krooni' 		=> 'Estonia, Krooni',
 	'Euro' 					=> 'Euro',
@@ -1486,6 +1429,7 @@ $app_currency_strings = array(
 	'Lithuania, Litai' 		=> 'Lithuania, Litai',
 	'Macedonia, Denars' 	=> 'Macedonia, Denars',
 	'Malaysia, Ringgits' 	=> 'Malaysia, Ringgits',
+	'Malta, Liri'			=> 'Malta, Liri',
 	'Mauritius, Rupees' 	=> 'Mauritius, Rupees',
 	'Mexico, Pesos' 		=> 'Mexico, Pesos',
 	'Mongolia, Tugriks' 	=> 'Mongolia, Tugriks',
@@ -1505,6 +1449,7 @@ $app_currency_strings = array(
 	'Peru, Nuevos Soles' 	=> 'Peru, Nuevos Soles',
 	'Philippines, Pesos' 	=> 'Philippines, Pesos',
 	'Poland, Zlotych' 		=> 'Poland, Zlotych',
+	'Qatar, Rials'			=> 'Qatar, Rials',
 	'Romania, New Lei' 		=> 'Romania, New Lei',
 	'Russia, Rubles'		=> 'Russia, Rubles',
 	'Saint Helena, Pounds' => 'Saint Helena, Pounds',
@@ -1538,5 +1483,13 @@ $app_currency_strings = array(
 	'China, Yuan Renminbi' 	=> 'China, Yuan Renminbi',
 	'Afghanistan, Afghanis' => 'Afghanistan, Afghanis',
 	'Cambodia, Riels' 		=> 'Cambodia, Riels',
+	'China, Yuan Renminbi'	=> 'China, Yuan Renminbi',
+	'Jordan, Dinar'			=> 'Jordan, Dinar',
+	'Kenya, Shilling'		=> 'Kenya, Shilling',
+	'MADAGASCAR, Malagasy Ariary' => 'MADAGASCAR, Malagasy Ariary',
+	'United Arab Emirates, Dirham' => 'United Arab Emirates, Dirham',
+	'United Republic of Tanzania, Shilling' => 'United Republic OF Tanzania, Shilling',
+	'Yemen, Rials'			=> 'Yemen, Rials',
+	'Zambia, Kwacha'		=> 'Zambia, Kwacha',
 );
 ?>
