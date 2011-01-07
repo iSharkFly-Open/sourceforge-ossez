@@ -1,22 +1,22 @@
 <?php
 /**
- * Copyright (C) 2006-2010 YUCHENG HU
+ * Copyright (C) 2006-2011 YUCHENG HU
  *
  * ---------------------------------------------
  * HA WEBSYSTEMS
  * http://www.hawebs.net
- * https://www.hawebs.org/forums/computer/
+ * http://www.ossez.com
  *
  * CONTACT
  * huyuchengus@gmail.com / yuchenghu@hawebs.net
- * 
+ *
  * ---------------------------------------------
  * [A] GNU GENERAL PUBLIC LICENSE GNU/LGPL
  * [B] Apache License, Version 2.0
  *
  * ---------------------------------------------
  * NOTE
- * 1. 所有的语言配置文件请采用 UTF-8 编码 
+ * 1. 所有的 ini 文件必须采用无 BOM 的 UTF-8 编码
  *
  * ---------------------------------------------
  */
@@ -401,6 +401,7 @@ $app_strings = array (
 'Rss' => '新闻',
 'Portal' => '我的网站',
 'Webmails' => '网页邮件',
+'Project' => '项目',
 'ProjectMilestone' => '项目里程碑',
 'Activity History' => '存取纪录',
 'Ticket History' => '传票纪录',
