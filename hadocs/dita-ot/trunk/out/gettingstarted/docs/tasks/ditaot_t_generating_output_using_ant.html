@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="task"/>
+<meta name="DC.Title" content="Generating output using Ant"/>
+<meta name="abstract" content="You can use Ant scripts to call the XSLT scripts and provide parameters for the transformations."/>
+<meta name="description" content="You can use Ant scripts to call the XSLT scripts and provide parameters for the transformations."/>
+<meta name="DC.Relation" scheme="URI" content="../tasks/ditaot_t_generating_output.html"/>
+<meta name="DC.Relation" scheme="URI" content="../tasks/ditaot_r_ant_targets.html"/>
+<meta name="DC.Relation" scheme="URI" content="http://ant.apache.org/manual/index.html"/>
+<meta name="prodname" content="DITA 入门"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS DITA OT"/>
+<meta name="DC.Creator" content="Kristen James Eberlein"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Date.Created" content="9 May 2009"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="ditaot_t_generating_output_ant"/>
+<meta name="DC.Language" content="en-us"/>
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+<title>Generating output using Ant</title>
+</head>
+<body id="ditaot_t_generating_output_ant"><a name="ditaot_t_generating_output_ant"><!-- --></a>
+
+
+<h1 class="topictitle1">Generating output using Ant</h1>
+
+
+
+<div><p>You can use Ant scripts to call the XSLT scripts and provide parameters for the transformations.</p>
+
+<ol><li class="stepexpand"><span>Create a Ant script that contains targets for the output that you want to build.</span></li>
+<li class="stepexpand"><span>Run either the <span class="filepath">startcmd.bat</span> or <span class="filepath">startcmd.sh</span> file.</span>
+</li>
+<li class="stepexpand"><span>From the command prompt, type the following string and press Enter:</span> <pre class="codeblock">ant  -f <var class="varname">build_file</var> <var class="varname">target</var></pre>
+where<ul>
+<li><samp class="codeph">-l <var class="varname">log_file</var></samp> is a optional parameter that will log the X to <var class="varname">log_file</var>. By default, the X is displayed in the command-prompt window.</li>
+
+<li><samp class="codeph">-f <var class="varname">build_file</var></samp> is an optional parameter that specifies the Ant script. If you do not issue this parameter, Ant looks for a <span class="filepath">build.xml</span> file in the current directory.</li>
+
+<li><var class="varname">target</var> is the name of the Ant target that you want to run.</li>
+
+</ul>
+</li>
+</ol>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="../tasks/ditaot_t_generating_output.html" title="After you have installed the DITA Open Toolkit and run the samples, you might want to use the Toolkit with your own DITA files. You either can use an Ant file or the Java command-line interface to run the transformations.">Generating output with your DITA files</a></div>
+</div>
+<div class="relinfo relref"><strong>Related reference</strong><br/>
+<div><a href="../tasks/ditaot_r_ant_targets.html" title="You can use the Ant targets to transform DITA to several different output formats.">Ant targets</a></div>
+</div>
+<div class="relinfo"><strong>Related information</strong><br/>
+<div><a href="http://ant.apache.org/manual/index.html" target="_blank" title="This is the documentation for Ant 1.7.1. In the navigation pane, click Ant Tasks &gt; Core Tasks to view information about Ant tasks and their parameters.">Apache Ant 1.7.1 manual</a></div>
+</div>
+</div>
+
+</body>
+</html>

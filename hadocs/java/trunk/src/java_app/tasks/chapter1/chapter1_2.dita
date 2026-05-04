@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_2" xml:lang="zh">
+  <title>Java 的主要特性</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Java</indexterm>
+        <indexterm>APP</indexterm>
+        <indexterm>应用程序</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>Java语言具有鲜明的特点，使它在分布式网络应用、多平台应用、图形用户界面、Web应用、多线程应用等软件的开发中成为方便高效的工具。下面择要进行介绍。</p>
+    <p><ol>
+        <li>
+          <p>开发和使用简单性。</p>
+          <p>Java的语法风格非常近似于C++语言，但删改了C++中的指针、操作符重载等一些易混淆的地方。在内存管理方面又提供了垃圾收集。这使程序员可以在实现程序功能方面投注更多的精力，而无需考虑诸如内存释放等枝节问题。C++中复杂而灵活的指针操作往往导致严重的错误，一向是开发调试人员深感棘手的问题，而这在Java中却不存在。Java虚拟机还能为程序链接本地甚至远程的类库，开发人员不必关注其细节。凡此种种，提供了应用开发的简单性。</p>
+        </li>
+        <li>
+          <p>分布式。</p>
+          <p>Java对TCP/IP协议（如HTTP、FTP)的支持使Java程序可以轻易地建立网络连接，并通过统一资源定位器URL(Uniform Resource Locator)访问远程文件，如同访问本地文件一样方便。Java的运行时系统能动态地通过网络装入字节码，动态使用新的协议控制软件。</p>
+        </li>
+        <li>
+          <p>面向对象性。</p>
+          <p>与C++不同，Java对面向对象的要求十分严格，不允许定义独立于类的变量和方法（函数）。Java以类和对象为基础，任何变量和方法都只能包含于某个类的内部。这就使程序的结构更为清晰，为继承和重用带来便利。</p>
+        </li>
+        <li>
+          <p>安全性。</p>
+          <p>对于网络应用来说，这一点是极为重要的。Java将安全性作为第一考虑，设置了层层防范。首先在编译时进行语法、语义的检查。链接时，还要再进行一遍遍译级的类型检查，消除间接对象访问。运行时，Java的运行时系统将进行字节码检验，并记录对象的存储情况，将访问限制在安全范围之内。本地的类与远程的类分开运行，阻止远程系统对本地系统的破坏。支持Java的浏览器还允许用户控制Java软件对本地系统的访问。各种措施的综合使Java程序的安全性得到保证。</p>
+        </li>
+        <li>
+          <p>平台独立性和可移植性。</p>
+          <p>Java的应用程序接口（API）和运行时系统是可移植性的关键。Java为支持它的各种操作系统提供了一致的API。在API界面上，所有Java程序将都不依赖于平台。Java的运行时系统在解释执行程序时，将字节码转化为当前机器的机器码。程序开发人员无需考虑使用应用时的硬件条件和操作系统结构，用户只需有Java的运行时系统，就可运行编译过的字节码。</p>
+        </li>
+        <li>
+          <p>多线程。</p>
+          <p>Java提供了内置的多线程支持，程序中可以方便地创建多个线程，各个线程执行不同的工作。这使程序的工作简单。比如，用不同的线程分别控制声音和图像，可以轻易构筑声像交织的复杂效果，而编程时只要分别安排各线程的工作，不必关心它们的合作，这也大大促进了程序的动态交互性和实时性。</p>
+          <p>为了控制各线程的动作，Java还提供了线程同步机制。这一机制的内部实现基于管程。这一机制使不同线程在访问共享资源时能够相互配合，保证数据的一致性，避免出错。</p>
+        </li>
+        <li>
+          <p>解释执行。</p>
+          <p>Java程序经过编译形成字节码，然后在虚拟机上解释执行。这是Java程序能够独立于平台运行的基础。这也使程序有利于增量链接，从而加快开发过程。</p>
+        </li>
+      </ol></p>
+    <p>以上简单介绍了Java的特点，尤其是与网络应用有关的优点。可以看出，Java在诸多方面具有无可比拟的优势。如果读者对这一节中有的名词尚不理解，可以参考本书的相关章节。 </p>
+  </conbody>
+</concept>

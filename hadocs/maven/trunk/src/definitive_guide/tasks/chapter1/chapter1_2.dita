@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_2" xml:lang="zh">
+  <title>约定优于配置（Convention Over Configuration）</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Apache</indexterm>
+        <indexterm>Maven</indexterm>
+        <indexterm>介绍</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>约定优于配置是一个简单的概念。 系统，类库，框架应该假定合理的默认值，而非要求提供不必要的配置。 流行的框架如 <xref format="html" scope="external" href="http://rubyonrails.org/">Ruby on Rails</xref>  和 EJB3 已经开始坚持这些原则，以对像原始的 EJB 2.1 规范那样的框架的配置复杂度做出反应。 一个约定优于配置的例子就像 EJB3 持久化，将一个 特殊的Bean持久化，你所需要做的只是将这个类标注为 @Entity  。 框架将会假定表名和列名是基于类名和属性名。 系统也提供了一些钩子，当有需要的时候你可以重写这些名字，但是，在大部分情况下，你会发现使用框架提供的默认值会让你的项目运行的更快。 </p>
+    <p>Maven通过给项目提供明智的默认行为来融合这个概念。 在没有自定义的情况下，源代码假定是在 <codeph>/data/hudson-temporal-data/hudson-orchestrator-home/workspace/Book-To-Production/content-zh/src/main/java</codeph>，资源文件假定是在 <codeph>/data/hudson-temporal-data/hudson-orchestrator-home/workspace/Book-To-Production/content-zh/src/main/resources</codeph>。测试代码假定是在 <codeph>/data/hudson-temporal-data/hudson-orchestrator-home/workspace/Book-To-Production/content-zh/src/test</codeph>。项目假定会产生一个 JAR  文件。Maven 假定你想要把编译好的字节码放到 <codeph>/data/hudson-temporal-data/hudson-orchestrator-home/workspace/Book-To-Production/content-zh/target/classes</codeph> 并且在 <codeph>/data/hudson-temporal-data/hudson-orchestrator-home/workspace/Book-To-Production/content-zh/target</codeph> 创建一个可分发的 JAR  文件。</p>
+    <p>虽然这看起来无关紧要，但是想想大部分基于 Ant 的构建必须为每个子项目定义这些目录。 Maven 对约定优于配置的应用不仅仅是简单的目录位置，Maven 的核心插件使用了一组通用的约定，以用来编译源代码，打包可分发的构件，生成 web 站点，还有许多其他的过程。 Maven 的力量来自它的&quot;武断&quot;，它有一个定义好的生命周期和一组知道如何构建和装配软件的通用插件。如果你遵循这些约定，Maven 只需要几乎为零的工作——仅仅是将你的源代码放到正确的目录，Maven 将会帮你处理剩下的事情。 </p>
+    <p>使用“遵循约定优于配置”系统的一个副作用是用户可能会觉得他们被强迫使用一种特殊的方法。 当然 Maven 有一些核心观点不应该被怀疑，但是其实很多默认行为还是可配置的。 例如项目源码的资源文件的位置可以被自定义，JAR  文件的名字可以被自定义，在开发自定义插件的时候，几乎任何行为可以被裁剪以满足你特定的环境需求。 如果你不想遵循约定，Maven 也会允许你自定义默认值来适应你的需求。 </p>
+  </conbody>
+</concept>

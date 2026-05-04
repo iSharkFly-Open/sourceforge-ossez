@@ -1,0 +1,9 @@
+<img src="cache/images/-847080661_pipeline_by_lead_source_en_us_693535944.png" border="0" usemap="#cache/images/-847080661_pipeline_by_lead_source_en_us_693535944.png">
+<map name="cache/images/-847080661_pipeline_by_lead_source_en_us_693535944.png">
+	<area shape="polygon" coords="424,238,577,238,556,314,500,370,424,391,367,380" href="index.php?module=Potentials&action=ListView&leadsource=--None--&query=true&type=dbrd&viewname=10" alt="2 opportunities where lead source is None	" title="2 opportunities where lead source is None	">
+	<area shape="polygon" coords="424,238,367,380,307,336" href="index.php?module=Potentials&action=ListView&leadsource=Self+Generated&query=true&type=dbrd&viewname=10" alt="1 opportunities where lead source is Self Generated	" title="1 opportunities where lead source is Self Generated	">
+	<area shape="polygon" coords="424,238,307,336,274,265,271,238" href="index.php?module=Potentials&action=ListView&leadsource=Partner&query=true&type=dbrd&viewname=10" alt="2 opportunities where lead source is Partner	" title="2 opportunities where lead source is Partner	">
+	<area shape="polygon" coords="424,238,271,238,292,162,348,106,408,86" href="index.php?module=Potentials&action=ListView&leadsource=Direct+Mail&query=true&type=dbrd&viewname=10" alt="1 opportunities where lead source is Direct Mail	" title="1 opportunities where lead source is Direct Mail	">
+	<area shape="polygon" coords="424,238,408,86,486,98,541,140" href="index.php?module=Potentials&action=ListView&leadsource=Trade+Show&query=true&type=dbrd&viewname=10" alt="1 opportunities where lead source is Trade Show	" title="1 opportunities where lead source is Trade Show	">
+	<area shape="polygon" coords="424,238,541,140,574,211,577,238" href="index.php?module=Potentials&action=ListView&leadsource=Web+Site&query=true&type=dbrd&viewname=10" alt="2 opportunities where lead source is Web Site	" title="2 opportunities where lead source is Web Site	">
+</map>

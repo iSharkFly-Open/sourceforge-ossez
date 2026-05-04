@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="condproc" xml:lang="zh">
+  <title>PHP 概述</title>
+  <shortdesc>主要对 PHP 进行简要的描述和说明</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>PHP</indexterm>
+        <indexterm>概述</indexterm>
+        <indexterm>程序语言</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>PHP，一个嵌套的缩写名称，是英文“超级文本预处理语言”（PHP:Hypertext Preprocessor）的缩写。
+
+</p>
+    <p>PHP 是一种 HTML 内嵌式的语言，PHP与微软的ASP颇有几分相似，都是一种在服务器端执行的“嵌入HTML文档的脚本语言”，语言的风格有类似于C语言，现在被很多的网站编程人员广泛的运用。PHP 独特的语法混合了 C、Java、Perl 以及 PHP 自创新的语法。
+
+</p>
+    <p>它可以比 CGI 或者 Perl 更快速的执行动态网页。用PHP做出的动态页面与其他的编程语言相比，PHP是将程序嵌入到HTML文档中去执行，执行效率比完全生成HTML标记的 CGI要高许多；与同样是嵌入HTML文档的脚本语言JavaScript相比，PHP在服务器端执行，成分利用了服务器的性能；PHP执行引擎还会将用户经常访问的PHP程序驻留在内存中，其他用户在一次访问这个程序时就不需要诚信编译程序了，只要直接执行内存中的代码就可以了，这也是PHP高效率的体现之一。</p>
+    <p>PHP具有非常强大的功能，所有的CGI或者JavaScript的功能PHP都能实现，而且支持几乎所有流行的数据库以及操作系统。</p>
+    <p>
+
+所以php文件的打开可以使用文本编辑器即可，可以使用dreamweaver，如果其需要执行解释的话，就需要电脑上安装apache或者iis等服务器环境了的。一般情况php是配合mysql和apache一起使用的，他们是web开发的黄金组合，都是免费的软件。</p>
+  </conbody>
+</concept>

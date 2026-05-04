@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languagepack>
+	<name>简体中文 (Simplified Chinese)</name>
+	<version>5.2.1</version>
+	<creationDate>2010-12-28</creationDate>
+	<author>YUCHENG HU - HAWEBS.NET</author>
+	<prefix>zh_cn</prefix>
+	<lockfor>0</lockfor>
+	<encoding>UTF-8</encoding>
+	<license>GPL</license>
+</languagepack>

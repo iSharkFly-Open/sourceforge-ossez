@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- (c) Copyright HAWEBS. 2006, 2010 All Rights Reserved. -->
+<!-- 
+  | HA WEBSYSTEMS
+  | http://www.hawebs.net
+  | http://www.tcivis.com
+  |
+  | Contact
+  | huyuchengus@gmail.com / yuchenghu@hawebs.net
+  | +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  |
+  | GNU GENERAL PUBLIC LICENSE / Apache License, Version 2.0
+  | 
+  | basedir can be specified to other places base on your need.
+  |
+  | Note: input, output, and temp directories will base on the basedir if 
+  | they are relative paths.
+  * -->
+
+<project name="derby_xhtml_plus_css" default="derby2xhtml_plus_css" basedir="../..">
+	<property file="${basedir}/docs.properties"/>
+  
+  <!-- dita.dir should point to the toolkit's root directory -->
+  
+  <property name="book.name" value="userguide"/>
+  <property name="xhtml.path" value="docs"/>
+  <property name="dita.input.dir" value=""/>
+  
+  <property name="book.output.dir" value="${dita.output.dir}/${book.name}/${xhtml.path}"/>
+  <property name="images.source.dir" value="${basedir}${file.separator}src${file.separator}images"/>
+  <property name="css.source.dir" value="${basedir}${file.separator}src${file.separator}css"/>
+  
+  <import file="${dita.dir}${file.separator}integrator.xml"/>
+  
+  <target name="derby2xhtml_plus_css" depends="integrate">
+    <echo>This sample file uses a simple CSS file to create a new, more colorful look and feel for generatedXHTML files.</echo>
+    
+    <ant antfile="${dita.dir}${file.separator}build.xml" target="init">
+<property name="args.input" value="src/userguide/userguide.ditamap"/>
+<property name="output.dir" value="${book.output.dir}"/>
+<property name="transtype" value="xhtml"/>
+<property name="dita.extname" value=".dita"/>
+<property name="args.xhtml.toc" value="toc"/>
+
+
+<!-- args.css = the name of the CSS file -->
+      <property name="args.css"
+        value="public.css"/>
+      <!-- args.csspath = the path relative to the output directory; in
+           this case, the CSS will be in out/css -->
+      <property name="args.csspath"
+        value="css"/>
+      <!-- args.copycss = whether to copy the CSS file to the output directory. -->
+      <property name="args.copycss"
+        value="yes"/>
+      <!-- args.cssroot = where to find the CSS file on the local file system. -->
+      <property name="args.cssroot"
+        value="${css.source.dir}"/>
+</ant>
+
+		
+  	
+  	    <!-- The toolkit currently does not scan CSS files to retrieve
+  	         related resources. The sample CSS above references two JPG files;
+  	         copy those files to the output CSS directory (output.dir + csspath). -->
+		<copy todir="${book.output.dir}${file.separator}css">
+  	        <fileset dir="${css.source.dir}">
+				 <include name="*.jpg"/>
+				 <include name="*.gif"/>
+			</fileset>
+  	    </copy>
+		<copy todir="${book.output.dir}${file.separator}images">
+  	        <fileset dir="${images.source.dir}" >
+  	            <include name="**/*.jpg"/>
+  	            <include name="**/*.jpeg"/>
+				<include name="**/*.gif"/>
+  	        </fileset>
+
+  	    </copy>
+  	    <copy todir="${book.output.dir}">
+  	    	<fileset dir="${dita.dir}/resource" includes="*.html"/>
+  	    </copy>
+
+  	  </target>
+
+
+</project>

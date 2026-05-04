@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_2" xml:lang="zh">
+  <title>排版规范</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Java</indexterm>
+        <indexterm>编码规范</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p><ol>
+        <li>关键词和操作符之间加适当的空格。</li>
+        <li>相对独立的程序块与块之间加空行。</li>
+        <li>较长的语句、表达式等要分成多行书写。</li>
+        <li>划分出的新行要进行适应的缩进，使排版整齐，语句可读。 </li>
+        <li>长表达式要在低优先级操作符处划分新行，操作符放在新行之首。 </li>
+        <li>循环、判断等语句中若有较长的表达式或语句，则要进行适应的划分。</li>
+        <li>若函数或过程中的参数较长，则要进行适当的划分。 </li>
+        <li>不允许把多个短语句写在一行中，即一行只写一条语句。</li>
+        <li>函数或过程的开始、结构的定义及循环、判断等语句中的代码都要采用缩进风格。</li>
+        <li>C/C++语言是用大括号‘{’和‘}’界定一段程序块的，编写程序块时‘{’和 ‘}’应各独占一行并且位于同一列，同时与引用它们的语句左对齐。在函数体 的开始、类的定义、结构的定义、枚举的定义以及if、for、do、while、switch、case语句中的程序都要采用如上的缩进方式。</li>
+      </ol></p>
+  </conbody>
+</concept>

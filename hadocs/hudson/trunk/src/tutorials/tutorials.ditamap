@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" []>
+<!--
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+<map title="Hudson 入门" id="hudson-tutorials">
+  <topicmeta>
+    <copyright>
+      <copyryear year="2006, 2010"/>
+      <copyrholder>HAWEBS信息技术股份有限公司</copyrholder>
+    </copyright>
+    <prodinfo>
+      <prodname>Hudson 入门</prodname>
+      <vrmlist>
+        <vrm version="1.0.0.0"/>
+      </vrmlist>
+      <brand>HAWEBS Hudson</brand>
+    </prodinfo>
+  </topicmeta>
+  <reltable>
+    <relrow>
+      <relcell/>
+      <relcell/>
+    </relrow>
+    <relrow>
+      <relcell>
+        <topicref navtitle="NULL" href="tasks/info/hacopyright.dita"/>
+      </relcell>
+      <relcell/>
+    </relrow>
+  </reltable>
+  <topicref navtitle="" href="tasks/info/hacopyright.dita"/>
+  <topicref href="tasks/info/apachelicense.dita"/>
+  <topicref href="tasks/introduction/introduction.dita">
+    <topicref href="tasks/introduction/what_hudson.dita"/>
+    <topicref href="tasks/introduction/hudson_origin.dita"/>
+    <topicref href="tasks/introduction/hudson_features.dita"/>
+    <topicref href="tasks/introduction/hudson_best_practices.dita"/>
+    <topicref href="tasks/introduction/test_drive.dita"/>
+    <topicref href="tasks/introduction/installation.dita"/>
+  </topicref>
+</map>

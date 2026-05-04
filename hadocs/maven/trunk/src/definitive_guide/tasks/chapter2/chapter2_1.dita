@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter2_1" xml:lang="zh">
+  <title>验证你的Java安装 </title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Apache</indexterm>
+        <indexterm>Maven</indexterm>
+        <indexterm>安装</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>尽管Maven可以运行在Java 1.4上，但本书假设你在至少Java 5上运行。尽管使用你操作系统上最新的稳定版本的JDK。本书的例子在Java 5或者Java 6上都能运行。  </p>
+    <p><codeblock>C:\Documents and Settings\YUCHENGHU&gt;java -version
+java version &quot;1.5.0_21&quot;
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_21-b01)
+Java HotSpot(TM) Client VM (build 1.5.0_21-b01, mixed mode, sharing)
+
+C:\Documents and Settings\YUCHENGHU&gt;</codeblock></p>
+    <p>Maven能在所有的验证过的JavaTM  兼容的JDK上工作，也包括一些未被验证JDK实现。本书的所有样例是基于Sun官方的JDK编写和测试的。如果你正在使用Linux，你可能需要自己下载Sun的JDK，并且确定JDK的版本（运行 <cmdname>java -version</cmdname>）。目前Sun已经将Java开源，因此这种情况将来有希望得到改进，将来很有可能Sun JRE和JDK会被默认安装在Linux上。但直到现在为止，你还是需要自己去下载。 </p>
+  </conbody>
+</concept>

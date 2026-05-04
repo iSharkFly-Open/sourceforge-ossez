@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+<reference id="rgscopyright" xml:lang="zh">
+  <title>版权信息</title>
+  <refbody>
+    <section>
+      <p><image href="../../images/halogo.jpg">
+          <alt>HAWEBS信息技术股份有限公司(LOGO)</alt>
+        </image></p>
+      <p>版权所有 2004-2010 软件开发小组</p>
+      <p>中文参考手册版权所有 2006 - 2010 HAWEBS信息技术有限公司</p>
+      <p>基于Apache许可证， 版本2.0。你必须在基于许可证的要求下使用本软件，你可以通过下面的链接来获得相关的具体内容  <xref href="http://www.apache.org/licenses/LICENSE-2.0" format="html" scope="external">http://www.apache.org/licenses/LICENSE-2.0</xref>。</p>
+    </section>
+    <section>
+      <title>相关信息</title>
+      <p><xref format="html" href="http://forums.hawebs.net/computer/" scope="external">OSS 计算技术</xref></p>
+      <p><xref format="html" href="http://news.hawebs.net/" scope="external">淡远资讯中心</xref></p>
+      <p><xref format="html" href="http://docs.hawebs.net/xhtml/" scope="external">文档库</xref></p>
+      <p><xref href="apachelicense.dita#apachelicense"/></p>
+    </section>
+  </refbody>
+</reference>

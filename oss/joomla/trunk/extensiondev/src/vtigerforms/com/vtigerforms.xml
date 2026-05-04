@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5.0">
+
+    <name>vtigerforms</name>
+    <version>1.0</version>
+    <description>Client forms integration with vtiger CRM</description>
+
+    <creationDate>2009 08 14</creationDate>
+    <author>www.vtiger.com</author>
+    <authorEmail>info@vtiger.com</authorEmail>
+    <authorUrl>http://forge.vtiger.com/projects/vtjoomla</authorUrl>
+    <copyright>www.vtiger.com</copyright>
+    <license>Vtiger Public License</license>
+
+    <files>
+        <filename>vtigerforms.php</filename>
+        <filename>vtigerforms_helper.php</filename>
+        <filename>curl_http_client.php</filename>
+        <filename>README.txt</filename>
+    </files>
+
+    <administration>
+        <menu>vtigerforms</menu>
+        <files folder="admin">
+            <filename>index.html</filename>
+            <filename>admin.vtigerforms.php</filename>
+        </files>
+    </administration>
+</install>

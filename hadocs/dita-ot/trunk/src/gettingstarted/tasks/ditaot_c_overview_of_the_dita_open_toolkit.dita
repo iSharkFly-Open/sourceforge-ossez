@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Arbortext, Inc., 1988-2008, v.4002--><!-- This document was created with Syntext Serna Free. -->
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept id="ditaot_c_overview_dita_open_toolkit" xml:lang="zh">
+  <title>DITA Open Toolkit 概述</title>
+  <shortdesc>
+	DITA Open Toolkit 是参考 OASIS DITA 标准实现的一套工具。
+	这个工具用于把 DITA 内容 (映射和主题) 转换为可发行格式，如 XHTML、Eclipse Help、HTML Help、Help、JavaHelp 和 PDF。
+	<?Pub Caret?>
+ </shortdesc>
+  <conbody>
+    <p/>
+  </conbody>
+</concept><?Pub *0000000589?>

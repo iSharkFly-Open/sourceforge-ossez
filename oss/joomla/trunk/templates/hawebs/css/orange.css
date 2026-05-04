@@ -1,0 +1,71 @@
+@charset "UTF-8";
+/**
+ * Copyright (C) 2006-2009 YUCHENG HU
+ *
+ * ----------------------------------------------------------------------------------
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * ----------------------------------------------------------------------------------
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ *
+ * ----------------------------------------------------------------------------------
+ */
+ 
+a:link, a:visited {
+	color: #cd6620;
+}
+
+a:hover {
+	color: #ac5419;
+}
+
+#pillmenu a:hover {
+  color: #cd6620;
+}
+
+#pillmenu a#active_menu-nav {
+  background: url(../images/orange/mw_menu_active_bg.png) 0 0 repeat-x;
+  color: #fff;
+}
+
+#pillmenu a#active_menu-nav:hover {
+  color: #fff;
+}
+
+h3, .componentheading, table.moduletable th {
+  color: #cd6620;
+}
+
+div.module_menu {
+	background: url(../images/orange/mw_box_br.png) 100% 100% no-repeat;
+}
+
+div.module_menu div {
+	background: url(../images/orange/mw_box_bl.png) 0 100% no-repeat;
+}
+
+div.module_menu div div {
+	background: url(../images/orange/mw_box_tr.png) 100% 0 no-repeat;
+}
+
+div.module_menu div div div {
+	background: url(../images/orange/mw_box_tl.png) 0 0 no-repeat;
+}

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_5" xml:lang="zh">
+  <title>一个“项目”的概念模型</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Apache</indexterm>
+        <indexterm>Maven</indexterm>
+        <indexterm>介绍</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>Maven 维护了一个项目的模型，你不仅仅需要把源码编译成字节码，你还需要开发软件项目的描述信息，为项目指定一组唯一的坐标。你要描述项目的的属性。项目的许可证是什么？谁开发这个项目，为这个项目做贡献？这个项目依赖于其它什么项目没有？Maven不仅仅是一个“构建工具”，它不仅仅是在类似于 make 和 Ant 的工具的基础上的改进，它是包含了一组关于软件项目和软件开发的语义规则的平台。这个基于每一个项目定义的模型实现了如下特征：  </p>
+    <p><ul>
+        <li>依赖管理<p>由于项目是根据一个包含组标识符，构件标识符和版本的唯一的坐标定义的。项目间可以使用这些坐标来声明依赖。</p></li>
+        <li>远程仓库<p>和项目依赖相关的，我们可以使用定义在项目对象模型（POM）中的坐标来创建 Maven 构件的仓库。 </p></li>
+        <li>全局性构建逻辑重用<p>插件被编写成和项目模型对象（POM）一起工作，它们没有被设计成操作某一个已知位置的特定文件。一切都被抽象到模型中，插件配置和自定义行为都在模型中进行。 </p></li>
+        <li>工具可移植性/集成<p>像 Eclipse，NetBeans，和 InteliJ 这样的工具现在有共同的地方来找到项目的信息。在 Maven 出现之前，每个 IDE  都有不同的方法来存储实际上是自定义项目对象模型（POM）的信息。Maven 标准化了这种描述，而虽然每个 IDE  仍然继续维护它的自定义项目文件，但这些文件现在可以很容易的由模型生成。 </p></li>
+        <li>便于搜索和过滤构件<p>像 Nexus 这样的工具允许你使用存储在 POM  中的信息对仓库中的内容进行索引和搜索。 </p></li>
+      </ul></p>
+    <p>Maven 为软件项目的语义一致性描述的开端提供了一个基础。</p>
+  </conbody>
+</concept>

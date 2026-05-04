@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.8.0-dev (info@mypapit.net)" -->
+<rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>HA 资讯 - 数据库</title>
+        <description><![CDATA[HA WEBSYSTEMS - 提供WEB方式的信息化和技术服务]]></description>
+        <link>http://news.hawebs.net/</link>
+        <lastBuildDate>Sun, 04 Apr 2010 03:53:26 GMT</lastBuildDate>
+        <generator>FeedCreator 1.8.0-dev (info@mypapit.net)</generator>
+		<atom:link href="http://news.hawebs.net/index.php?option=com_ninjarsssyndicator&amp;feed_id=6&amp;format=raw" rel="self" type="application/rss+xml" />        <item>
+            <title>Derby 系统要求</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=119:derby-&amp;catid=42:derby&amp;Itemid=57</link>
+            <description><![CDATA[Derby是使用纯Java实现的数据库引擎。 Derby能运行在任何被认证的Java虚拟机（JVM）上。<br /><br />你计算机安装的JAVA版本必须高于1.4。 Java开发工具包（JDK）在对新Derby用户的自学习教程被要求执行。<br /><br />使用java -version命令，来检查Java虚拟机安装的正确版本。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Thu, 11 Mar 2010 04:29:32 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=119:derby-&amp;catid=42:derby&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>Derby 产品文档</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=118:derby-&amp;catid=42:derby&amp;Itemid=57</link>
+            <description><![CDATA[Derby产品文档包括手册和API参考。<br /><br />Derby入门指南<br /> 描述如何安装和配置Derby。 包括针对新用户的自学教程和针对有JDBC经验用户的快速指南。 本指南同时也介绍了 dblook， ij，和sysinfo工具和Derby包含和使用的库和脚本。<br /><br />Derby开发者指南<br /> 描述Derby所有的通用部署功能和特性，比如Derby的JDBC和SQL特性，部署Derby应用，使用属性文件、安全和其他高级特性。<br /><br />Derby参考手册<br /> 文档描述了SQL语言在Derby中的实现。 手册提供了Derby的JDBC和JTA实现、关键字、系统表、属性和SQL异常（SQLExceptions）的相关参考信息。<br /><br />Derby调优<br /> 文档提供了提高性能小技巧、更深层次的性能讨论和Derby的优化信息。<br /><br />Derby工具包指南<br /> 描述如何使用Derby的工具包，比如dblook、ij和sysinfo，和如何使用系统过程导入导出数据，以及如何在数据库中使用Java代码。<br /><br />Derby服务器和管理指南<br /> 第一部分讨论了服务器配置的，以及如何进行客户端编程和数据库管理。 一些系统可能需要管理进程，比如备份数据库。 这些进程独立于任何服务器框架，但是是多用户或大小系统的独特特性。<br /> 第二部分讨论了管理问题，比如备份和死锁调试。<br /><br />Derby API参考<br /> API参考是由Derby公共类自动生成而来。 不提供JDBC的API，因为这是Java 2 标准版平台的一部分。 更多API类的信息，请参考Derby参考手册。<br /> 你可以从下Apache的官方地址中访问10.5版手册和API参考<br /><br />产品文档随Derby同时安装。 手册被安装在docs子目录中。 API参考安装在javadoc子目录中。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Thu, 11 Mar 2010 04:27:47 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=118:derby-&amp;catid=42:derby&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>PostgreSQL 8.4.1发布</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=117:postgresql-841&amp;catid=36:postgresql&amp;Itemid=57</link>
+            <description><![CDATA[2009年9月23日，PostgreSQL项目团队公布了PostgreSQL关系型数据库系统所有分支版本的更新，包括：8.4.1, 8.3.8, 8.2.14, 8.1.18, 8.0.22以及7.4.26版本。<br /><br />这次更新主要修改了“无法再连接共享内存”的问题，它一直困扰着许多Windows PostgreSQL的用户。另外更多的就是对8.4.x版本的更新，详情请查看PostgreSQL 8.4.1发布文档。<br /><br />查看PostgreSQL详情：<a href="http://www.postgresql.org/docs/current/static/release.html">http://www.postgresql.org/docs/current/static/release.html</a><br /><br />下载PostgreSQL：<a href="http://www.postgresql.org/download/">http://www.postgresql.org/download/</a>]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Thu, 04 Mar 2010 17:12:22 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=117:postgresql-841&amp;catid=36:postgresql&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>9.0 Alpha 4 版本发布</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=116:90-alpha-4-&amp;catid=36:postgresql&amp;Itemid=57</link>
+            <description><![CDATA[第四个PostgreSQL version 9.0的alpha版本已经发布。<br /><br />9.0alpha4已提供下载。这个测试版相对于前一个测试版新增了一些主要的特性。<br /><br />请下载，安装，测试，使用，并且欢迎给开发小组提供相关建议来改善下一个版本。<br /><br />新增特性如下：<br />* Streaming Replication for binary log-based replication of PostgreSQL<br />* New in-memory, high-performance Listen/Notify queue<br />* Automatic row-count return to drivers on SELECT queries<br />* ROWS PRECEDING and ROWS FOLLOWING windowing functions<br /><br />这些主要特性的添加，供用户进行有针对性的测试。如果你希望组织这个版本的测试，请参考Alpha/Beta版本的测试页。<br /><br />Alpha并不是一个稳定版，同时请不要使用Alpha版本运行在你的生产环境中，Alpha版本仅供测试新特性。我们并不能保证在当前Alpha 版本中包含的特性或者APIs能够使用，或者与最终版返回相同的结果。前一个Alpha版本被命名为“8.5”。“9.0”与PostgreSQL与发行版具有相同的版本号。Alpha或Beta版的发现将会在数周内提供测试。<br /><br />更多的发行日志，可以在Alpha版的信息页中找到。<br /><br />Alpha4当前只提供源代码，二进制分发包将随后发布。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Thu, 04 Mar 2010 16:57:00 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=116:90-alpha-4-&amp;catid=36:postgresql&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>MicroOLAP PostgreSQL数据库建模工具发布新版本</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=115:microolap-postgresql&amp;catid=36:postgresql&amp;Itemid=57</link>
+            <description><![CDATA[<p>MicroOLAP PostgreSQL 数据库建模工具使用整合图形化界面，可以让你清晰和有效的数据库结构；查看所有数据表的完整结构；表、视图之间的关系；存储过程以及其他对象。使用这个工具中的修改选项，你可以很容易在服务器上生成物理数据库，根据你的模型修改物理数据库。<br /><br />你可以从下面的地址中下载测试版<br /><a href="http://microolap.com/products/database/postgresql-designer/download/">http://microolap.com/products/database/postgresql-designer/download/</a><br /><br />更新日志如下：<br />[!] WineHQ support enhanced<br />[+] DEFERRABLE clause now proccessed for FOREIGN KEY by SQL Reverse Engineering<br />[*] SQL Reverse Engineering: function now created if specified in CREATE TRIGGER and "Create nonexistent references object" checked<br />[-] "After changing interface language Object Tree View not refreshed immediatly" bug fixed<br />[-] "Cannot add object through Object Tree View popup menu after interface lanuage changed" bug fixed<br />[-] "Cannot delete all tablespaces from model" bug fixed<br />[-] "Cannot save Begin and End Scripts using Database Editor" bug fixed<br />[-] "Command 'wine PgMDD.exe' fails in the shell" bug fixed<br />[-] "Modify Database duplicates FOREIGN KEYs sometimes" bug fixed<br />[-] "Width for stored routines calculated wrong sometimes" bug fixed<br /><br />如果你有任何问题，你可以通过下面的链接提交给开发小组：<br /><a href="http://www.microolap.com/support/">http://www.microolap.com/support/</a></p>
+<p> </p>]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Thu, 04 Mar 2010 16:47:42 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=115:microolap-postgresql&amp;catid=36:postgresql&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>Sun收购MySQL后面临的五个问题</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=112:sunmysql&amp;catid=48:mysql&amp;Itemid=57</link>
+            <description><![CDATA[近日，Sun公司最终再次成为人们关注的焦点。该公司最近宣布以10亿美元的价格收购开源数据库领导厂商MySQL。对于Sun公司、用户和投资者来说，这都是一个惊天动地的新闻。毫无疑问，这次收购将给Sun带来新的机遇。不过同时它也带来了五个关键的挑战。本文我们将一起看一下这五个挑战是什么，以及 Sun首席执行官Jonathan Schwartz将需要如何解决它们。<br /><br />首先，让我们看一个小插曲。一年前我曾经建议 Schwartz，不要软件硬件两手抓，要么收购AMD公司，从而专注于微处理器市场;要么收购 Red Hat，拉起开源软件的大旗。巧合的是，在这之后，Sun除了开放其Solaris操作系统之外，其首席执行官Schwartz还令人惊讶的出现在去年夏天的SugarCRM开发者大会上，他与开源社区一直保持着紧密的联系。<br /><br />同时，MySQL公司开发出的同名数据库备受称赞，它非常适合运行Web应用。而MySQL公司同时也是我认为在2008年将确定统治地位的十大开源公司之一。事实上，在此之前多数人认为，MySQL公司将在今年实现IPO上市。但是现在Sun拿出10亿美元一举把它拿下了。我们不得不说， Schwartz先生，你做出了一个非常英明的决策。大笔一挥，就让Sun从一个传统的硬件提供商摇身变为一个开源市场的领导者。<br /><br />或许这不会解决Sun需要面对的所有短期收益和成长方面的挑战。但是，它将确保Sun将拥有数年的时间来解决这个问题。那么，通过收购MySQL，Sun公司最终将获得什么?这个公司将面临什么样的挑战?下面就是我所认为的这个交易会带来的一些最大的挑战。<br /><br />一、挑战1——与甲骨文关系如何发展?<br /><br />数年以来，Sun与甲骨文都是非常好的战略合作伙伴关系，现在Sun通过收购MySQL也有自己的数据库产品，这难免对它与甲骨文的关系带来影响。<br /><br />在某些方面，MySQL与甲骨文在数据库市场上是竞争的关系。尽管甲骨文倾向更关注闭源应用和高端企业数据库，而MySQL则更适合低端Web 应用。但是两者之间的业务无疑存在重叠之处，而且在未来几年中，甲骨文和MySQL的竞争关系将越来越大。不过，我对此并不太担心。甲骨文和微软在很多方面也是既竞争又合作的关系。那么，甲骨文和Sun也可以保持这种关系。<br /><br />二、挑战2——来自Red Hat<br /><br />几个月以前，我曾经预言开源厂商Red Hat和MySQL将携手挑战任何对手，毕竟，Red Hat所提供的产品已经不仅限于Linux操作系统，现在它还提供中间件产品。另外Red Hat还与像SugarCRM之类的开源应用提供商保持紧密的联系。同时，MySQL也与众多开源应用提供商关系不错。<br /><br />现在问题变成了：这个开源数据库(MySQL)或这个开源操作系统(Red Hat Linux)还将是开源领域的中心吗?就目前来说，这不是什么问题。MySQL和Red Hat都有足够的成长空间。但是，Sun/MySQL的组合将需要面临与Red Hat既竞争又合作的关系。<br /><br />三、挑战3——来自软件开发者<br /><br />作为一个闭源软件公司，Sun具有很长的历史。Sun Sloaris操作系统加上Sun的SPARC处理器曾经在数年的时间内统治网络计算时代。但是Solaris具有非常有限的软件开发者社区，他们当中很多专注于开发高价的华尔街金融应用。与之完全不同的是，MySQL具有一个迅速增长的全球开发者群体，他们在为MySQL平台增加增值应用。<br /><br />Sun将需要确保它可以继续重视开源传统，因为这个公司不可能承受失去MySQL最关键追随者所带来的损失。<br /><br />四、挑战4——转变合作伙伴和集成商的观点<br /><br />开源市场非常热门。但是许多集成商——尤其是专注于华尔街和金融服务的高端Sun集成商——还没有发现开源应用的强大之处。Sun将需要将这些怀疑论者转化为开源行业的拥护者。<br /><br />五、挑战5——文化上的碰撞<br /><br />你曾经为一个被大型传统技术公司收购的小公司工作过吗?你曾经工作在一个决策可以立即被作出——而不是经过开会讨论的敏捷型企业吗?如果有的话，你会体会到Sun收购MySQL后所面临的两种文化的碰撞。作为一个快速发展的Web 2.0先驱，MySQL需要对自身进行调整以适应Sun更成熟的文化。反过来说，Sun需要保持MySQL的快速增长、创造性和开放的文化中最好的部分。<br /><br />在以上Sun-MySQL组合所面临的所有挑战中，我认为第五个是其中最大的一个。不过，Sun将采取什么应对措施，这两个公司将走向何方?还需时间来证明。请在你的日历上圈出4月14日这个重要的日子。这是MySQL年度大会将在圣克拉拉召开的日子。Jonathan Schwartz和他的团队将在这次大会上有很多话要向客户和合作伙伴们讲。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Thu, 25 Feb 2010 08:33:54 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=112:sunmysql&amp;catid=48:mysql&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>MySQL聚焦Web 2.0可扩展性</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=111:mysqlweb-20&amp;catid=48:mysql&amp;Itemid=57</link>
+            <description><![CDATA[开源的MySQL并不能取代非共享的私有数据库在企业中的应用，于是这些开源数据库的支持者们想把解决Web应用程序开发工具的可扩展性问题看作是获得更广阔的企业应用的通行证。<br /><br />一直以来，MySQL都致力于成为为在线应用服务的顶级数据库，就算是MySQL被Sun收购了，这个发展的重点还是没有转变。该公司的高管们在展望未来的时候曾表示对上述产品的重视对公司规模和深度的扩展都将有很大帮助。随着大规模Web应用的普及，无论是用户总量还是数据和交易总量都将以前所未有的速度迅速增长，因此，对绝大部分企业而言，应用的可扩展性变得非常重要。<br /><br />原MySQL公司的产品副总裁 Zack Urlocker表示，他们正和Sun的性能工程师紧密合作，以便找出MySQL服务器以及特定的存储引擎可能存在的瓶颈。他们进行了很多在极端条件下的压力测试，并利用Sun的Dtrace等技术在显微镜下对应用程序的性能进行分析，以便找到瓶颈所在并进行有效的调试。<br /><br />在并购之前，Sun和MySQL两家公司各自投入了一定精力到Memcache的研发当中。Memcache是一个高效分布式缓存系统，专门用于为数据库服务器大量减负，并通过全局缓存将数据库的负荷分配到低开销服务器。一些高通量的网站已经采用这项技术来进行网站性能优化。而MySQL也在努力将其自身和Sun关于这项技术各自的研究成果整合起来。<br /><br />科技产业分析公司451 Group的分析员Matt Aslett表示，重心转向基于Web架构的企业应用对MySQL的发展百利而无一害：“Sun在收购MySQL的时候曾宣布将会把资源投入到开源数据库，将其作为关键任务高性能应用程序的一个选择。Sun的声明是这样说的，由于这些应用程序能够部署到基于Web的架构，所以Sun将会对这些应用程序提供支持。因此，如果将业务重心转向为内部应用程序部署而设的面向服务架构，那么MySQL的实用性也将大大提高。”<br /><br />Aslett及其同僚 Raven Zachary在最近发表的一篇关于开源软件对数据库市场的影响的报告中，发现像MySQL和PostgreSQL这样的开源数据库事实上并不能代替非共享的私有产品。相反，该报告指出，企业对开源数据库的应用很广泛，但也很肤浅，缺乏深度，通常只是为了在特定的应用领域中，避免由于新项目的启动需要向私有软件供应商提交额外的认证许可费用而部署开源软件。<br /><br />该报告还罗列了这种现象出现的一系列原因，包括对企业功能、服务和支持等方面的内容。不过，Urlocker表示，谈到传统的企业数据库应用，MySQL的重点并不在于要擂倒其私有的竞争对手，而是要成为Web 2.0企业的核心数据库。<br /><br />Urlocker称，在Web 2.0应用和企业2.0应用之中，MySQL的增长速度和数量已经非常惊人。旧的关系数据库管理系统市场领域远不及这个领域发展迅猛。Web 2.0应用和所谓的企业2.0应用的最佳实务将成为未来十年市场增长的基础。所以，MySQL的计划是继续满足新应用开发人员利用 Web基础构建可扩展的应用程序的需求。Urlocker还表示，像数据仓库这样的领域对于开源来说还是一片刚刚开垦的处女地，在2008年，随着在顶级 MySQL上构建的特殊存储引擎的广泛应用，这个领域将会更加红火。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Thu, 25 Feb 2010 07:18:14 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=111:mysqlweb-20&amp;catid=48:mysql&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>面向企业应用Android集成SQLite和GG Apps</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=110:androidsqlitegg-apps&amp;catid=37:sqlite&amp;Itemid=57</link>
+            <description><![CDATA[很多人看到了Android平台作为一个MID终端主要面向个人，但是MID可以很好作为一个企业应用终端，通过Google最新的“云计算”我们已经看到了些眉目，Android手机上包含了SQLite端，同时通过无线3G网络可以轻松的访问Google Apps组件，针对企业办公也是一种新的方向，在这一点微软Windows CE平台已经加入了SQL Mobile的支持。<br /><br />未来的Cloud计算中谁更有优势呢? 看来Windows Live发展不是很顺利，但是现在GG Apps的用户也很少。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Wed, 24 Feb 2010 05:45:31 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=110:androidsqlitegg-apps&amp;catid=37:sqlite&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>开源数据库SQlite再获Adobe赞助支持</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=109:sqliteadobe&amp;catid=37:sqlite&amp;Itemid=57</link>
+            <description><![CDATA[<p>国外媒体消息，Adobe公司周一已经正式表示将帮助并赞助开源项目SQLite数据库。此前该项目已经得到了两个大公司的支持，它们分别是Mozilla和Symbian。<br /><br />Adobe公司负责开源项目的Dave McAllister也在博客上证实了这个消息，他表示：“通过支持SQLite的工作，Adobe可以改善并增强SQLite的功能等等” “Adobe支持SQLite社区的举动显示了Aodbe为开发源码做出的承诺，并且，为了社会的最佳利益，SQLite应保持独立和自主”<br /><br />但是实际上严格的说，SQLite并不完全符合开发源码项目的要求，SQLite的底层代码应该是免费提供的公有财产，并不符合开放源码项目的技术要求，但是该软件的大部分代码都是开源的。目前Adobe Lightroom软件正是使用了SQLite的技术。</p>
+<p> </p>]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Wed, 24 Feb 2010 05:43:05 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=109:sqliteadobe&amp;catid=37:sqlite&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>SQLite的体系结构介绍</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=108:sqlite&amp;catid=37:sqlite&amp;Itemid=57</link>
+            <description><![CDATA[这篇文档主要描述了SQLite类库的结构。这篇文档的内容对于那些想了解和修改SQLite内部结构的人将会非常有用。<br /><br />简介<br /><br />显示了SQLite的主要成分及各成分之间是如何相互关联的。接下来的文本将简要的介绍每个单一的成分。<br /><br />这篇文档描述SQLite第三版，它和 2.8版以及早期的版本基本相似，但在一些细节上是有区别的。<br /><br />接口程序<br /><br />SQLite类库大部分的公共接口程序是由main.c,legacy.c, 和vdbeapi.c源文件中的功能执行的。 但有些程序是分散在其他文件夹的，因为在其他文件夹里他们可以访问有文件作用域的数据结构。sqlite3_get_table()这个程序是在table.c中执行的。sqlite3_mprintf()在printf.c中执行。sqlite3_complete()在tokenize.c中执行。 Tcl 接口程序用tclsqlite.c来执行。<br /><br />为了避免和其它软件在名字上有冲突，SQLite类库中所有的外部符号都是以sqlite3为前缀来命名的。这些被用来做外部使用的符号（换句话说，这些符号用来形成SQLite的API）是以sqlite3_.来命名的。<br /><br />Tokenizer<br /><br />当执行一个包含SQL语句的字符串时，接口程序要把这个字符串传递给tokenizer。Tokenizer的任务是把原有字符串分成一个个标示符，并把这些标示符传递给剖析器。Tokenizer是在C文件夹tokenize.c中用手编译的。<br /><br />在这个设计中需要注意的一点是，tokenizer调用parser。熟悉YACC和BISON的人们也许会习惯于用parser调用 tokenizer。 The author of SQLite的作者已经尝试了这两种方法，并发现用tokenizer调用parser会使程序运行的更顺利。YACC使程序更滞后一些。<br /><br />Parser<br /><br />The parser是一个部分，它基于文件场景赋予tokens意思。SQLite的parser是由LemonLALR(1) parser generator产生的。Lemon和YACC/BISON一样做同样的工作，但是它使用不同的输入语句，这个输入语句是不易出错的。 Lemon也产生一个parser，这个parser是可重入的并且是线程安全的。 Lemon 定义了无终端解除程序的概念，所以当遇到语法错误的时候，它不会泄露内存。驱动Lemon的原文件在parse.y.<br /><br />因为lemon是一个在发展机械上不常见的程序，所以lemon的源代码（只是一个C文件）是在SQLite分布区的"tool"子目录下的。 lemon的文档是在分布区的 "doc"子目录下的。<br /><br />代码发生器<br /><br />在剖析器收集完符号并把之转换成完全的SQL语句时，它调用代码产生器来产生虚拟的机器代码，这些机器代码将按照SQL语句的要求来工作。在代码产生器中有许多文件； attach.c, auth.c, build.c, delete.c, expr.c, insert.c, pragma.c, select.c, trigger.c, update.c, vacuum.c and where.c. 正是在这些文件中，最具有重要意义的事情发生了。 expr.c 处理表达式代码的生成。 where.c 处理SELECT, UPDATE and DELETE语句中WHERE子句的代码的生成。文件 attach.c, delete.c, insert.c, select.c, trigger.c update.c,和vacuum.c处理SQL语句中具有同样名字的语句的代码的生成。(每个文件调用expr.c and where.c中的程序） All other 所有SQL的其它语句的代码是由build.c生成的。文件auth.c 执行sqlite3_set_authorizer()的功能.<br /><br />虚拟机器<br /><br />由代码生成器产生的程序由虚拟机器来运行。总而言之，虚拟机器主要用来执行一个为操作数据库而设计的抽象的计算引擎。机器有一个用来存储中间数据的存储栈。每个指令包含一个操作代码和三个额外的操作数。<br /><br />虚拟机器本身是被包含在一个单独的文件vdbe.c中的。虚拟机器也有它自己的标题文件：vdbe.h它在虚拟机器和剩下的SQLite类库之间定义了一个接口程序，vdbeInt.h它定义了虚拟机器的结构。文件vdbeaux.c包含了虚拟机器所使用的实用程序和一些被其它类库用来建立VM程序的接口程序模块。文件vdbeapi.c包含虚拟机器的外部接口，比如sqlite3_bind_...类的函数。单独的值（字符串，整数，浮动点数值，BLOBS）被存储在一个叫 "Mem"的内部目标程序里，"Mem"是由vdbemem.c执行的。<br /><br />SQLite使用C语言程序来来执行SQL函数。即使内置的SQL函数也是用这种方法来执行的。大部分的SQL内置函数(ex:coalesce(),count(),substr(), and so forth)可以在func.c里发现。日期和时间转换函数在date.c.<br /><br />B-树<br /><br />SQLite数据库在磁盘里维护，使用源文件btree.c中的B-树执行。数据库中的每个表格和目录使用一个单独的B-tree。所有的 B-trees 被存储在同样的磁盘文件里。文件格式的细节被记录在btree.c.<br /><br />开头的备注里。 B-tree子系统的接口程序被标题文件btree.h所定义。.<br /><br />页面高速缓存<br /><br />B- tree模块要求信息来源于磁盘上固定规模的程序块。默认程序块的大小是1024个字节，但是可以在512和65536个字节间变化。页面高速缓存负责读，写和高速缓存这些程序块。页面高速缓存还提供重新运算和提交抽象命令，它还管理关闭数据库文件夹。 B-tree驱动器要求页面高速缓存器中的特别的页，当它想修改页或重新运行改变的时候，它会通报页面高速缓存。为了保证所有的需求被快速，安全和有效的处理，页面高速缓存处理所有的微小的细节。<br /><br />运行页面高速缓存的代码在专门的C源文件pager.c中。页面高速缓存的子系统的接口程序被目标文件pager.h所定义。<br /><br />OS 接口程序<br /><br />为了在POSIX和Win32 之间提供一些可移植性，SQLite操作系统的接口程序使用一个提取层。 OS提取层的接口程序被定义在os.h. 每个支持的操作系统有它自己的执行文件： Unix使用os_unix.c，windows使用os_win.c。每个具体的操作器具有它自己的标题文件：os_unix.h,os_win.h, etc.<br /><br />Utilities<br /><br />内存分配和字符串比较程序位于util.c。剖析器使用的表格符号被hash.c中的无用信息表格维护。源文件utf.c包含UNICODE转换子程序。SQLite有它自己的执行文件printf()（有一些扩展）在printf.c中，还有它自己随机数量产生器在random.c.<br /><br />测试代码<br /><br />如果你计算回归测试脚本，多于一半的SQLite代码数据库的代码将被测试。 在主要代码文件中有许多assert()语句。另外，源文件test1.c通过test5.c和md5.c执行只为测试用的扩展名。os_test.c向后的接口程序用来模拟断电，来验证页面调度程序中的系统性事故恢复机制。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Wed, 24 Feb 2010 05:42:10 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=108:sqlite&amp;catid=37:sqlite&amp;Itemid=57</guid>
+        </item>
+    </channel>
+</rss>

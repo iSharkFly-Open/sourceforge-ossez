@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="FeedCreator 1.8.0-dev (info@mypapit.net)" -->
+<rss version="2.0"  xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>HA 资讯 - MySQL</title>
+        <description><![CDATA[HA WEBSYSTEMS - 提供WEB方式的信息化和技术服务]]></description>
+        <link>http://news.hawebs.net/</link>
+        <lastBuildDate>Sun, 04 Apr 2010 03:52:16 GMT</lastBuildDate>
+        <generator>FeedCreator 1.8.0-dev (info@mypapit.net)</generator>
+		<atom:link href="http://news.hawebs.net/index.php?option=com_ninjarsssyndicator&amp;feed_id=7&amp;format=raw" rel="self" type="application/rss+xml" />        <item>
+            <title>Sun收购MySQL后面临的五个问题</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=112:sunmysql&amp;catid=48:mysql&amp;Itemid=57</link>
+            <description><![CDATA[近日，Sun公司最终再次成为人们关注的焦点。该公司最近宣布以10亿美元的价格收购开源数据库领导厂商MySQL。对于Sun公司、用户和投资者来说，这都是一个惊天动地的新闻。毫无疑问，这次收购将给Sun带来新的机遇。不过同时它也带来了五个关键的挑战。本文我们将一起看一下这五个挑战是什么，以及 Sun首席执行官Jonathan Schwartz将需要如何解决它们。<br /><br />首先，让我们看一个小插曲。一年前我曾经建议 Schwartz，不要软件硬件两手抓，要么收购AMD公司，从而专注于微处理器市场;要么收购 Red Hat，拉起开源软件的大旗。巧合的是，在这之后，Sun除了开放其Solaris操作系统之外，其首席执行官Schwartz还令人惊讶的出现在去年夏天的SugarCRM开发者大会上，他与开源社区一直保持着紧密的联系。<br /><br />同时，MySQL公司开发出的同名数据库备受称赞，它非常适合运行Web应用。而MySQL公司同时也是我认为在2008年将确定统治地位的十大开源公司之一。事实上，在此之前多数人认为，MySQL公司将在今年实现IPO上市。但是现在Sun拿出10亿美元一举把它拿下了。我们不得不说， Schwartz先生，你做出了一个非常英明的决策。大笔一挥，就让Sun从一个传统的硬件提供商摇身变为一个开源市场的领导者。<br /><br />或许这不会解决Sun需要面对的所有短期收益和成长方面的挑战。但是，它将确保Sun将拥有数年的时间来解决这个问题。那么，通过收购MySQL，Sun公司最终将获得什么?这个公司将面临什么样的挑战?下面就是我所认为的这个交易会带来的一些最大的挑战。<br /><br />一、挑战1——与甲骨文关系如何发展?<br /><br />数年以来，Sun与甲骨文都是非常好的战略合作伙伴关系，现在Sun通过收购MySQL也有自己的数据库产品，这难免对它与甲骨文的关系带来影响。<br /><br />在某些方面，MySQL与甲骨文在数据库市场上是竞争的关系。尽管甲骨文倾向更关注闭源应用和高端企业数据库，而MySQL则更适合低端Web 应用。但是两者之间的业务无疑存在重叠之处，而且在未来几年中，甲骨文和MySQL的竞争关系将越来越大。不过，我对此并不太担心。甲骨文和微软在很多方面也是既竞争又合作的关系。那么，甲骨文和Sun也可以保持这种关系。<br /><br />二、挑战2——来自Red Hat<br /><br />几个月以前，我曾经预言开源厂商Red Hat和MySQL将携手挑战任何对手，毕竟，Red Hat所提供的产品已经不仅限于Linux操作系统，现在它还提供中间件产品。另外Red Hat还与像SugarCRM之类的开源应用提供商保持紧密的联系。同时，MySQL也与众多开源应用提供商关系不错。<br /><br />现在问题变成了：这个开源数据库(MySQL)或这个开源操作系统(Red Hat Linux)还将是开源领域的中心吗?就目前来说，这不是什么问题。MySQL和Red Hat都有足够的成长空间。但是，Sun/MySQL的组合将需要面临与Red Hat既竞争又合作的关系。<br /><br />三、挑战3——来自软件开发者<br /><br />作为一个闭源软件公司，Sun具有很长的历史。Sun Sloaris操作系统加上Sun的SPARC处理器曾经在数年的时间内统治网络计算时代。但是Solaris具有非常有限的软件开发者社区，他们当中很多专注于开发高价的华尔街金融应用。与之完全不同的是，MySQL具有一个迅速增长的全球开发者群体，他们在为MySQL平台增加增值应用。<br /><br />Sun将需要确保它可以继续重视开源传统，因为这个公司不可能承受失去MySQL最关键追随者所带来的损失。<br /><br />四、挑战4——转变合作伙伴和集成商的观点<br /><br />开源市场非常热门。但是许多集成商——尤其是专注于华尔街和金融服务的高端Sun集成商——还没有发现开源应用的强大之处。Sun将需要将这些怀疑论者转化为开源行业的拥护者。<br /><br />五、挑战5——文化上的碰撞<br /><br />你曾经为一个被大型传统技术公司收购的小公司工作过吗?你曾经工作在一个决策可以立即被作出——而不是经过开会讨论的敏捷型企业吗?如果有的话，你会体会到Sun收购MySQL后所面临的两种文化的碰撞。作为一个快速发展的Web 2.0先驱，MySQL需要对自身进行调整以适应Sun更成熟的文化。反过来说，Sun需要保持MySQL的快速增长、创造性和开放的文化中最好的部分。<br /><br />在以上Sun-MySQL组合所面临的所有挑战中，我认为第五个是其中最大的一个。不过，Sun将采取什么应对措施，这两个公司将走向何方?还需时间来证明。请在你的日历上圈出4月14日这个重要的日子。这是MySQL年度大会将在圣克拉拉召开的日子。Jonathan Schwartz和他的团队将在这次大会上有很多话要向客户和合作伙伴们讲。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Thu, 25 Feb 2010 08:33:54 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=112:sunmysql&amp;catid=48:mysql&amp;Itemid=57</guid>
+        </item>
+        <item>
+            <title>MySQL聚焦Web 2.0可扩展性</title>
+            <link>http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=111:mysqlweb-20&amp;catid=48:mysql&amp;Itemid=57</link>
+            <description><![CDATA[开源的MySQL并不能取代非共享的私有数据库在企业中的应用，于是这些开源数据库的支持者们想把解决Web应用程序开发工具的可扩展性问题看作是获得更广阔的企业应用的通行证。<br /><br />一直以来，MySQL都致力于成为为在线应用服务的顶级数据库，就算是MySQL被Sun收购了，这个发展的重点还是没有转变。该公司的高管们在展望未来的时候曾表示对上述产品的重视对公司规模和深度的扩展都将有很大帮助。随着大规模Web应用的普及，无论是用户总量还是数据和交易总量都将以前所未有的速度迅速增长，因此，对绝大部分企业而言，应用的可扩展性变得非常重要。<br /><br />原MySQL公司的产品副总裁 Zack Urlocker表示，他们正和Sun的性能工程师紧密合作，以便找出MySQL服务器以及特定的存储引擎可能存在的瓶颈。他们进行了很多在极端条件下的压力测试，并利用Sun的Dtrace等技术在显微镜下对应用程序的性能进行分析，以便找到瓶颈所在并进行有效的调试。<br /><br />在并购之前，Sun和MySQL两家公司各自投入了一定精力到Memcache的研发当中。Memcache是一个高效分布式缓存系统，专门用于为数据库服务器大量减负，并通过全局缓存将数据库的负荷分配到低开销服务器。一些高通量的网站已经采用这项技术来进行网站性能优化。而MySQL也在努力将其自身和Sun关于这项技术各自的研究成果整合起来。<br /><br />科技产业分析公司451 Group的分析员Matt Aslett表示，重心转向基于Web架构的企业应用对MySQL的发展百利而无一害：“Sun在收购MySQL的时候曾宣布将会把资源投入到开源数据库，将其作为关键任务高性能应用程序的一个选择。Sun的声明是这样说的，由于这些应用程序能够部署到基于Web的架构，所以Sun将会对这些应用程序提供支持。因此，如果将业务重心转向为内部应用程序部署而设的面向服务架构，那么MySQL的实用性也将大大提高。”<br /><br />Aslett及其同僚 Raven Zachary在最近发表的一篇关于开源软件对数据库市场的影响的报告中，发现像MySQL和PostgreSQL这样的开源数据库事实上并不能代替非共享的私有产品。相反，该报告指出，企业对开源数据库的应用很广泛，但也很肤浅，缺乏深度，通常只是为了在特定的应用领域中，避免由于新项目的启动需要向私有软件供应商提交额外的认证许可费用而部署开源软件。<br /><br />该报告还罗列了这种现象出现的一系列原因，包括对企业功能、服务和支持等方面的内容。不过，Urlocker表示，谈到传统的企业数据库应用，MySQL的重点并不在于要擂倒其私有的竞争对手，而是要成为Web 2.0企业的核心数据库。<br /><br />Urlocker称，在Web 2.0应用和企业2.0应用之中，MySQL的增长速度和数量已经非常惊人。旧的关系数据库管理系统市场领域远不及这个领域发展迅猛。Web 2.0应用和所谓的企业2.0应用的最佳实务将成为未来十年市场增长的基础。所以，MySQL的计划是继续满足新应用开发人员利用 Web基础构建可扩展的应用程序的需求。Urlocker还表示，像数据仓库这样的领域对于开源来说还是一片刚刚开垦的处女地，在2008年，随着在顶级 MySQL上构建的特殊存储引擎的广泛应用，这个领域将会更加红火。]]></description>
+            <author> yuchenghu@hawebs.net (HAWEBS)</author>
+            <pubDate>Thu, 25 Feb 2010 07:18:14 GMT</pubDate>
+            <guid isPermaLink="false">http://news.hawebs.net/index.php?option=com_content&amp;view=article&amp;id=111:mysqlweb-20&amp;catid=48:mysql&amp;Itemid=57</guid>
+        </item>
+    </channel>
+</rss>

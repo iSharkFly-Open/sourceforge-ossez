@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_7" xml:lang="zh">
+  <title>比较Maven和Ant</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Apache</indexterm>
+        <indexterm>Maven</indexterm>
+        <indexterm>介绍</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>虽然上一节应该已经让你确信本书的作者没有兴趣挑起 Apache Ant 和 Apache Maven 之间的争执，但是我们认识到许多组织必须在 Apache Ant 和 Apache Maven 之间做一个选择。本节我们对比一下这两个工具。
+
+Ant 在构建过程方面十分优秀，它是一个基于任务和依赖的构建系统。每个任务包含一组由 XML 编码的指令。有 copy 任务和 javac 任务，以及 jar 任务。在你使用 Ant 的时候，你为 Ant 提供特定的指令以编译和打包你的输出。看下面的例子，一个简单的 build.xml 文件： </p>
+    <p><codeblock>&lt;project name=&quot;my-project&quot; default=&quot;dist&quot; basedir=&quot;.&quot;&gt;
+    &lt;description&gt;
+        simple example build file
+    &lt;/description&gt;
+  &lt;!-- set global properties for this build --&gt;
+  &lt;property name=&quot;src&quot; location=&quot;src/main/java&quot;/&gt;
+  &lt;property name=&quot;build&quot; location=&quot;target/classes&quot;/&gt;
+  &lt;property name=&quot;dist&quot;  location=&quot;target&quot;/&gt;
+
+  &lt;target name=&quot;init&quot;&gt;
+    &lt;!-- Create the time stamp --&gt;
+    &lt;tstamp/&gt;
+    &lt;!-- Create the build directory structure used by compile --&gt;
+    &lt;mkdir dir=&quot;org.apache.maven.model.Build@5e7e6ceb&quot;/&gt;
+  &lt;/target&gt;
+
+  &lt;target name=&quot;compile&quot; depends=&quot;init&quot;
+        description=&quot;compile the source &quot; &gt;
+    &lt;!-- Compile the java code from ${src} into org.apache.maven.model.Build@5e7e6ceb --&gt;
+    &lt;javac srcdir=&quot;${src}&quot; destdir=&quot;org.apache.maven.model.Build@5e7e6ceb&quot;/&gt;
+  &lt;/target&gt;
+
+  &lt;target name=&quot;dist&quot; depends=&quot;compile&quot;
+        description=&quot;generate the distribution&quot; &gt;
+    &lt;!-- Create the distribution directory --&gt;
+    &lt;mkdir dir=&quot;${dist}/lib&quot;/&gt;
+
+    &lt;!-- Put everything in org.apache.maven.model.Build@5e7e6ceb into the MyProject-${DSTAMP}.jar file --&gt;
+    &lt;jar jarfile=&quot;${dist}/lib/MyProject-${DSTAMP}.jar&quot; basedir=&quot;org.apache.maven.model.Build@5e7e6ceb&quot;/&gt;
+  &lt;/target&gt;
+
+  &lt;target name=&quot;clean&quot;
+        description=&quot;clean up&quot; &gt;
+    &lt;!-- Delete the org.apache.maven.model.Build@5e7e6ceb and ${dist} directory trees --&gt;
+    &lt;delete dir=&quot;org.apache.maven.model.Build@5e7e6ceb&quot;/&gt;
+    &lt;delete dir=&quot;${dist}&quot;/&gt;
+  &lt;/target&gt;
+&lt;/project&gt;</codeblock></p>
+    <p>在这个简单的 Ant 例子中，你能看到，你需要明确的告诉 Ant 你想让它做什么。有一个包含 javac 任务的编译目标用来将 src/main/java  的源码编译至 target/classes 目录。你必须明确告诉 Ant 你的源码在哪里，结果字节码你想存储在哪里，如何将这些字节码打包成 JAR 文件。虽然最近有些进展以帮助 Ant 减少程序，但一个开发者对 Ant 的感受是用 XML  编写程序语言。</p>
+    <p>用 Maven 样例与之前的 Ant 样例做个比较。在 Maven 中，要从 Java 源码创建一个 JAR 文件，你只需要创建一个简单的 <codeph>pom.xml</codeph>，将你的源码放在 <codeph>/data/hudson-temporal-data/hudson-orchestrator-home/workspace/Book-To-Production/content-zh/src/main/java</codeph>  ，然后从命令行运行 <cmdname>mvn install</cmdname>。下面的样例 Maven pom.xml 文件能完成和之前 Ant 样例所做的同样的事情。 </p>
+    <p>一个简单的 Maven pom.xml<codeblock>&lt;project&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.sonatype.mavenbook&lt;/groupId&gt;
+  &lt;artifactId&gt;my-project&lt;/artifactId&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+&lt;/project&gt;</codeblock></p>
+    <p>这就是你 <codeph>pom.xml</codeph> 的全部。从命令行运行 <cmdname>mvn install</cmdname> 会处理资源文件，编译源代码，运行单元测试，创建一个 JAR ，然后把这个 JAR 安装到本地仓库以为其它项目提供重用性。不用做任何修改，你可以运行 <cmdname>mvn site</cmdname> ，然后在 <codeph>target/site</codeph>  目录找到一个 <codeph>index.html</codeph> 文件，这个文件链接了 JavaDoc 和一些关于源代码的报告。</p>
+    <p>诚然，这是一个最简单的样例项目。一个只包含源代码并且生成一个 JAR 的项目。一个遵循 Maven 的约定，不需要任何依赖和定制的项目。如果我们想要定制行为，我们的 <codeph>pom.xml </codeph>的大小将会增加，在最大的项目中，你能看到一个非常复杂的 Maven POM  的集合，它们包含了大量的插件定制和依赖声明。但是，虽然你项目的 POM  文件变得增大，它们包含的信息与一个差不多大小的基于 Ant 项目的构建文件的信息是完全不同的。Maven POM 包含声明：“这是一个 JAR 项目”，“源代码在 <codeph>src/main/java</codeph> 目录”。Ant 构建文件包含显式的指令：“这是一个项目”，“源代码在 <codeph>src/main/java</codeph> ”，“针对这个目录运行 javac ”，“把结果放到 <codeph>target/classes</codeph> ”，“从……创建一个 JAR  ”，等等。Ant 必须的过程必须是显式的，而 Maven 有一些“内置”的东西使它知道源代码在哪里，如何处理它们。 </p>
+    <p>该例中 Ant 和 Maven 的区别是：</p>
+    <p>Apache Ant<ul>
+        <li>Ant 没有正式的约定如一个一般项目的目录结构，你必须明确的告诉 Ant 哪里去找源代码，哪里放置输出。随着时间的推移，非正式的约定出现了，但是它们还没有在产品中模式化。 </li>
+        <li>Ant 是程序化的，你必须明确的告诉 Ant 做什么，什么时候做。你必须告诉它去编译，然后复制，然后压缩。 </li>
+        <li>Ant 没有生命周期，你必须定义目标和目标之间的依赖。你必须手工为每个目标附上一个任务序列。</li>
+      </ul></p>
+    <p>Apache Maven<ul>
+        <li>Maven 拥有约定，因为你遵循了约定，它已经知道你的源代码在哪里。它把字节码放到 <codeph>target/classes</codeph> ，然后在 <codeph>target</codeph> 生成一个 JAR 文件。 </li>
+        <li>Maven 是声明式的。你需要做的只是创建一个 pom.xml 文件然后将源代码放到默认的目录。Maven 会帮你处理其它的事情。 </li>
+        <li>Maven 有一个生命周期，当你运行 <cmdname>mvn install</cmdname> 的时候被调用。这条命令告诉 Maven 执行一系列的有序的步骤，直到到达你指定的生命周期。遍历生命周期旅途中的一个影响就是，Maven 运行了许多默认的插件目标，这些目标完成了像编译和创建一个 JAR 文件这样的工作。 </li>
+      </ul></p>
+    <p>Maven 以插件的形式为一些一般的项目任务提供了内置的智能。如果你想要编写运行单元测试，你需要做的只是编写测试然后放到 <codeph>/data/hudson-temporal-data/hudson-orchestrator-home/workspace/Book-To-Production/content-zh/src/test/java</codeph>  ，添加一个对于 TestNG 或者 JUnit 的测试范围依赖，然后运行 <cmdname>mvn test</cmdname>  。如果你想要部署一个 web 应用而非 JAR ，你需要做的是改变你的项目类型为 war ，然后把你文档根目录置为 <codeph>/data/hudson-temporal-data/hudson-orchestrator-home/workspace/Book-To-Production/content-zh/src/main/webapp</codeph>  。当然，你可以用 Ant 做这些事情，但是你将需要从零开始写这些指令。使用 Ant ，你首先需要确定 JUnit JAR  文件应该放在哪里，然后你需要创建一个包含这个 JUnit JAR  文件的 classpath ，然后告诉 Ant 它应该从哪里去找测试源代码，编写一个目标来编译测试源代码为字节码，使用 JUnit 来执行单元测试。 </p>
+    <p>没有诸如 antlibs 和 lvy 等技术的支持（即使有了这些支持技术），Ant 给人感觉是自定义的程序化构建。项目中一组高效的坚持约定的 Maven POM ，相对于 Ant 的配置文件，只有很少的 XML 。Maven 的另一个优点是它依靠广泛公用的 Maven 插件。所有人使用 Maven Surefire 插件来运行单元测试，如果有人添加了一些针对新的测试框架的支持，你可以仅仅通过在你项目的 POM 中升级某个特定插件的版本来获得新的功能。</p>
+    <p>使用 Maven 还是 Ant 的决定不是非此即彼的，Ant 在复杂的构建中还有它的位置。如果你目前的构建包含一些高度自定义的过程，或者你已经写了一些 Ant 脚本通过一种明确的方法完成一个明确的过程，而这种过程不适合 Maven 标准，你仍然可以在 Maven 中用这些脚本。作为一个 Maven 的核心插件， Ant 还是可用的。自定义的插件可以用 Ant 来实现，Maven 项目可以配置成在生命周期中运行 Ant 的脚本。 </p>
+  </conbody>
+</concept>

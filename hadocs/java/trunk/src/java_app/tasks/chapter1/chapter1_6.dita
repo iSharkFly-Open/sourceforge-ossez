@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_6" xml:lang="zh">
+  <title>本文档的说明</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Java</indexterm>
+        <indexterm>APP</indexterm>
+        <indexterm>应用程序</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>这一章介绍Java的产生、发展、特性、影响等方面的知识。后续内容中，将结合实例讲解Java程序设计，并介绍Java的开发工具和类库。</p>
+    <p>本文档将使用 SDK 1.5 作为编译器。随着 Java 技术的发展，不同版本的编译器的兼容性有所不同，尤其是在主要版本进行变化以后。</p>
+    <p>例如：1.4 的编译器不一定能够编译 1.5 的程序代码，同时 1.5 的程序代码不一定能在 1.4 下通过。1.4 版本的 SDK 虽然目前在很多环境下还在被广泛使用，在新的 Java 项目中，不建议使用 1.4 作为默认编译器。已有的老项目，如果可能的话，请尽快升级到 1.5 的编译环境中。</p>
+    <p>Java在计算机界的广泛支持和参与下必将得到更大的发展。虽然它还不完美，但前景光明，魅力无穷。</p>
+    <p>Java 计算机的内存和硬件要求比较高，请使用具有较大内存的计算进行编译。</p>
+    <p>Java 程序设计的入门比较复杂，概念比较多，调试比较繁琐。一旦你建立了面向对象的思维方式后，Java 能够在你后期的开发生涯中起到事倍功半的作用。
+</p>
+  </conbody>
+</concept>

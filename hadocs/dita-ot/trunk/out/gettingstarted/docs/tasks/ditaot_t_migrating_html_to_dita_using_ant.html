@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="task"/>
+<meta name="DC.Title" content="Migrating HTML to DITA using Ant"/>
+<meta name="abstract" content="You can use ANT to migrate HTML files to DITA."/>
+<meta name="description" content="You can use ANT to migrate HTML files to DITA."/>
+<meta name="DC.Relation" scheme="URI" content="../tasks/ditaot_t_migrating_html_to_dita.html"/>
+<meta name="prodname" content="DITA 入门"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS DITA OT"/>
+<meta name="DC.Creator" content="Kristen James Eberlein"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Date.Created" content="9 May 2009"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="ditaot_t_migrating_html_dita_ant"/>
+<meta name="DC.Language" content="en-us"/>
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+<title>Migrating HTML to DITA using Ant</title>
+</head>
+<body id="ditaot_t_migrating_html_dita_ant"><a name="ditaot_t_migrating_html_dita_ant"><!-- --></a>
+
+
+<h1 class="topictitle1">Migrating HTML to DITA using Ant</h1>
+
+
+
+<div><p>You can use ANT to migrate HTML files to DITA.</p>
+
+<ol><li class="stepexpand"><span>Run either the <span class="filepath">startcmd.bat</span> or <span class="filepath">startcmd.sh</span> file.</span>
+</li>
+<li class="stepexpand"><span>Change to the <span class="filepath"><var class="varname">DITAOT</var>\demo\h2d</span> directory,
+where <var class="varname">DITAOT</var> is the root directory of the DITA
+Open Toolkit installation.</span></li>
+<li class="stepexpand"><span>Run the following command:</span> <pre class="codeblock">ant -f build.xml [options]</pre>
+where
+options are the following parameters:<dl>
+<dt class="dlterm"><span class="synph"><span class="kwd">-Dargs.input=</span><span class="var">input</span></span></dt>
+
+<dd>Specifies the location of the HTMl files to be transformed. The <var class="varname">input</var> variable
+can be either a file name or directory. The default value is the current
+directory.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">-Dargs.output=</span><span class="var">output</span></span></dt>
+
+<dd>Specifies the directory where the DITA files are written. The
+default value is the current directory.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">-Dargs.infotype=</span><span class="var">type</span></span></dt>
+
+<dd>Specifies the type of DITA file. The <var class="varname">type</var> variable
+takes the following values: concept, reference, task, or topic. The
+default value is topic.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">-Dargs.dita.ext=</span><span class="var">file_extension</span></span></dt>
+
+<dd>Specifies the extension for the generated files. The <var class="varname">file_extension</var> variable
+takes the following values: dita or xml. The default value is dita.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">-Dargs.lang=</span><span class="var">language</span></span></dt>
+
+<dd>Specifies the language attribute for the generated files. The <var class="varname">language</var> variable
+takes the values specified in the <span class="filepath">string.xml</span> file
+located in the <span class="filepath"><var class="varname">DITAOT</var>\xsl\common</span> directory,
+where <var class="varname">DITAOT</var> is the root directory of the DITA
+Open Toolkit installation. The default value is en-us.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">-Dargs.xsl=</span><span class="var">XSL_file</span></span></dt>
+
+<dd>Specifies the XSL file used by the transformation.</dd>
+
+</dl>
+</li>
+</ol>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="../tasks/ditaot_t_migrating_html_to_dita.html" title="You can use the DITA Open Toolkit to migrate HTML to DITA. The migration tools are located in the demo\h2d directory. The tools are updated version of the tools created by Robert D. Anderson and published on developerWorks in 2005.">Migrating HTML to DITA</a></div>
+</div>
+</div>
+
+</body>
+</html>

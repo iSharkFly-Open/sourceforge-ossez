@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_3" xml:lang="zh">
+  <title>一个一般的接口 </title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Apache</indexterm>
+        <indexterm>Maven</indexterm>
+        <indexterm>介绍</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>在 Maven 为构建软件提供一个一般的接口之前，每个单独的项目都专门有人来管理一个完全自定义的构建系统。开发人员必须在开发软件之外去学习每个他们要参与的新项目的构建系统的特点。 在2001年，构建一个项目如 <xref format="html" scope="external" href="http://turbine.apache.org/">Turbine</xref>  和构建另外一个项目如 <xref format="html" scope="external" href="http://tomcat.apache.org/">Tomcat</xref>  ，两者方法是完全不同的。如果一个新的进行静态源码分析的源码分析工具面世了，或者如果有人开发了一个新的单元测试框架，每个人都必须放下手头的工作去想办法使这个新东西适应每个项目的自定义构建环境。 如何运行单元测试？世界上有一千种不同的答案。构建环境由无数无休止的关于工具和构建程序的争论所描述刻画。Maven 之前的时代是低效率的时代，是“构建工程师”的时代。  </p>
+    <p>现在，大部分开源开发者已经或者正在使用 Maven 来管理他们新的软件项目。这种转变不仅仅是开发人员从一种构建工具转移到另外一种构建工具，更是开发人员开始为他们的项目采用一种一般的接口。随着软件系统变得越来越模块化，构建系统变得更复杂，而项目的数量更是如火箭般飞速上升。在 Maven 之前，当你想要从 Subversion 签出一个项目如 <xref href="http://activemq.apache.org/" format="html" scope="external">Apache ActiveMQ</xref> 或 <xref format="html" scope="external" href="http://servicemix.apache.org/home.html">Apache ServiceMix</xref>  ，然后从源码进行构建，你需要为每个项目留出一个小时来理解给它的构建系统。这个项目需要构建什么？需要现在什么类库？把类库放哪里？构建中我该运行什么目标？最好的情况下，理解一个新项目的构建需要几分钟，最坏的情况下（例如 Jakarta 项目的旧的 Servlet API 实现），一个项目的构建特别的困难，以至于花了几个小时以后，新的贡献者也只能编辑源码和编译项目。现在，你只要签出源码，然后运行：<cmdname>mvn install</cmdname>。虽然 Maven 有很多优点，包括依赖管理和通过插件重用一般的构建逻辑，但它成功的最核心原因是它定义了构建软件的一般的接口。每当你看到一个使用 Maven 的项目如 <xref href="http://wicket.apache.org/" format="html" scope="external">Apache Wicket</xref>  ，你就可以假设你能签出它的源码然后使用 <cmdname>mvn install</cmdname>  构建它，没什么好争论的。你知道点火开关在哪里，你知道油门在右边，刹车在左边。 </p>
+  </conbody>
+</concept>

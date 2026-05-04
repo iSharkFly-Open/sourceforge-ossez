@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install type="component" version="1.5.0" method="upgrade">
+  <name>Ninja RSS Syndicator</name>
+  <creationDate>2009/15/12</creationDate>
+  <author>Daniel Chapman</author>
+  <authorEmail>daniel@ninjaforge.com</authorEmail>
+  <authorUrl>http://ninjaforge.com</authorUrl>
+  <copyright>NinjaForge.com</copyright>
+  <license><![CDATA[ Ninja RSS Syndicator is free software; you can redistribute it and/or modify it under the terms of the <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">General Public License</a> as published by the Free Software Foundation. ]]></license>
+  <version>1.0.7</version>
+  <description></description>  
+  	<install>
+		<sql>
+			<file charset="utf8" driver="mysql" folder="">install/install.sql</file>
+		</sql>
+	</install>
+  <files folder="site">
+  	<filename>index.html</filename>
+    <filename>ninjarsssyndicator.php</filename>	
+	<folder>assets</folder>		
+	<folder>controllers</folder>	
+	<folder>feed</folder>	
+	<folder>models</folder>
+	<folder>views</folder>	
+  </files>  	
+  <administration>
+      <menu img="components/com_ninjarsssyndicator/assets/images/nficon.png">Ninja RSS Syndicator</menu>
+    	<submenu>
+       		<menu task="info">Dashboard</menu>
+      		<menu task="feeds">Feeds</menu>
+      		<menu task="buttonmaker">Button Maker</menu>
+      		<menu task="config">Default Settings</menu>
+      </submenu>
+      <files folder="admin">     
+      		<filename>index.html</filename>
+      		<filename>admin.ninjarsssyndicator.php</filename>	
+      		<folder>controllers</folder>	
+      		<folder>models</folder>
+      		<folder>install</folder>	
+      		<folder>assets</folder>
+      	  <folder>views</folder>	
+      </files>
+  </administration>  
+  <installfile>install/install.php</installfile>
+  <uninstallfile>install/uninstall.php</uninstallfile>
+</install>

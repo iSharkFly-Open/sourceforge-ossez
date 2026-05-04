@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="reference"/>
+<meta name="DC.Title" content="dita2wordrtf"/>
+<meta name="abstract" content="Use the dita2wordrtf target to generate Rich Text Format (RTF)."/>
+<meta name="description" content="Use the dita2wordrtf target to generate Rich Text Format (RTF)."/>
+<meta name="DC.Relation" scheme="URI" content="../tasks/ditaot_r_ant_targets.html"/>
+<meta name="prodname" content="DITA 入门"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS DITA OT"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="ditaot_r_dita2wordrtf"/>
+<meta name="DC.Language" content="en-us"/>
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+<title>dita2wordrtf</title>
+</head>
+<body id="ditaot_r_dita2wordrtf"><a name="ditaot_r_dita2wordrtf"><!-- --></a>
+
+
+<h1 class="topictitle1">dita2wordrtf</h1>
+
+
+<div><p>Use the dita2wordrtf target to generate Rich Text Format
+(RTF).</p>
+
+<div class="section"><h2 class="sectiontitle">Parameters</h2><dl>
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e199"><a name="ditaot_r_dita2wordrtf__d18e199"><!-- --></a>args.draft</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e202"><a name="ditaot_r_dita2wordrtf__d18e202"><!-- --></a>An optional parameter that specifies whether
+draft comments and the content of &lt;required-cleanup&gt; elements are
+rendered in output. <span>The valid values are yes and no. The default value is no.</span></dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e419"><a name="ditaot_r_dita2wordrtf__d18e419"><!-- --></a>args.input</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e422"><a name="ditaot_r_dita2wordrtf__d18e422"><!-- --></a>An optional parameter that specifies the name
+and path of the input file. This parameter is case sensitive.    
+                  <div class="note" id="ditaot_r_dita2wordrtf__d18e424"><a name="ditaot_r_dita2wordrtf__d18e424"><!-- --></a><span class="notetitle">Note:</span> This parameter must be
+provided if <span class="parmname">dita.input</span> and and <span class="parmname">dita.input.dirname</span> are
+not provided.</div>
+</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e454"><a name="ditaot_r_dita2wordrtf__d18e454"><!-- --></a>args.logdir</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e457"><a name="ditaot_r_dita2wordrtf__d18e457"><!-- --></a>An optional parameter that specifies the directory
+where the generated log files are written. The default value is the
+output directory.<div class="note" id="ditaot_r_dita2wordrtf__d18e459"><a name="ditaot_r_dita2wordrtf__d18e459"><!-- --></a><span class="notetitle">Note:</span> If you run an aggregated
+target, for example, the all target that is used by the DITA Open
+Toolkit demos, the following behavior occurs:                <ul>
+<li>If the value of <span class="parmname">args.logdir</span> is the same for
+all transformations, the directory specified by the <span class="parmname">args.logdir</span> parameter
+is used.</li>
+
+<li>If the value of <span class="parmname">args.logdir</span> varies among
+the transformations, but the transformations share a common output
+directory, the generated log files are written to the common output
+directory.</li>
+
+<li>If the values of both <span class="parmname">args.logdir</span> and <span class="parmname">output.dir</span> vary
+among the transformations, the generated log files are written to
+the <span class="parmname">basedir</span> directory.</li>
+
+</ul>
+</div>
+</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e523"><a name="ditaot_r_dita2wordrtf__d18e523"><!-- --></a>args.xsl</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e526"><a name="ditaot_r_dita2wordrtf__d18e526"><!-- --></a>An optional parameter that specifies the XSL
+file. The default value depends on the transformation type:<dl>
+<dt class="dlterm">docbook</dt>
+
+<dd>dita2docbook.xsl </dd>
+
+
+<dt class="dlterm">eclipsehelp</dt>
+
+<dd>dita2xhtml.xsl</dd>
+
+
+<dt class="dlterm">htmlhelp</dt>
+
+<dd>dita2html.xsl</dd>
+
+
+<dt class="dlterm">javahelp</dt>
+
+<dd>dita2html.xsl</dd>
+
+
+<dt class="dlterm">pdf </dt>
+
+<dd>dita2fo-shell.xsl</dd>
+
+
+<dt class="dlterm">wordrtf</dt>
+
+<dd>dita2rtf.xsl </dd>
+
+
+<dt class="dlterm">xhtml</dt>
+
+<dd>dita2xhtml.xsl</dd>
+
+</dl>
+</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e625"><a name="ditaot_r_dita2wordrtf__d18e625"><!-- --></a>basedir</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e628"><a name="ditaot_r_dita2wordrtf__d18e628"><!-- --></a>An optional parameter that specifies the
+directory where the Ant processing begins. If a relative path is used, <span class="parmname">basedir</span> is
+set relative to the current directory. If not specified, the default
+value is the current directory.</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e639"><a name="ditaot_r_dita2wordrtf__d18e639"><!-- --></a>clean.temp</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e642"><a name="ditaot_r_dita2wordrtf__d18e642"><!-- --></a>An optional parameter that specifies whether
+the temp directory is erased after each build. The valid values are
+yes and no. The default value is yes.</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e648"><a name="ditaot_r_dita2wordrtf__d18e648"><!-- --></a>dita.dir</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e651"><a name="ditaot_r_dita2wordrtf__d18e651"><!-- --></a>An optional parameter that specifies the absolute
+path of directory where the DITA Open Toolkit is installed. The default
+value is the current directory.</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e657"><a name="ditaot_r_dita2wordrtf__d18e657"><!-- --></a>dita.extname</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e660"><a name="ditaot_r_dita2wordrtf__d18e660"><!-- --></a>An optional parameter that specifies the
+file extension of the files that are written to the temp directory.
+The valid values are dita, .dita, xml, and .xml. The default value
+is xml.</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e666"><a name="ditaot_r_dita2wordrtf__d18e666"><!-- --></a>generate.copy.outer</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e669"><a name="ditaot_r_dita2wordrtf__d18e669"><!-- --></a>An optional parameter that specifies
+how the DITA Open Toolkit processes files that are neither in the
+same directory as the DITA map nor in a subdirectory of the directory
+that contains the DITA map. The following values are valid:<dl>
+<dt class="dlterm">1</dt>
+
+<dd>Only files that are in the same directory as the DITA map or in
+a subdirectory of the DITA map are generated.</dd>
+
+
+<dt class="dlterm">2</dt>
+
+<dd>All files are generated, including files that are written to a
+directory outside of the output directory.</dd>
+
+
+<dt class="dlterm">3</dt>
+
+<dd>The directories are adjusted so that all files are generated within
+the output directory.</dd>
+
+</dl>
+The default value is 1.</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e716"><a name="ditaot_r_dita2wordrtf__d18e716"><!-- --></a>dita.input</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e719"><a name="ditaot_r_dita2wordrtf__d18e719"><!-- --></a>An optional parameter that specifies the name
+of the input file. It must be used in conjunction with the <span class="parmname">dita.input.dirname</span> parameter. <div class="note"><span class="notetitle">Note:</span> This
+is deprecated in favor of the <span class="parmname">args.input</span> parameter.</div>
+</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e733"><a name="ditaot_r_dita2wordrtf__d18e733"><!-- --></a>dita.input.dirname</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e736"><a name="ditaot_r_dita2wordrtf__d18e736"><!-- --></a>An optional parameter that specifies
+the directory that contains the input file. It must be used in conjunction
+with the <span class="parmname">dita.input</span> parameter.<div class="note"><span class="notetitle">Note:</span> This is deprecated
+in favor of the <span class="parmname">args.input</span> parameter.</div>
+</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e750"><a name="ditaot_r_dita2wordrtf__d18e750"><!-- --></a>dita.input.valfile</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e753"><a name="ditaot_r_dita2wordrtf__d18e753"><!-- --></a>An optional parameter that specifies
+name and relative path of the DITAVAL file.</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e759"><a name="ditaot_r_dita2wordrtf__d18e759"><!-- --></a>dita.temp.dir</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e762"><a name="ditaot_r_dita2wordrtf__d18e762"><!-- --></a>An optional parameter that specifies the
+directory where the temporary files are written. The default value
+is temp.</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e769"><a name="ditaot_r_dita2wordrtf__d18e769"><!-- --></a>onlytopic.in.map</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e772"><a name="ditaot_r_dita2wordrtf__d18e772"><!-- --></a>An optional parameter that specifies
+whether DITA topics that are not referenced in DITA map files are
+generated. Examples of files not referenced in a DITA map file are
+topics that are referenced only from &lt;xref&gt; or &lt;link&gt; elements
+within a DITA file. Valid values are true and false. The default value
+is false.</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e780"><a name="ditaot_r_dita2wordrtf__d18e780"><!-- --></a>outer.control</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e783"><a name="ditaot_r_dita2wordrtf__d18e783"><!-- --></a>An optional parameter that specifies how
+the DITA Open Toolkit responds if files would be generated outside
+of the output directory. The following values are valid:<dl>
+<dt class="dlterm">fail</dt>
+
+<dd>The transformation does not run if files would be generated outside
+of the output directory.</dd>
+
+
+<dt class="dlterm">quiet</dt>
+
+<dd>The transformation runs, but a warning is logged.</dd>
+
+</dl>
+<dl>
+<dt class="dlterm">warn</dt>
+
+<dd>The transformation runs; no warning or error is generated.</dd>
+
+</dl>
+</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e821"><a name="ditaot_r_dita2wordrtf__d18e821"><!-- --></a>output.dir</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e824"><a name="ditaot_r_dita2wordrtf__d18e824"><!-- --></a>A required parameter that specifies the directory
+where the DITA Open Toolkit writes the output.</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_dita2wordrtf__d18e830"><a name="ditaot_r_dita2wordrtf__d18e830"><!-- --></a>validate</span></dt>
+
+<dd id="ditaot_r_dita2wordrtf__d18e833"><a name="ditaot_r_dita2wordrtf__d18e833"><!-- --></a>An optional parameter that specifies whether
+the input files are validated. The valid values are true and false.
+The default value is true.</dd>
+
+</dl>
+</div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="../tasks/ditaot_r_ant_targets.html" title="You can use the Ant targets to transform DITA to several different output formats.">Ant targets</a></div>
+</div>
+</div>
+
+</body>
+</html>

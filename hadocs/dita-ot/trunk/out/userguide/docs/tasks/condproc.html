@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="条件处理"/>
+<meta name="abstract" content="条件处理 (conditional processing) 用于在发现处理时过滤和标记内容，例如目标用户、平台或产品。"/>
+<meta name="description" content="条件处理 (conditional processing) 用于在发现处理时过滤和标记内容，例如目标用户、平台或产品。"/>
+<meta name="DC.subject" content="metadata 特性, 产品特性, 平台特性, 目标用户特性, 版本特性, 其他特性, 条件处理 (conditional processing)"/>
+<meta name="keywords" content="metadata 特性, 产品特性, 平台特性, 目标用户特性, 版本特性, 其他特性, 条件处理 (conditional processing)"/>
+<meta name="prodname" content="DITA 用户指南"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS DITA OT"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="condproc"/>
+<meta name="DC.Language" content="zh"/>
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+<title>条件处理</title>
+</head>
+<body id="condproc"><a name="condproc"><!-- --></a>
+
+
+  <h1 class="topictitle1">条件处理</h1>
+
+  
+  
+  <div><p>条件处理 (conditional processing) 用于在发现处理时过滤和标记内容，例如目标用户、平台或产品。</p>
+
+    <p> 
+	随着时间和原始作者的意图，可以在文档中积累任何变量特性。
+	但是，你可以使用一些标准的 metadata 特性来替代这些变量特性，而不仅仅局限于过滤，当然你也可以用这些 metadata特性来过滤、查找和恢复处理；因为它们是单独处理的，同时也提供了关于内容的相关信息。
+	</p>
+
+	<div class="p">
+		下面的一特性被考虑条件处理并适用于几乎所有的元素：
+		<dl>
+			
+				<dt class="dlterm">产品</dt>
+
+				<dd>是关于内容的主题，或可应用于那些内容。</dd>
+
+			
+			
+				<dt class="dlterm">平台</dt>
+
+				<dd>用于说明产品可以部署在那里。</dd>
+
+			
+			
+				<dt class="dlterm">目标用户</dt>
+
+				<dd>用于考虑内容对于的目标用户。</dd>
+
+			
+			
+				<dt class="dlterm">版本</dt>
+
+				<dd>在内容修改或添加的时形成正式版本或草稿版本。你可以仅标识版本而使用他们。</dd>
+
+			
+			
+				<dt class="dlterm">其他特性</dt>
+
+				<dd>任意。</dd>
+
+			
+		</dl>
+
+	</div>
+
+	<p>
+		每一个特性使用空格来分开字符串变量。
+		例如，你可以使用产品特性来识别被用于两个特定产品的同一元素。
+	</p>
+
+	<p>
+		协调好你项目小组和你使用的变量，那么所有的信息可以被考虑为同一的内容定义来处理。
+	</p>
+
+	<p>
+		在处理时，可以使用特殊的变量来标记你不希望处理的和你希望特殊表示的。
+	</p>
+
+	<div class="section"><h2 class="sectiontitle">设定条件</h2>
+		
+		<p>
+			你可以在一个过滤文件中定义如何处理一些变量。
+			在 ditaval 文件中来编辑和输入到你希望的处理条件中来说明处理内容和版本。
+		</p>
+
+		<p>
+			在处理时，你可以通过输入<samp class="codeph">/filter:{args.input.valfile}</samp>来指定过滤文件来确定输出选项。
+		</p>
+
+	</div>
+
+	<div class="section"><h2 class="sectiontitle">忽略信息</h2>
+	
+	<p>
+		你希望忽略掉的一些特殊的特性和变量。
+		例如，当 audience="admin"时忽略掉。
+		当一个元素被忽略掉时候，其中的所有变量中必须是所有特性被设置为忽略。
+		例如，如果有一个段落适用于2个不同的用户 (audience="admin programmer") 这2个变量必须在过滤器里面都被设置为忽略后这一个段落才能被忽略不处理。
+	</p>
+
+	<p>
+		你不可以通过选择而不是标记的方式来忽略版本不处理。
+	</p>
+
+	</div>
+
+	<div class="section"><h2 class="sectiontitle">标记信息</h2>
+	
+	<p>
+		指定你希望标记的特性和变量。
+		在输出候，元素将会使用你指定的图片来标记或使用你指定版本标记。
+		对于一个被标记的元素，至少但却需要一个标记变量。
+		例如，如果一个段落被指定为2个用户，任何一个用户被标记了，那么这个元素也会被标记。
+	</p>
+
+	</div>
+
+	<div class="example"><h2 class="sectiontitle">示例</h2>
+	
+	<div class="p">假定下面的代码：
+	<pre class="codeblock">&lt;ul&gt;
+  &lt;li audience="admin programmer"&gt;
+    This is important for lots of reasons
+  &lt;/li&gt; 
+  &lt;li audience="programmer"&gt;
+    This is only important to programmers
+  &lt;/li&gt;
+  &lt;li audience="programmer" platform="unix"&gt;
+    This is only important to Unix programmers 
+  &lt;/li&gt;
+  &lt;li platform="unix"&gt;
+    This applies on Unix
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+
+	</div>
+
+	<div class="p">添加这个过滤文件
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+            
+            
+            
+            
+            <thead align="left">
+              <tr>
+                <th class="cellrowborder" valign="top" width="25%" id="d20e193">特性</th>
+
+                <th class="cellrowborder" valign="top" width="25%" id="d20e196">变量</th>
+
+                <th class="cellrowborder" valign="top" width="25%" id="d20e199">行为</th>
+
+                <th class="cellrowborder" valign="top" width="25%" id="d20e202">标记</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="cellrowborder" valign="top" width="25%" headers="d20e193 ">audience</td>
+
+                <td class="cellrowborder" valign="top" width="25%" headers="d20e196 ">programmer</td>
+
+                <td class="cellrowborder" valign="top" width="25%" headers="d20e199 ">exclude</td>
+
+                <td class="cellrowborder" valign="top" width="25%" headers="d20e202 ">&#xA0;</td>
+
+              </tr>
+
+              <tr>
+                <td class="cellrowborder" valign="top" width="25%" headers="d20e193 ">platform</td>
+
+                <td class="cellrowborder" valign="top" width="25%" headers="d20e196 ">unix</td>
+
+                <td class="cellrowborder" valign="top" width="25%" headers="d20e199 ">flag</td>
+
+                <td class="cellrowborder" valign="top" width="25%" headers="d20e202 ">../images/ngunix.gif</td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+</div>
+
+
+	</div>
+
+
+	<div class="p">
+
+		你应该会得到下面的输出：
+
+		<div class="figborder">
+		<ul>
+			<li>这个因为很多原因而很重要</li>
+
+			<li><img src="../images/ngunix.gif"/>这个使用于Unix</li>
+
+		</ul>
+
+		</div>
+
+
+	</div>
+
+
+	<p>
+
+		第一个列出的项目，因为这个使用于 admin 用户和 programmer 用户。
+
+		第二个列出的项目被删除了，因为仅仅适用于 programmer 用户，因为 programmer 用户特定的的信息被忽略了。
+
+		第三个列出的项目被删除了，因为这个也仅仅适用于 programmer 用户。
+
+		事实上，这个适用于Unix平台的忽略条件而没有被忽略。
+
+		第四个列出的项目被标记了平台特性。
+
+	</p>
+
+	</div>
+
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<module>
+	<type>language</type>
+	<name>繁體中文 (Traditional Chinese)</name>
+	<label>繁體中文</label>
+	<prefix>zh_tw</prefix>
+	<version>5.2.1</version>
+	<encoding>UTF-8</encoding>
+	<creationDate>2010-12-02</creationDate>
+	<author>YUCHENG HU - HAWEBS.NET</author>
+	<license>GPL</license>
+	<dependencies>
+		<vtiger_version>5.2.1</vtiger_version>
+	</dependencies>
+</module>
+

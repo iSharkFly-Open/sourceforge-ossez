@@ -1,0 +1,107 @@
+/**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * ---------------------------------------------
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * https://www.hawebs.org/forums/computer/
+ *
+ * CONTACT
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * ---------------------------------------------
+ * [A] GNU GENERAL PUBLIC LICENSE GNU/LGPL
+ * [B] Apache License, Version 2.0
+ *
+ * ---------------------------------------------
+ * NOTE
+ *
+ * ---------------------------------------------
+ */
+
+* {
+	padding-top: 0px;
+	padding-right: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	top: auto;
+	border: none;
+}
+.topictitle1 {
+	font-size: 2.5em;
+	background: url(img03.jpg) repeat-x left bottom;
+}
+.topictitle2 {
+	font-size: 2em;
+}
+body {
+	margin: 20px 0;
+	background: #FFFFFF urlrepeat-x left top;
+	text-align: left;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 0.9em;
+	color: #333333;
+	float: left;
+	padding-top: 0;
+	padding-right: 5px;
+	padding-bottom: 0;
+	padding-left: 30px;
+}
+h1, h2, h3 {
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+}
+p, ul, ol, dl {
+	margin-top: 0.2em;
+	margin-bottom: 0.8em;
+	line-height: 1.6em;
+}
+ul, ol, dl {
+	margin-left: 1.2em;
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin-left: 3em;
+}
+blockquote {
+	margin-left: 3em;
+	margin-right: 3em;
+	font-style: italic;
+}
+a {
+	border: none;
+	text-decoration: underline;
+	color: #004080;
+	line-height: 1.4em;
+}
+a:hover {
+	border: none;
+	color: #FF3333;
+	text-decoration:none;
+}
+/* Header */
+
+#header {
+	width: 960px;
+	height: 90px;
+	margin: 20;
+	float: left;
+}
+.pre {
+	font-family: "Courier New", Courier, monospace;
+}
+.codeph {
+	font-family: "Courier New", Courier, monospace;
+}
+.cmdname {
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight: bolder;
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="可以在Linux/Unix 服务器上设置 PHP 以 CGI 方式运行吗"/>
+<meta name="DC.subject" content="Zen Cart, 安装"/>
+<meta name="keywords" content="Zen Cart, 安装"/>
+<meta name="DC.Relation" scheme="URI" content="../../tasks/install/install.html"/>
+<meta name="prodname" content="Zen Cart 入门"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS ZEN CART"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="install_run_php_as_cgi"/>
+<meta name="DC.Language" content="zh"/>
+<link rel="stylesheet" type="text/css" href="../../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+<title>可以在Linux/Unix 服务器上设置 PHP 以 CGI 方式运行吗</title>
+</head>
+<body id="install_run_php_as_cgi"><a name="install_run_php_as_cgi"><!-- --></a>
+
+
+  <h1 class="topictitle1">可以在Linux/Unix 服务器上设置 PHP 以 CGI 方式运行吗</h1>
+
+  
+  <div>
+    <p>Windows servers "always" run PHP as a CGI app, so this FAQ may not apply to Windows hosts.</p>
+
+    <div class="section"><h2 class="sectiontitle">Things to Note when Running PHP as CGI</h2>
+      
+      <ul>
+        <li>the maximum allowed permissions are often 755 -- thus when a file has a greater than CHMOD 755, PHP generates an error.</li>
+
+        <li>any PHP script is limited to 8 Mb memory usage (depends on configuration of server)</li>
+
+      </ul>
+
+    </div>
+
+    <div class="section"><h2 class="sectiontitle">Installation Tips for Installing Zen Cart when server is running PHP as CGI</h2>Quick installation tips:<div class="p"><ul>
+          <li>upload all the files as-is ... do NOT change any permissions settings (contrary to regular installation instructions)Quick installation tips:</li>
+
+          <li>do the regular install (ie: zc_install)</li>
+
+          <li>now set the configure.php files to 444 permissions (read-only, as per installation instructions) (THIS LIKELY HAS TO BE DONE VIA YOUR HOSTING CONTROL PANEL, not by FTP)</li>
+
+          <li>most other permissions issues should already be handled just fine</li>
+
+        </ul>
+</div>
+</div>
+
+    <div class="section"><h2 class="sectiontitle">Tips for Server Administrators running PHP as CGI</h2>
+      
+      <p>You may have to change some of the parameters for CGI scripts when it's running in that mode or else you will get "500 Internal Server Error" messages in your browser:</p>
+
+      <div class="p">Suggested settings adjustments:<ul>
+          <li>You may have to change some of the parameters for CGI scripts when it's running in that mode or else you will get "500 Internal Server Error" messages in your browser:</li>
+
+          <li>Process timeout 10 seconds (any longer and the Error 500's cause some real havoc on the server.)</li>
+
+        </ul>
+</div>
+
+      <p>There may be slight performance increases running as CGI, but again that depends on configuration, and if you can't configure it correctly, you'll end up with errors instead of performance benefits.</p>
+
+    </div>
+
+    <div class="section"><h2 class="sectiontitle">Having Problems?</h2>
+      
+      <p>If you are having problems on a server which runs PHP as CGI, and your hosting account doesn't give you access to configuring the PHP-as-CGI settings, then you' might be better off finding a hosting configuration where PHP is running as an Apache Module instead.</p>
+
+    </div>
+
+  </div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../../tasks/install/install.html" title="主要对 Zen Cart 的按住和配置进行说明">安装 Zen Cart</a></div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+          <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss" xmlns:atom="http://www.w3.org/2005/Atom">
+          <channel>
+          <atom:icon>http://news.hawebs.net/plugins/content/BonckoLen/boncko.jpg</atom:icon>
+          
+            <item><title>03  </title>
+              <guid>ada8ef2d80808cc802614d3bfdc05117</guid>
+            <media:thumbnail url="http://news.hawebs.net/images/stories/hawebs/mygallery/105/03.jpg"/>
+            <media:content url="http://news.hawebs.net/images/stories/hawebs/mygallery/105/03.jpg"/> 
+            </item>
+            <item><title>02  </title>
+              <guid>95daa55b34914d03567626cbda876698</guid>
+            <media:thumbnail url="http://news.hawebs.net/images/stories/hawebs/mygallery/105/02.jpg"/>
+            <media:content url="http://news.hawebs.net/images/stories/hawebs/mygallery/105/02.jpg"/> 
+            </item>
+            <item><title>01  </title>
+              <guid>d7e8059a5b6b97298bfb7f8b300081b7</guid>
+            <media:thumbnail url="http://news.hawebs.net/images/stories/hawebs/mygallery/105/01.jpg"/>
+            <media:content url="http://news.hawebs.net/images/stories/hawebs/mygallery/105/01.jpg"/> 
+            </item>
+            <item><title>04  </title>
+              <guid>96fe74d09852603827b83d4c936791c2</guid>
+            <media:thumbnail url="http://news.hawebs.net/images/stories/hawebs/mygallery/105/04.jpg"/>
+            <media:content url="http://news.hawebs.net/images/stories/hawebs/mygallery/105/04.jpg"/> 
+            </item>
+            </channel>
+          </rss>

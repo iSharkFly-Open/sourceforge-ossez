@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--Arbortext, Inc., 1988-2008, v.4002--><!-- This document was created with Syntext Serna Free. -->
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept id="ditaot_c_prerequisite_software" xml:lang="zh">
+  <title>必备软件</title>
+	<shortdesc>
+		DITA Open Toolkit 可以在 Windows 或 SUSE Linux 上安装。
+		在这之前请按照 JDK。
+	</shortdesc>
+  <conbody>
+    <p>
+	DITA Toolkit 已通过下面环境的测试：<dl>
+        <dlentry>
+          <dt>Java Development Kit (JDK)</dt>
+          <dd>
+            <ul>
+              <li>IBM JDK 1.5, </li>
+              <li>SUN JDK 1.5</li>
+            </ul>
+          </dd>
+        </dlentry>
+        <dlentry>
+          <dt>操作系统</dt>
+          <dd>
+            <ul>
+              <li>Microsoft Windows XP</li>
+              <li>SUSE Linux Enterprise Server (SLES) 10</li>
+            </ul>
+          </dd>
+        </dlentry>
+      </dl></p>
+    <p>
+	DITA Toolkit 安装包中已经包含 Ant 1.7.1 and Saxon 6.5。 <?Pub Caret?> 
+	</p>
+  </conbody>
+</concept><?Pub *0000000867?>

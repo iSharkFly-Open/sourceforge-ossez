@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Single Poll">
+		<message>
+			<![CDATA[STANDARD POLL LAYOUT DESC]]>
+		</message>
+	</layout>
+	<state>
+		<name>Single Poll Layout</name>
+		<description>STANDARD POLL LAYOUT DESC</description>
+		<url addpath="/administrator/components/com_apoll/elements">
+			<param name="id" type="apoll" default="0" label="Apoll" description="A poll" />
+		</url>
+		<params />
+
+	</state>
+</metadata>

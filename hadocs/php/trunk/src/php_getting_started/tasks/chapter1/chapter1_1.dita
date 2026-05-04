@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_1" xml:lang="zh">
+  <title>PHP 的优点</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>HAWEBS</indexterm>
+        <indexterm>PHP</indexterm>
+        <indexterm>程序设计</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p><ol>
+        <li>跨平台，性能优越，跟Linux/Unix结合别跟Windows结合性能强45%，并且和很多免费的平台结合非常省钱，比如LAMP (Linux/Apache/Mysql/PHP)或者FAMP(FreeBSD/Apache/Mysql/PHP)结合，或者数据应用够大可以考虑换 PostgreSQL或者Oracle，支持N种数据库。（N &gt;= 10）</li>
+        <li>语法简单，如果有学习C和Perl的很容易上手，并且跟ASP有部分类似。有成熟的开发工具，比如NuPHPed，或者Zend Studio等等，再Linux平台下可以使用Eclipse等等。</li>
+        <li>目前主流技术都支持，比如WebService、Ajax、XML等等，足够应用。</li>
+        <li>有比较完整的支持，比如使用ADODB或者PEAR::DB做数据库抽象层，用Smarty或者smart template做模板层，如果是PHP 5.1的话，还能够使用PDO（PHP Data Object）来访问数据库。</li>
+        <li>有很成熟的框架，比支持MVC的框架：phpMVC，支持类似ASP.net的事件驱动的框架：Prado，支持类似Ruby On Rails的快速开发的框架：Cake等等，足够满足你的应用需求。 PHP6. P</li>
+        <li>有成熟的社区来支持PHP的开发，比如国内的CSDN，喜悦国际村等等。 </li>
+        <li>目前已经很多大型应用都是使用PHP，比如淘宝网、Yahoo、163、Sina等等大型门户，很多选用PHP来作为他们的开发语言，所以大型门户都能够选用它，我想足够能够你的使用了。</li>
+      </ol></p>
+  </conbody>
+</concept>

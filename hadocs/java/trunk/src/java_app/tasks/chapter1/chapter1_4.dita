@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_5" xml:lang="zh">
+  <title>获取 Java 资源</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Java</indexterm>
+        <indexterm>APP</indexterm>
+        <indexterm>应用程序</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>Java在互联网上可以说无处不在。从网上得到Java的信息是最为方便快捷的，而且往往可以得到最新信息。下面列出几个可供参考的站点。</p>
+    <p><ul>
+        <li>
+          <p>SUN (已经被 Oracle 兼并了)</p>
+          <p><xref href="http://www.sun.com/" format="html" scope="external">http://www.sun.com/</xref></p>
+        </li>
+        <li>
+          <p>Java 开源社区</p>
+          <p><xref scope="external" href="http://www.java.net/" format="html">http://www.java.net/</xref></p>
+        </li>
+        <li>
+          <p>Gamelan (列出包含Java内容的网址及与网上Java资源的链接)</p>
+          <p><xref scope="external" format="html" href="http://www.developer.com/java/">http://www.developer.com/java/</xref></p>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

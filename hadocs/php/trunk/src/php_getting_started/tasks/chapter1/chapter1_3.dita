@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_3" xml:lang="zh">
+  <title>PHP 环境配置</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>HAWEBS</indexterm>
+        <indexterm>PHP</indexterm>
+        <indexterm>程序设计</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>php最经典的组合当然是LAMP(Linux+Apache+MySQL+PHP)了，如果你我没有条件和精力弄Linux，你可以用 Windows 代替Linux。</p>
+    <p>如果你为你的公司或者个人部署，建议是用 Linux 的服务器，在服务器领域 Linux/Unix 还是要比 Windows 稳定很多。</p>
+    <p>一般情况下，各种开发环境是可以共存的。</p>
+    <p>唯一不同的是，你需要为你的环境指定不同的端口。</p>
+    <p>如果你的计算机中已经装了 Tomcat 或者 IIS， 你的80 端口很有可能会这些服务器占用。</p>
+    <p>一般来说，如果不做 Asp.net 的开发，我一般停止 IIS 的服务。</p>
+    <p>Tomcat 我一般指定为 8080 端口。</p>
+    <p>如果你IIS也需要，那么你可以为你的 IIS 指定 81 或者其他端口。</p>
+    <p>这样各种 Web 服务器一般都是可以在你机器上共存的。</p>
+    <p>需要注意的是，80 端口为 http 的默认端口，给 Apache 80 端口是因为我有很多应用是通过 http 直接访问的，我不希望我的用户还需要输入端口，同时你也可以为你的 Apache 部署大量的静态页，Apache 比较稳定，在处理静态页面的效率也非常高。</p>
+  </conbody>
+</concept>

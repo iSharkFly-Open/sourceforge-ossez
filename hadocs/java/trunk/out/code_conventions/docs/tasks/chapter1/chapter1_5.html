@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="concept"/>
+<meta name="DC.Title" content="性能"/>
+<meta name="DC.subject" content="Java, 编码规范"/>
+<meta name="keywords" content="Java, 编码规范"/>
+<meta name="DC.Relation" scheme="URI" content="../../tasks/chapter1/chapter1.html"/>
+<meta name="prodname" content="Java 编码规范"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS ZEN Java 编码规范"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="chapter1_5"/>
+<meta name="DC.Language" content="zh"/>
+<link rel="stylesheet" type="text/css" href="../../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+<title>性能</title>
+</head>
+<body id="chapter1_5"><a name="chapter1_5"><!-- --></a>
+
+
+  <h1 class="topictitle1">性能</h1>
+
+  
+  <div>
+    <p>在写代码的时候，从头至尾都应该考虑性能问题。这不是说时间都应该浪费在优化代码上，而是我们时刻应该提醒自己要注意代码的效率。比如：如果没有时间来实现一个高效的算法，那么我们应该在文档中记录下来，以便在以后有空的时候再来实现她。 不是所有的人都同意在写代码的时候应该优化性能这个观点的，他们认为性能优化的问题应该在项目的后期再去考虑，也就是在程序的轮廓已经实现了以后。 </p>
+
+    <p>不要在循环中构造和释放对象。</p>
+
+    <p>使用 StringBuffer 对象。在处理 String 的时候要尽量使用 StringBuffer 类，StringBuffer 类是构成 String 类的基础。String 类将 StringBuffer 类封装了起来，（以花费更多时间为代价）为开发人员提供了一个安全的接口。当我们在构造字符串的时候，我们应该用 StringBuffer 来实现大部分的工作，当工作完成后将 StringBuffer 对象再转换为需要的 String 对象。比如：如果有一个字符串必须不断地在其后添加许多字符来完成构造，那么我们应该使用 StringBuffer 对象和她的 append() 方法。如果我们用 String 对象代替 StringBuffer 对象的话，会花费许多不必要的创建和释放对象的 CPU 时间。 </p>
+
+    <p>避免不必要的使用关键字 synchronized，应该在必要的时候再使用她，这是一个避免死锁的好方法。</p>
+
+  </div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../../tasks/chapter1/chapter1.html" title="主要对为什么要进行编码规范和如何进行编码规范进行说明">Java 编码规范</a></div>
+</div>
+</div>
+
+</body>
+</html>

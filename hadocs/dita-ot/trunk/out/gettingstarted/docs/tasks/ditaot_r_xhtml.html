@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="reference"/>
+<meta name="DC.Title" content="xhtml"/>
+<meta name="abstract" content="Use the /transtype:xhtml parameter to generate XHTML from the Java command-line interface"/>
+<meta name="description" content="Use the /transtype:xhtml parameter to generate XHTML from the Java command-line interface"/>
+<meta name="DC.Relation" scheme="URI" content="../tasks/ditaot_r_java_command-line_parameters.html"/>
+<meta name="prodname" content="DITA 入门"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS DITA OT"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="ditaot_r_xhtml"/>
+<meta name="DC.Language" content="en-us"/>
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+<title>xhtml</title>
+</head>
+<body id="ditaot_r_xhtml"><a name="ditaot_r_xhtml"><!-- --></a>
+
+
+<h1 class="topictitle1">xhtml</h1>
+
+
+<div><p>Use the <span class="cmdname">/transtype:xhtml</span> parameter to
+generate XHTML from the Java command-line interface</p>
+
+<div class="section"><h2 class="sectiontitle">Parameters</h2>             <dl>
+<dt class="dlterm"><span class="synph"><span class="kwd">/artlbl</span><span class="delim">:</span><span class="var">args.artlbl</span></span></dt>
+
+<dd>An optional parameter that specifies whether
+the path and name of the image file are displayed in brackets after
+the image. <span>The valid values are yes and no. The default value is no.</span></dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/basedir:</span><span class="var">basedir</span></span></dt>
+
+<dd>An optional parameter that specifies the
+directory where the Ant processing begins. If a relative path is used, <span class="parmname">basedir</span> is
+set relative to the current directory. If not specified, the default
+value is the current directory.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/cleantemp</span><span class="delim">:</span><span class="var">clean.temp</span></span></dt>
+
+<dd>An optional parameter that specifies whether
+the temp directory is erased after each build. The valid values are
+yes and no. The default value is yes.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/copycss</span><span class="delim">:</span><span class="var">args.copycss</span></span></dt>
+
+<dd>An optional parameter that specifies whether
+to copy the user-specified CSS file to the output directory. (The
+default DITA Open Toolkit files, <span class="filepath">commonltr.css</span> or <span class="filepath">commonrtl.css</span>,
+are automatically copied to the output directory.) When used in conjunction
+with the <span class="parmname">args.csspath</span> parameter, all CSS files
+are copied to the specified subdirectory. <span>The valid values are yes and no. The default value is no.</span></dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/css</span><span class="delim">:</span><span class="var">args.css</span></span></dt>
+
+<dd>An optional parameter that specifies a user-supplied
+CSS file. By default, the HTML references either <span class="filepath">commonltr.css</span> or <span class="filepath">commonrtl.css</span>.
+When you specify an additional CSS file using the <span class="parmname">args.css</span> parameter,
+that CSS file also is referenced in the &lt;head&gt; of the HTML page.
+Use this parameter to locate the CSS file on the build system. The
+following values are valid:<ul>
+<li>A fully qualified file name.</li>
+
+<li>A file name. For this to work, you must also issue the <span class="parmname">args.cssroot</span> parameter.</li>
+
+<li>A relative path and file name. For this to work, you must also
+issue the <span class="parmname">args.cssroot</span> parameter.</li>
+
+</ul>
+</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/csspath</span><span class="delim">:</span><span class="var">args.csspath</span></span></dt>
+
+<dd>An optional parameter that specifies the
+path of the @href attribute for the &lt;link&gt; element in the HTML
+output. This can be useful if you want all the CSS files to be located
+in a subdirectory of the output directory, or if you want to refer
+to a CSS file located on a Web server. Valid values are one of the
+following:<ul>
+<li>A local relative path. Use <kbd class="userinput">/</kbd> as the path
+separator; do not append a path separator to the end of the value.</li>
+
+<li>An absolute path that begins with <kbd class="userinput">http://</kbd> or <kbd class="userinput">https://</kbd>.</li>
+
+</ul>
+The default value is no path.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/cssroot</span><span class="delim">:</span><span class="var">args.cssroot</span></span></dt>
+
+<dd>An optional parameter that specifies the
+root directory of a user-specified CSS file. If this parameter is
+set, the value of the <span class="parmname">args.css</span> parameter must
+be a file path relative to <span class="parmname">args.cssroot</span>.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="parmname">/ditadir:</span><span class="var">dita.dir</span></span></dt>
+
+<dd>An optional parameter that specifies the absolute
+path of directory where the DITA Open Toolkit is installed. The default
+value is the current directory.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/ditaext</span><span class="delim">:</span><span class="var">dita.extname</span></span></dt>
+
+<dd>An optional parameter that specifies the
+file extension of the files that are written to the temp directory.
+The valid values are dita, .dita, xml, and .xml. The default value
+is xml.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/ditalocale</span><span class="delim">:</span><span class="var">args.dita.locale</span></span></dt>
+
+<dd>An optional parameter that specifies
+the locale that is used to sort the &lt;indexterm&gt; elements. The valid
+values are specified in  the <span class="filepath">string.xml</span> file
+that is located in the <span class="filepath"><var class="varname">DITAOT</var>\xsl\common</span> directory,
+where <var class="varname">DITAOT</var> is the directory where the DITA Open
+Toolkit is installed. By default, the value of the first occurrence
+of the @xml-lang attribute found in the DITA source is used. If no
+@xml-lang attribute is found, en-us is used.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/draft</span><span class="delim">:</span><span class="var">args.draft</span></span></dt>
+
+<dd>An optional parameter that specifies whether
+draft comments and the content of &lt;required-cleanup&gt; elements are
+rendered in output. <span>The valid values are yes and no. The default value is no.</span></dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/eclipsecontenttoc</span><span class="delim">:</span><span class="var">args.eclipsecontent.toc</span></span></dt>
+
+<dd>An optional parameter that specifies
+XXX. The default value is the name of the DITA map.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/eclipsehelptoc</span><span class="delim">:</span><span class="var">args.eclipsehelp.toc</span></span></dt>
+
+<dd>An optional parameter that specifies
+the root name of the Eclipse table of contents (TOC) file. The default
+value is the root name of the DITA map.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/filter</span><span class="delim">:</span><span class="var">dita.input.valfile</span></span></dt>
+
+<dd>An optional parameter that specifies
+name and relative path of the DITAVAL file.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/foimgext</span><span class="delim">:</span><span class="var">args.fo.img.ext</span></span></dt>
+
+<dd>An optional parameter that specifies the
+extension for image files. The valid values are jpg and gif. If no
+value is specified, the image files are used as-is..             
+    </dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/fooutputrellinks</span><span class="delim">:</span><span class="var">args.fo.output.rel.links</span></span></dt>
+
+<dd>An optional parameter that specifies
+whether related linked are rendered in output. <span>The valid values are yes and no. The default value is no.</span>                 </dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/fouserconfig</span><span class="delim">:</span><span class="var">args.fo.userconfig</span></span></dt>
+
+<dd>An optional parameter that specifies
+the user configuration file for Apache Formatting Objects Processor
+(FOP).</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/ftr</span><span class="delim">:</span><span class="var">args.ftr</span></span></dt>
+
+<dd>An optional parameter that specifies the fully
+qualified name of a file that contains an XHTML fragment. The fragment
+is written before the &lt;/body&gt; element in the XHTML output. The
+HTML fragment must have a single root element, such as &lt;div&gt;.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/generateouter</span><span class="delim">:</span><span class="var">generate.copy.outer</span></span></dt>
+
+<dd>An optional parameter that specifies
+how the DITA Open Toolkit processes files that are neither in the
+same directory as the DITA map nor in a subdirectory of the directory
+that contains the DITA map. The following values are valid:<dl>
+<dt class="dlterm">1</dt>
+
+<dd>Only files that are in the same directory as the DITA map or in
+a subdirectory of the DITA map are generated.</dd>
+
+
+<dt class="dlterm">2</dt>
+
+<dd>All files are generated, including files that are written to a
+directory outside of the output directory.</dd>
+
+
+<dt class="dlterm">3</dt>
+
+<dd>The directories are adjusted so that all files are generated within
+the output directory.</dd>
+
+</dl>
+The default value is 1.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">-h</span> or <span class="kwd">-help</span></span></dt>
+
+<dd>An optional parameter that displays help for the Java command-line
+interface.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/hdr</span><span class="delim">:</span><span class="var">args.hdr</span></span></dt>
+
+<dd>An optional parameter that specifies the fully
+qualified name of a file that contains an XHTML fragment. The fragment
+is written after the &lt;body&gt; element in the XHTML output. The HTML
+fragment must have a single root element, such as &lt;div&gt;.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/hdf</span><span class="delim">:</span><span class="var">args.hdf</span></span></dt>
+
+<dd>An optional parameter that specifies the fully
+qualified name of a file that contains an XHTML fragment. The fragment,
+often JavaScript, is written in the &lt;head&gt; element in the XHTML
+output. The HTML fragment must have a single root element, such as &lt;div&gt;.
+Since a &lt;div&gt; element is not valid in the &lt;head&gt; element, it
+is not included in the XHTML output.</dd>
+
+<dd class="ddexpand">This option requires an absolute path.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/htmlhelpincludefile</span><span class="delim">:</span><span class="var">args.htmlhelp.includefile</span></span></dt>
+
+<dd>An optional parameter that specifies
+XXX.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/i</span><span class="delim">:</span><span class="var">args.input</span></span></dt>
+
+<dd>An optional parameter that specifies the name
+and path of the input file. This parameter is case sensitive.    
+                  <div class="note" id="ditaot_r_xhtml__d18e424"><a name="ditaot_r_xhtml__d18e424"><!-- --></a><span class="notetitle">Note:</span> This parameter must be
+provided if <span class="parmname">dita.input</span> and and <span class="parmname">dita.input.dirname</span> are
+not provided.</div>
+</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/id</span><span class="delim">:</span><span class="var">dita.input.dirname</span></span></dt>
+
+<dd>An optional parameter that specifies
+the directory that contains the input file. It must be used in conjunction
+with the <span class="parmname">dita.input</span> parameter.<div class="note"><span class="notetitle">Note:</span> This is deprecated
+in favor of the <span class="parmname">args.input</span> parameter.</div>
+</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/if</span><span class="delim">:</span><span class="var">dita.input</span></span></dt>
+
+<dd>An optional parameter that specifies the name
+of the input file. It must be used in conjunction with the <span class="parmname">dita.input.dirname</span> parameter. <div class="note"><span class="notetitle">Note:</span> This
+is deprecated in favor of the <span class="parmname">args.input</span> parameter.</div>
+</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/indexshow</span><span class="delim">:</span><span class="var">args.indexshow</span></span></dt>
+
+<dd>An optional parameter that specifies whether
+the content of in-line &lt;indexterm&gt; elements is displayed in the
+body of the text. The content of &lt;indexterm&gt; elements located in
+the &lt;prolog&gt; are not displayed. <span>The valid values are yes and no. The default value is no.</span></dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/javahelpmap</span><span class="delim">:</span><span class="var">args.javahelp.map</span></span></dt>
+
+<dd>An optional parameter that specifies
+the root name of the JavaHelp map file. The default value is the root
+name of the DITA map file.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/javahelptoc</span><span class="delim">:</span><span class="var">args.javahelp.toc</span></span></dt>
+
+<dd>An optional parameter that specifies
+the root name of the JavaHelp table of contents (TOC) file. The default
+value is the root name of the DITA map file.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/logdir</span><span class="delim">:</span><span class="var">args.logdir</span></span></dt>
+
+<dd>An optional parameter that specifies the directory
+where the generated log files are written. The default value is the
+output directory.<div class="note" id="ditaot_r_xhtml__d18e459"><a name="ditaot_r_xhtml__d18e459"><!-- --></a><span class="notetitle">Note:</span> If you run an aggregated
+target, for example, the all target that is used by the DITA Open
+Toolkit demos, the following behavior occurs:                <ul>
+<li>If the value of <span class="parmname">args.logdir</span> is the same for
+all transformations, the directory specified by the <span class="parmname">args.logdir</span> parameter
+is used.</li>
+
+<li>If the value of <span class="parmname">args.logdir</span> varies among
+the transformations, but the transformations share a common output
+directory, the generated log files are written to the common output
+directory.</li>
+
+<li>If the values of both <span class="parmname">args.logdir</span> and <span class="parmname">output.dir</span> vary
+among the transformations, the generated log files are written to
+the <span class="parmname">basedir</span> directory.</li>
+
+</ul>
+</div>
+</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/onlytopicinmap</span><span class="delim">:</span><span class="var">onlytopic.in.map</span></span></dt>
+
+<dd>An optional parameter that specifies
+whether DITA topics that are not referenced in DITA map files are
+generated. Examples of files not referenced in a DITA map file are
+topics that are referenced only from &lt;xref&gt; or &lt;link&gt; elements
+within a DITA file. Valid values are true and false. The default value
+is false.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/outdir</span><span class="delim">:</span><span class="var">output.dir</span></span></dt>
+
+<dd>A required parameter that specifies the directory
+where the DITA Open Toolkit writes the output.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/outercontrol</span><span class="delim">:</span><span class="var">outer.control</span></span></dt>
+
+<dd>An optional parameter that specifies how
+the DITA Open Toolkit responds if files would be generated outside
+of the output directory. The following values are valid:<dl>
+<dt class="dlterm">fail</dt>
+
+<dd>The transformation does not run if files would be generated outside
+of the output directory.</dd>
+
+
+<dt class="dlterm">quiet</dt>
+
+<dd>The transformation runs, but a warning is logged.</dd>
+
+</dl>
+<dl>
+<dt class="dlterm">warn</dt>
+
+<dd>The transformation runs; no warning or error is generated.</dd>
+
+</dl>
+</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/outext</span><span class="delim">:</span><span class="var">args.outext</span></span></dt>
+
+<dd>An optional parameter that specifies the extension
+for the XHTML files that are generated. Valid values are any text
+strings, although htm or html is required by current Web browsers.
+The default value is html.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/provider</span><span class="delim">:</span><span class="var">args.eclipse.provider</span></span></dt>
+
+<dd>An optional parameter that specifies
+the value of providerName in the <span class="filepath">plugin.properties</span> file.
+The default value is DITA.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/tempdir</span><span class="delim">:</span><span class="var">dita.temp.dir</span></span></dt>
+
+<dd>An optional parameter that specifies the
+directory where the temporary files are written. The default value
+is temp.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/transtype</span><span class="delim">:</span><span class="var">transtype</span></span></dt>
+
+<dd>A required parameter that specifies the type of transformation.
+The following values are valid:<ul>
+<li>docbook</li>
+
+<li>eclipsecontent</li>
+
+<li>eclipsehelp</li>
+
+<li>htmlhelp</li>
+
+<li>javahelp</li>
+
+<li>pdf </li>
+
+<li>troff</li>
+
+<li>wordrtf</li>
+
+<li>xhtml</li>
+
+</ul>
+</dd>
+
+
+<dt class="dlterm"><span class="parmname" id="ditaot_r_xhtml__d18e830"><a name="ditaot_r_xhtml__d18e830"><!-- --></a>validate</span></dt>
+
+<dd id="ditaot_r_xhtml__d18e833"><a name="ditaot_r_xhtml__d18e833"><!-- --></a>An optional parameter that specifies whether
+the input files are validated. The valid values are true and false.
+The default value is true.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">-version</span></span></dt>
+
+<dd>An optional parameter that displays the version of the DITA Open
+Toolkit.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/xhtmltoc</span><span class="delim">:</span><span class="var">args.xhtml.toc</span></span></dt>
+
+<dd>An optional parameter that specifies the
+name of the table of contents (TOC) file for the XHTML transformation.
+The default value is index.</dd>
+
+
+<dt class="dlterm"><span class="synph"><span class="kwd">/xsl</span><span class="delim">:</span><span class="var">args.xsl</span></span></dt>
+
+<dd>An optional parameter that specifies the XSL
+file. The default value depends on the transformation type:<dl>
+<dt class="dlterm">docbook</dt>
+
+<dd>dita2docbook.xsl </dd>
+
+
+<dt class="dlterm">eclipsehelp</dt>
+
+<dd>dita2xhtml.xsl</dd>
+
+
+<dt class="dlterm">htmlhelp</dt>
+
+<dd>dita2html.xsl</dd>
+
+
+<dt class="dlterm">javahelp</dt>
+
+<dd>dita2html.xsl</dd>
+
+
+<dt class="dlterm">pdf </dt>
+
+<dd>dita2fo-shell.xsl</dd>
+
+
+<dt class="dlterm">wordrtf</dt>
+
+<dd>dita2rtf.xsl </dd>
+
+
+<dt class="dlterm">xhtml</dt>
+
+<dd>dita2xhtml.xsl</dd>
+
+</dl>
+</dd>
+
+</dl>
+           </div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="../tasks/ditaot_r_java_command-line_parameters.html" title="You can use the Java command-line interface to transform DITA to several different output formats">Java command-line parameters</a></div>
+</div>
+</div>
+
+</body>
+</html>

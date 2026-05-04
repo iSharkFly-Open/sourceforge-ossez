@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="condproc" xml:lang="zh">
+  <title>Java 编码规范</title>
+  <shortdesc>主要对为什么要进行编码规范和如何进行编码规范进行说明</shortdesc>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>Java</indexterm>
+        <indexterm>编码规范</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>代码规范相当重要. 代码规范提高软件代码的可读性 , 使得开发人员快速和彻底的理解新代码。</p>
+    <p>好的代码风格不仅会提高可读性 ,而且会使代码更健壮 , 更为重要的是在修改时不容易出错。</p>
+    <p>在现代软件开发中 ,维护工作会占用80%的时间 , 而且开发者和维护者通常不是同一个程序员。</p>
+    <p>这意味着你经常要阅读和修改别人开发的程序 , 别人也同样可能需要阅读和修改你开发的程序. 既然如此 , 为什么不把这利人利己的事情作好呢?
+</p>
+    <p>一些习惯自由程序人员可能对这些规则很不适应，但是在多个开发人员共同写作的情况下，这些规则是必需的
+。</p>
+    <p>程序版式是一个容易引起争议的话题，其实有一点很重要，那就是程序版式并无绝对的好坏之分，最重要的是要有统一的标准。开发过程比较完善的组织会有一份代码规范，其目的就是统一代码的风格。因此此规范仅供大家参考，大多数内容都是建议，而不是规则.。
+</p>
+    <p>Java 在这方面有很大优势，Sun MicroSystem在发布Java的同时，也推出了一份代码规范。其中大部分已被广泛接受，成为事实上的标准。可以参考Sun 的Java站点：<xref format="html" scope="external" href="http://java.sun.com/docs/codeconv/index.html"/></p>
+  </conbody>
+</concept>

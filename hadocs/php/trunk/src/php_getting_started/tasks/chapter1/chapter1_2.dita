@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<!-- 
+**
+ * Copyright (C) 2006-2010 YUCHENG HU
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * HA WEBSYSTEMS
+ * http://www.hawebs.net
+ * http://www.tcivis.com
+ *
+ * Contact
+ * huyuchengus@gmail.com / yuchenghu@hawebs.net
+ * 
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * GNU GENERAL PUBLIC LICENSE
+ * APACHE LICENSE, VERSION 2.0
+ *
+ * +++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+
+<concept id="chapter1_2" xml:lang="zh">
+  <title>PHP5 与 PHP4的不同点</title>
+  <prolog>
+    <metadata>
+      <keywords>
+        <indexterm>HAWEBS</indexterm>
+        <indexterm>PHP</indexterm>
+        <indexterm>程序设计</indexterm>
+      </keywords>
+    </metadata>
+  </prolog>
+  <conbody>
+    <p>PHP5提供了更加完善的面向对象的程序设计(OOP)</p>
+    <p>构造函数和析构函数<ul>
+        <li>在PHP4中，当函数与对象同名时，这个函数将成为该对象的构造函数，并且在PHP$中没有析构函数的概念。</li>
+        <li>在PHP5中，构造函数被统一命名为 __construct，并且引入了析构函数的概念，被统一命名为 __destruct。</li>
+      </ul></p>
+    <p>在 PHP4中，传递变量给一个函数或方法，实际是把这个变量做了一次复制，也就意味着你传给函数或方法的是这个变量的一个副本，除非你使用了引用符号 “&amp;” 来声明是要做一个引用，而不是一个 Copy。在PHP5中，对象总是以引用的形式存在的，对象中的赋值操作同样也都是一个引用操作。</p>
+    <p>PHP4中，一个对象的所有方法和变量都是公共的，这意味着你可以在一个对象的外部操作其中的任意一个变量和方法。</p>
+    <p>PHP5引入了三种新的用来控制这种存取权限的模式，它们是：公共的(Public)、受保护的(Protected)及私有的(Private)。<ul>
+        <li>公共模式(Public):允许在对象外部进行操作控制。</li>
+        <li>私有模式(Private):只允许本对象内的方法对其进行操作控制。</li>
+        <li>受保护模式(Protected)：允许本对象及其父对象对其进行操作控制。</li>
+      </ul></p>
+    <p>接口 (Interfaces)</p>
+    <p>PHP4 中的对象支持继承，要使一个对象成为另一个对象的派生类，你需要使用类似 “class foo extends parent” 的代码来控制。PHP4和PHP5中，一个对象都仅能继承一次，多重继承是不被支持的。不过，在PHP5中产生了一个新的名词：接口，接口是一个没有具体处理代码的特殊对象，它仅仅定义了一些方法的名称及参数，此后的对象就可以方便的使用 &apos;implement&apos; 关键字把需要的接口整合起来，然后再加入具体的执行代码。</p>
+  </conbody>
+</concept>

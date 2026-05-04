@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh" xml:lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="task"/>
+<meta name="DC.Title" content="显示版本"/>
+<meta name="abstract" content="You can show the revision information for your content. All revision information is hidden by default."/>
+<meta name="description" content="You can show the revision information for your content. All revision information is hidden by default."/>
+<meta name="DC.subject" content="metadata attributes, showing revisions, revisions, showing, showing revisions"/>
+<meta name="keywords" content="metadata attributes, showing revisions, revisions, showing, showing revisions"/>
+<meta name="DC.Relation" scheme="URI" content="../tasks/proccond.html"/>
+<meta name="prodname" content="Zen Cart 入门"/>
+<meta name="version" content="1.0.0.0"/>
+<meta name="brand" content="HAWEBS ZEN CART"/>
+<meta name="copyright" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Rights.Owner" content="HAWEBS信息技术股份有限公司 2006, 2010" type="primary"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="showrev"/>
+<meta name="DC.Language" content="zh"/>
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+<title>显示版本</title>
+</head>
+<body id="showrev"><a name="showrev"><!-- --></a>
+
+
+    <h1 class="topictitle1">显示版本</h1>
+
+    
+    
+    <div><p>You can show the revision information for your content. All 
+        revision information is hidden by default.</p>
+
+        <ol><li class="stepexpand">
+                <span>Create a DITA filter file in the directory you want to add 
+                    the file to. Give the file a descriptive name, such as 
+                    "audience-flag-build.ditaval".</span>
+            </li>
+<li class="stepexpand">
+                <span>Open the file, and type below content into it:</span>
+                 
+                    <pre class="codeblock">&lt;?xml version="1.0" encoding="UTF-8"?&gt; 
+&lt;val&gt; &lt;/val&gt;</pre>
+
+                
+            </li>
+<li class="stepexpand">
+                <span>Define the revision you want to show:</span>
+                <ol type="a">
+                    <li class="substepexpand">
+                        <span>Add a new property for flag by adding a new line 
+                            <samp class="codeph">&lt;revprop val="" style="" action="" date=""/&gt;"</samp>.
+                        </span>
+                    </li>
+
+                    <li class="substepexpand">
+                        <span>Type the name of the revision you want to show.</span>
+                         For example, "rev1".
+                    </li>
+
+                    <li class="substepexpand">
+                        <span>Enter the date of the revision, or the date it 
+                            started or ended.</span>
+                         For example, "05-10-11".
+                    </li>
+
+                    <li class="substepexpand">
+                        <span>Define how the revision will be flagged in XHTML: 
+                            either by images or colors. </span>
+                         
+                            <ul>
+                                <li>Type the value of style if the revision 
+                                    will be flagged with color, either by using 
+                                    the RGB codes or color. For example, 
+                                    "#008040" or "Green". Type the 
+                                    value of action. For example, "noflag". </li>
+
+                                <li>Enter the value of action if the revision 
+                                    will be flagged with image. For example, 
+                                    "flag".</li>
+
+                            </ul>
+
+                        
+                         Use images instead of color to ensure that your 
+                            output is flagged consistently and accessibly. 
+                            Color only works for flagging phrase-level 
+                            information, and can not be distinguishable to 
+                            color-blind readers, on monochrome displays, or 
+                            once an online page is printed. Note: If both style 
+                            and action="flag" are used, the revision will be flagged
+                            by both of them.
+                    </li>
+
+                    <li class="substepexpand">
+                        <span>Enter the character to use when flagging the 
+                            revision in PDF.</span>
+                         For example, "A".
+                         <div class="p"><div class="note"><span class="notetitle">注：</span> Revision indication for PDF output will be specific to 
+                            each implementation.  See the documentation for your preferred 
+                            FO/PDF output transform as to whether conditional markup and 
+                            revisions are supported and how.</div>
+</div>
+
+                    </li>
+
+                </ol>
+
+                 You need to define a separate property for each revision 
+                    you want to show. For example, if you want to show two 
+                    revisions, you would need to define each separately.
+                 You can define more properties by following the steps 
+                    above. The final ditaval file with the example values should be like this: 
+                    <pre class="codeblock">&lt;?xml version="1.0" encoding="UTF-8"?&gt; 
+&lt;val&gt;
+  &lt;revprop val="rev1" style="Green" action="noflag" date="2005-10-08" /&gt;  
+  &lt;revprop val="rev2" action="flag" date="2005-10-10" /&gt;
+&lt;/val&gt;</pre>
+ 
+            </li>
+<li class="stepexpand">
+                <span>When you publish output from the topic or map, specify the 
+                    filter file you want by using the parameter 
+                    <samp class="codeph">/filter:{args.input.valfile}</samp> for the output options.</span>
+            </li>
+</ol>
+
+    </div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="../tasks/proccond.html" title="You can use metadata on elements to filter or flag content, and to show revised content.">过滤与标记内容</a></div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+<img src="cache/images/vert_" border="0" usemap="#cache/images/vert_">
+<map name="cache/images/vert_">
+	<area shape="rect" coords="78,119,156,169" href="index.php?module=Accounts&action=ListView&from_homepagedb=true&type=dbrd&query=true&owner=huyucheng&viewname=4" alt="客户=%d" title="客户=%d">
+	<area shape="rect" coords="251,119,329,169" href="index.php?module=Contacts&action=ListView&from_homepagedb=true&type=dbrd&query=true&owner=huyucheng&viewname=7" alt="联系人=%d" title="联系人=%d">
+	<area shape="rect" coords="424,119,502,169" href="index.php?module=Calendar&action=ListView&from_homepagedb=true&type=dbrd&query=true&owner=huyucheng&viewname=19" alt="日程安排=%d" title="日程安排=%d">
+</map>

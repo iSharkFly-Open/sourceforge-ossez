@@ -1,0 +1,10 @@
+# ------------------------------------------
+# vtiger CRM . -- http://www.vtiger.com
+# Robot Exclusion File -- robots.txt
+# Author:  vtiger CRM
+# 中文
+# Last Updated:  17/11/06 
+# ------------------------------------------
+
+User-agent: *
+Disallow: /
